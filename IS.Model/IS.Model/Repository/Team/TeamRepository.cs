@@ -35,6 +35,15 @@ where t.Team = @id", new { id });
 		/// <param name="Team">Группу.</param>
 		public void Update(TeamItem Team)
 		{
+            using (var sqlh = new SqlHelper())
+            {
+                sqlh.ExecNoQuery(@"
+update TeamItem.Team
+set
+	name = @Name
+    create_date = @CreateDate
+where Team = @Id", team);
+            }
 		}
 
 		/// <summary>
