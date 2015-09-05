@@ -1,0 +1,30 @@
+﻿@using IS.Mvc.Models
+@using IS.Model.Item.Access
+@model UserItem
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Model == null)
+{
+	<h2>Привет аноним.</h2>
+	<div>
+		@Html.ActionLink("Авторизироваться", "Login")
+	</div>
+	<div>
+		@Html.ActionLink("Зарегистрироваться", "Registr")
+	</div>
+	
+}
+else
+{
+	<h2>Привет @Model.Login.</h2>
+	@Html.ActionLink("Разлогиниться", "Logoff")
+	if (Access.CheckRole("Admin"))
+	{
+		<div>Вы админ</div>
+	}
+}
