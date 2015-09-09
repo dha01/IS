@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\IS.Mvc\IS.Mvc\IS.Mvc.csproj">
+      <Project>{2B877253-1C56-4627-981F-4A32FAB67011}</Project>
+      <Name>IS.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IS.Model\IS.Model.csproj">
       <Project>{D0B23DA2-5C5E-446C-B65E-A66A29A4B5C9}</Project>
       <Name>IS.Model</Name>

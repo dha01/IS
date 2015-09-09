@@ -131,6 +131,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\OnlineTextController.cs" />
+    <Compile Include="Controllers\SimpleTaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +230,9 @@
     <Content Include="Views\Access\Index.cshtml" />
     <Content Include="Views\Access\Registr.cshtml" />
     <Content Include="Views\Access\Login.cshtml" />
+    <Content Include="Views\OnlineText\Index.cshtml" />
+    <Content Include="Views\SimpleTask\Index.cshtml" />
+    <Content Include="Views\SimpleTask\Rules.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
