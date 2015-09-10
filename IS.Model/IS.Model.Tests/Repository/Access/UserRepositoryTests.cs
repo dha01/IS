@@ -82,5 +82,12 @@ namespace IS.Model.Repository.Access.Tests
 		}
 
 		#endregion
+
+		[Test]
+		public void GetList_Void_ReturnNotEmptyList()
+		{
+			var result = _userRepository.GetList();
+			Assert.IsNotEmpty(result);
+		}
 	}
 }
