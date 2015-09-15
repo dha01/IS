@@ -13,5 +13,5 @@ from dbo.test dt //фром будет один, остальные таблицы будем присоединять с помощ
 	tt.test_two = dt.test
 	and
 	tt.test_two = dt.test
-where 
+where 111
 	
