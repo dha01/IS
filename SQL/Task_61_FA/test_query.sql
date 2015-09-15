@@ -1,4 +1,4 @@
-create table Dbo.test_test
+create table Dbo.test_kazhin
 (
 	test_test int identity(1,1) not null,
 	code nvarchar(128) not null,
