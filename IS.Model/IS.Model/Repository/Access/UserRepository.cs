@@ -10,27 +10,13 @@ namespace IS.Model.Repository.Access
 	{
 		public UserItem Get(int id)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			return new SqlHelper().ExecMapping<UserItem>(@"
 select
 	u.[user] Id,
 	u.login Login,
 	u.password Password
 from Access.[user] u
-where u.[user] = @id"))
-			{
-				sqlh.AddWithValue("@id", id);
-				var dt = sqlh.ExecTable();
-				if (dt.Rows.Count == 0)
-				{
-					return null;
-				}
-				return new UserItem()
-				{
-					Id = (int)dt.Rows[0]["Id"],
-					Login = (string)dt.Rows[0]["Login"],
-					Password = (string)dt.Rows[0]["Password"]
-				};
-			}
+where u.[user] = @id", new { id });
 		}
 
 		public void Update(UserItem user)
@@ -51,16 +37,11 @@ where [user] = @Id"))
 
 		public int Create(UserItem user)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			return new SqlHelper().ExecScalar<int>(@"
 insert into Access.[user] (login, password)
 values (@Login, @Password)
 
-select SCOPE_IDENTITY()"))
-			{
-				sqlh.AddWithValue("@Login", user.Login);
-				sqlh.AddWithValue("@Password", user.Password);
-				return Convert.ToInt32(sqlh.ExecScalar());
-			}
+select SCOPE_IDENTITY()", user);
 		}
 
 		public void Delete(int id)
@@ -100,28 +81,12 @@ where u.login = @login"))
 
 		public List<UserItem> GetList()
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			return new SqlHelper().ExecMappingList<UserItem>(@"
 select
 	u.[user] Id,
 	u.login Login,
 	u.password Password
-from Access.[user] u"))
-			{
-				var dt = sqlh.ExecTable();
-
-				var list = new List<UserItem>();
-
-				foreach (DataRow row in dt.Rows)
-				{
-					list.Add(new UserItem()
-					{
-						Id = (int)row["Id"],
-						Login = (string)row["Login"],
-						Password = (string)row["Password"]
-					});
-				}
-				return list;
-			}
+from Access.[user] u");
 		}
 	}
 }

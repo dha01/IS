@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Web;
 using System.Configuration;
 using System.Data;
+using System.Reflection;
 
 namespace IS.Helper
 {
@@ -24,21 +26,22 @@ namespace IS.Helper
 		/// </summary>
 		private SqlCommand _command;
 
+		public SqlHelper()
+		{
+			ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["DefaultConnection"];
+			dbase = new SqlConnection(settings.ConnectionString);
+			dbase.Open();
+		}
+
 		/// <summary>
 		/// Конструктор класс
 		/// </summary>
 		/// <param name="command">Запрос</param>
 		public SqlHelper(string command)
 		{
-			//string user_name = HttpContext.Current.User.Identity.Name;
-
-			ConnectionStringSettings settings =	ConfigurationManager.ConnectionStrings["DefaultConnection"];			
-					
-			if (settings == null)
-				dbase = new SqlConnection("Data Source=DHA-PC\\SQLEXPRESS;Initial Catalog=IS; User Id=is; Password=12345");
-			else
-				dbase = new SqlConnection(settings.ConnectionString);
-			dbase.Open();	
+			ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["DefaultConnection"];
+			dbase = new SqlConnection(settings.ConnectionString);
+			dbase.Open();
 
 			NewCommand(command);
 		}
@@ -47,9 +50,36 @@ namespace IS.Helper
 		/// Задает новый запрос, при этом все предыдущие заданные параметры удаляютсся
 		/// </summary>
 		/// <param name="command">Запрос</param>
-		public void NewCommand(string command)
+		public void NewCommand(string command, object values = null)
 		{
 			_command = new SqlCommand(command, dbase);
+			if (values != null)
+			{
+				var descrs = TypeDescriptor.GetProperties(values);
+				foreach (PropertyDescriptor descr in descrs)
+				{
+					AddWithValue(descr.Name, descr.GetValue(values));
+				}
+			}
+		}
+
+		public T RowMapping<T>(DataColumnCollection columns, DataRow row) where T : class, new()
+		{
+			T item = new T();
+			foreach (DataColumn field in columns)
+			{
+				PropertyDescriptor descr = TypeDescriptor.GetProperties(item)[field.ColumnName];
+				if (descr == null)
+				{
+					continue;
+				}
+
+				if (row[field.ColumnName] != DBNull.Value)
+				{
+					descr.SetValue(item, row[field.ColumnName]);
+				}
+			}
+			return item;
 		}
 
 		/// <summary>
@@ -62,6 +92,53 @@ namespace IS.Helper
 			DataTable dataTable = new DataTable();
 			dbAdapter.Fill(dataTable);
 			return dataTable;
+		}
+
+		public void ExecNoQuery(string command, object values = null)
+		{
+			NewCommand(command, values);
+			ExecNoQuery();
+		}
+
+		public T ExecScalar<T>(string command, object values = null)
+		{
+			NewCommand(command, values);
+			var result = ExecScalar();
+			dbase.Close();
+			dbase.Dispose();
+			return (T)Convert.ChangeType(result, typeof(T));
+		}
+
+		public List<T> ExecMappingList<T>(string command, object values = null) where T : class, new()
+		{
+			NewCommand(command, values);
+			DataTable data_table = ExecTable();
+			dbase.Close();
+			dbase.Dispose();
+
+			List<T> list = new List<T>();
+
+			foreach (DataRow row in data_table.Rows)
+			{
+				list.Add(RowMapping<T>(data_table.Columns, row));
+			}
+
+			return list;
+		}
+
+		public T ExecMapping<T>(string command, object values = null) where T : class, new()
+		{
+			NewCommand(command, values);
+			DataTable data_table = ExecTable();
+			dbase.Close();
+			dbase.Dispose();
+
+			T item = null;
+			if (data_table.Rows.Count > 0)
+			{
+				item = RowMapping<T>(data_table.Columns, data_table.Rows[0]);
+			}
+			return item;
 		}
 
 		/// <summary>

@@ -131,6 +131,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\OnlineTextController.cs" />
+    <Compile Include="Controllers\SimpleTaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +197,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\server.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -227,6 +230,9 @@
     <Content Include="Views\Access\Index.cshtml" />
     <Content Include="Views\Access\Registr.cshtml" />
     <Content Include="Views\Access\Login.cshtml" />
+    <Content Include="Views\OnlineText\Index.cshtml" />
+    <Content Include="Views\SimpleTask\Index.cshtml" />
+    <Content Include="Views\SimpleTask\Rules.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
