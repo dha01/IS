@@ -15,12 +15,21 @@ namespace IS.Mvc.Models.Service
 		{
 			_userRepository = new UserRepository();
 		}
-		
+
+		/// <summary>
+		/// Конструктор класс.
+		/// </summary>
+		/// <param name="user_repository">Интерфейс пользовательского репозитория.</param>
 		public UserService(IUserRepository user_repository)
 		{
 			_userRepository = user_repository;
 		}
 		
+		/// <summary>
+		/// Создает пользователя.
+		/// </summary>
+		/// <param name="user">Данные о пользователе.</param>
+		/// <returns>Идентификаторо созданного пользователя.</returns>
 		public int Create(UserItem user)
 		{
 			if (string.IsNullOrEmpty(user.Login))
@@ -45,7 +54,7 @@ namespace IS.Mvc.Models.Service
 		{
 			_userRepository.Delete(user.Id);
 		}
-		
+
 		public UserItem GetUserByLogin(string login)
 		{
 			if (string.IsNullOrEmpty(login))
