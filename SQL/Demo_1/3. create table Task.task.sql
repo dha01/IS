@@ -9,7 +9,7 @@ create table Task.task
 	created datetime not null constraint DF__task__created default (getdate()),
 	deadline datetime null,
 	priority int not null constraint DF__task__priority default 10,
-	executer nvarchar(128) null,
+	performer nvarchar(128) null,
 	author nvarchar(128) null,
 	is_perform bit not null constraint DF__task__is_perform default 0,
 	is_open bit not null constraint DF__task__is_open default 1,

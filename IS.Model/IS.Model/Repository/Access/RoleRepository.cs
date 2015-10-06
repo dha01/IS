@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using IS.Helper;
+using IS.Model.Helper;
 using IS.Model.Item.Access;
 
 namespace IS.Model.Repository.Access

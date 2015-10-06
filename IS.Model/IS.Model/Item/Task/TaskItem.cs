@@ -13,9 +13,9 @@ namespace IS.Model.Item.Task
 		public int Id { get; set; }
 
 		/// <summary>
-		/// Префикс.
+		/// Идентификатор префикса.
 		/// </summary>
-		public string TaskPrefix { get; set; }
+		public TaskPrefix Prefix { get; set; }
 
 		/// <summary>
 		/// Номер.
@@ -35,12 +35,12 @@ namespace IS.Model.Item.Task
 		/// <summary>
 		/// Дата создания.
 		/// </summary>
-		public DateTime Created { get; set; }
+		public DateTime? Created { get; set; }
 
 		/// <summary>
 		/// Срок исполнения.
 		/// </summary>
-		public DateTime Deadline { get; set; }
+		public DateTime? Deadline { get; set; }
 
 		/// <summary>
 		/// Приоритет.
@@ -50,7 +50,7 @@ namespace IS.Model.Item.Task
 		/// <summary>
 		/// Исполнитель.
 		/// </summary>
-		public string Executor { get; set; }
+		public string Performer { get; set; }
 
 		/// <summary>
 		/// Автор.
@@ -66,5 +66,17 @@ namespace IS.Model.Item.Task
 		/// Признак того, что задача открыта.
 		/// </summary>
 		public bool IsOpen { get; set; }
+	}
+
+	/// <summary>
+	/// Префикс задачи.
+	/// </summary>
+	public enum TaskPrefix
+	{
+		Task,
+		Demo,
+		BugFix,
+		Refactoring,
+		Doc
 	}
 }

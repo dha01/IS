@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\SqlHelper.cs" />
     <Compile Include="Item\Access\RoleItem.cs" />
     <Compile Include="Item\Access\UserItem.cs" />
     <Compile Include="Item\Role.cs" />
@@ -52,12 +54,6 @@
     <Compile Include="Repository\Access\UserRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Service\UserService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\IS\IS\IS.csproj">
-      <Project>{ca40e776-0c6a-46d3-b3ff-dea6ecac90fc}</Project>
-      <Name>IS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
