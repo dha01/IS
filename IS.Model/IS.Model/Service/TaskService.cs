@@ -43,6 +43,16 @@ namespace IS.Model.Service
 		#region Methods
 
 		/// <summary>
+		/// Получает задачу по идентификатору.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		/// <returns>Задача.</returns>
+		public TaskItem GetById(int id)
+		{
+			return _taskRepository.Get(id);
+		}
+
+		/// <summary>
 		/// Создает пользователя.
 		/// </summary>
 		/// <param name="task">Задача.</param>
@@ -68,6 +78,21 @@ namespace IS.Model.Service
 		/// <param name="task">Задача.</param>
 		public void Update(TaskItem task)
 		{
+			if (string.IsNullOrEmpty(task.Header))
+			{
+				throw new Exception("Поле 'Header' не должно быть пустым.");
+			}
+
+			if (string.IsNullOrEmpty(task.Mem))
+			{
+				throw new Exception("Поле 'Mem' не должно быть пустым.");
+			}
+
+			if (GetById(task.Id) == null)
+			{
+				throw new Exception("Задача не найдена.");
+			}
+
 			_taskRepository.Update(task);
 		}
 

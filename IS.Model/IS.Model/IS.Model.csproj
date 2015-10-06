@@ -53,6 +53,7 @@
     <Compile Include="Repository\Task\TaskRepository.cs" />
     <Compile Include="Repository\Access\UserRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Service\TaskService.cs" />
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
