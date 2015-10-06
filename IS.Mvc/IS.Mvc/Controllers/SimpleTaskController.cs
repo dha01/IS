@@ -14,7 +14,7 @@ namespace IS.Controllers
     {
         public ActionResult Index()
         {
-			using (SqlHelper sqlh = new SqlHelper(@"
+			/*using (SqlHelper sqlh = new SqlHelper(@"
 select
 	st.simple_task Id,
 	st.task_type TaskType,
@@ -46,7 +46,8 @@ from dbo.simple_task st"))
 				}
 
 				return View(list);
-			}
+			}*/
+	        return View();
         }
 
 	    public ActionResult Rules()
