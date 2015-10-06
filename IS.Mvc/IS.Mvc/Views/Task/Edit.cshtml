@@ -1,0 +1,95 @@
+﻿@using IS.Model.Item.Task;
+@model TaskItem 
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+	table {
+		width: 100%; /* Ширина таблицы */
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	th {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	textarea {
+		width: 99%; /* Ширина поля в процентах */
+		height: 200px; /* Высота поля в пикселах */
+	} 
+</style>
+
+<h2>Редактирование задачи</h2>
+
+@using (@Html.BeginForm("Update", "Task"))
+{
+	@Html.HiddenFor(m => Model.Id)
+	@Html.HiddenFor(m => Model.IsOpen)
+	@Html.HiddenFor(m => Model.Number)
+	@Html.HiddenFor(m => Model.Prefix)
+	@Html.HiddenFor(m => Model.Author)
+	@Html.HiddenFor(m => Model.IsPerform)
+	<table>
+		<tr>
+			<th style="width: 100px">
+				Заголовок
+			</th>
+			<td>
+				@Html.EditorFor(m => Model.Header)
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Приоритет
+			</th>
+			<td>
+				@Html.EditorFor(m => Model.Priority)
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Заголовок
+			</th>
+			<td>
+				@Html.EditorFor(m => Model.Header)
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Срок
+			</th>
+			<td>
+				@Html.EditorFor(m => Model.Deadline)
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Описание
+			</th>
+			<td>
+				@Html.TextAreaFor(m => Model.Mem)
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Исполнитель
+			</th>
+			<td>
+				@Html.EditorFor(m => Model.Performer)
+			</td>
+		</tr>
+	</table>
+	<input type="submit" value="Сохранить"/>
+	@Html.ActionLink("Отмена", "Index", new { id = Model.Id })
+}

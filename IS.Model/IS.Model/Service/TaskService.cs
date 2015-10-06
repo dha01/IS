@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using IS.Model.Item.Task;
 using IS.Model.Repository.Task;
 
@@ -67,6 +68,16 @@ namespace IS.Model.Service
 			if (string.IsNullOrEmpty(task.Mem))
 			{
 				throw new Exception("Поле 'Mem' не должно быть пустым.");
+			}
+
+			var list = GetList().FindAll(x => x.Prefix == task.Prefix);
+			if (list.Any())
+			{
+				task.Number = GetList().FindAll(x => x.Prefix == task.Prefix).Max(y => y.Number) + 1;
+			}
+			else
+			{
+				task.Number = 1;
 			}
 
 			return _taskRepository.Create(task);

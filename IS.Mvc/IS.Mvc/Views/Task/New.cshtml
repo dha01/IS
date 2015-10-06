@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+	table {
+		width: 100%; /* Ширина таблицы */
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	th {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	textarea {
+		width: 99%; /* Ширина поля в процентах */
+		height: 200px; /* Высота поля в пикселах */
+	} 
+</style>
+
+<h2>Новая задача</h2>
+
+@using (@Html.BeginForm("Create", "Task"))
+{
+	<table>
+		<tr>
+			<th style="width: 100px">
+				Заголовок
+			</th>
+			<td>
+				<input type="text" name="Header"/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Приоритет
+			</th>
+			<td>
+				<input type="text" name="Priority"/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Описание
+			</th>
+			<td>
+				<textarea name="Mem"></textarea>
+			</td>
+		</tr>
+	</table>
+	<input type="submit" value="Создать"/>
+}
