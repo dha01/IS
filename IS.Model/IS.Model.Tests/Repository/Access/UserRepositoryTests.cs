@@ -8,7 +8,7 @@ using IS.Model.Item.Access;
 using IS.Model.Repository.Access;
 using NUnit.Framework;
 
-namespace IS.Model.Repository.Access.Tests
+namespace IS.Model.Tests.Repository.Access
 {
 	/// <summary>
 	/// Тесты класса UserRepository.
@@ -48,7 +48,7 @@ namespace IS.Model.Repository.Access.Tests
 		#region TearDown
 
 		/// <summary>
-		/// Выполняется после каждого теста. Закрывает транзакцию.
+		/// Выполняется после каждого теста.
 		/// </summary>
 		[TearDown]
 		public void TearDown()
@@ -83,11 +83,15 @@ namespace IS.Model.Repository.Access.Tests
 
 		#endregion
 
+		#region GetList
+
 		[Test]
 		public void GetList_Void_ReturnNotEmptyList()
 		{
 			var result = _userRepository.GetList();
 			Assert.IsNotEmpty(result);
 		}
+
+		#endregion
 	}
 }

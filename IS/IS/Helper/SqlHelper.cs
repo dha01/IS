@@ -104,8 +104,6 @@ namespace IS.Helper
 		{
 			NewCommand(command, values);
 			var result = ExecScalar();
-			dbase.Close();
-			dbase.Dispose();
 			return (T)Convert.ChangeType(result, typeof(T));
 		}
 
@@ -113,8 +111,6 @@ namespace IS.Helper
 		{
 			NewCommand(command, values);
 			DataTable data_table = ExecTable();
-			dbase.Close();
-			dbase.Dispose();
 
 			List<T> list = new List<T>();
 
@@ -130,8 +126,6 @@ namespace IS.Helper
 		{
 			NewCommand(command, values);
 			DataTable data_table = ExecTable();
-			dbase.Close();
-			dbase.Dispose();
 
 			T item = null;
 			if (data_table.Rows.Count > 0)
