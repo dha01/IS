@@ -4,16 +4,16 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using IS.Helper;
+using IS.Model.Helper;
 using IS.Model.Item.Access;
 using IS.Model.Item.Task;
 
 namespace IS.Controllers
 {
-    public class SimpleTaskController : Controller
-    {
-        public ActionResult Index()
-        {
+	public class SimpleTaskController : Controller
+	{
+		public ActionResult Index()
+		{
 			/*using (SqlHelper sqlh = new SqlHelper(@"
 select
 	st.simple_task Id,
@@ -47,12 +47,12 @@ from dbo.simple_task st"))
 
 				return View(list);
 			}*/
-	        return View();
-        }
-
-	    public ActionResult Rules()
-	    {
 			return View();
-	    }
-    }
+		}
+
+		public ActionResult Rules()
+		{
+			return View();
+		}
+	}
 }

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IS.Helper;
+using IS.Model.Helper;
 using IS.Model.Item.Task;
 
 namespace IS.Model.Repository.Task
@@ -22,17 +22,18 @@ namespace IS.Model.Repository.Task
 select
 	t.task Id,
 	t.number Number,
-	t.task_prefix Prefix,
+	p.code Prefix,
 	t.header Header,
 	t.mem Mem,
 	t.created Created,
 	t.deadline Deadline,
 	t.priority Priority,
-	t.executer Executer,
+	t.performer Performer,
 	t.author Author,
 	t.is_perform IsPerform,
-	t.is_open IdOpen
+	t.is_open IsOpen
 from Task.task t
+	join Task.task_prefix p on p.task_prefix = t.task_prefix
 where t.task = @id", new { id });
 			}
 		}
@@ -49,15 +50,15 @@ where t.task = @id", new { id });
 update Task.task
 set
 	number = @Number,
-	task_prefix = @Prefix,
+	task_prefix = (select top 1 p.task_prefix from Task.task_prefix p where p.code = @Prefix),
 	header = @Header,
 	mem = @Mem,
 	deadline = @Deadline,
 	priority = @Priority,
-	executer = @Executer,
+	performer = @Performer,
 	author = @Author,
 	is_perform = @IsPerform,
-	is_open = @IdOpen
+	is_open = @IsOpen
 where task = @Id", task);
 			}
 		}
@@ -80,7 +81,7 @@ insert into Task.task
 	mem,
 	deadline,
 	priority,
-	executer,
+	performer,
 	author,
 	is_perform,
 	is_open
@@ -88,15 +89,15 @@ insert into Task.task
 values
 (
 	@Number,
-	@Prefix,
+	(select top 1 p.task_prefix from Task.task_prefix p where p.code = @Prefix),
 	@Header,
 	@Mem,
 	@Deadline,
 	@Priority,
-	@Executer,
+	@Performer,
 	@Author,
 	@IsPerform,
-	@IdOpen
+	@IsOpen
 )
 
 select scope_identity()", task);
@@ -113,7 +114,7 @@ select scope_identity()", task);
 			{
 				sqlh.ExecNoQuery(@"
 delete from Task.task
-where task = @Id");
+where task = @id", new { id });
 			}
 		}
 
@@ -129,17 +130,18 @@ where task = @Id");
 select
 	t.task Id,
 	t.number Number,
-	t.task_prefix Prefix,
+	p.code Prefix,
 	t.header Header,
 	t.mem Mem,
 	t.created Created,
 	t.deadline Deadline,
 	t.priority Priority,
-	t.executer Executer,
+	t.performer Performer,
 	t.author Author,
 	t.is_perform IsPerform,
-	t.is_open IdOpen
-from Task.task t");
+	t.is_open IsOpen
+from Task.task t
+	join Task.task_prefix p on p.task_prefix = t.task_prefix");
 			}
 		}
 	}
