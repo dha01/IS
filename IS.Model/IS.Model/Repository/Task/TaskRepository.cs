@@ -2,7 +2,7 @@
 using IS.Helper;
 using IS.Model.Item.Task;
 
-namespace IS.Model.Repository.Access
+namespace IS.Model.Repository.Task
 {
 	/// <summary>
 	/// Интерфейс репозитория задач.
