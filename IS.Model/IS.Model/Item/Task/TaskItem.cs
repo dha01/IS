@@ -77,6 +77,7 @@ namespace IS.Model.Item.Task
 		Demo,
 		BugFix,
 		Refactoring,
-		Doc
+		Doc,
+		CourseWork
 	}
 }
