@@ -65,7 +65,7 @@ select
 	u.login Login,
 	u.password Password
 from Access.[user] u
-where u.login = @login", login);
+where u.login = @login", new{ login });
 			}
 		}
 

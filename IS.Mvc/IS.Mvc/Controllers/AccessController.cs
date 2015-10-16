@@ -9,17 +9,17 @@ using IS.Mvc.Models.Service;
 
 namespace IS.Controllers
 {
-    public class AccessController : Controller
-    {
-	    private AccessService _accessService;
+	public class AccessController : Controller
+	{
+		private AccessService _accessService;
 
-	    public AccessController()
-	    {
-		    _accessService = new AccessService();
-	    }
+		public AccessController()
+		{
+			_accessService = new AccessService();
+		}
 
 		public ActionResult Index()
-        {
+		{
 			var user = Access.CurrentUser;
 			if (user == null)
 			{
@@ -27,20 +27,6 @@ namespace IS.Controllers
 			}
 
 			return View(user);
-        }
-
-		/// <summary>
-		/// Проверка наличия роли.
-		/// </summary>
-		/// <returns></returns>
-		public ActionResult Test()
-		{
-			if (Access.CheckRole("Test"))
-			{
-				return View("Index");
-			}
-
-			return View("Error");
 		}
 
 		/// <summary>
@@ -72,18 +58,18 @@ namespace IS.Controllers
 			}
 		}
 
-	    public ActionResult Login()
-	    {
+		public ActionResult Login()
+		{
 			return View("Login");
-	    }
+		}
 
-	    public ActionResult Logoff()
-	    {
-		    _accessService.Logoff();
+		public ActionResult Logoff()
+		{
+			_accessService.Logoff();
 			return View("Index");
-	    }
+		}
 
-	    public ActionResult Registr()
+		public ActionResult Registr()
 		{
 			return View("Registr");
 		}
@@ -103,5 +89,5 @@ namespace IS.Controllers
 			});
 			return View("Index");
 		}
-    }
+	}
 }

@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IS.Mvc.Tests</RootNamespace>
-    <AssemblyName>IS.Mvc.Tests</AssemblyName>
+    <RootNamespace>IS.Mvc</RootNamespace>
+    <AssemblyName>IS.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\OnlineTextController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,6 +234,10 @@
     <Content Include="Views\OnlineText\Index.cshtml" />
     <Content Include="Views\SimpleTask\Index.cshtml" />
     <Content Include="Views\SimpleTask\Rules.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\List.cshtml" />
+    <Content Include="Views\Task\New.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

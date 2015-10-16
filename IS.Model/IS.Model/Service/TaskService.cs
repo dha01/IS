@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using IS.Model.Item.Task;
 using IS.Model.Repository.Task;
 
@@ -69,6 +70,16 @@ namespace IS.Model.Service
 				throw new Exception("Поле 'Mem' не должно быть пустым.");
 			}
 
+			var list = GetList().FindAll(x => x.Prefix == task.Prefix);
+			if (list.Any())
+			{
+				task.Number = GetList().FindAll(x => x.Prefix == task.Prefix).Max(y => y.Number) + 1;
+			}
+			else
+			{
+				task.Number = 1;
+			}
+
 			return _taskRepository.Create(task);
 		}
 
@@ -103,6 +114,20 @@ namespace IS.Model.Service
 		public void Delete(int id)
 		{
 			_taskRepository.Delete(id);
+		}
+
+		/// <summary>
+		/// Меняет статус задачи задачу.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		/// <param name="is_perform"></param>
+		/// <param name="is_open"></param>
+		public void SetState(int id, bool is_perform, bool is_open)
+		{
+			var task = _taskRepository.Get(id);
+			task.IsPerform = is_perform;
+			task.IsOpen = is_open;
+			_taskRepository.Update(task);
 		}
 
 		/// <summary>

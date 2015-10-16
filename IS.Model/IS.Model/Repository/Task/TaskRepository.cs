@@ -82,9 +82,7 @@ insert into Task.task
 	deadline,
 	priority,
 	performer,
-	author,
-	is_perform,
-	is_open
+	author
 )
 values
 (
@@ -95,9 +93,7 @@ values
 	@Deadline,
 	@Priority,
 	@Performer,
-	@Author,
-	@IsPerform,
-	@IsOpen
+	@Author
 )
 
 select scope_identity()", task);
