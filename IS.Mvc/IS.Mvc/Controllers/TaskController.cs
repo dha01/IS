@@ -9,34 +9,34 @@ using IS.Mvc.Models;
 
 namespace IS.Mvc.Controllers
 {
-    /// <summary>
-    /// Контролер для работы с данными по задачам.
-    /// </summary>
+	/// <summary>
+	/// Контролер для работы с данными по задачам.
+	/// </summary>
 	public class TaskController : Controller
-    {
-	    private TaskService _taskService;
+	{
+		private TaskService _taskService;
 		
 		public TaskController()
-	    {
-		    _taskService = new TaskService();
-	    }
+	{
+			_taskService = new TaskService();
+		}
 		
 		/// <summary>
 		/// Страница с задачей. Если идентификатор не указан перенаправляет на список задач.
 		/// </summary>
-		/// <param name="task"></param>
+		/// <param name="id">Идентификатор задачи.</param>
 		/// <returns></returns>
 		public ActionResult Index(int? id)
-        {
+		{
 			if (id.HasValue)
-	        {
+			{
 				return View("Index", _taskService.GetById(id.Value));
-	        }
-	        else
-	        {
+			}
+			else
+			{
 				return RedirectToAction("List");
-	        }
-        }
+			}
+		}
 
 		/// <summary>
 		/// Список задач.
@@ -51,6 +51,7 @@ namespace IS.Mvc.Controllers
 		/// Создает новую задачу.
 		/// </summary>
 		/// <returns></returns>
+		[ValidateInput(false)]
 		public ActionResult Create(TaskItem task)
 		{
 			Access.CheckAccess("Task.Creator");
@@ -71,6 +72,7 @@ namespace IS.Mvc.Controllers
 		/// Сохраняет измменения в здаче.
 		/// </summary>
 		/// <returns></returns>
+		[ValidateInput(false)]
 		public ActionResult Update(TaskItem task)
 		{
 			Access.CheckAccess("Task.Updater");
@@ -98,5 +100,38 @@ namespace IS.Mvc.Controllers
 			_taskService.Delete(id);
 			return RedirectToAction("Index");
 		}
-    }
+
+		/// <summary>
+		/// Сдать задачу на проверку.
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult Pass(int id)
+		{
+			Access.CheckAccess();
+			_taskService.SetState(id, false, false);
+			return RedirectToAction("Index", new { id });
+		}
+
+		/// <summary>
+		/// Вернуть задачу на доработку.
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult Reject(int id)
+		{
+			Access.CheckAccess();
+			_taskService.SetState(id, false, true);
+			return RedirectToAction("Index", new { id });
+		}
+
+		/// <summary>
+		/// Принять задачу.
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult Accept(int id)
+		{
+			Access.CheckAccess();
+			_taskService.SetState(id, true, false);
+			return RedirectToAction("Index", new { id });
+		}
+	}
 }

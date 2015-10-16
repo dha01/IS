@@ -120,20 +120,42 @@ namespace IS.Mvc.Models.Service
 		public bool CheckRole(string role)
 		{
 			var user = GetCurrentUser();
-			if (user == null || !UserInRole(user, role))
+			if (user == null)
 			{
 				return false;
 			}
+
+			if (string.IsNullOrEmpty(role))
+			{
+				return true;
+			}
+
+			if (!UserInRole(user, role))
+			{
+				return false;
+			}
+			
 			return true;
 		}
 
 		public bool CheckRole(RoleItem role)
 		{
 			var user = GetCurrentUser();
-			if (user == null || !UserInRole(user, role))
+			if (user == null)
 			{
 				return false;
 			}
+
+			if (role == null)
+			{
+				return true;
+			}
+
+			if (!UserInRole(user, role))
+			{
+				return false;
+			}
+
 			return true;
 		}
 

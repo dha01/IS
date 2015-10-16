@@ -117,6 +117,20 @@ namespace IS.Model.Service
 		}
 
 		/// <summary>
+		/// Меняет статус задачи задачу.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		/// <param name="is_perform"></param>
+		/// <param name="is_open"></param>
+		public void SetState(int id, bool is_perform, bool is_open)
+		{
+			var task = _taskRepository.Get(id);
+			task.IsPerform = is_perform;
+			task.IsOpen = is_open;
+			_taskRepository.Update(task);
+		}
+
+		/// <summary>
 		/// Получает список задач.
 		/// </summary>
 		public List<TaskItem> GetList()

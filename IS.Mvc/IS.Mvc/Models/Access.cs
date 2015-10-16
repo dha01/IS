@@ -30,7 +30,7 @@ namespace IS.Mvc.Models
 			return _accessService.UserInRole(user, role);
 		}
 
-		public static void CheckAccess(string role)
+		public static void CheckAccess(string role = null)
 		{
 			if (!CheckRole(role))
 			{
@@ -38,7 +38,7 @@ namespace IS.Mvc.Models
 			}
 		}
 
-		public static bool CheckRole(string role)
+		public static bool CheckRole(string role = null)
 		{
 			return _accessService.CheckRole(role);
 		}

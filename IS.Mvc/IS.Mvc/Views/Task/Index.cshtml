@@ -51,12 +51,25 @@
 			}
 			else if (Model.IsOpen)
 			{
-				<td colspan="2" style="background-color: #cccccc">
+				<td style="background-color: #ffd700">
+					@if (Access.CheckRole())
+					{
+						@Html.ActionLink("Сдать на проверку", "Pass", new { id = Model.Id })
+					}
+				</td>
+				<td style="background-color: #cccccc">
 					В процессе выполнения
 				</td>
 			}
 			else
 			{
+				<td>
+					@if (Access.CheckRole("Task.Updater"))
+					{
+						<div style="background-color: #ffd700">@Html.ActionLink("Отклонить", "Reject", new { id = Model.Id })</div>
+						<div style="background-color: #32cd32">@Html.ActionLink("Принять", "Accept", new { id = Model.Id })</div>
+					}
+				</td>
 				<td colspan="2" style="background-color: #ffd700">
 					Ожидает проверки
 				</td>
