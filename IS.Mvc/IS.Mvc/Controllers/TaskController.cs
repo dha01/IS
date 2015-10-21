@@ -44,7 +44,7 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult List()
 		{
-			return View("List", _taskService.GetList());
+			return View("List", _taskService.GetList().OrderBy(x => !x.IsPerform).ThenBy(x => x.Performer).ToList());
 		}
 
 		/// <summary>

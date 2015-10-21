@@ -46,43 +46,57 @@
 		</tr>
 	</thead>
 	<tbody>
-	@foreach (var task in Model)
-	{
-		<tr>
-			<td>@Html.ActionLink(string.Format("{0}_{1} {2}", task.Prefix, task.Number, task.Header), "Index", new { id = task.Id })</td>
-			<td>@Html.DisplayTextFor(m => task.Priority)</td>
-			<td>@Html.DisplayTextFor(m => task.Created)</td>
-			<td>@Html.DisplayTextFor(m => task.Deadline)</td>
-			<td>@Html.DisplayTextFor(m => task.Performer)</td>
-			@if (task.IsPerform)
+		@foreach (var task in Model)
+		{
+			string row_color = "#ffffff";
+			if (!task.IsPerform && task.Deadline < DateTime.Now)
 			{
-				<td colspan="2" style="background-color: #32cd32">
-					Выполнена
-				</td>
-			}
-			else
-			{
-				if (string.IsNullOrEmpty(task.Performer))
+				if (task.Deadline < DateTime.Now.AddDays(-7))
 				{
-					<td style="background-color: #c0c0c0">
-						Не назначена
-					</td>
+					row_color = "#fa8072";
 				}
-				else if (task.IsOpen)
+				else
 				{
-					<td style="background-color: #cccccc">
-						В процессе выполнения
+					row_color = "#ffa500";
+				}
+			}
+
+
+			<tr style="background-color: @row_color">
+				<td>@Html.ActionLink(string.Format("{0}_{1} {2}", task.Prefix, task.Number, task.Header), "Index", new { id = task.Id })</td>
+				<td>@Html.DisplayTextFor(m => task.Priority)</td>
+				<td>@Html.DisplayTextFor(m => task.Created)</td>
+				<td>@Html.DisplayTextFor(m => task.Deadline)</td>
+				<td>@Html.DisplayTextFor(m => task.Performer)</td>
+				@if (task.IsPerform)
+				{
+					<td colspan="2" style="background-color: #32cd32">
+						Выполнена
 					</td>
 				}
 				else
 				{
-					<td style="background-color: #ffd700">
-						Ожидает проверки
-					</td>
+					if (string.IsNullOrEmpty(task.Performer))
+					{
+						<td style="background-color: #c0c0c0">
+							Не назначена
+						</td>
+					}
+					else if (task.IsOpen)
+					{
+						<td style="background-color: #cccccc">
+							В процессе выполнения
+						</td>
+					}
+					else
+					{
+						<td style="background-color: #ffd700">
+							Ожидает проверки
+						</td>
+					}
 				}
-			}
-		</tr>
-	}
+			</tr>
+		}
 	</tbody>
 </table>
 
