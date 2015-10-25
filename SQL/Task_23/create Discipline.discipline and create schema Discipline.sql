@@ -1,13 +1,13 @@
 -- Создание схемы Discipline
-create schema  Discipline
+create schema Discipline
 
 -- Создание таблицы Discipline.discipline
 create table Discipline.discipline (
 	discipline int identity(1,1),
-	short_name varchar(30) NOT NULL,
-	full_name varchar(255) NOT NULL,
+	short_name varchar(30) not null,
+	full_name varchar(255) not null,
 	mem varchar(max),
-	constraint PK__task primary key (discipline),
+	constraint PK__discipline primary key (discipline),
 );
 
 -- Добавление записи в таблицу Discipline.discipline
