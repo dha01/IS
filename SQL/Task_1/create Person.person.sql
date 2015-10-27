@@ -10,4 +10,4 @@ create table Person.person
 	father_name varchar(255) not null,
 	birthday date not null,
 	constraint PK__persom primary key (person)
-)
+) 
