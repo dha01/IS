@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
-using System.Web;
 using System.Configuration;
 using System.Data;
-using System.Reflection;
-
-namespace IS.Helper
+namespace IS.Model.Helper
 {
 	/// <summary>
 	/// Позволяет обращаться к базе данных более простым и наглядным образом
@@ -58,7 +53,15 @@ namespace IS.Helper
 				var descrs = TypeDescriptor.GetProperties(values);
 				foreach (PropertyDescriptor descr in descrs)
 				{
-					AddWithValue(descr.Name, descr.GetValue(values));
+					var type = Type.GetType(descr.PropertyType.FullName);
+					if (type.IsEnum)
+					{
+						AddWithValue(descr.Name, Enum.GetName(type, descr.GetValue(values)));
+					}
+					else
+					{
+						AddWithValue(descr.Name, descr.GetValue(values));
+					}
 				}
 			}
 		}
@@ -76,7 +79,18 @@ namespace IS.Helper
 
 				if (row[field.ColumnName] != DBNull.Value)
 				{
-					descr.SetValue(item, row[field.ColumnName]);
+					var type = Type.GetType(descr.PropertyType.FullName);
+					if (type.IsEnum)
+					{
+						var st = (string) row[field.ColumnName];
+						var va = Enum.Parse(type, st);
+						descr.SetValue(item, va);
+					}
+					else
+					{
+						descr.SetValue(item, row[field.ColumnName]);
+					}
+					
 				}
 			}
 			return item;
@@ -104,8 +118,6 @@ namespace IS.Helper
 		{
 			NewCommand(command, values);
 			var result = ExecScalar();
-			dbase.Close();
-			dbase.Dispose();
 			return (T)Convert.ChangeType(result, typeof(T));
 		}
 
@@ -113,8 +125,6 @@ namespace IS.Helper
 		{
 			NewCommand(command, values);
 			DataTable data_table = ExecTable();
-			dbase.Close();
-			dbase.Dispose();
 
 			List<T> list = new List<T>();
 
@@ -130,8 +140,6 @@ namespace IS.Helper
 		{
 			NewCommand(command, values);
 			DataTable data_table = ExecTable();
-			dbase.Close();
-			dbase.Dispose();
 
 			T item = null;
 			if (data_table.Rows.Count > 0)

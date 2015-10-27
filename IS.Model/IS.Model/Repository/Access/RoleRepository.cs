@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using IS.Helper;
+using IS.Model.Helper;
 using IS.Model.Item.Access;
 
 namespace IS.Model.Repository.Access
@@ -106,12 +106,12 @@ select
 	r.role Id,
 	r.code Code,
 	r.mem Mem
-from Access.user u
-	join Access.user2role u2r on u2r.user = u.user
+from Access.[user] u
+	join Access.user2role u2r on u2r.[user] = u.[user]
 	join Access.role r on r.role = u2r.role
-where u.user = @Id"))
+where u.[user] = @Id"))
 			{
-				sqlh.AddWithValue("@Id", user.Id);
+				sqlh.AddWithValue("Id", user.Id);
 				var dt = sqlh.ExecTable();
 
 				var list = new List<RoleItem>();
@@ -139,7 +139,7 @@ select
 from Access.role r
 where r.code = @Code"))
 			{
-				sqlh.AddWithValue("@Id", code);
+				sqlh.AddWithValue("@Code", code);
 				var dt = sqlh.ExecTable();
 				if (dt.Rows.Count == 0)
 				{

@@ -108,17 +108,34 @@ namespace IS.Mvc.Models.Service
 		public bool UserInRole(UserItem user, string role_code)
 		{
 			var role = _roleRepository.GetByCode(role_code);
-			if (role == null)
-			{
-				return false;
-			}
 			return UserInRole(user, role);
 		}
 
 		public bool UserInRole(UserItem user, RoleItem role)
 		{
 			var list = _roleRepository.GetListByUser(user);
-			return list.Exists(x => x.Id == role.Id);
+			return list.Exists(x => x.Code == "Admin" || x.Id == role.Id);
+		}
+
+		public bool CheckRole(string role)
+		{
+			var user = GetCurrentUser();
+			if (user == null)
+			{
+				return false;
+			}
+
+			if (string.IsNullOrEmpty(role))
+			{
+				return true;
+			}
+
+			if (!UserInRole(user, role))
+			{
+				return false;
+			}
+			
+			return true;
 		}
 
 		public bool CheckRole(RoleItem role)
@@ -128,7 +145,18 @@ namespace IS.Mvc.Models.Service
 			{
 				return false;
 			}
-			return UserInRole(user, role);
+
+			if (role == null)
+			{
+				return true;
+			}
+
+			if (!UserInRole(user, role))
+			{
+				return false;
+			}
+
+			return true;
 		}
 
 		public bool CheckRoleByCode(string role_code)

@@ -7,8 +7,8 @@
     <ProjectGuid>{D0B23DA2-5C5E-446C-B65E-A66A29A4B5C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>IS.Model</RootNamespace>
+    <AssemblyName>IS.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,23 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\SqlHelper.cs" />
     <Compile Include="Item\Access\RoleItem.cs" />
     <Compile Include="Item\Access\UserItem.cs" />
     <Compile Include="Item\Role.cs" />
     <Compile Include="Item\Task\TaskItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Access\IRoleRepository.cs" />
+    <Compile Include="Repository\Task\ITaskRepository.cs" />
     <Compile Include="Repository\Access\IUserRepository.cs" />
     <Compile Include="Repository\Access\RoleRepository.cs" />
+    <Compile Include="Repository\Task\TaskRepository.cs" />
     <Compile Include="Repository\Access\UserRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Service\TaskService.cs" />
     <Compile Include="Service\UserService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\IS\IS\IS.csproj">
-      <Project>{ca40e776-0c6a-46d3-b3ff-dea6ecac90fc}</Project>
-      <Name>IS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
