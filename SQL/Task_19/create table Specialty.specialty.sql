@@ -1,14 +1,22 @@
--- Создание схемы "Specialty.specialty"
+п»ї-- РЎРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ "Specialty"
 create schema Specialty
 
--- Создание таблицы "Specialty.specialty"
+-- РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ "Specialty.specialty"
 create table Specialty.specialty
 (
-	Specialty int identity (1,1) not null,
-	full_Name varchar(255) not null,
+	specialty int identity (1,1) not null,
+	full_name varchar(255) not null,
 	short_name varchar(30) not null,
-	Kod_Specialty varchar(30) not null,
+	code nvarchar(30) not null,
 	cathedra int not null,
-	constraint PK__Specialty primary key (Specialty),
-	constraint FK__specialty__cathedra foreign key (cathedra) references Cathedra.cathedra
-)
+	constraint PK__Specialty primary key (specialty),
+	constraint FK__specialty__cathedra foreign key (cathedra) references Cathedra.cathedra)
+
+
+insert into Specialty.specialty(full_name,short_name,code,cathedra)
+     values
+           ('РРЅС„РѕСЂРјР°С‚РёРєР°','РС„РЅ','34654','45655454')
+
+
+
+
