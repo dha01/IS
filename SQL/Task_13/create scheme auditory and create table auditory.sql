@@ -5,10 +5,10 @@ create schema Auditory
 create table Auditory.auditory(
 	auditory int identity (1,1),
 	number int not null,
-	full_name varchar (255) not null,
-	memo varchar (max) not null,
-	housing int not null,
-	lever int not null,
+	full_name nvarchar (255) not null,
+	memo nvarchar (max) not null,
+	housing int foreign key (housing) references Auditory.housing (housing),
+	level int not null,
 	capacity int not null 	
 )
 
@@ -18,7 +18,7 @@ insert into Auditory.auditory(
 	full_name,
 	memo,
 	housing,
-	lever,
+	level,
 	capacity
 	)
 	values
