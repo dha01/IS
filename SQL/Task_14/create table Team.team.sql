@@ -15,13 +15,6 @@ insert into Team.team
 		create_date)
 	values
 		(
-<<<<<<< feature/Task_14_Pozdeeva
-		'ПЕ-21б',
-		'1999-06-12'
-		)
-=======
 		'ПЕ-22б',
 		'2012-09-27'
 		)
-
->>>>>>> local
