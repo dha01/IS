@@ -7,7 +7,9 @@ create table Auditory.auditory(
 	number int not null,
 	full_name nvarchar (255) not null,
 	memo nvarchar (max) not null,
-	housing int foreign key (housing) references Auditory.housing (housing),
+	housing int not null,
+	constraint PK__auditory primary key (auditory),
+	constraint FK__auditory__housing foreign key (housing) references Auditory.housing,
 	level int not null,
 	capacity int not null 	
 )
