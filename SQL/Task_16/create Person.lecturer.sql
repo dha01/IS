@@ -1,16 +1,15 @@
---Создание схемы "Person"
+п»ї--РЎРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ "Person"
 create schema Person
 
---Создание таблицы "lecturer"
+--РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ "lecturer"
 create table Person.lecturer
 (
 	lecturer int identity (1,1) not null,
-	date_sobitiya varchar(255) not null,
-	person int,
-	cathedra int,
+	even_date datetime,
+	person tinyint,
+	cathedra tinyint,
 	act int,
 	constraint PK__lecturer primary key (lecturer),
-	constraint FK__lecturer__person foreign key (lecturer) references Person.person,
-	constraint FK__lecturer__cafedra foreign key (lecturer) references Cathedra.cathedra,
-
+	constraint FK__lecturer__person foreign key (person) references Person.person,
+	constraint FK__lecturer__cafedra foreign key (cathedra) references Cathedra.cathedra
 )
