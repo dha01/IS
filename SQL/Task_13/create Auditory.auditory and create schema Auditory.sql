@@ -1,7 +1,7 @@
--- Создание схемы Auditory
+п»ї-- РЎРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ Auditory
 create schema Auditory
 
--- Создание таблицы Auditory.auditory
+-- РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ Auditory.auditory
 create table Auditory.auditory(
 	auditory int identity (1,1),
 	number int not null,
@@ -14,7 +14,7 @@ create table Auditory.auditory(
 	capacity int not null 	
 )
 
--- Добавление записи в таблицу Auditory.auditory
+-- Р”РѕР±Р°РІР»РµРЅРёРµ Р·Р°РїРёСЃРё РІ С‚Р°Р±Р»РёС†Сѓ Auditory.auditory
 insert into Auditory.auditory(
 	number,
 	full_name,
@@ -25,8 +25,8 @@ insert into Auditory.auditory(
 	)
 	values
 	(1,
-	'Аудитория информатики',
-	'В аудитории присутствует 16 компьютеров, проектор, интерактивная доска',
+	'РђСѓРґРёС‚РѕСЂРёСЏ РёРЅС„РѕСЂРјР°С‚РёРєРё',
+	'Р’ Р°СѓРґРёС‚РѕСЂРёРё РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ 16 РєРѕРјРїСЊСЋС‚РµСЂРѕРІ, РїСЂРѕРµРєС‚РѕСЂ, РёРЅС‚РµСЂР°РєС‚РёРІРЅР°СЏ РґРѕСЃРєР°',
 	1,
 	3,
 	15
