@@ -2,7 +2,7 @@
 create schema Person
 
 -- Создание таблицы "Person.student"
-create table Person.student 
+create table Person.student
 (
 	student int identity not null,
 	event_date datetime not null,
