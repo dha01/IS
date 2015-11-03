@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using IS.Helper;
+﻿using System.Collections.Generic;
+using IS.Model.Helper;
 using IS.Model.Item.Access;
 
 namespace IS.Model.Repository.Access
@@ -67,7 +65,7 @@ select
 	u.login Login,
 	u.password Password
 from Access.[user] u
-where u.login = @login", login);
+where u.login = @login", new{ login });
 			}
 		}
 

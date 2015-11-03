@@ -19,25 +19,33 @@ namespace IS.Mvc.Models
 		{
 			_accessService = new AccessService();
 		}
+
+		public bool UserInRole(UserItem user, string role_code)
+		{
+			return _accessService.UserInRole(user, role_code);
+		}
 		
 		public static bool UserInRole(UserItem user, RoleItem role)
 		{
 			return _accessService.UserInRole(user, role);
 		}
 
-		public static bool CheckRole(RoleItem role)
+		public static void CheckAccess(string role = null)
 		{
-			var user = _accessService.GetCurrentUser();
-			if (user == null)
+			if (!CheckRole(role))
 			{
-				return false;
+				throw new Exception("Недостаточно прав.");
 			}
-			return UserInRole(user, role);
 		}
 
-		public static bool CheckRole(string role)
+		public static bool CheckRole(string role = null)
 		{
-			return true;
+			return _accessService.CheckRole(role);
+		}
+
+		public static void CheckRole(RoleItem role)
+		{
+			_accessService.CheckRole(role);
 		}
 
 		public static UserItem CurrentUser 
