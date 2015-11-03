@@ -1,5 +1,5 @@
 ﻿-- Создание таблицы "Task.task_state_log"
-create table Task.task_state_log
+create table Task.task_state_log 
 (
 	task int identity not null,
 	task_state int not null,
