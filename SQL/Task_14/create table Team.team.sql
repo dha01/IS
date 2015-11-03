@@ -1,5 +1,7 @@
-﻿create schema Team
+﻿--Создание схемы "Team"
+create schema Team
 
+--Создание таблицы "Team.team"
 create table Team.team
 (
 	team int identity,
@@ -10,6 +12,7 @@ create table Team.team
 	constraint FK__team__specialty_detail foreign key (specialty_detail) references Specialty.specialty_detail
 )
 
+--Добавление записи в таблицу
 insert into Team.team
 		(name,
 		create_date)
