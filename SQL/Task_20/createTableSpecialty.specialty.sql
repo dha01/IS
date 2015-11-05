@@ -11,13 +11,13 @@ create table Specialty.specialty
 	training_period int not null,
 	qualification int not null,
 	form_study int not null,
-	pay_space int not null,
+	pay_space money not null,
 	lowcost_space int not null,
 
 	constraint PK__Specialty_detail primary key (Specialty_detail),
-	constraint FK__specialty_detail__specialty foreign key (specialty) references Specialty.specialty,
-	constraint FK__specialty_detail__specialty foreign key (qualification) references Qualification.qualification,
-	constraint FK__specialty_detail__specialty foreign key (form_of_study) references Specialty.form_study)
+	constraint FK__specialty_detail__form_study foreign key (specialty) references Specialty.specialty,
+	constraint FK__specialty_detail__form_study foreign key (qualification) references Qualification.qualification,
+	constraint FK__specialty_detail__form_study foreign key (form_of_study) references Specialty.form_study)
 
 -- Добавление записи в таблицу "Specialty_detail"
 
