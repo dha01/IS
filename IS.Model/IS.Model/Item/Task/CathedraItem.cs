@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace IS.Model.Item.Task
 {
 	/// <summary>
@@ -22,7 +21,5 @@ namespace IS.Model.Item.Task
 		/// Сокращенное имя кафедры
 		/// </summary>
 		public string ShortName { get; set; }
-
-
 	}
 }
