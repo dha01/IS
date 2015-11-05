@@ -1,12 +1,13 @@
-﻿create schema Faculty 
---Создание схемы Faculty
+﻿--Создание схемы Faculty
+create schema Faculty 
 
+--Создание таблицы Faculty
 create table Faculty.faculty
 (
 	faculty int identity(1,1),
 	full_name varchar(255),
 	short_name varchar(30),
-	primary key (faculty)
+	constraint PK_faculty primary  key (faculty)
 )
 
 --Добавление записи
