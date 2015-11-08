@@ -66,6 +66,11 @@ namespace IS.Model.Item.Task
 		/// Признак того, что задача открыта.
 		/// </summary>
 		public bool IsOpen { get; set; }
+
+		/// <summary>
+		/// Сложность задачи.
+		/// </summary>
+		public int Difficult { get; set; }
 	}
 
 	/// <summary>

@@ -54,7 +54,7 @@ namespace IS.Model.Service
 		}
 
 		/// <summary>
-		/// Создает пользователя.
+		/// Создает задачу.
 		/// </summary>
 		/// <param name="task">Задача.</param>
 		/// <returns>Идентификаторо созданной задачи.</returns>
@@ -136,6 +136,22 @@ namespace IS.Model.Service
 		public List<TaskItem> GetList()
 		{
 			return _taskRepository.GetList();
+		}
+
+		/// <summary>
+		/// Собирает статистику по выполненым задачам.
+		/// </summary>
+		/// <returns></returns>
+		public Dictionary<string, int> Statistic()
+		{
+			var list = GetList().FindAll(x => x.Performer != null && x.IsOpen == false && x.Prefix == TaskPrefix.Task);
+			var stat = new Dictionary<string, int>();
+
+			foreach (var group in list.GroupBy(x=>x.Performer).OrderBy(y => y.Key))
+			{
+				stat.Add(group.Key, group.Sum(x => x.Difficult));
+			}
+			return stat;
 		}
 
 		#endregion
