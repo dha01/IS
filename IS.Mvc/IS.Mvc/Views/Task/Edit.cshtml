@@ -46,7 +46,7 @@
 				Заголовок
 			</th>
 			<td>
-				@Html.EditorFor(m => Model.Header)
+				<input type="text" name="Header" value="@Model.Header" style="width: 100%;">
 			</td>
 		</tr>
 		<tr>
@@ -59,10 +59,10 @@
 		</tr>
 		<tr>
 			<th>
-				Заголовок
+				Сложность
 			</th>
 			<td>
-				@Html.EditorFor(m => Model.Header)
+				@Html.EditorFor(m => Model.Difficult)
 			</td>
 		</tr>
 		<tr>

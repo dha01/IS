@@ -1,0 +1,32 @@
+﻿@model Dictionary<string, int>
+
+@{
+	ViewBag.Title = "Statistic";
+	int task_total = 20;
+}
+
+<h2>Задача(@Html.ActionLink("К списку задач", "List"))</h2>
+
+<h2>Прогресс по выполнению задач</h2>
+<table style="width:100%">
+	<thead>
+		<tr>
+			<th style="width:200px">Студент</th>
+			<th>Прогресс</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@Html.Raw(item.Key)</td>
+				<td>
+					<progress max="@task_total" value="@item.Value" style="width: 100%; height: 15px;">
+						<span id="value">item.Value</span>%
+					</progress>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+

@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Create";
+﻿@using IS.Model.Item.Task
+@model TaskItem
+@{
+	ViewBag.Title = "Create";
 }
 
 <style>
@@ -24,7 +26,7 @@
 	textarea {
 		width: 99%; /* Ширина поля в процентах */
 		height: 200px; /* Высота поля в пикселах */
-	} 
+	}
 </style>
 
 <h2>Новая задача</h2>
@@ -45,7 +47,12 @@
 				Тип
 			</th>
 			<td>
-				<input type="text" name="Prefix" />
+				<select name="Prefix">
+					@foreach (string name in Enum.GetNames(typeof(TaskPrefix)))
+					{
+						<option value="@name">@name</option>
+					}
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -53,7 +60,15 @@
 				Приоритет
 			</th>
 			<td>
-				<input type="text" name="Priority"/>
+				<input type="text" name="Priority" value="@Model.Priority" />
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Сложность
+			</th>
+			<td>
+				<input type="text" name="Difficult" value="@Model.Difficult"/>
 			</td>
 		</tr>
 		<tr>

@@ -31,7 +31,8 @@ select
 	t.performer Performer,
 	t.author Author,
 	t.is_perform IsPerform,
-	t.is_open IsOpen
+	t.is_open IsOpen,
+	t.difficult Difficult
 from Task.task t
 	join Task.task_prefix p on p.task_prefix = t.task_prefix
 where t.task = @id", new { id });
@@ -58,7 +59,8 @@ set
 	performer = @Performer,
 	author = @Author,
 	is_perform = @IsPerform,
-	is_open = @IsOpen
+	is_open = @IsOpen,
+	difficult = @Difficult
 where task = @Id", task);
 			}
 		}
@@ -82,7 +84,8 @@ insert into Task.task
 	deadline,
 	priority,
 	performer,
-	author
+	author,
+	difficult
 )
 values
 (
@@ -93,7 +96,8 @@ values
 	@Deadline,
 	@Priority,
 	@Performer,
-	@Author
+	@Author,
+	@Difficult
 )
 
 select scope_identity()", task);
@@ -135,7 +139,8 @@ select
 	t.performer Performer,
 	t.author Author,
 	t.is_perform IsPerform,
-	t.is_open IsOpen
+	t.is_open IsOpen,
+	t.difficult Difficult
 from Task.task t
 	join Task.task_prefix p on p.task_prefix = t.task_prefix");
 			}
