@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using IS.Model.Helper;
+﻿using IS.Model.Helper;
 using IS.Model.Item.Specialty;
 
 namespace IS.Model.Repository.Specialty
@@ -30,6 +26,34 @@ select
 from Specialty.specialty s
 where s.specialty = @id", new { id });
 			}
+		}
+
+		/// <summary>
+		/// Обновляет данные по специальности.
+		/// </summary>
+		/// <param name="specialty">Специальность.</param>
+		public void Update(SpecialtyItem specialty)
+		{
+
+		}
+
+		/// <summary>
+		/// Создает новую специальность.
+		/// </summary>
+		/// <param name="specialty">Специальность.</param>
+		/// <returns>Идентификатор созданной специальности.</returns>
+		public int Create(SpecialtyItem specialty)
+		{
+			return 0;
+		}
+
+		/// <summary>
+		/// Удаляет специальность.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		public void Delete(int id)
+		{
+
 		}
 	} 
 }
