@@ -6,8 +6,8 @@ create table Person.lecturer
 (
 	lecturer int identity (1,1) not null,
 	even_date datetime,
-	person tinyint,
-	cathedra tinyint,
+	person int,
+	cathedra int,
 	act tinyint,
 	constraint PK__lecturer primary key (lecturer),
 	constraint FK__lecturer__person foreign key (person) references Person.person,
