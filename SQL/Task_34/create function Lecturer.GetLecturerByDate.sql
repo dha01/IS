@@ -8,6 +8,7 @@ select
 	l.person,
 	l.cathedra
 from Person.lecturer l
-where l.event_date = @date
+where l.event_date <= @date
 group by l.person, l.cathedra
-having sum(l.act) <= 1
+having sum(l.act) = 1
+
