@@ -65,7 +65,7 @@ namespace IS.Mvc.Models.Service
 
 		public void Login(UserItem user, bool remember)
 		{
-			DateTime expiresDate = DateTime.Now.AddMinutes(30);
+			DateTime expiresDate = DateTime.Now.AddHours(6);
 			if (remember)
 				expiresDate = expiresDate.AddDays(10);
 
