@@ -8,24 +8,24 @@ namespace IS.Model.Repository.Discipline
 	/// Интерфейс репозитория дисциплин.
 	/// </summary>
 	public class DisciplineRepository : IDisciplineRepository
-    {
-        /// <summary>
-        /// Получает дисциплину по идентификатору.
-        /// </summary>
-        /// <param name="id">Идентификатор.</param>
-        /// <returns>Дисциплина.</returns>
-        public DisciplineItem Get(int id)
+	{
+		/// <summary>
+		/// Получает дисциплину по идентификатору.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		/// <returns>Дисциплина.</returns>
+		public DisciplineItem Get(int id)
 		{
 			using (var sqlh = new SqlHelper())
 			{
 				return sqlh.ExecMapping<DisciplineItem>(@"
 select
-	t.discipline Id,
-	t.short_name Short_name,
-	t.full_name Full_name,
-	t.mem Mem,
-from Discipline.discipline t
-where t.discipline = @id", new { id });
+	d.discipline Id,
+	d.short_name ShortName,
+	d.full_name FullName,
+	d.mem Mem,
+from Discipline.discipline d
+where d.discipline = @id", new { id });
 			}
 		}
 
@@ -41,19 +41,19 @@ where t.discipline = @id", new { id });
 update Discipline.discipline
 set
 	discipline = @Id,
-	short_name = @Short_name,
+	short_name = @ShortName,
 	mem = @Mem,
-	full_name = @Full_name,
+	full_name = @FullName,
 where discipline = @Id", discipline);
 			}
 		}
 
-        /// <summary>
-        /// Создает новую дисциплину.
-        /// </summary>
-        /// <param name="discipline">Дисциплина.</param>
-        /// <returns>Идентификатор созданной дисциплины.</returns>
-        public int Create(DisciplineItem discipline)
+		/// <summary>
+		/// Создает новую дисциплину.
+		/// </summary>
+		/// <param name="discipline">Дисциплина.</param>
+		/// <returns>Идентификатор созданной дисциплины.</returns>
+		public int Create(DisciplineItem discipline)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -68,9 +68,9 @@ insert into Discipline.discipline
 values
 (
 	@Id,
-	@Short_name,
-	@Full_name,
-    @Mem
+	@ShortName,
+	@FullName,
+	@Mem
 )
 
 select scope_identity()", discipline);
@@ -101,11 +101,11 @@ where discipline = @id", new { id });
 			{
 				return sqlh.ExecMappingList<DisciplineItem>(@"
 select
-	t.discipline Id,
-	t.short_name Short_name,
-	t.full_name Full_name,
-	t.mem Mem
-from Discipline.discipline t");
+	d.discipline Id,
+	d.short_name ShortName,
+	d.full_name FullName,
+	d.mem Mem
+from Discipline.discipline d");
 			}
 		}
 	}

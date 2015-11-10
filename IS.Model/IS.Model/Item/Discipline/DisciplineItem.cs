@@ -15,12 +15,12 @@ namespace IS.Model.Item.Discipline
 		/// <summary>
 		/// Короткое название.
 		/// </summary>
-		public int Short_name { get; set; }
+		public string ShortName { get; set; }
 
 		/// <summary>
 		/// Полное название.
 		/// </summary>
-		public string Full_name { get; set; }
+		public string FullName { get; set; }
 
 		/// <summary>
 		/// Описание.
