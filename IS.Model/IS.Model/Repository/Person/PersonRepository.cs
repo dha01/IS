@@ -24,7 +24,7 @@ select
 	p.last_name LastName,
 	p.first_name FirstName,
 	p.father_name Father,
-    p.birthday Birthday
+	p.birthday Birthday
 from Person.Person p
 where p.person = @id", new { id });
             }
@@ -44,7 +44,7 @@ set
 	last_name = @LastName,
 	first_name = @FirstName,
 	father_name = @Father,
-    birthday = @Birthday
+	birthday = @Birthday
 where person = @Id", person);
             }
         }
@@ -63,15 +63,15 @@ insert into Person.person
 (
 	last_name,
 	first_name,
-    father_name,
-    birthday
+	father_name,
+	birthday
 )
 values
 (
-    @LastName,
-    @FirstName,
-    @Father,
-    @Birthday
+	@LastName,
+	@FirstName,
+	@Father,
+	@Birthday
 )
 
 select scope_identity()", person);
@@ -106,7 +106,7 @@ select
 	p.last_name LastName,
 	p.first_name FirstName,
 	p.father_name Father,
-    p.birthday Birthday
+	p.birthday Birthday
 from Person.Person p
 	");
             }
