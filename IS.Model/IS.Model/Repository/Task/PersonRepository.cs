@@ -63,12 +63,12 @@ insert into Person.person
 (
 	last_name,
 	first_name,
-	father_name,
+    father_name,
     birthday
 )
 values
 (
-	@LastName,
+    @LastName,
     @FirstName,
     @Father,
     @Birthday

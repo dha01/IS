@@ -31,8 +31,5 @@ namespace IS.Model.Item.Task
         /// День рождения.
         /// </summary>
         public DateTime Birthday { get; set; }
-
     }
-
-
 }
