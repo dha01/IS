@@ -25,8 +25,8 @@ namespace IS.Model.Tests.Repository.Task
         /// </summary>
         private PersonRepository _personRepository;
 
-        private TaskItem _person; 
-        private TaskItem _personNew;
+        private PersonItem _person; 
+        private PersonItem _personNew;
 
         #endregion
 
@@ -41,33 +41,22 @@ namespace IS.Model.Tests.Repository.Task
             _transactionScope = new TransactionScope();
             _personRepository = new PersonRepository();
 
-            _person = new TaskItem()
+            _person = new PersonItem()
             {
-                Author = "",
-                Deadline = DateTime.Now.AddDays(7).Date,
-                Created = DateTime.Now.Date,
-                Performer = "",
-                Header = "Тестирование людей",
-                IsOpen = true,
-                IsPerform = false,
-                Mem = "Описание",
-                Number = 1,
-                Priority = 0,
-                Prefix = TaskPrefix.Refactoring
+                Id = 1,
+                LastName = "",
+                FirstName = "",
+                Birthday = DateTime.Now.Date,
+                Father = ""
+                
             };
-            _personNew = new TaskItem()
+            _personNew = new PersonItem()
             {
-                Author = "1",
-                Deadline = DateTime.Now.AddDays(8).Date,
-                Created = DateTime.Now.Date,
-                Performer = "2",
-                Header = "Тестирование людей 2",
-                IsOpen = false,
-                IsPerform = true,
-                Mem = "Описание2",
-                Number = 2,
-                Priority = 5,
-                Prefix = TaskPrefix.Demo
+                Id = 1,
+                LastName = "",
+                FirstName = "",
+                Birthday = DateTime.Now.Date,
+                Father = ""
             };
         }
 
@@ -91,21 +80,15 @@ namespace IS.Model.Tests.Repository.Task
         /// <summary>
         /// Проверяет еквивалентны ли две задачи.
         /// </summary>
-        /// <param name="first_task"></param>
-        /// <param name="second_task"></param>
-        private void AreEqualTasks(TaskItem first_task, TaskItem second_task)
+        /// <param name="first_person"></param>
+        /// <param name="second_person"></param>
+        private void AreEqualTasks(PersonItem first_person, PersonItem second_person)
         {
-            Assert.AreEqual(first_task.Id, second_task.Id);
-            Assert.AreEqual(first_task.Author, second_task.Author);
-            Assert.AreEqual(first_task.Deadline, second_task.Deadline);
-            Assert.AreEqual(first_task.Performer, second_task.Performer);
-            Assert.AreEqual(first_task.Header, second_task.Header);
-            Assert.AreEqual(first_task.IsOpen, second_task.IsOpen);
-            Assert.AreEqual(first_task.IsPerform, second_task.IsPerform);
-            Assert.AreEqual(first_task.Mem, second_task.Mem);
-            Assert.AreEqual(first_task.Number, second_task.Number);
-            Assert.AreEqual(first_task.Priority, second_task.Priority);
-            Assert.AreEqual(first_task.Prefix, second_task.Prefix);
+            Assert.AreEqual(first_person.Id, second_person.Id);
+            Assert.AreEqual(first_person.LastName, second_person.LastName);
+            Assert.AreEqual(first_person.FirstName, second_person.FirstName);
+            Assert.AreEqual(first_person.Father, second_person.Father);
+            Assert.AreEqual(first_person.Birthday, second_person.Birthday);
         }
 
         #endregion

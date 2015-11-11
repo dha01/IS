@@ -7,23 +7,23 @@ namespace IS.Model.Repository.Task
     /// <summary>
     /// Интерфейс репозитория людей.
     /// </summary>
-    public class PersonRepository : ITaskRepository
+    public class PersonRepository : IPersonRepository
     {
         /// <summary>
         /// Получает человека по идентификатору.
         /// </summary>
         /// <param name="id">Идентификатор.</param>
         /// <returns>Человека.</returns>
-        public TaskItem Get(int id)
+        public PersonItem Get(int id)
         {
             using (var sqlh = new SqlHelper())
             {
-                return sqlh.ExecMapping<TaskItem>(@"
+                return sqlh.ExecMapping<PersonItem>(@"
 select
 	p.person Id,
 	p.last_name LastName,
-	p.first_name Name,
-	p.father_name Feather,
+	p.first_name FirstName,
+	p.father_name Father,
     p.birthday Birthday
 from Person.Person p
 where p.person = @id", new { id });
@@ -33,8 +33,8 @@ where p.person = @id", new { id });
         /// <summary>
         /// Обновляет данные у человека.
         /// </summary>
-        /// <param name="task">Человека.</param>
-        public void Update(TaskItem person)
+        /// <param name="person">Человека.</param>
+        public void Update(PersonItem person)
         {
             using (var sqlh = new SqlHelper())
             {
@@ -42,19 +42,19 @@ where p.person = @id", new { id });
 update Person.person
 set
 	last_name = @LastName,
-	first_name = @Name,
-	father_name = @Feather,
+	first_name = @FirstName,
+	father_name = @Father,
     birthday = @Birthday
-where task = @Id", person);
+where person = @Id", person);
             }
         }
 
         /// <summary>
         /// Создает нового человека.
         /// </summary>
-        /// <param name="task">Задача.</param>
+        /// <param name="person">Задача.</param>
         /// <returns>Идентификатор созданного человека.</returns>
-        public int Create(TaskItem person)
+        public int Create(PersonItem person)
         {
             using (var sqlh = new SqlHelper())
             {
@@ -69,8 +69,8 @@ insert into Person.person
 values
 (
 	@LastName,
-    @Name,
-    @Feather,
+    @FirstName,
+    @Father,
     @Birthday
 )
 
@@ -96,16 +96,16 @@ where person = @id", new { id });
         /// Получает список всех людей.
         /// </summary>
         /// <returns>Список людей.</returns>
-        public List<TaskItem> GetList()
+        public List<PersonItem> GetList()
         {
             using (var sqlh = new SqlHelper())
             {
-                return sqlh.ExecMappingList<TaskItem>(@"
+                return sqlh.ExecMappingList<PersonItem>(@"
 select
 	p.person Id,
 	p.last_name LastName,
-	p.first_name Name,
-	p.father_name Feather,
+	p.first_name FirstName,
+	p.father_name Father,
     p.birthday Birthday
 from Person.Person p
 	");
