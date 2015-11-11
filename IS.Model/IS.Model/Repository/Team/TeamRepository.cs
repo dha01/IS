@@ -21,8 +21,8 @@ namespace IS.Model.Repository.Team
 				return sqlh.ExecMapping<TeamItem>(@"
 select
 	s.team Id,
+	s.name Name,
 	s.create_date CreateDate,
-	s.specialty_detail SpecialtyDetail,
 from Team.Team t
 where t.Team = @id", new { id });
 
