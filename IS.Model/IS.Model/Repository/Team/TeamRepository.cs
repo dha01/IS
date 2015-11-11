@@ -23,8 +23,7 @@ select
 	s.team Id,
 	s.create_date CreateDate,
 	s.specialty_detail SpecialtyDetail,
-	from Team.Team t
-	join Team.Team_prefix p on p.Team_prefix = t.Team_prefix
+from Team.Team t
 where t.Team = @id", new { id });
 
 			}
