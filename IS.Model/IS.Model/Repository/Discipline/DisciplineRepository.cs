@@ -23,7 +23,7 @@ select
 	d.discipline Id,
 	d.short_name ShortName,
 	d.full_name FullName,
-	d.mem Mem,
+	d.mem Mem
 from Discipline.discipline d
 where d.discipline = @id", new { id });
 			}
@@ -40,10 +40,9 @@ where d.discipline = @id", new { id });
 				sqlh.ExecNoQuery(@"
 update Discipline.discipline
 set
-	discipline = @Id,
 	short_name = @ShortName,
 	mem = @Mem,
-	full_name = @FullName,
+	full_name = @FullName
 where discipline = @Id", discipline);
 			}
 		}
@@ -60,14 +59,12 @@ where discipline = @Id", discipline);
 				return sqlh.ExecScalar<int>(@"
 insert into Discipline.discipline
 (
-	discipline,
 	short_name,
 	full_name,
 	mem
 )
 values
 (
-	@Id,
 	@ShortName,
 	@FullName,
 	@Mem
