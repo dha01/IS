@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace IS.Model.Item.Task
+namespace IS.Model.Item.Cathedra
 {
 	/// <summary>
-	/// Класс для хранения данных по задаче.
+	/// Класс для хранения данных о кафедре.
 	/// </summary>
 	class CathedraItem
 	{
@@ -13,12 +13,12 @@ namespace IS.Model.Item.Task
 		public int Id { get; set; }
 
 		/// <summary>
-		/// Полное имя кафедры
+		/// Полное имя кафедры.
 		/// </summary>
 		public string FullName { get; set; }
 
 		/// <summary>
-		/// Сокращенное имя кафедры
+		/// Сокращенное имя кафедры.
 		/// </summary>
 		public string ShortName { get; set; }
 	}
