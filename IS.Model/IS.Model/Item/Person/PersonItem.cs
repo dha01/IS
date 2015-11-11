@@ -25,7 +25,7 @@ namespace IS.Model.Item.Person
         /// <summary>
         /// Отчество.
         /// </summary>
-        public string Father { get; set; }
+		public string FatherName { get; set; }
 
         /// <summary>
         /// День рождения.

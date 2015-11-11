@@ -23,7 +23,7 @@ select
 	p.person Id,
 	p.last_name LastName,
 	p.first_name FirstName,
-	p.father_name Father,
+	p.father_name FatherName,
 	p.birthday Birthday
 from Person.Person p
 where p.person = @id", new { id });
@@ -43,7 +43,7 @@ update Person.person
 set
 	last_name = @LastName,
 	first_name = @FirstName,
-	father_name = @Father,
+	father_name = @FatherName,
 	birthday = @Birthday
 where person = @Id", person);
             }
@@ -70,7 +70,7 @@ values
 (
 	@LastName,
 	@FirstName,
-	@Father,
+	@FatherName,
 	@Birthday
 )
 
@@ -105,7 +105,7 @@ select
 	p.person Id,
 	p.last_name LastName,
 	p.first_name FirstName,
-	p.father_name Father,
+	p.father_name FatherName,
 	p.birthday Birthday
 from Person.Person p
 	");

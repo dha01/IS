@@ -48,7 +48,7 @@ namespace IS.Model.Tests.Repository.Person
                 LastName = "Иванов",
                 FirstName = "Василий",
                 Birthday = DateTime.Now.Date,
-                Father = "Иванович"
+				FatherName = "Иванович"
                 
             };
             _personNew = new PersonItem()
@@ -57,7 +57,7 @@ namespace IS.Model.Tests.Repository.Person
                 LastName = "Пупкин",
                 FirstName = "Сергей",
                 Birthday = DateTime.Now.Date,
-                Father = "Петрович"
+				FatherName = "Петрович"
             };
         }
 
@@ -88,7 +88,7 @@ namespace IS.Model.Tests.Repository.Person
             Assert.AreEqual(first_person.Id, second_person.Id);
             Assert.AreEqual(first_person.LastName, second_person.LastName);
             Assert.AreEqual(first_person.FirstName, second_person.FirstName);
-            Assert.AreEqual(first_person.Father, second_person.Father);
+			Assert.AreEqual(first_person.FatherName, second_person.FatherName);
             Assert.AreEqual(first_person.Birthday, second_person.Birthday);
         }
 
