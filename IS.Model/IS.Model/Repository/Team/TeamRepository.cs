@@ -20,9 +20,9 @@ namespace IS.Model.Repository.Team
 			{
 				return sqlh.ExecMapping<TeamItem>(@"
 select
-	s.team Id,
-	s.name Name,
-	s.create_date CreateDate,
+	t.team Id,
+	t.name Name,
+	t.create_date CreateDate,
 from Team.Team t
 where t.Team = @id", new { id });
 
