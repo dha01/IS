@@ -14,10 +14,10 @@ namespace IS.Model.Repository.Team
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		/// <returns>Группу.</returns>
-	public TeamItem Get(int id)
+		public TeamItem Get(int id)
 		{
 			using (var sqlh = new SqlHelper())
-				{
+			{
 				return sqlh.ExecMapping<TeamItem>(@"
 select
 	s.team Id,
@@ -29,13 +29,14 @@ where t.Team = @id", new { id });
 
 			}
 		}
+
 		/// <summary>
 		/// Обновляет данные по группе.
 		/// </summary>
 		/// <param name="Team">Группу.</param>
 		public void Update(TeamItem Team)
-			{
-			}
+		{
+		}
 
 		/// <summary>
 		/// Создает новую группу.
@@ -51,8 +52,8 @@ where t.Team = @id", new { id });
 		/// Удаляет группу.
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
-	public void Delete(int id)
-	{
+		public void Delete(int id)
+		{
 
 		}
 
@@ -60,10 +61,9 @@ where t.Team = @id", new { id });
 		/// Получает список всех группу.
 		/// </summary>
 		/// <returns>Список группу.</returns>
-			public List<TeamItem> GetList()
+		public List<TeamItem> GetList()
 		{
 			return null;
 		}
-		
 	}
 }
