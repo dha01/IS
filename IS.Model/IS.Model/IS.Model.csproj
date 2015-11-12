@@ -54,6 +54,8 @@
     <Compile Include="Repository\Access\IRoleRepository.cs" />
     <Compile Include="Repository\Access\IUserRepository.cs" />
     <Compile Include="Repository\Access\RoleRepository.cs" />
+    <Compile Include="Repository\Auditory\AuditoryRepository.cs" />
+    <Compile Include="Repository\Auditory\IAuditoryRepository.cs" />
     <Compile Include="Repository\Faculty\IFacultyRepository.cs" />
     <Compile Include="Repository\Person\IPersonRepository.cs" />
     <Compile Include="Repository\Person\PersonRepository.cs" />
