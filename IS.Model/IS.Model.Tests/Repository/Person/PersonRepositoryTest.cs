@@ -5,7 +5,6 @@ using IS.Model.Repository.Person;
 using NUnit.Framework;
 
 namespace IS.Model.Tests.Repository.Person
-
 {
 	/// <summary>
 	/// Тесты для репозитория людей.
