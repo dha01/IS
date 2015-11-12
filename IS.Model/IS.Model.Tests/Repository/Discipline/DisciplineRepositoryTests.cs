@@ -20,10 +20,10 @@ namespace IS.Model.Tests.Repository.Discipline
 		/// </summary>
 		private TransactionScope _transactionScope;
 
-        /// <summary>
-        /// Репозиторий дисциплин.
-        /// </summary>
-        private DisciplineRepository _disciplineRepository;
+		/// <summary>
+		/// Репозиторий дисциплин.
+		/// </summary>
+		private DisciplineRepository _disciplineRepository;
 
 		private DisciplineItem _discipline;
 		private DisciplineItem _disciplineNew;
@@ -41,18 +41,18 @@ namespace IS.Model.Tests.Repository.Discipline
 			_transactionScope = new TransactionScope();
 			_disciplineRepository = new DisciplineRepository();
 
-            _discipline = new DisciplineItem()
+			_discipline = new DisciplineItem()
 			{
 				Id = 1,
-				FullName = "",
-				ShortName = "",
+				FullName = "full_name",
+				ShortName = "short_name",
 				Mem = "Описание"
 			}; 
 			_disciplineNew = new DisciplineItem()
 			{
 				Id = 2,
 				FullName = "full_name_test",
-				ShortName = "test",
+				ShortName = "short_name_test",
 				Mem = "Описание2"
 			};
 		}
@@ -82,10 +82,10 @@ namespace IS.Model.Tests.Repository.Discipline
 		private void AreEqualDiscipline(DisciplineItem first_discipline, DisciplineItem second_discipline)
 		{
 			Assert.AreEqual(first_discipline.Id, second_discipline.Id);
-            Assert.AreEqual(first_discipline.FullName, second_discipline.FullName);
-            Assert.AreEqual(first_discipline.ShortName, second_discipline.ShortName);
-            Assert.AreEqual(first_discipline.Mem, second_discipline.Mem);
-        }
+			Assert.AreEqual(first_discipline.FullName, second_discipline.FullName);
+			Assert.AreEqual(first_discipline.ShortName, second_discipline.ShortName);
+			Assert.AreEqual(first_discipline.Mem, second_discipline.Mem);
+		}
 
 		#endregion
 
@@ -149,7 +149,7 @@ namespace IS.Model.Tests.Repository.Discipline
 		/// Получает список всех дисциплин.
 		/// </summary>
 		[Test]
-		public void GetList_Void_ReturnNotEmptyListWithTask()
+		public void GetList_Void_ReturnNotEmptyListWithDiscipline()
 		{
 			_discipline.Id = _disciplineRepository.Create(_discipline);
 			var result = _disciplineRepository.GetList().Find(x => x.Id == _discipline.Id);
