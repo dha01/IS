@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace IS.Model.Item.Specialty
+
 {    /// <summary>
     /// Класс для хранения данных о сущности образовательной системы.
     /// </summary>
@@ -12,22 +13,12 @@ namespace IS.Model.Item.Specialty
         public int Id { get; set; }
 
         /// <summary>
-        /// Полное название специальности.
-        /// </summary>
-        public int SpecialtyDetail { get; set; }
-
-        /// <summary>
         /// Текущая дата.
         /// </summary>
         public DateTime ActualDate { get; set; }
 
         /// <summary>
-        /// Код специальности.
-        /// </summary>
-        public int Specialty { get; set; }
-
-        /// <summary>
-        /// Номер семестра.
+        /// Количество семестров.
         /// </summary>
         public int SemestrCount { get; set; }
 
@@ -45,15 +36,26 @@ namespace IS.Model.Item.Specialty
         /// Количество бюджетных мест.
         /// </summary>
         public int LowcostSpace { get; set; }
-
     }
+
     /// <summary>
     /// Квалификация.
     /// </summary>
     public enum Qualification
     {
+        /// <summary>
+        /// Бакалавр.
+        /// </summary>
         Bachelor,
+
+        /// <summary>
+        /// Магистр.
+        /// </summary>
         Master,
+
+        /// <summary>
+        /// Специалист.
+        /// </summary>
         Expert
     }
 
@@ -62,7 +64,14 @@ namespace IS.Model.Item.Specialty
     /// </summary>
     public enum FormStudy
     {
+        /// <summary>
+        /// Очная.
+        /// </summary>
         FullTime,
+
+        /// <summary>
+        /// Заочная.
+        /// </summary>
         Distance
     }
 }
