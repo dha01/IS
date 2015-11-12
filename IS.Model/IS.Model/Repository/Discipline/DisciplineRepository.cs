@@ -5,7 +5,7 @@ using IS.Model.Item.Discipline;
 namespace IS.Model.Repository.Discipline
 {
 	/// <summary>
-	/// Интерфейс репозитория дисциплин.
+	/// Репозиторий дисциплин.
 	/// </summary>
 	public class DisciplineRepository : IDisciplineRepository
 	{

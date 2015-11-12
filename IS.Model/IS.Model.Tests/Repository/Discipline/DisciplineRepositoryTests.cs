@@ -110,7 +110,7 @@ namespace IS.Model.Tests.Repository.Discipline
 		/// Изменяет параметры дисциплины.
 		/// </summary>
 		[Test]
-		public void Update_Void_ReturnChangedTask()
+		public void Update_Void_ReturnChangedDiscipline()
 		{
 			_discipline.Id = _disciplineRepository.Create(_discipline);
 			var result = _disciplineRepository.Get(_discipline.Id);
