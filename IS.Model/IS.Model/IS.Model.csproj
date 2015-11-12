@@ -43,6 +43,7 @@
     <Compile Include="Helper\SqlHelper.cs" />
     <Compile Include="Item\Access\RoleItem.cs" />
     <Compile Include="Item\Access\UserItem.cs" />
+    <Compile Include="Item\Auditory\AuditoryItem.cs" />
     <Compile Include="Item\Role.cs" />
     <Compile Include="Item\Person\PersonItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyItem.cs" />
@@ -51,14 +52,14 @@
     <Compile Include="Item\Team\TeamItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Access\IRoleRepository.cs" />
-    <Compile Include="Repository\Person\IPersonRepository.cs" />
-    <Compile Include="Repository\Specialty\ISpecialtyRepository.cs" />
-    <Compile Include="Repository\Faculty\IFacultyRepository.cs" />
-    <Compile Include="Repository\Specialty\SpecialtyRepository.cs" />
-    <Compile Include="Repository\Task\ITaskRepository.cs" />
     <Compile Include="Repository\Access\IUserRepository.cs" />
     <Compile Include="Repository\Access\RoleRepository.cs" />
+    <Compile Include="Repository\Faculty\IFacultyRepository.cs" />
+    <Compile Include="Repository\Person\IPersonRepository.cs" />
     <Compile Include="Repository\Person\PersonRepository.cs" />
+    <Compile Include="Repository\Specialty\ISpecialtyRepository.cs" />
+    <Compile Include="Repository\Specialty\SpecialtyRepository.cs" />
+    <Compile Include="Repository\Task\ITaskRepository.cs" />
     <Compile Include="Repository\Task\TaskRepository.cs" />
     <Compile Include="Repository\Access\UserRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
