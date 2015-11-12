@@ -2,6 +2,6 @@
 
 alter table Access.[user]
 add
-	person int identity(1,1)
-	constraint FK_Person foreign key (person)
+	person int
+	constraint FK__user__person foreign key (person)
 	references Person.person (person)
