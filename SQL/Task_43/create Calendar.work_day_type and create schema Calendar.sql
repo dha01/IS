@@ -1,7 +1,7 @@
--- Создание схемы Calendar
+п»ї-- РЎРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ Calendar.
 create schema Calendar
 
--- Создание таблицы "work_day_type"
+-- РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ "work_day_type".
 create table Calendar.work_day_type(
 	work_day_type int identity not null,
 	code varchar(50) not null,
@@ -9,10 +9,10 @@ create table Calendar.work_day_type(
 	constraint PK__work_day_type primary key (work_day_type)
 )
 
--- Добавляние записей в таблицу
+-- Р”РѕР±Р°РІР»СЏРЅРёРµ Р·Р°РїРёСЃРµР№ РІ С‚Р°Р±Р»РёС†Сѓ.
 insert into Calendar.work_day_type(code,memo)
     values
-			('Work', 'Рабочий день'),
-			('Abbreviated', 'Сокращенный день'),
-			('Holiday', 'Праздничный день'),
-			('Weekend', 'Выходной день')
+			('Work', 'Р Р°Р±РѕС‡РёР№ РґРµРЅСЊ'),
+			('Abbreviated', 'РЎРѕРєСЂР°С‰РµРЅРЅС‹Р№ РґРµРЅСЊ'),
+			('Holiday', 'РџСЂР°Р·РґРЅРёС‡РЅС‹Р№ РґРµРЅСЊ'),
+			('Weekend', 'Р’С‹С…РѕРґРЅРѕР№ РґРµРЅСЊ')
