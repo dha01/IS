@@ -11,7 +11,7 @@ create table Calendar.work_day_type(
 
 -- Добавляние записей в таблицу.
 insert into Calendar.work_day_type(code,memo)
-    values
+	values
 			('Work', 'Рабочий день'),
 			('Abbreviated', 'Сокращенный день'),
 			('Holiday', 'Праздничный день'),
