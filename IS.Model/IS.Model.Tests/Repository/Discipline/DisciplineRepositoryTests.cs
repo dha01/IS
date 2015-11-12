@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Discipline
 {
 	/// <summary>
-	/// Тесты для репозитория задач.
+	/// Тесты для репозитория дисциплин.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -20,10 +20,10 @@ namespace IS.Model.Tests.Repository.Discipline
 		/// </summary>
 		private TransactionScope _transactionScope;
 
-		/// <summary>
-		/// Репозиторий задач.
-		/// </summary>
-		private DisciplineRepository _disciplineRepository;
+        /// <summary>
+        /// Репозиторий дисциплин.
+        /// </summary>
+        private DisciplineRepository _disciplineRepository;
 
 		private DisciplineItem _discipline;
 		private DisciplineItem _disciplineNew;
@@ -50,10 +50,10 @@ namespace IS.Model.Tests.Repository.Discipline
 			}; 
 			_disciplineNew = new DisciplineItem()
 			{
-                Id = 2,
-                FullName = "full_name_test",
-                ShortName = "test",
-                Mem = "Описание2"
+				Id = 2,
+				FullName = "full_name_test",
+				ShortName = "test",
+				Mem = "Описание2"
 			};
 		}
 
@@ -70,16 +70,16 @@ namespace IS.Model.Tests.Repository.Discipline
 			_transactionScope.Dispose();
 		}
 
-        #endregion
+		#endregion
 
-        #region Methods
+		#region Methods
 
-        /// <summary>
-        /// Проверяет, эквивалентны ли две дисциплины.
-        /// </summary>
-        /// <param name="first_discipline"></param>
-        /// <param name="second_discipline"></param>
-        private void AreEqualTasks(DisciplineItem first_discipline, DisciplineItem second_discipline)
+		/// <summary>
+		/// Проверяет, эквивалентны ли две дисциплины.
+		/// </summary>
+		/// <param name="first_discipline"></param>
+		/// <param name="second_discipline"></param>
+		private void AreEqualDiscipline(DisciplineItem first_discipline, DisciplineItem second_discipline)
 		{
 			Assert.AreEqual(first_discipline.Id, second_discipline.Id);
             Assert.AreEqual(first_discipline.FullName, second_discipline.FullName);
@@ -99,7 +99,7 @@ namespace IS.Model.Tests.Repository.Discipline
 		{
 			_discipline.Id = _disciplineRepository.Create(_discipline);
 			var result = _disciplineRepository.Get(_discipline.Id);
-			AreEqualTasks(result, _discipline);
+			AreEqualDiscipline(result, _discipline);
 		}
 
 		#endregion
@@ -112,32 +112,31 @@ namespace IS.Model.Tests.Repository.Discipline
 		[Test]
 		public void Update_Void_ReturnChangedTask()
 		{
-            _discipline.Id = _disciplineRepository.Create(_discipline);
+			_discipline.Id = _disciplineRepository.Create(_discipline);
 			var result = _disciplineRepository.Get(_discipline.Id);
-			AreEqualTasks(result, _discipline);
+			AreEqualDiscipline(result, _discipline);
 
-            _disciplineNew.Id = _discipline.Id;
-            _disciplineRepository.Update(_disciplineNew);
+			_disciplineNew.Id = _discipline.Id;
+			_disciplineRepository.Update(_disciplineNew);
 			result = _disciplineRepository.Get(_discipline.Id);
-			AreEqualTasks(result, _disciplineNew);
-
+			AreEqualDiscipline(result, _disciplineNew);
 		}
 
-        #endregion
+		#endregion
 
-        #region Delete
+		#region Delete
 
-        /// <summary>
-        /// Удаляет дисциплину.
-        /// </summary>
-        [Test]
+		/// <summary>
+		/// Удаляет дисциплину.
+		/// </summary>
+		[Test]
 		public void Delete_Void_ReturnNull()
 		{
-            _discipline.Id = _disciplineRepository.Create(_discipline);
+			_discipline.Id = _disciplineRepository.Create(_discipline);
 			var result = _disciplineRepository.Get(_discipline.Id);
-			AreEqualTasks(result, _discipline);
+			AreEqualDiscipline(result, _discipline);
 
-            _disciplineRepository.Delete(_discipline.Id);
+			_disciplineRepository.Delete(_discipline.Id);
 			result = _disciplineRepository.Get(_discipline.Id);
 			Assert.IsNull(result);
 		}
@@ -152,9 +151,9 @@ namespace IS.Model.Tests.Repository.Discipline
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithTask()
 		{
-            _discipline.Id = _disciplineRepository.Create(_discipline);
+			_discipline.Id = _disciplineRepository.Create(_discipline);
 			var result = _disciplineRepository.GetList().Find(x => x.Id == _discipline.Id);
-			AreEqualTasks(result, _discipline);
+			AreEqualDiscipline(result, _discipline);
 		}
 
 		#endregion
