@@ -85,7 +85,10 @@ namespace IS.Model.Tests.Service
 		[Test]
 		public void Create_Void_ReturnId()
 		{
+			var list = new List<TaskItem>(){ _task };
+			
 			Mock.Get(_taskRepository).Setup(x => x.Create(_task)).Returns(_task.Id);
+			Mock.Get(_taskRepository).Setup(x => x.GetList()).Returns(list);
 
 			var result = _taskService.Create(_task);
 			Assert.AreEqual(result, _task.Id);
