@@ -5,7 +5,7 @@ using IS.Model.Item.Person;
 namespace IS.Model.Repository.Person
 {
     /// <summary>
-    /// Интерфейс репозитория людей.
+    /// Репозиторий людей.
     /// </summary>
     public class PersonRepository : IPersonRepository
     {
@@ -107,8 +107,7 @@ select
 	p.first_name FirstName,
 	p.father_name FatherName,
 	p.birthday Birthday
-from Person.Person p
-	");
+from Person.Person p");
             }
         }
     }

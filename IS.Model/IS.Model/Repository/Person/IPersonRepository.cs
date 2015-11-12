@@ -5,7 +5,7 @@ using IS.Model.Item.Person;
 namespace IS.Model.Repository.Person
 {
     /// <summary>
-    /// Интерфейс репозитория задач.
+    /// Интерфейс репозитория людей.
     /// </summary>
     public interface IPersonRepository : IRepository<PersonItem>
     {
@@ -26,7 +26,7 @@ namespace IS.Model.Repository.Person
         /// Создает нового человека.
         /// </summary>
         /// <param name="person">Задача.</param>
-        /// <returns>Идентификатор созданной задачи.</returns>
+        /// <returns>Идентификатор созданного человека.</returns>
         int Create(PersonItem person);
 
         /// <summary>
