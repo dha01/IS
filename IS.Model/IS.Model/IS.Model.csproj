@@ -44,8 +44,9 @@
     <Compile Include="Item\Access\RoleItem.cs" />
     <Compile Include="Item\Access\UserItem.cs" />
     <Compile Include="Item\Auditory\AuditoryItem.cs" />
-    <Compile Include="Item\Role.cs" />
     <Compile Include="Item\Person\PersonItem.cs" />
+    <Compile Include="Item\Role.cs" />
+    <Compile Include="Item\Specialty\SpecialtyDetailItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyItem.cs" />
     <Compile Include="Item\Task\TaskItem.cs" />
     <Compile Include="Item\Faculty\FacultyItem.cs" />
