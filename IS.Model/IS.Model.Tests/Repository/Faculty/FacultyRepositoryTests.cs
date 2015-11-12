@@ -4,7 +4,7 @@ using IS.Model.Item.Faculty;
 using IS.Model.Repository.Faculty;
 using NUnit.Framework;
 
-namespace IS.Model.Tests.Repository.Task
+namespace IS.Model.Tests.Repository.Faculty
 {
 	/// <summary>
 	/// Тесты для репозитория факультетов.
@@ -40,18 +40,15 @@ namespace IS.Model.Tests.Repository.Task
 		{
 			_transactionScope = new TransactionScope();
 			_facultyRepository = new FacultyRepository();
-
 			_faculty = new FacultyItem()
 			{
-				
-				Fullname = "Экономический",
-				Shortname = "Э",
+				FullName = "Экономический",
+				ShortName = "Э",
 			};
 			_facultyNew = new FacultyItem()
 			{
-				
-				Fullname = "Социальный",
-				Shortname = "С",
+				FullName = "Социальный",
+				ShortName = "С",
 			};
 		}
 
@@ -73,15 +70,15 @@ namespace IS.Model.Tests.Repository.Task
 		#region Methods
 
 		/// <summary>
-		/// Проверяет еквивалентны ли два факультета.
+		/// Проверяет эквивалентны ли два факультета.
 		/// </summary>
 		/// <param name="first_faculty"></param>
 		/// <param name="second_faculty"></param>
 		private void AreEqualFaculties(FacultyItem first_faculty, FacultyItem second_faculty)
 		{
 			Assert.AreEqual(first_faculty.Id, second_faculty.Id);
-			Assert.AreEqual(first_faculty.Fullname, second_faculty.Fullname);
-			Assert.AreEqual(first_faculty.Shortname, second_faculty.Shortname);
+			Assert.AreEqual(first_faculty.FullName, second_faculty.FullName);
+			Assert.AreEqual(first_faculty.ShortName, second_faculty.ShortName);
 		}
 
 		#endregion
@@ -112,12 +109,10 @@ namespace IS.Model.Tests.Repository.Task
 			_faculty.Id = _facultyRepository.Create(_faculty);
 			var result = _facultyRepository.Get(_faculty.Id);
 			AreEqualFaculties(result, _faculty);
-
 			_facultyNew.Id = _faculty.Id;
 			_facultyRepository.Update(_facultyNew);
 			result = _facultyRepository.Get(_faculty.Id);
 			AreEqualFaculties(result, _facultyNew);
-
 		}
 
 		#endregion
@@ -133,7 +128,6 @@ namespace IS.Model.Tests.Repository.Task
 			_faculty.Id = _facultyRepository.Create(_faculty);
 			var result = _facultyRepository.Get(_faculty.Id);
 			AreEqualFaculties(result, _faculty);
-
 			_facultyRepository.Delete(_faculty.Id);
 			result = _facultyRepository.Get(_faculty.Id);
 			Assert.IsNull(result);
@@ -147,7 +141,7 @@ namespace IS.Model.Tests.Repository.Task
 		/// Получает список всех факультетов.
 		/// </summary>
 		[Test]
-		public void GetList_Void_ReturnNotEmptyListWithTask()
+		public void GetList_Void_ReturnNotEmptyListWithFaculty()
 		{
 			_faculty.Id = _facultyRepository.Create(_faculty);
 			var result = _facultyRepository.GetList().Find(x => x.Id == _faculty.Id);

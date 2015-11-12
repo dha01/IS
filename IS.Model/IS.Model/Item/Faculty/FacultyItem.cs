@@ -15,12 +15,12 @@ namespace IS.Model.Item.Faculty
 		/// <summary>
 		/// Полное название.
 		/// </summary>
-		public string Fullname { get; set; }
+		public string FullName { get; set; }
 
 		/// <summary>
 		/// Сокращенное название.
 		/// </summary>
-		public string Shortname { get; set; }
+		public string ShortName { get; set; }
 	}
 }
 

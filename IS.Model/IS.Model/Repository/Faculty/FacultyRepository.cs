@@ -5,7 +5,7 @@ using IS.Model.Item.Faculty;
 namespace IS.Model.Repository.Faculty
 {
 	/// <summary>
-	/// Интерфейс репозитория факультетов.
+	/// Репозиторий факультетов.
 	/// </summary>
 	public class FacultyRepository : IFacultyRepository
 	{
@@ -21,12 +21,13 @@ namespace IS.Model.Repository.Faculty
 				return sqlh.ExecMapping<FacultyItem>(@"
 select
 	d.faculty Id,
-	d.full_name Fullname,
-	d.short_name Shortname
+	d.full_name FullName,
+	d.short_name ShortName
 from Faculty.faculty d
 where d.faculty = @id", new {id});
 			}
 		}
+
 		/// <summary>
 		/// Обновляет данные по факультету.
 		/// </summary>
@@ -38,11 +39,12 @@ where d.faculty = @id", new {id});
 				sqlh.ExecNoQuery(@"
 update Faculty.faculty
 set
-	full_name = @Fullname,
-	short_name = @Shortname
+	full_name = @FullName,
+	short_name = @ShortName
 where faculty = @Id", faculty);
 			}
 		}
+
 		/// <summary>
 		/// Создает новый факультет.
 		/// </summary>
@@ -60,13 +62,14 @@ insert into Faculty.faculty
 )
 values
 (
-	@Fullname,
-	@Shortname
+	@FullName,
+	@ShortName
 )
 
 select scope_identity()", faculty);
 			}
 		}
+
 		/// <summary>
 		/// Удаляет факультет.
 		/// </summary>
@@ -92,10 +95,9 @@ where faculty = @id", new { id });
 				return sqlh.ExecMappingList<FacultyItem>(@"
 select
 	d.faculty Id,
-	d.full_name Fullname,
-	d.short_name Shortname
-from Faculty.faculty d
-	");
+	d.full_name FullName,
+	d.short_name ShortName
+from Faculty.faculty d");
 			}
 		}
 	}
