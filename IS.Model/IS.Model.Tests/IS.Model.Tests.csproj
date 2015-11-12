@@ -54,7 +54,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
+    <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
+    <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />    <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
     <Compile Include="Repository\Access\UserRepositoryTests.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
     <Compile Include="Service\UserServiceTests.cs" />
