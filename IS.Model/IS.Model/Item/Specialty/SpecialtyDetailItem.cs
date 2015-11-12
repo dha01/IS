@@ -1,7 +1,6 @@
 ﻿using System;
 
 namespace IS.Model.Item.Specialty
-
 {    /// <summary>
     /// Класс для хранения данных о сущности образовательной системы.
     /// </summary>
