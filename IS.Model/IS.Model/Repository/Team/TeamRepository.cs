@@ -23,8 +23,8 @@ select
 	t.team Id,
 	t.name Name,
 	t.create_date CreateDate,
-from Team.Team t
-where t.Team = @id", new { id });
+from Team.team t
+where t.team = @id", new { id });
 
 			}
 		}
@@ -53,7 +53,12 @@ where t.Team = @id", new { id });
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
+            using (SqlHelper sqlh = new SqlHelper())
+            {
+                sqlh.ExecMapping<TeamItem>(@"
+delete from Team.team
+where t.team = @id", new { id });
+            }
 		}
 
 		/// <summary>
