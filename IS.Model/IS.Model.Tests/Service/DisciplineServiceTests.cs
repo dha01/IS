@@ -48,8 +48,8 @@ namespace IS.Model.Tests.Service
             _discipline = new DisciplineItem()
             {
                 Id = 1,
-                ShortName = "",
-                FullName = "",
+                ShortName = "test",
+                FullName = "test_full",
                 Mem = "Описание"
             };
         }
@@ -169,9 +169,9 @@ namespace IS.Model.Tests.Service
         /// <summary>
         /// Изменяет описание на пустое.
         /// </summary>
-        [ExpectedException(ExpectedMessage = "Задача не найдена.")]
+        [ExpectedException(ExpectedMessage = "Дисциплина не найдена.")]
         [Test]
-        public void Update_TaskNotExists_ReturnException()
+        public void Update_DisciplineNotExists_ReturnException()
         {
             Mock.Get(_disciplineRepository).Setup(x => x.Get(_discipline.Id)).Returns((DisciplineItem)null);
             _disciplineService.Update(_discipline);

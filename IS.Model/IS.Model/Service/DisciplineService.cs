@@ -75,16 +75,6 @@ namespace IS.Model.Service
                 throw new Exception("Поле 'Mem' не должно быть пустым.");
             }
 
-            var list = GetList().FindAll(x => x.Id == discipline.Id);
-            if (list.Any())
-            {
-                discipline.Id = GetList().FindAll(x => x.Id == discipline.Id).Max(y => y.Id) + 1;
-            }
-            else
-            {
-                discipline.Id = 1;
-            }
-
             return _disciplineRepository.Create(discipline);
         }
 
