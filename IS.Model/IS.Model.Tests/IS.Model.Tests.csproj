@@ -55,11 +55,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
-    <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
-    <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
-    <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
-    <Compile Include="Repository\Access\UserRepositoryTests.cs" />
-    <Compile Include="Service\TaskServiceTests.cs" />
+<Compile Include="Repository\Task\TaskRepositoryTests.cs" /><Compile Include="Repository\Task\TaskRepositoryTests.cs" />    <Compile Include="Repository\Access\UserRepositoryTests.cs" />
+    <Compile Include="Service\PersonServiceTests.cs" />    <Compile Include="Service\DisciplineServiceTests.cs" />    <Compile Include="Service\TaskServiceTests.cs" />
     <Compile Include="Service\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +73,7 @@
       <Name>IS.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
