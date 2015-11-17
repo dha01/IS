@@ -23,10 +23,10 @@ namespace IS.Model.Tests.Repository.Team
 		/// <summary>
 		/// Репозиторий задач.
 		/// </summary>
-		private TeamRepository _taskRepository;
+		private TeamRepository _teamRepository;
 
-		private TeamItem _task;
-		private TeamItem _taskNew;
+		private TeamItem _team;
+		private TeamItem _teamNew;
 
 		#endregion
 
@@ -43,31 +43,13 @@ namespace IS.Model.Tests.Repository.Team
 
 			_team = new TeamItem()
 			{
-				Author = "",
-				Deadline = DateTime.Now.AddDays(7).Date,
-				Created = DateTime.Now.Date,
-				Performer = "",
-				Header = "Тестирование демонстрационной задачи",
-				IsOpen = true,
-				IsPerform = false,
-				Mem = "Описание",
-				Number = 1,
-				Priority = 0,
-				Prefix = TaskPrefix.Refactoring
+                Name = "PE-21b",
+                CreateDate = DateTime.Now,
 			}; 
 			_teamNew = new TeamItem()
 			{
-				Author = "1",
-				Deadline = DateTime.Now.AddDays(8).Date,
-				Created = DateTime.Now.Date,
-				Performer = "2",
-				Header = "Тестирование демонстрационной задачи 2",
-				IsOpen = false,
-				IsPerform = true,
-				Mem = "Описание2",
-				Number = 2,
-				Priority = 5,
-				Prefix = TaskPrefix.Demo
+                Name = "PE-22b",
+                CreateDate = DateTime.Now.AddYears(-3),
 			};
 		}
 
@@ -91,14 +73,13 @@ namespace IS.Model.Tests.Repository.Team
 		/// <summary>
 		/// Проверяет еквивалентны ли две задачи.
 		/// </summary>
-		/// <param name="first_team"></param>
-		/// <param name="second_team"></param>
-		private void AreEqualTasks(TeamItem first_team, TeamItem second_team)
+		/// <param name="first_team">Первая группа для сравнения</param>
+		/// <param name="second_team">Вторая группа для сравнения</param>
+		private void AreEqualTeams(TeamItem first_team, TeamItem second_team)
 		{
 			Assert.AreEqual(first_team.Id, second_team.Id);
-            Assert.AreEqual(first_team.FullName, second_team.FullName);
-            Assert.AreEqual(first_team.ShortName, second_team.ShortName);
-            Assert.AreEqual(first_team.Faculty, second_team.Faculty);
+            Assert.AreEqual(first_team.Name, second_team.Name);
+            Assert.AreEqual(first_team.CreateDate, second_team.CreateDate);
 		}
 
 		#endregion
@@ -111,12 +92,12 @@ namespace IS.Model.Tests.Repository.Team
 		[Test]
 		public void Delete_Void_ReturnNull()
 		{
-			_task.Id = _taskRepository.Create(_task);
-			var result = _taskRepository.Get(_task.Id);
-			AreEqualTasks(result, _task);
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _team);
 
-			_taskRepository.Delete(_task.Id);
-			result = _taskRepository.Get(_task.Id);
+			_teamRepository.Delete(_team.Id);
+			result = _teamRepository.Get(_team.Id);
 			Assert.IsNull(result);
 		}
 
@@ -128,11 +109,11 @@ namespace IS.Model.Tests.Repository.Team
 		/// Получает список всех задач.
 		/// </summary>
 		[Test]
-		public void GetList_Void_ReturnNotEmptyListWithTask()
+		public void GetList_Void_ReturnNotEmptyListWithTeam()
 		{
-			_task.Id = _taskRepository.Create(_task);
-			var result = _taskRepository.GetList().Find(x => x.Id == _task.Id);
-			AreEqualTasks(result, _task);
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.GetList().Find(x => x.Id == _team.Id);
+			AreEqualTeams(result, _team);
 		}
 
 		#endregion
