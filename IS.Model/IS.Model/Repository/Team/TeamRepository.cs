@@ -62,7 +62,16 @@ where t.Team = @id", new { id });
 		/// <returns>Список группу.</returns>
 		public List<TeamItem> GetList()
 		{
-			return null;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<TeamItem>(@"
+select
+	t.team Id,
+	t.name Name,
+	t.create_date CreateDate,
+from Team.team t
+	");
+			}
 		}
 	}
 }
