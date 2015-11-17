@@ -65,7 +65,12 @@ namespace IS.Mvc.Controllers
 		public ActionResult New()
 		{
 			Access.CheckAccess("Task.Creator");
-			return View();
+			var default_item = new TaskItem
+			{
+				Difficult = 1,
+				Priority = 3
+			};
+			return View(default_item);
 		}
 
 		/// <summary>
@@ -132,6 +137,15 @@ namespace IS.Mvc.Controllers
 			Access.CheckAccess();
 			_taskService.SetState(id, true, false);
 			return RedirectToAction("Index", new { id });
+		}
+
+		/// <summary>
+		/// Прогресс в решении задач.
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult Progress()
+		{
+			return View("Statistic", _taskService.Statistic());
 		}
 	}
 }

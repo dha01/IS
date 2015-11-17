@@ -3,7 +3,8 @@
 @model List<TaskItem> 
 
 @{
-    ViewBag.Title = "List";
+	ViewBag.Title = "List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -30,10 +31,70 @@
 @Html.ActionLink("Загрузка файлов", "Index", "File")
 
 <h2>Список задач</h2>
+
+@Html.ActionLink("Перейти к лиичному прогрессу", "Progress", "Task", null, new { style = "font-size: 20pt" })
+
 @if (Access.CheckRole())
 {
 	<h2>@Html.ActionLink("Создать", "New")</h2>
 }
+
+@{
+	TimeSpan end = (TimeSpan)(new DateTime(2015, 12, 24, 12, 00, 00) - DateTime.Now);
+	int sec = Convert.ToInt32(end.TotalSeconds);
+	int day = 108 - Convert.ToInt32(end.TotalDays);
+}
+
+<div>
+	<span>До конца последнего занятия осталось:&nbsp;</span><span class="afss_day_bv">0</span> д.
+	<span class="afss_hours_bv">00</span>&nbsp;час.&nbsp;
+	<span class="afss_mins_bv">00</span>&nbsp;мин.&nbsp;
+	<span class="afss_secs_bv">00&nbsp;</span>&nbsp;сек.
+</div>
+
+<progress max="108" value="@day" style="width: 100%; height: 40px;">
+	<span id="value">25</span>%
+</progress>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+	var remain_bv = @sec;
+	function parseTime_bv(timestamp) {
+		if (timestamp < 0) timestamp = 0;
+
+		var day = Math.floor((timestamp / 60 / 60) / 24);
+		var hour = Math.floor(timestamp / 60 / 60);
+		var mins = Math.floor((timestamp - hour * 60 * 60) / 60);
+		var secs = Math.floor(timestamp - hour * 60 * 60 - mins * 60);
+		var left_hour = Math.floor((timestamp - day * 24 * 60 * 60) / 60 / 60);
+
+		$('span.afss_day_bv').text(day);
+		$('span.afss_hours_bv').text(left_hour);
+
+		if (String(mins).length > 1)
+			$('span.afss_mins_bv').text(mins);
+		else
+			$('span.afss_mins_bv').text("0" + mins);
+		if (String(secs).length > 1)
+			$('span.afss_secs_bv').text(secs);
+		else
+			$('span.afss_secs_bv').text("0" + secs);
+
+	}
+
+	$(document).ready(function () {
+		setInterval(function () {
+			remain_bv = remain_bv - 1;
+			parseTime_bv(remain_bv);
+			if (remain_bv <= 0) {
+				alert('Hello');
+			}
+		}, 1000);
+	});
+	//]]>
+</script>
+
 <table>
 	<thead>
 		<tr>
@@ -41,6 +102,7 @@
 			<th>Приоритет</th>
 			<th>Дата создания</th>
 			<th>Срок</th>
+			<th>Срок в днях</th>
 			<th>Исполнитель</th>
 			<th>Статус</th>
 		</tr>
@@ -67,6 +129,20 @@
 				<td>@Html.DisplayTextFor(m => task.Priority)</td>
 				<td>@Html.DisplayTextFor(m => task.Created)</td>
 				<td>@Html.DisplayTextFor(m => task.Deadline)</td>
+				<td>
+					@if (task.IsOpen && task.Deadline.HasValue)
+					{
+						TimeSpan diff = (TimeSpan)(task.Deadline - DateTime.Now);
+						if (diff.Days > 0)
+						{
+							@Html.Raw(string.Format("Осталось дней: {0}", diff.Days));
+						}
+						else
+						{
+							@Html.Raw(string.Format("Просрочено дней: {0}", -diff.Days));
+						}
+					}
+				</td>
 				<td>@Html.DisplayTextFor(m => task.Performer)</td>
 				@if (task.IsPerform)
 				{
@@ -99,5 +175,3 @@
 		}
 	</tbody>
 </table>
-
-
