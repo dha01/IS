@@ -22,7 +22,8 @@ namespace IS.Model.Repository.Cathedra
 select
 	d.сathedra Id,
 	d.full_name FullName,
-	d.short_name ShortName
+	d.short_name ShortName,
+    d.facultyId FacultyId
 from Cathedra.сathedra d
 where d.сathedra = @id", new { id });
             }
@@ -32,20 +33,60 @@ where d.сathedra = @id", new { id });
         /// Обновляет данные у кафедры.
         /// </summary>
         /// <param name="person">Кафедра.</param>
-        void Update(CathedraItem сathedra);
+        public void Update(CathedraItem cathedra)
+        {
+            using (var sqlh = new SqlHelper())
+            {
+                sqlh.ExecNoQuery(@"
+update Cathedra.cathedra
+set
+	full_name = @FullName,
+	short_name = @ShortName,
+    facultyId = @FacultyId 
+where cathedra = @Id", cathedra);
+            }
+        }
 
         /// <summary>
         /// Создает новую кафедру.
         /// </summary>
         /// <param name="сathedra">Кафедра.</param>
         /// <returns>Идентификатор созданной кафедры.</returns>
-        int Create(CathedraItem сathedra);
+        public int Create(CathedraItem cathedra)
+        {
+            using (var sqlh = new SqlHelper())
+            {
+                return sqlh.ExecScalar<int>(@"
+insert into Cathedra.cathedra
+(
+	full_name,
+	short_name,
+    facultyId
+)
+values
+(
+	@FullName,
+	@ShortName,
+    @FacultyId
+)
+
+select scope_identity()", cathedra);
+            }
+        }
 
         /// <summary>
         /// Удаляет кафедру.
         /// </summary>
         /// <param name="id">Идентификатор.</param>
-        void Delete(int id);
+        public void Delete(int id)
+        {
+            using (SqlHelper sqlh = new SqlHelper())
+            {
+                sqlh.ExecNoQuery(@"
+delete from Cathedra.cathedra
+where cathedra = @id", new { id });
+            }
+        }
 
         /// <summary>
         /// Получает список всех кафедр.
@@ -59,7 +100,8 @@ where d.сathedra = @id", new { id });
 select
 	d.faculty Id,
 	d.full_name FullName,
-	d.short_name ShortName
+	d.short_name ShortName,
+    d.facultyId FacultyId
 from Cathedra.сathedra d");
             }
         }

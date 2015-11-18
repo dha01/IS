@@ -21,5 +21,10 @@ namespace IS.Model.Item.Cathedra
         /// Сокращенное название.
         /// </summary>
         public string ShortName { get; set; }
+
+        /// <summary>
+        /// Факультеты.
+        /// </summary>
+        public int FacultyId { get; set; }
     }
 }

@@ -44,11 +44,13 @@ namespace IS.Model.Tests.Repository.Cathedra
             {
                 FullName = "Информациионных систем и технологий",
                 ShortName = "ИСиТ",
+                FacultyId = ""
             };
             _сathedraNew = new СathedraItem()
             {
                 FullName = "Экономики и управления",
                 ShortName = "ЭиЭ",
+                FacultyId = ""
             };
         }
 
@@ -79,6 +81,7 @@ namespace IS.Model.Tests.Repository.Cathedra
             Assert.AreEqual(first_сathedra.Id, second_сathedra.Id);
             Assert.AreEqual(first_сathedra.FullName, second_сathedra.FullName);
             Assert.AreEqual(first_сathedra.ShortName, second_сathedra.ShortName);
+            Assert.AreEqual(first_сathedra.FacultyId, second_сathedra.FacultyId);
         }
 
         #endregion
@@ -88,7 +91,13 @@ namespace IS.Model.Tests.Repository.Cathedra
         /// <summary>
         /// Создает кафедру.
         /// </summary>
-
+        [Test]
+        public void Create_Void_ReturnId()
+        {
+            _cathedra.Id = _cathedraRepository.Create(_cathedra);
+            var result = _cathedraRepository.Get(_cathedra.Id);
+            AreEqualCathedra(result, _cathedra);
+        }
         #endregion
 
         #region Update
@@ -96,7 +105,17 @@ namespace IS.Model.Tests.Repository.Cathedra
         /// <summary>
         /// Изменяет параметры кафедры.
         /// </summary>
-
+        [Test]
+        public void Update_Void_ReturnChangedCathedra()
+        {
+            _cathedra.Id = _cathedraRepository.Create(_cathedra);
+            var result = _cathedraRepository.Get(_cathedra.Id);
+            AreEqualPerson(result, _person);
+            _cathedraNew.Id = _cathedra.Id;
+            _cathedraRepository.Update(_cathedraNew);
+            result = _cathedraRepository.Get(_cathedra.Id);
+            AreEqualCathedra(result, _cathedraNew);
+        }
         #endregion
 
         #region Delete
@@ -104,6 +123,16 @@ namespace IS.Model.Tests.Repository.Cathedra
         /// <summary>
         /// Удаляет кафедру.
         /// </summary>
+        [Test]
+        public void Delete_Void_ReturnNull()
+        {
+            _cathedra.Id = _cathedraRepository.Create(_cathedra);
+            var result = _cathedraRepository.Get(_cathedra.Id);
+            AreEqualCathedra(result, _cathedra);
+            _cathedraRepository.Delete(_cathedra.Id);
+            result = _cathedraRepository.Get(_cathedra.Id);
+            Assert.IsNull(result);
+        }
         #endregion
 
         #region GetList
