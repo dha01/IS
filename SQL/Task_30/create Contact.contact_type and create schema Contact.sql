@@ -1,7 +1,7 @@
--- Создание схемы "Contact"
+п»ї-- РЎРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ "Contact"
 create schema Contact
 
--- Создание таблицы "contact_type"
+-- РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ "contact_type"
 create table Contact.contact_type
 (
 	contact_type int identity not null,
@@ -9,14 +9,14 @@ create table Contact.contact_type
 	memo varchar(max) not null,
 	constraint PK__contact_type primary key (contact_type)
 )
--- Добавляние записей в таблицу.
+-- Р”РѕР±Р°РІР»СЏРЅРёРµ Р·Р°РїРёСЃРµР№ РІ С‚Р°Р±Р»РёС†Сѓ.
 insert into Contact.contact_type(code,memo)
 	values
-			('MobilePhone', 'Мобильный телефон'),
-			('CityPhone', 'Городской телефон'),
-			('Skype', 'Скайп'),
-			('Facebook', 'Фейсбук'),
-			('VK', 'ВКонтакте'),
-			('Steam', 'Стим'),
-			('Twitter', 'Твиттер'),
-			('Instagram', 'Инстаграм')
+			('MobilePhone', 'РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ'),
+			('CityPhone', 'Р“РѕСЂРѕРґСЃРєРѕР№ С‚РµР»РµС„РѕРЅ'),
+			('Skype', 'РЎРєР°Р№Рї'),
+			('Facebook', 'Р¤РµР№СЃР±СѓРє'),
+			('VK', 'Р’РљРѕРЅС‚Р°РєС‚Рµ'),
+			('Steam', 'РЎС‚РёРј'),
+			('Twitter', 'РўРІРёС‚С‚РµСЂ'),
+			('Instagram', 'РРЅСЃС‚Р°РіСЂР°Рј')
