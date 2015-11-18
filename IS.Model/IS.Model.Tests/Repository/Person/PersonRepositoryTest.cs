@@ -4,14 +4,14 @@ using IS.Model.Item.Person;
 using IS.Model.Repository.Person;
 using NUnit.Framework;
 
-namespace IS.Model.Tests.Repository.Person
+namespace IS.Model.Tests.Repository.Housing
 {
 	/// <summary>
 	/// Тесты для репозитория людей.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
-	public class PersonRepositoryTest
+	public class HousingRepositoryTest
 	{
 		#region Fields
 
@@ -39,9 +39,9 @@ namespace IS.Model.Tests.Repository.Person
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
-			_personRepository = new PersonRepository();
+			_housingRepository = new PersonRepository();
 
-			_person = new PersonItem()
+			_housing = new PersonItem()
 			{
 				Id = 1,
 				LastName = "Иванов",
@@ -50,7 +50,7 @@ namespace IS.Model.Tests.Repository.Person
 				FatherName = "Иванович"
 				
 			};
-			_personNew = new PersonItem()
+			_housingNew = new PersonItem()
 			{
 				Id = 1,
 				LastName = "Пупкин",
@@ -101,9 +101,9 @@ namespace IS.Model.Tests.Repository.Person
 		[Test]
 		public void Create_Void_ReturnId()
 		{
-			_person.Id = _personRepository.Create(_person);
-			var result = _personRepository.Get(_person.Id);
-			AreEqualPerson(result, _person);
+			_housing.Id = _housingRepository.Create(_housing);
+			var result = _housingRepository.Get(_housing.Id);
+			AreEqualHousing(result, _housing);
 		}
 
 		#endregion
@@ -116,13 +116,13 @@ namespace IS.Model.Tests.Repository.Person
 		[Test]
 		public void Update_Void_ReturnChangedPerson()
 		{
-			_person.Id = _personRepository.Create(_person);
-			var result = _personRepository.Get(_person.Id);
-			AreEqualPerson(result, _person);
-			_personNew.Id = _person.Id;
-			_personRepository.Update(_personNew);
-			result = _personRepository.Get(_person.Id);
-			AreEqualPerson(result, _personNew);
+			_housing.Id = _housingRepository.Create(_housing);
+			var result = _housingRepository.Get(_housing.Id);
+			AreEqualHousing(result, _housing);
+			_housingNew.Id = _housing.Id;
+			_housingRepository.Update(_housingNew);
+			result = _housingRepository.Get(_housing.Id);
+			AreEqualHousing(result, _housingNew);
 		}
 
 		#endregion
@@ -135,11 +135,11 @@ namespace IS.Model.Tests.Repository.Person
 		[Test]
 		public void Delete_Void_ReturnNull()
 		{
-			_person.Id = _personRepository.Create(_person);
-			var result = _personRepository.Get(_person.Id);
-			AreEqualPerson(result, _person);
-			_personRepository.Delete(_person.Id);
-			result = _personRepository.Get(_person.Id);
+			_housing.Id = _housingRepository.Create(_housing);
+			var result = _housingRepository.Get(_housing.Id);
+			AreEqualHousing(result, _housing);
+			_housingRepository.Delete(_housing.Id);
+			result = _housingRepository.Get(_housing.Id);
 			Assert.IsNull(result);
 		}
 
@@ -153,9 +153,9 @@ namespace IS.Model.Tests.Repository.Person
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithPerson()
 		{
-			_person.Id = _personRepository.Create(_person);
-			var result = _personRepository.GetList().Find(x => x.Id == _person.Id);
-			AreEqualPerson(result, _person);
+			_housing.Id = _housingRepository.Create(_housing);
+			var result = _housingRepository.GetList().Find(x => x.Id == _housing.Id);
+			AreEqualHousing(result, _housing);
 		}
 
 		#endregion

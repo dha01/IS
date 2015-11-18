@@ -1,33 +1,33 @@
 ﻿using System.Collections.Generic;
 using IS.Model.Item.Access;
-using IS.Model.Item.Faculty;
+using IS.Model.Item.Housing;
 
-namespace IS.Model.Repository.Faculty
+namespace IS.Model.Repository.Housing
 {
 	/// <summary>
 	/// Интерфейс репозитория факультетов.
 	/// </summary>
-	public interface IFacultyRepository : IRepository<FacultyItem>
+	public interface IHousingRepository : IRepository<HousingItem>
 	{
 		/// <summary>
 		/// Получает факультет по идентификатору.
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		/// <returns>Факультет.</returns>
-		FacultyItem Get(int id);
+		HousingItem Get(int id);
 
 		/// <summary>
 		/// Обновляет данные по факультету.
 		/// </summary>
 		/// <param name="faculty">Факультет.</param>
-		void Update(FacultyItem faculty);
+		void Update(HousingItem faculty);
 
 		/// <summary>
 		/// Создает новый факультет.
 		/// </summary>
 		/// <param name="faculty">Факультет.</param>
 		/// <returns>Идентификатор созданного факультета.</returns>
-		int Create(FacultyItem faculty);
+		int Create(HousingItem faculty);
 
 		/// <summary>
 		/// Удаляет задачу.
@@ -39,6 +39,6 @@ namespace IS.Model.Repository.Faculty
 		/// Получает список всех факультетов.
 		/// </summary>
 		/// <returns>Список факультетов.</returns>
-		List<FacultyItem> GetList();
+		List<HousingItem> GetList();
 	}
 }
