@@ -10,24 +10,24 @@ namespace IS.Model.Item.Specialty
         /// <summary>
         /// Идентификатор специальности.
         /// </summary>
-        public int Id { get; set; }
+		public int Id { get; set; }
 
         /// <summary>
         /// Полное название специальности.
         /// </summary>
-        public string FullName { get; set; }
+		public string FullName { get; set; }
 
         /// <summary>
         /// Сокращенное название специальности.
         /// </summary>
-        public string ShortName { get; set; }
+		public string ShortName { get; set; }
 
-        /// <summary>
-        /// Код специальности.
-        /// </summary>
-        public string Code { get; set; }
+	    /// <summary>
+	    /// Код специальности.
+	    /// </summary>
+		public string Code { get; set; }
 
-		/// <summary>
+	    /// <summary>
 		/// Кафедра, на которой находится специальность.
 		/// </summary>
 		public int CathedraId { get; set; }
