@@ -44,7 +44,22 @@ where t.Team = @id", new { id });
 		/// <returns>Идентификатор созданной группу.</returns>
 		public int Create(TeamItem Team)
 		{
-			return 0;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecScalar<int>(@"
+insert into Team.Team
+(
+	name,
+	create_date
+)
+values
+(
+	@Name,
+	@CreateDate
+)
+
+select scope_identity()", Team);
+			}
 		}
 
 		/// <summary>
