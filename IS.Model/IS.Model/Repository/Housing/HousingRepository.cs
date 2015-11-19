@@ -42,9 +42,9 @@ where d.housing = @id", new { id });
 update Housing.housing
 set
 	number = @Number,
-	name = @Name
-    level =@Level
-    memo=@Memo
+	name = @Name,
+    level = @Level,
+    memo = @Memo
 where housing = @Id", housing);
             }
         }
@@ -102,7 +102,7 @@ where housing = @id", new { id });
             {
                 return sqlh.ExecMappingList<HousingItem>(@"
 select
-	 d.housing Id
+	d.housing Id
 	d.number Number,
 	d.name Name,
 	d.level Level
