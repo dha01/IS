@@ -43,13 +43,13 @@ namespace IS.Model.Tests.Repository.Team
 
 			_team = new TeamItem()
 			{
-                Name = "PE-21b",
-                CreateDate = DateTime.Now,
+				Name = "PE-21b",
+				CreateDate = DateTime.Now,
 			}; 
 			_teamNew = new TeamItem()
 			{
-                Name = "PE-22b",
-                CreateDate = DateTime.Now.AddYears(-3),
+				Name = "PE-22b",
+				CreateDate = DateTime.Now.AddYears(-3),
 			};
 		}
 
@@ -77,9 +77,9 @@ namespace IS.Model.Tests.Repository.Team
 		/// <param name="second_team">Вторая группа для сравнения.</param>
 		private void AreEqualTeams(TeamItem first_team, TeamItem second_team)
 		{
-            Assert.AreEqual(first_team.Id, second_team.Id);
-            Assert.AreEqual(first_team.Name, second_team.Name);
-            Assert.AreEqual(first_team.CreateDate, second_team.CreateDate);
+			Assert.AreEqual(first_team.Id, second_team.Id);
+			Assert.AreEqual(first_team.Name, second_team.Name);
+			Assert.AreEqual(first_team.CreateDate, second_team.CreateDate);
 		}
 
 		#endregion
