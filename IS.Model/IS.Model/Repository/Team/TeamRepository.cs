@@ -62,7 +62,7 @@ where Team = @Id", team);
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
+            
 		}
 
 		/// <summary>

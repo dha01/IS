@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Task
 {
 	/// <summary>
-	/// Тесты для репозитория задач.
+	/// Тесты для репозитория групп.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -23,7 +23,7 @@ namespace IS.Model.Tests.Repository.Task
 		private TransactionScope _transactionScope;
 
 		/// <summary>
-		/// Репозиторий задач.
+		/// Репозиторий групп.
 		/// </summary>
 		private TeamRepository _teamRepository;
 
@@ -73,7 +73,7 @@ namespace IS.Model.Tests.Repository.Task
 		#region Methods
 
 		/// <summary>
-		/// Проверяет еквивалентны ли две задачи.
+		/// Проверяет еквивалентны ли две группы.
 		/// </summary>
 		/// <param name="first_team"></param>
 		/// <param name="second_team"></param>
