@@ -21,7 +21,7 @@ namespace IS.Model.Tests.Repository.Team
 		private TransactionScope _transactionScope;
 
 		/// <summary>
-		/// Репозиторий задач.
+		/// Репозиторий групп.
 		/// </summary>
 		private TeamRepository _teamRepository;
 
