@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Team
 {
 	/// <summary>
-	/// Тесты для репозитория задач.
+	/// Тесты для репозитория групп.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -71,13 +71,13 @@ namespace IS.Model.Tests.Repository.Team
 		#region Methods
 
 		/// <summary>
-		/// Проверяет еквивалентны ли две задачи.
+		/// Проверяет эквивалентны ли две группы.
 		/// </summary>
-		/// <param name="first_team">Первая группа для сравнения</param>
-		/// <param name="second_team">Вторая группа для сравнения</param>
+		/// <param name="first_team">Первая группа для сравнения.</param>
+		/// <param name="second_team">Вторая группа для сравнения.</param>
 		private void AreEqualTeams(TeamItem first_team, TeamItem second_team)
 		{
-			Assert.AreEqual(first_team.Id, second_team.Id);
+            Assert.AreEqual(first_team.Id, second_team.Id);
             Assert.AreEqual(first_team.Name, second_team.Name);
             Assert.AreEqual(first_team.CreateDate, second_team.CreateDate);
 		}
@@ -87,7 +87,7 @@ namespace IS.Model.Tests.Repository.Team
 		#region Delete
 
 		/// <summary>
-		/// Удаляет задачу.
+		/// Удаляет группу.
 		/// </summary>
 		[Test]
 		public void Delete_Void_ReturnNull()
@@ -106,7 +106,7 @@ namespace IS.Model.Tests.Repository.Team
 		#region GetList
 
 		/// <summary>
-		/// Получает список всех задач.
+		/// Получает список всех групп.
 		/// </summary>
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithTeam()
