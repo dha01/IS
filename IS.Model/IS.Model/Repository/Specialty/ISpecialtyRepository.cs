@@ -1,4 +1,5 @@
 ﻿using IS.Model.Item.Specialty;
+using System.Collections.Generic;
 
 namespace IS.Model.Repository.Specialty
 {
@@ -32,5 +33,11 @@ namespace IS.Model.Repository.Specialty
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		void Delete(int id);
-	}
+
+        /// <summary>
+		/// Получает список всех специальностей.
+		/// </summary>
+		/// <returns>Список специальностей.</returns>
+		List<SpecialtyItem> GetList();
+    }
 }

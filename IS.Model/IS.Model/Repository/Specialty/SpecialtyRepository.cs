@@ -1,5 +1,6 @@
 ﻿using IS.Model.Helper;
 using IS.Model.Item.Specialty;
+using System.Collections.Generic;
 
 namespace IS.Model.Repository.Specialty
 {
@@ -18,7 +19,7 @@ namespace IS.Model.Repository.Specialty
 			using (var sqlh = new SqlHelper())
 			{
 				return sqlh.ExecMapping<SpecialtyItem>(@"
-select
+    select
 	s.specialty Id,
 	s.full_name FullName,
 	s.short_name ShortName,
@@ -54,6 +55,24 @@ where s.specialty = @id", new { id });
 		public void Delete(int id)
 		{
 
+		}
+
+		/// <summary>
+		/// Получает список всех задач.
+		/// </summary>
+		/// <returns>Список задач.</returns>
+		public List<SpecialtyItem> GetList()
+		{
+		using (var sqlh = new SqlHelper())
+		{
+		return sqlh.ExecMappingList<SpecialtyItem>(@"
+select
+	s.specialty Id,
+		s.full_name FullName,
+		s.short_name ShortName,
+		s.code Code
+ from Specialty.specialty s");
+			}
 		}
 	} 
 }
