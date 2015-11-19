@@ -1,7 +1,7 @@
--- Создание схемы "Auditory"
+п»ї-- РЎРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ "Auditory"
 create schema Auditory
 
--- Создание таблицы "Auditory.housing"
+-- РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ "Auditory.housing"
 create table Auditory.housing
 (
 	housing int identity,
