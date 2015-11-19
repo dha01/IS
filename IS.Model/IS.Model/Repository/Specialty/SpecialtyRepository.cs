@@ -44,7 +44,26 @@ where s.specialty = @id", new { id });
 		/// <returns>Идентификатор созданной специальности.</returns>
 		public int Create(SpecialtyItem specialty)
 		{
-			return 0;
+
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecScalar<int>(@"
+insert into Specialty.specialty
+(
+	full_name,
+	short_name,
+	code,
+	cathedraId
+)
+values
+(
+	@FullName,
+	@ShortName,
+	@Code,
+	@CathedraId
+)
+select scope_identity()", specialty);
+			}
 		}
 
 		/// <summary>

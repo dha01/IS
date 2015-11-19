@@ -25,6 +25,11 @@ namespace IS.Model.Item.Specialty
         /// <summary>
         /// Код специальности.
         /// </summary>
-        public char Code { get; set; }
+        public string Code { get; set; }
+
+		/// <summary>
+		/// Кафедра, на которой находится специальность.
+		/// </summary>
+		public int CathedraId { get; set; }
     }
 }
