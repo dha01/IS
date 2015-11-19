@@ -42,7 +42,7 @@ where t.Team = @id", new { id });
 		/// </summary>
 		/// <param name="Team">Группу.</param>
 		/// <returns>Идентификатор созданной группу.</returns>
-		public int Create(TeamItem Team)
+		public int Create(TeamItem team)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -58,7 +58,7 @@ values
 	@CreateDate
 )
 
-select scope_identity()", Team);
+select scope_identity()", team);
 			}
 		}
 
