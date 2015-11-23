@@ -1,0 +1,55 @@
+﻿@using IS.Model.Item.Person;
+@model PersonItem
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    table {
+        width: 100%; /* Ширина таблицы */
+        border: 4px double black; /* Рамка вокруг таблицы */
+        border-collapse: collapse; /* Отображать только одинарные линии */
+    }
+
+    td:first-child {
+        text-align: left; /* Выравнивание по левому краю */
+        background: #ccc; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+
+    td {
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+</style>
+
+<h2>Редактироание человека</h2>
+
+@using (@Html.BeginForm("Update", "Person"))
+{
+    @Html.HiddenFor(m => Model.Id)
+
+    <table class="table person">
+        <tr>
+            <td>Фамилия</td>
+            <td>@Html.EditorFor(m => Model.LastName)</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>@Html.EditorFor(m => Model.FirstName)</td>
+        </tr>
+        <tr>
+            <td>Отчество</td>
+            <td>@Html.EditorFor(m => Model.FatherName)</td>
+        </tr>
+        <tr>
+            <td>Дата Рождения</td>
+            <td>@Html.EditorFor(m => Model.Birthday)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Сохранить"/>
+    @Html.ActionLink("Отмена", "Index", new { id = Model.Id })
+
+}

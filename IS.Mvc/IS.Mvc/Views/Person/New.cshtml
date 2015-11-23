@@ -1,0 +1,50 @@
+﻿@using IS.Model.Item.Person
+@model PersonItem
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    table {
+        width: 100%; /* Ширина таблицы */
+        border: 4px double black; /* Рамка вокруг таблицы */
+        border-collapse: collapse; /* Отображать только одинарные линии */
+    }
+
+    th {
+        text-align: left; /* Выравнивание по левому краю */
+        background: #; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+
+    td {
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+</style>
+
+<h2>Создание человека</h2>
+
+@using (@Html.BeginForm("Create", "Person"))
+{
+    <div class="personLabelText">Фамилия</div>
+    <div class="personInput">
+        <input type="text" name="LastName"/>
+    </div>
+    <div class="personLabelText">Имя</div>
+    <div class="personInput">
+        <input type="text" name="FirstName"/>
+    </div>
+    <div class="personLabelText">Отчество</div>
+    <div class="personInput">
+        <input type="text" name="FatherName"/>
+    </div>
+    <div class="personLabelText">Дата Рождения</div>
+    <div class="personInput">
+        <input type="text" name="Birthday"/>
+    </div>
+    <input type="submit" value="Создать"/>
+    
+}
