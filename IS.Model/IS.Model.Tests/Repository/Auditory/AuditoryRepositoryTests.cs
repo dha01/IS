@@ -4,14 +4,14 @@ using IS.Model.Item.Auditory;
 using IS.Model.Repository.Auditory;
 using NUnit.Framework;
 
-namespace IS.Model.Auditory.Repository.Team
+namespace IS.Model.Test.Repository.Auditory
 {
 	/// <summary>
 	/// Тесты для репозитория задач.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
-    public class AuditoryRepositoryTests
+	public class AuditoryRepositoryTests
 	{
 		#region Fields
 
@@ -23,10 +23,10 @@ namespace IS.Model.Auditory.Repository.Team
 		/// <summary>
 		/// Репозиторий задач.
 		/// </summary>
-        private AuditoryRepository _auditoryRepository;
+		private AuditoryRepository _auditoryRepository;
 
-        private AuditoryItem _auditory;
-        private AuditoryItem _auditoryNew;
+		private AuditoryItem _auditory;
+		private AuditoryItem _auditoryNew;
 
 		#endregion
 
@@ -39,23 +39,23 @@ namespace IS.Model.Auditory.Repository.Team
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
-            _auditoryRepository = new AuditoryRepository();
+			_auditoryRepository = new AuditoryRepository();
 
-            _auditory = new AuditoryItem()
+			_auditory = new AuditoryItem()
 			{
-                Number = "481",
-                FullName = "МН-481", //Что подразумевается под Полным именем?
-                Memo = "Лекционная",
-                Level = 2,
-                Capacity = 60
+				Number = "481",
+				FullName = "МН-481",
+				Memo = "Лекционная",
+				Level = 2,
+				Capacity = 60
 			};
-            _auditoryNew = new AuditoryItem()
+			_auditoryNew = new AuditoryItem()
 			{
-                Number = "572",
-                FullName = "ИН-572",
-                Memo = "Римская",
-                Level = 1,
-                Capacity = 120
+				Number = "572",
+				FullName = "ИН-572",
+				Memo = "Римская",
+				Level = 1,
+				Capacity = 120
 			};
 		}
 
@@ -79,15 +79,15 @@ namespace IS.Model.Auditory.Repository.Team
 		/// <summary>
 		/// Проверяет эквивалентны ли две аудитории.
 		/// </summary>
-        /// <param name="first_auditory"></param>
-        /// <param name="second_auditory"></param>
-        private void AreEqualAuditory(AuditoryItem first_auditory, AuditoryItem second_auditory)
+		/// <param name="first_auditory"></param>
+		/// <param name="second_auditory"></param>
+		private void AreEqualAuditory(AuditoryItem first_auditory, AuditoryItem second_auditory)
 		{
-            Assert.AreEqual(first_auditory.Number, second_auditory.Number);
-            Assert.AreEqual(first_auditory.FullName, second_auditory.FullName);
-            Assert.AreEqual(first_auditory.Memo, second_auditory.Memo);
-            Assert.AreEqual(first_auditory.Level, second_auditory.Level);
-            Assert.AreEqual(first_auditory.Capacity, second_auditory.Capacity);
+			Assert.AreEqual(first_auditory.Number, second_auditory.Number);
+			Assert.AreEqual(first_auditory.FullName, second_auditory.FullName);
+			Assert.AreEqual(first_auditory.Memo, second_auditory.Memo);
+			Assert.AreEqual(first_auditory.Level, second_auditory.Level);
+			Assert.AreEqual(first_auditory.Capacity, second_auditory.Capacity);
 		}
 
 		#endregion
@@ -105,20 +105,20 @@ namespace IS.Model.Auditory.Repository.Team
 
 		#region Delete
 
-        /// <summary>
-        /// Удаляет аудиторию.
-        /// </summary>
-        [Test]
-        public void Delete_Void_ReturnNull()
-        {
-            _auditory.Id = _auditoryRepository.Create(_auditory); //Ещё не сделали (24.11.2015)
-            var result = _auditoryRepository.Get(_auditory.Id);
-            AreEqualDiscipline(result, _auditory);
+		/// <summary>
+		/// Удаляет аудиторию.
+		/// </summary>
+		[Test]
+		public void Delete_Void_ReturnNull()
+		{
+			_auditory.Id = _auditoryRepository.Create(_auditory);
+			var result = _auditoryRepository.Get(_auditory.Id);
+			AreEqualDiscipline(result, _auditory);
 
-            _auditoryRepository.Delete(_auditory.Id);
-            result = _auditoryRepository.Get(_auditory.Id);
-            Assert.IsNull(result);
-        }
+			_auditoryRepository.Delete(_auditory.Id);
+			result = _auditoryRepository.Get(_auditory.Id);
+			Assert.IsNull(result);
+		}
 
 		#endregion
 
