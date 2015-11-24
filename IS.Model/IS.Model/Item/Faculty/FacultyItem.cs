@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace IS.Model.Item.Housing
+namespace IS.Model.Item.Faculty
 {
 	/// <summary>
 	/// Класс для хранения данных по факультетам.
 	/// </summary>
-	public class HousingItem
+	public class FacultyItem
 	{
 		/// <summary>
 		/// Идентификатор.

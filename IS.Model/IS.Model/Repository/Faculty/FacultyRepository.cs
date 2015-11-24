@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using IS.Model.Helper;
-using IS.Model.Item.Housing;
+using IS.Model.Item.Faculty;
 
-namespace IS.Model.Repository.Housing
+namespace IS.Model.Repository.Faculty
 {
 	/// <summary>
 	/// Репозиторий факультетов.
 	/// </summary>
-	public class HousingRepository : IHousingRepository
+	public class FacultyRepository : IFacultyRepository
 	{
 		/// <summary>
 		/// Получает факультет по идентификатору.
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		/// <returns>Факультет.</returns>
-		public HousingItem Get(int id)
+		public FacultyItem Get(int id)
 		{
 			using (var sqlh = new SqlHelper())
 			{
-				return sqlh.ExecMapping<HousingItem>(@"
+				return sqlh.ExecMapping<FacultyItem>(@"
 select
 	d.faculty Id,
 	d.full_name FullName,
@@ -32,7 +32,7 @@ where d.faculty = @id", new {id});
 		/// Обновляет данные по факультету.
 		/// </summary>
 		/// <param name="faculty">Факультет.</param>
-		public void Update(HousingItem faculty)
+		public void Update(FacultyItem faculty)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -50,7 +50,7 @@ where faculty = @Id", faculty);
 		/// </summary>
 		/// <param name="faculty">Факультет.</param>
 		/// <returns>Идентификатор созданного факультета.</returns>
-		public int Create(HousingItem faculty)
+		public int Create(FacultyItem faculty)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -88,11 +88,11 @@ where faculty = @id", new { id });
 		/// Получает список всех факультетов.
 		/// </summary>
 		/// <returns>Список факультетов.</returns>
-		public List<HousingItem> GetList()
+		public List<FacultyItem> GetList()
 		{
 			using (var sqlh = new SqlHelper())
 			{
-				return sqlh.ExecMappingList<HousingItem>(@"
+				return sqlh.ExecMappingList<FacultyItem>(@"
 select
 	d.faculty Id,
 	d.full_name FullName,

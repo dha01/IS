@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Transactions;
-using IS.Model.Item.Housing;
-using IS.Model.Repository.Housing;
+using IS.Model.Item.Faculty;
+using IS.Model.Repository.Faculty;
 using NUnit.Framework;
 
 namespace IS.Model.Tests.Repository.Faculty
@@ -23,10 +23,10 @@ namespace IS.Model.Tests.Repository.Faculty
 		/// <summary>
 		/// Репозиторий факультетов.
 		/// </summary>
-		private HousingRepository _facultyRepository;
+		private FacultyRepository _facultyRepository;
 
-		private HousingItem _faculty;
-		private HousingItem _facultyNew;
+		private FacultyItem _faculty;
+		private FacultyItem _facultyNew;
 
 		#endregion
 
@@ -39,16 +39,16 @@ namespace IS.Model.Tests.Repository.Faculty
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
-			_facultyRepository = new HousingRepository();
-			_faculty = new HousingItem()
+			_facultyRepository = new FacultyRepository();
+			_faculty = new FacultyItem()
 			{
-				Number = "Экономический",
-				Level = "Э",
+				FullName = "Экономический",
+				ShortName = "Э",
 			};
-			_facultyNew = new HousingItem()
+			_facultyNew = new FacultyItem()
 			{
-				Number = "Социальный",
-				Level = "С",
+				FullName = "Социальный",
+				ShortName = "С",
 			};
 		}
 
@@ -74,11 +74,11 @@ namespace IS.Model.Tests.Repository.Faculty
 		/// </summary>
 		/// <param name="first_faculty"></param>
 		/// <param name="second_faculty"></param>
-		private void AreEqualFaculties(HousingItem first_faculty, HousingItem second_faculty)
+		private void AreEqualFaculties(FacultyItem first_faculty, FacultyItem second_faculty)
 		{
 			Assert.AreEqual(first_faculty.Id, second_faculty.Id);
-			Assert.AreEqual(first_faculty.Number, second_faculty.Number);
-			Assert.AreEqual(first_faculty.Level, second_faculty.Level);
+			Assert.AreEqual(first_faculty.FullName, second_faculty.FullName);
+			Assert.AreEqual(first_faculty.ShortName, second_faculty.ShortName);
 		}
 
 		#endregion
