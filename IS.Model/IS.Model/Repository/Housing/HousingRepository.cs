@@ -43,8 +43,13 @@ update Auditory.housing
 set
 	number = @Number,
 	name = @Name,
+<<<<<<< HEAD
 	level = @Level,
 	memo = @Memo
+=======
+    level = @Level,
+    memo = @Memo
+>>>>>>> 965f4bff1a576ec3457648f659e6e6fe3e64e2b6
 where housing = @Id", housing);
 			}
 		}
@@ -102,7 +107,11 @@ where housing = @id", new { id });
 			{
 				return sqlh.ExecMappingList<HousingItem>(@"
 select
+<<<<<<< HEAD
 	d.housing Id,
+=======
+	d.housing Id
+>>>>>>> 965f4bff1a576ec3457648f659e6e6fe3e64e2b6
 	d.number Number,
 	d.name Name,
 	d.level Level,
