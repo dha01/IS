@@ -27,7 +27,7 @@ namespace IS.Model.Item.Housing
 		/// </summary>
 		public int Level { get; set; }
 		/// <summary>
-		/// Краткое описание.
+		/// Краткое описание
 		/// </summary>
 		public string Memo { get; set; }
 	}

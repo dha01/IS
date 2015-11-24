@@ -36,7 +36,7 @@ namespace IS.Model.Repository.Housing
 		void Delete(int id);
 
 		/// <summary>
-		/// Получает список всех корпусов.
+		/// Получает список всех корпусов
 		/// </summary>
 		/// <returns>Список корпусов.</returns>
 		List<HousingItem> GetList();

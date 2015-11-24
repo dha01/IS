@@ -150,7 +150,7 @@ namespace IS.Model.Tests.Repository.Housing
 		#region GetList
 
 		/// <summary>
-		/// Получает список всех корпусов.
+		/// Получает список всех корпусов
 		/// </summary>
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithHousing()
