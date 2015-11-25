@@ -65,7 +65,6 @@
     <Compile Include="Service\DisciplineServiceTests.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
     <Compile Include="Service\FacultyServiceTest.cs" />
-    <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
     <Compile Include="Service\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
