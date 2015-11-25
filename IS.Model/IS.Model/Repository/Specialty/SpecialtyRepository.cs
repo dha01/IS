@@ -53,8 +53,13 @@ where s.specialty = @id", new { id });
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
-		}
+            using (var sqlh = new SqlHelper())
+            {
+                sqlh.ExecMapping<SpecialtyItem>(@"
+delete from Specialty.specialty 
+where id = @id", new { id });
+            }
+        }
 	} 
 }
 
