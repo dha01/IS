@@ -11,6 +11,6 @@ namespace IS.Model.Item.Student
         /// <summary>
         /// Идентификатор группы.
         /// </summary>
-        public int Team { get; set; }
+        public int TeamId { get; set; }
     }
 }

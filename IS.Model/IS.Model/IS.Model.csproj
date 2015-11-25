@@ -49,7 +49,7 @@
     <Compile Include="Item\Role.cs" />
     <Compile Include="Item\Specialty\SpecialtyDetailItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyItem.cs" />
-    <Compile Include="Item\Student\StudentItem.cs" />
+    <Compile Include="Item\Person\StudentItem.cs" />
     <Compile Include="Item\Task\TaskItem.cs" />
     <Compile Include="Item\Faculty\FacultyItem.cs" />
     <Compile Include="Item\Team\TeamItem.cs" />
@@ -57,8 +57,8 @@
     <Compile Include="Repository\Access\IRoleRepository.cs" />
     <Compile Include="Repository\Discipline\IDisciplineRepository.cs" />
     <Compile Include="Repository\Discipline\DisciplineRepository.cs" />
-    <Compile Include="Repository\Student\IStudentRepository.cs" />
-    <Compile Include="Repository\Student\StudentRepository.cs" />
+    <Compile Include="Repository\Specialty\IStudentRepository.cs" />
+    <Compile Include="Repository\Specialty\StudentRepository.cs" />
     <Compile Include="Repository\Task\ITaskRepository.cs" />
     <Compile Include="Repository\Access\IUserRepository.cs" />
     <Compile Include="Repository\Access\RoleRepository.cs" />

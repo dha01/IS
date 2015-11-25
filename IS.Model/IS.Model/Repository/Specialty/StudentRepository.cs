@@ -20,22 +20,14 @@ namespace IS.Model.Repository.Student
 			{
 				return sqlh.ExecMapping<StudentItem>(@"
 select
-	t.task Id,
-	t.number Number,
-	p.code Prefix,
-	t.header Header,
-	t.mem Mem,
-	t.created Created,
-	t.deadline Deadline,
-	t.priority Priority,
-	t.performer Performer,
-	t.author Author,
-	t.is_perform IsPerform,
-	t.is_open IsOpen,
-	t.difficult Difficult
-from Task.task t
-	join Task.task_prefix p on p.task_prefix = t.task_prefix
-where t.task = @id", new { id });
+	st.student Id,
+	st.last_name string,
+	st.first_name string,
+	st.father_name string,
+	st.birthday datetime,
+	st.team_id Id,
+from Student.student st
+where st.student = @id", new { id });
 			}
 		}
 
@@ -48,20 +40,13 @@ where t.task = @id", new { id });
 			using (var sqlh = new SqlHelper())
 			{
 				sqlh.ExecNoQuery(@"
-update Task.task
+update Person.student
 set
-	number = @Number,
-	task_prefix = (select top 1 p.task_prefix from Task.task_prefix p where p.code = @Prefix),
-	header = @Header,
-	mem = @Mem,
-	deadline = @Deadline,
-	priority = @Priority,
-	performer = @Performer,
-	author = @Author,
-	is_perform = @IsPerform,
-	is_open = @IsOpen,
-	difficult = @Difficult
-where task = @Id", student);
+	last_name = @LastName,
+	first_name = @FirstName,
+	father_name = @Father Name,
+	birthday = @Birthday,
+where student = @Id", student);
 			}
 		}
 
@@ -75,37 +60,27 @@ where task = @Id", student);
 			using (var sqlh = new SqlHelper())
 			{
 				return sqlh.ExecScalar<int>(@"
-insert into Task.task
+insert into Person.srudent
 (
-	number,
-	task_prefix,
-	header,
-	mem,
-	deadline,
-	priority,
-	performer,
-	author,
-	difficult
+    event_date
+    person
+    team
+	act
 )
 values
 (
-	@Number,
-	(select top 1 p.task_prefix from Task.task_prefix p where p.code = @Prefix),
-	@Header,
-	@Mem,
-	@Deadline,
-	@Priority,
-	@Performer,
-	@Author,
-	@Difficult
+    @EvenDate
+    @Id
+    @Team
+	1,
 )
 
-select scope_identity()", task);
+select scope_identity()", student);
 			}
 		}
 
 		/// <summary>
-		/// Удаляет задачу.
+		/// Удаляет данные о студентах.
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
@@ -113,7 +88,7 @@ select scope_identity()", task);
 			using (SqlHelper sqlh = new SqlHelper())
 			{
 				sqlh.ExecNoQuery(@"
-delete from Task.task
+delete from Person.student
 where task = @id", new { id });
 			}
 		}
@@ -122,11 +97,11 @@ where task = @id", new { id });
 		/// Получает список всех задач.
 		/// </summary>
 		/// <returns>Список задач.</returns>
-		public List<TaskItem> GetList()
+		public List<StudentItem> GetList()
 		{
 			using (var sqlh = new SqlHelper())
 			{
-				return sqlh.ExecMappingList<TaskItem>(@"
+				return sqlh.ExecMappingList<StudentItem>(@"
 select
 	t.task Id,
 	t.number Number,
