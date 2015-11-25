@@ -43,13 +43,13 @@ namespace IS.Model.Tests.Repository.Team
 
 			_team = new TeamItem()
 			{
-				Name = "PE-21b",
-				CreateDate = DateTime.Now,
+				Name = "ПЕ-22б",
+				CreateDate = DateTime.Now.Date
 			}; 
 			_teamNew = new TeamItem()
 			{
-				Name = "PE-22b",
-				CreateDate = DateTime.Now.AddYears(-3),
+				Name = "ПЕ-21б",
+				CreateDate = DateTime.Now.AddYears(-1)
 			};
 		}
 
@@ -84,7 +84,26 @@ namespace IS.Model.Tests.Repository.Team
 
 		#endregion
 
-		#region Delete
+		#region Create
+
+		/// <summary>
+		/// Создает группу.
+		/// </summary>
+		[Test]
+		public void Create_Void_ReturnId()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _team);
+		}
+
+		#endregion
+
+		#region Update
+
+	
+
+		#endregion
 
 		/// <summary>
 		/// Удаляет группу.
