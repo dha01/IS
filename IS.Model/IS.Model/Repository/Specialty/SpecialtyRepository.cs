@@ -34,8 +34,18 @@ where s.specialty = @id", new { id });
 		/// <param name="specialty">Специальность.</param>
 		public void Update(SpecialtyItem specialty)
 		{
-
-		}
+            using (var sqlh = new SqlHelper())
+            {
+                sqlh.ExecNoQuery(@"
+update Specialty.specialty
+set
+	full_name = @FullName,
+    short_name = @ShortName,
+    code = @Code,
+    cathedra = @Cathedra
+where specialty = @Id", specialty);
+            }
+        }
 
 		/// <summary>
 		/// Создает новую специальность.
