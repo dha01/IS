@@ -35,8 +35,12 @@
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Отчество</th>
-        <th></th>
-        <th></th>
+        @if (Access.CheckRole("Person.Updater"))
+        {
+            <th></th>
+            <th></th>
+            <th></th>
+        }
     </tr>
     </thead>
     <tbody>
@@ -46,19 +50,24 @@
             <td>@person.LastName</td>
             <td>@person.FirstName</td>
             <td>@person.FatherName</td>
-            <td>
-                @if (Access.CheckRole("Task.Updater"))
+            <td>@Html.ActionLink("Просмотр", "Index", new { id = person.Id });</td>
+            @if (Access.CheckRole("Person.Updater"))
                 {
+                <td>
                     @Html.ActionLink("Редактировать", "Edit", new { id = person.Id })
+                </td>
                 }
-            </td>
-            <td>
-                @if (Access.CheckRole("Task.Updater"))
+            @if (Access.CheckRole("Person.Updater"))
                 {
-                    @Html.ActionLink("Удалить", "Delete", new { id = person.Id }, new {onclick= "return confirm('Удалить файл?')" })
+                <td>
+                    @Html.ActionLink("Удалить", "Delete", new { id = person.Id }, new { onclick = "return confirm('Удалить файл?')" })
+                </td>
                 }
-            </td>
         </tr>
     }
     </tbody>
 </table>
+@if (Access.CheckRole("Person.Updater"))
+{
+    @Html.ActionLink("Создать запись о человеке", "New");
+}

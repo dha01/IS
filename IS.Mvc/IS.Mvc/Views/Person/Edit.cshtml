@@ -7,7 +7,6 @@
 
 <style>
     table {
-        width: 100%; /* Ширина таблицы */
         border: 4px double black; /* Рамка вокруг таблицы */
         border-collapse: collapse; /* Отображать только одинарные линии */
     }
@@ -49,7 +48,7 @@
             <td>@Html.EditorFor(m => Model.Birthday)</td>
         </tr>
     </table>
-    <input type="submit" value="Сохранить"/>
+    <input type="submit" value="Сохранить"/><br/>
+    @Html.ActionLink("Просмотр записи о человеке", "Index", new { id = Model.Id })<br />
     @Html.ActionLink("Отмена", "Index", new { id = Model.Id })
-
 }
