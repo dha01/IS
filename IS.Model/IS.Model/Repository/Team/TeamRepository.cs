@@ -68,9 +68,9 @@ where t.Team = @id", new { id });
 select
 	t.team Id,
 	t.name Name,
-	t.create_date CreateDate,
+	t.create_date CreateDate
 from Team.team t
-	");
+");
 			}
 		}
 	}
