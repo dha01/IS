@@ -30,6 +30,6 @@ namespace IS.Model.Item.Person
 		/// <summary>
 		/// День рождения.
 		/// </summary>
-		public DateTime Birthday { get; set; }
+		public DateTime? Birthday { get; set; }
 	}
 }
