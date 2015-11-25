@@ -105,6 +105,8 @@ namespace IS.Model.Tests.Repository.Team
 
 		#endregion
 
+		#region Delete
+
 		/// <summary>
 		/// Удаляет группу.
 		/// </summary>

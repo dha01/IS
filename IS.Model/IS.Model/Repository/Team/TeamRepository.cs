@@ -32,15 +32,15 @@ where t.team = @id", new { id });
 		/// <summary>
 		/// Обновляет данные по группе.
 		/// </summary>
-		/// <param name="Team">Группу.</param>
-		public void Update(TeamItem Team)
+		/// <param name="team">Группу.</param>
+		public void Update(TeamItem team)
 		{
 		}
 
 		/// <summary>
 		/// Создает новую группу.
 		/// </summary>
-		/// <param name="Team">Группу.</param>
+		/// <param name="team">Группу.</param>
 		/// <returns>Идентификатор созданной группу.</returns>
 		public int Create(TeamItem team)
 		{
@@ -72,7 +72,7 @@ select scope_identity()", team);
 			{
 				sqlh.ExecMapping<TeamItem>(@"
 delete from Team.team
-where t.team = @id", new { id });
+where team = @id", new { id });
 			}
 		}
 

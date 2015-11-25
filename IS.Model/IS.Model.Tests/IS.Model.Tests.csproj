@@ -60,7 +60,6 @@
     <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
     <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
     <Compile Include="Repository\Access\UserRepositoryTests.cs" />
-    <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
     <Compile Include="Service\FacultyServiceTest.cs" />
     <Compile Include="Service\PersonServiceTests.cs" />
     <Compile Include="Service\DisciplineServiceTests.cs" />
