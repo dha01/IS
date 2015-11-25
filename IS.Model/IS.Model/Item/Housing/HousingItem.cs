@@ -12,7 +12,6 @@ namespace IS.Model.Item.Housing
 		/// </summary>
 		public int Id { get; set; }
 
-<<<<<<< HEAD
 		/// <summary>
 		/// Номер корпуса.
 		/// </summary>
@@ -32,26 +31,5 @@ namespace IS.Model.Item.Housing
 		/// </summary>
 		public string Memo { get; set; }
 	}
-=======
-        /// <summary>
-        /// Номер корпуса.
-        /// </summary>
-        public string Number { get; set; }
-
-        /// <summary>
-        /// Имя корпуса.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Этаж.
-        /// </summary>
-        public string Level { get; set; }
-        /// <summary>
-        /// Краткое описание.
-        /// </summary>
-        public string Memo { get; set; }
-    }
->>>>>>> 965f4bff1a576ec3457648f659e6e6fe3e64e2b6
 }
 
