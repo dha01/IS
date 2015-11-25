@@ -1,10 +1,9 @@
-﻿using System;
-using System.Transactions;
+﻿using System.Transactions;
 using IS.Model.Item.Auditory;
 using IS.Model.Repository.Auditory;
 using NUnit.Framework;
 
-namespace IS.Model.Test.Repository.Auditory
+namespace IS.Model.Tests.Repository.Auditory
 {
 	/// <summary>
 	/// Тесты для репозитория задач.
@@ -43,7 +42,7 @@ namespace IS.Model.Test.Repository.Auditory
 
 			_auditory = new AuditoryItem()
 			{
-				Number = "481",
+				Number = 481,
 				FullName = "МН-481",
 				Memo = "Лекционная",
 				Level = 2,
@@ -51,7 +50,7 @@ namespace IS.Model.Test.Repository.Auditory
 			};
 			_auditoryNew = new AuditoryItem()
 			{
-				Number = "572",
+				Number = 572,
 				FullName = "ИН-572",
 				Memo = "Римская",
 				Level = 1,
@@ -113,7 +112,7 @@ namespace IS.Model.Test.Repository.Auditory
 		{
 			_auditory.Id = _auditoryRepository.Create(_auditory);
 			var result = _auditoryRepository.Get(_auditory.Id);
-			AreEqualDiscipline(result, _auditory);
+			AreEqualAuditory(result, _auditory);
 
 			_auditoryRepository.Delete(_auditory.Id);
 			result = _auditoryRepository.Get(_auditory.Id);
