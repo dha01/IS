@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Team
 {
 	/// <summary>
-	/// Тесты для репозитория задач.
+	/// Тесты для репозитория групп.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -21,12 +21,12 @@ namespace IS.Model.Tests.Repository.Team
 		private TransactionScope _transactionScope;
 
 		/// <summary>
-		/// Репозиторий задач.
+		/// Репозиторий групп.
 		/// </summary>
-		private TeamRepository _TeamRepository;
+		private TeamRepository _teamRepository;
 
-		private TeamItem _Team;
-		private TeamItem _TeamNew;
+		private TeamItem _team;
+		private TeamItem _teamNew;
 
 		#endregion
 
@@ -39,18 +39,17 @@ namespace IS.Model.Tests.Repository.Team
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
-			_TeamRepository = new TeamRepository();
+			_teamRepository = new TeamRepository();
 
-			_Team = new TeamItem()
+			_team = new TeamItem()
 			{
-				Name = "1",
-				CreateDate= DateTime.Now.Date,
-				
-			};
-			_TeamNew = new TeamItem()
+				Name = "ПЕ-22б",
+				CreateDate = DateTime.Now.Date
+			}; 
+			_teamNew = new TeamItem()
 			{
-				Name = "2",
-				CreateDate = DateTime.Now.Date,
+				Name = "ПЕ-21б",
+				CreateDate = DateTime.Now.AddYears(-1)
 			};
 		}
 
@@ -72,33 +71,72 @@ namespace IS.Model.Tests.Repository.Team
 		#region Methods
 
 		/// <summary>
-		/// Проверяет еквивалентны ли две задачи.
+		/// Проверяет эквивалентны ли две группы.
 		/// </summary>
-		/// <param name="first_Team"></param>
-		/// <param name="second_Team"></param>
-		private void AreEqualTeams(TeamItem first_Team, TeamItem second_Team)
+		/// <param name="first_team">Первая группа для сравнения.</param>
+		/// <param name="second_team">Вторая группа для сравнения.</param>
+		private void AreEqualTeams(TeamItem first_team, TeamItem second_team)
 		{
-			Assert.AreEqual(first_Team.Id, second_Team.Id);
-			Assert.AreEqual(first_Team.Name, second_Team.Name);
-			Assert.AreEqual(first_Team.CreateDate, second_Team.CreateDate);
-		
+			Assert.AreEqual(first_team.Id, second_team.Id);
+			Assert.AreEqual(first_team.Name, second_team.Name);
+			Assert.AreEqual(first_team.CreateDate, second_team.CreateDate);
 		}
 
 		#endregion
+
+		#region Create
+
+		/// <summary>
+		/// Создает группу.
+		/// </summary>
+		[Test]
+		public void Create_Void_ReturnId()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _team);
+		}
+
+		#endregion
+
+		#region Update
+
+	
+
+		#endregion
+
+		#region Delete
+
+		/// <summary>
+		/// Удаляет группу.
+		/// </summary>
+		[Test]
+		public void Delete_Void_ReturnNull()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _team);
+
+			_teamRepository.Delete(_team.Id);
+			result = _teamRepository.Get(_team.Id);
+			Assert.IsNull(result);
+		}
+
+		#endregion
+
 		#region GetList
 
 		/// <summary>
-		/// Получает список всех задач.
+		/// Получает список всех групп.
 		/// </summary>
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithTeam()
 		{
-			_Team.Id = _TeamRepository.Create(_Team);
-			var result = _TeamRepository.GetList().Find(x => x.Id == _Team.Id);
-			AreEqualTeams(result, _Team);
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.GetList().Find(x => x.Id == _team.Id);
+			AreEqualTeams(result, _team);
 		}
 
 		#endregion
 	}
 }
-

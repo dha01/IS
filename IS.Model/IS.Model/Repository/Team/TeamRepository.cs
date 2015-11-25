@@ -22,9 +22,9 @@ namespace IS.Model.Repository.Team
 select
 	t.team Id,
 	t.name Name,
-	t.create_date CreateDate,
-from Team.Team t
-where t.Team = @id", new { id });
+	t.create_date CreateDate
+from Team.team t
+where t.team = @id", new { id });
 
 			}
 		}
@@ -32,19 +32,34 @@ where t.Team = @id", new { id });
 		/// <summary>
 		/// Обновляет данные по группе.
 		/// </summary>
-		/// <param name="Team">Группу.</param>
-		public void Update(TeamItem Team)
+		/// <param name="team">Группу.</param>
+		public void Update(TeamItem team)
 		{
 		}
 
 		/// <summary>
 		/// Создает новую группу.
 		/// </summary>
-		/// <param name="Team">Группу.</param>
+		/// <param name="team">Группу.</param>
 		/// <returns>Идентификатор созданной группу.</returns>
-		public int Create(TeamItem Team)
+		public int Create(TeamItem team)
 		{
-			return 0;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecScalar<int>(@"
+insert into Team.Team
+(
+	name,
+	create_date
+)
+values
+(
+	@Name,
+	@CreateDate
+)
+
+select scope_identity()", team);
+			}
 		}
 
 		/// <summary>
@@ -53,7 +68,12 @@ where t.Team = @id", new { id });
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
+			using (SqlHelper sqlh = new SqlHelper())
+			{
+				sqlh.ExecMapping<TeamItem>(@"
+delete from Team.team
+where team = @id", new { id });
+			}
 		}
 
 		/// <summary>
