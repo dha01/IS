@@ -61,7 +61,6 @@
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
     <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
     <Compile Include="Repository\Access\UserRepositoryTests.cs" />
-    <Compile Include="Repository\UnitTest1.cs" />
     <Compile Include="Service\PersonServiceTests.cs" />
     <Compile Include="Service\DisciplineServiceTests.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
