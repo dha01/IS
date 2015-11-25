@@ -40,7 +40,7 @@
         <td>@Model.FatherName</td>
     </tr>
 </table>
-@if (Access.CheckRole("Task.Updater"))
+@if (Access.CheckRole("Person.Updater"))
 {
     @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
 }

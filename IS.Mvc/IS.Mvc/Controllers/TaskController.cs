@@ -80,7 +80,7 @@ namespace IS.Mvc.Controllers
 		[ValidateInput(false)]
 		public ActionResult Update(TaskItem task)
 		{
-			Access.CheckAccess("Task.Updater");
+			//Access.CheckAccess("Task.Updater");
 			_taskService.Update(task);
 			return RedirectToAction("Index", new { id = task.Id });
 		}
@@ -91,7 +91,7 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult Edit(int id)
 		{
-			Access.CheckAccess("Task.Updater");
+			//Access.CheckAccess("Task.Updater");
 			return View(_taskService.GetById(id));
 		}
 
