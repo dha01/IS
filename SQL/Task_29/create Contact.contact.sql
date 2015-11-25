@@ -24,7 +24,7 @@ create table Contact.contact2person
 
 -- Добавление записи
 insert into Person.person
-           (last_name,
+		   (last_name,
 			first_name,
 			father_name,
 			birthday)
