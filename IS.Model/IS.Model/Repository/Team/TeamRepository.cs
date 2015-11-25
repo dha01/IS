@@ -22,7 +22,7 @@ namespace IS.Model.Repository.Team
 select
 	t.team Id,
 	t.name Name,
-	t.create_date CreateDate,
+	t.create_date CreateDate
 from Team.Team t
 where t.Team = @id", new { id });
 
@@ -42,9 +42,24 @@ where t.Team = @id", new { id });
 		/// </summary>
 		/// <param name="Team">Группу.</param>
 		/// <returns>Идентификатор созданной группу.</returns>
-		public int Create(TeamItem Team)
+		public int Create(TeamItem team)
 		{
-			return 0;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecScalar<int>(@"
+insert into Team.Team
+(
+	name,
+	create_date
+)
+values
+(
+	@Name,
+	@CreateDate
+)
+
+select scope_identity()", team);
+			}
 		}
 
 		/// <summary>
