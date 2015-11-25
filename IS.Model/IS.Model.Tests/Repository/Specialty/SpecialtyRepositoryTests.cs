@@ -6,9 +6,9 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Specialty
 {
     /// <summary>
-	/// Тесты для репозитория сепциальностей
-	/// </summary>
-	[Category("Integration")]
+    /// Тесты для репозитория сепциальностей
+    /// </summary>
+    [Category("Integration")]
     [TestFixture]
     public class SpecialtyRepositoryTests
     {
