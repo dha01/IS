@@ -1,0 +1,72 @@
+﻿@using IS.Model.Item.Discipline;
+@using IS.Mvc.Models
+@model List<DisciplineItem> 
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width"/>
+        <title>Список дисциплин</title>
+        <style>
+            .creator {
+                background: #e6e6fa;
+                color: #00ced1;
+                font-size: 22px;
+                padding: 10px;
+                margin-top: 30px;
+                text-decoration: none;
+                width: 40%;
+                display: block;
+                border-radius: 5px;
+            }
+
+            h1 {
+                background: #e6e6fa;
+            }
+             a {text-decoration: none;
+                      color: #00ced1;    
+             }
+             a:link,
+             a:active,
+             a:visited  {text-decoration: none;}
+             a:hover {color: #008080;}
+             td {
+                 border: 1px solid #2f4f4f;
+                 padding: 0 15px;
+             }
+             table {
+                 border-collapse: collapse;
+             }
+        </style>
+    </head>
+    <body>
+    <h1 align="center">Список дисциплин</h1>
+    <div align="center">
+        <table>
+            <thead>
+            <tr>
+                <th>Краткое название</th>
+                <th>Полное название</th>
+                <th colspan="2">Операции</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var discipline in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayTextFor(m => discipline.ShortName)</td>
+                    <td>@Html.DisplayTextFor(m => discipline.Id)</td>
+                    <td>@Html.DisplayTextFor(m => discipline.FullName)</td>
+                    <td align="right">@Html.ActionLink("Редактировать", "Edit", new {id = discipline.Id})</td>
+                    <td align="right">@Html.ActionLink("Удалить", "Delete", new {id = discipline.Id})</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <div align="center" class="creator">@Html.ActionLink("Создать дисциплину", "New", new { id = 10 })</div>
+    </div>
+    </body>
+</html>
