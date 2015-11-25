@@ -11,7 +11,7 @@ namespace IS.Model.Tests.Repository.Auditory
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
-	public class AuditoryRepositoryTests
+    public class AuditoryRepositoryTests
 	{
 		#region Fields
 
