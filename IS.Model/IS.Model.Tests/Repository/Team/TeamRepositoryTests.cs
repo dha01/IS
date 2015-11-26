@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Transactions;
-using IS.Model.Item.Task;
 using IS.Model.Item.Team;
-using IS.Model.Repository.Task;
 using IS.Model.Repository.Team;
 using NUnit.Framework;
 
@@ -23,7 +21,7 @@ namespace IS.Model.Tests.Repository.Team
 		private TransactionScope _transactionScope;
 
 		/// <summary>
-		/// Репозиторий групп.
+		/// Репозиторий задач.
 		/// </summary>
 		private TeamRepository _teamRepository;
 
@@ -45,13 +43,13 @@ namespace IS.Model.Tests.Repository.Team
 
 			_team = new TeamItem()
 			{
-				Name = "",
-                CreateDate = DateTime.Now.Date
+				Name = "ПЕ-22б",
+				CreateDate = DateTime.Now.Date
 			}; 
 			_teamNew = new TeamItem()
 			{
-                Name = "1",
-                CreateDate = DateTime.Now.Date
+				Name = "ПЕ-21б",
+				CreateDate = DateTime.Now.AddYears(-1)
 			};
 		}
 
@@ -73,12 +71,13 @@ namespace IS.Model.Tests.Repository.Team
 		#region Methods
 
 		/// <summary>
-		/// Проверяет еквивалентны ли две группы.
+		/// Проверяет эквивалентны ли две группы.
 		/// </summary>
 		/// <param name="first_team"></param>
 		/// <param name="second_team"></param>
-		private void AreEqualteams(TeamItem first_team, TeamItem second_team)
+		private void AreEqualTeams(TeamItem first_team, TeamItem second_team)
 		{
+			Assert.AreEqual(first_team.Id, second_team.Id);
 			Assert.AreEqual(first_team.Name, second_team.Name);
 			Assert.AreEqual(first_team.CreateDate, second_team.CreateDate);
 		}
@@ -88,14 +87,14 @@ namespace IS.Model.Tests.Repository.Team
 		#region Create
 
 		/// <summary>
-		/// Создает задачу.
+		/// Создает группу.
 		/// </summary>
 		[Test]
 		public void Create_Void_ReturnId()
 		{
 			_team.Id = _teamRepository.Create(_team);
 			var result = _teamRepository.Get(_team.Id);
-			AreEqualteams(result, _team);
+			AreEqualTeams(result, _team);
 		}
 
 		#endregion
@@ -103,19 +102,19 @@ namespace IS.Model.Tests.Repository.Team
 		#region Update
 
 		/// <summary>
-		/// Изменяет параметры задачи.
+		/// Изменяет параметры группы.
 		/// </summary>
 		[Test]
-		public void Update_Void_ReturnChangedteam()
+		public void Update_Void_ReturnChangedTeam()
 		{
 			_team.Id = _teamRepository.Create(_team);
 			var result = _teamRepository.Get(_team.Id);
-			AreEqualteams(result, _team);
+			AreEqualTeams(result, _team);
 
 			_teamNew.Id = _team.Id;
 			_teamRepository.Update(_teamNew);
 			result = _teamRepository.Get(_team.Id);
-			AreEqualteams(result, _teamNew);
+			AreEqualTeams(result, _teamNew);
 
 		}
 
@@ -123,35 +122,13 @@ namespace IS.Model.Tests.Repository.Team
 
 		#region Delete
 
-		/// <summary>
-		/// Удаляет задачу.
-		/// </summary>
-		[Test]
-		public void Delete_Void_ReturnNull()
-		{
-			_team.Id = _teamRepository.Create(_team);
-			var result = _teamRepository.Get(_team.Id);
-			AreEqualteams(result, _team);
 
-			_teamRepository.Delete(_team.Id);
-			result = _teamRepository.Get(_team.Id);
-			Assert.IsNull(result);
-		}
 
 		#endregion
 
 		#region GetList
 
-		/// <summary>
-		/// Получает список всех задач.
-		/// </summary>
-		[Test]
-		public void GetList_Void_ReturnNotEmptyListWithteam()
-		{
-			_team.Id = _teamRepository.Create(_team);
-			var result = _teamRepository.GetList().Find(x => x.Id == _team.Id);
-			AreEqualteams(result, _team);
-		}
+
 
 		#endregion
 	}
