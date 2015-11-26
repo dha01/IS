@@ -1,10 +1,8 @@
-﻿insert into Person.person
-	(last_name
-	,first_name
-	,father_name
-	,birthday)
+﻿insert into Access.role
+	(code
+	,mem)
 	values
-	('Кажин','Филипп','Александрович',null),
-	('Черных','Сергей','Генадьевич',null),
-	('Турицына','Татьяна','Игоревна',null)
-
+	('Person.Create','Позволяет создавать запись о человеке'),
+	('Person.Updater','Позволяет редактировать запись о человеке'),
+	('Person.Delete','Позволяет удалять запись о человеке'),
+	('Person.Read','Позволяет открывать запись о человеке')
