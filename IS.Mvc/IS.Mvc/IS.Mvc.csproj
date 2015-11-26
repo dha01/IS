@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\OnlineTextController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
@@ -241,6 +242,10 @@
     <Content Include="Views\Task\Edit.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\Task\Statistic.cshtml" />
+    <Content Include="Views\Discipline\List.cshtml" />
+    <Content Include="Views\Discipline\Edit.cshtml" />
+    <Content Include="Views\Discipline\New.cshtml" />
+    <Content Include="Views\Discipline\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
