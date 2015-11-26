@@ -31,7 +31,8 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult List()
 		{
-			return View("List", _personService.GetList().OrderBy(x => x.LastName).ThenBy(x => x.FirstName).ToList());
+            Access.CheckAccess("Person.Reader");
+            return View("List", _personService.GetList().OrderBy(x => x.LastName).ThenBy(x => x.FirstName).ToList());
 		}
 
 		/// <summary>
@@ -41,7 +42,8 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult Index(int? id)
 		{
-			if (id.HasValue)
+            Access.CheckAccess("Person.Reader");
+            if (id.HasValue)
 			{
 				return View("Index", _personService.GetById(id.Value));
 			}
