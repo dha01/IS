@@ -101,12 +101,28 @@ namespace IS.Model.Tests.Repository.Team
 
 		#region Update
 
-	
+		/// <summary>
+		/// Изменяет параметры группы.
+		/// </summary>
+		[Test]
+		public void Update_Void_ReturnChangedTeam()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _team);
+
+			_teamNew.Id = _team.Id;
+			_teamRepository.Update(_teamNew);
+			result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _teamNew);
+
+		}
 
 		#endregion
 
 		#region Delete
 
+<<<<<<< HEAD
 		/// <summary>
 		/// Удаляет группу.
 		/// </summary>
@@ -121,11 +137,15 @@ namespace IS.Model.Tests.Repository.Team
 			result = _teamRepository.Get(_team.Id);
 			Assert.IsNull(result);
 		}
+=======
+
+>>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 
 		#endregion
 
 		#region GetList
 
+<<<<<<< HEAD
 		/// <summary>
 		/// Получает список всех групп.
 		/// </summary>
@@ -136,6 +156,9 @@ namespace IS.Model.Tests.Repository.Team
 			var result = _teamRepository.GetList().Find(x => x.Id == _team.Id);
 			AreEqualTeams(result, _team);
 		}
+=======
+
+>>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 
 		#endregion
 	}
