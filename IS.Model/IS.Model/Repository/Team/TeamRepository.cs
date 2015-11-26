@@ -32,8 +32,8 @@ where t.Team = @id", new { id });
 		/// <summary>
 		/// Обновляет данные по группе.
 		/// </summary>
-		/// <param name="Team">Группу.</param>
-		public void Update(TeamItem Team)
+		/// <param name="team">Группу.</param>
+		public void Update(TeamItem team)
 		{
             using (var sqlh = new SqlHelper())
             {

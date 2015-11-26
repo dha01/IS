@@ -6,7 +6,7 @@ using IS.Model.Repository.Task;
 using IS.Model.Repository.Team;
 using NUnit.Framework;
 
-namespace IS.Model.Tests.Repository.Task
+namespace IS.Model.Tests.Repository.Team
 {
 	/// <summary>
 	/// Тесты для репозитория групп.
