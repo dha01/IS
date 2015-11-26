@@ -1,7 +1,4 @@
-﻿using System;
-using IS.Model.Item.Person;
-
-namespace IS.Model.Item.Student
+﻿namespace IS.Model.Item.Person
 {
     /// <summary>
     /// Класс для хранения данных о сущности студентов.

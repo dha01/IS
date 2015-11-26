@@ -57,8 +57,8 @@
     <Compile Include="Repository\Access\IRoleRepository.cs" />
     <Compile Include="Repository\Discipline\IDisciplineRepository.cs" />
     <Compile Include="Repository\Discipline\DisciplineRepository.cs" />
-    <Compile Include="Repository\Specialty\IStudentRepository.cs" />
-    <Compile Include="Repository\Specialty\StudentRepository.cs" />
+    <Compile Include="Repository\Person\IStudentRepository.cs" />
+    <Compile Include="Repository\Person\StudentRepository.cs" />
     <Compile Include="Repository\Task\ITaskRepository.cs" />
     <Compile Include="Repository\Access\IUserRepository.cs" />
     <Compile Include="Repository\Access\RoleRepository.cs" />
