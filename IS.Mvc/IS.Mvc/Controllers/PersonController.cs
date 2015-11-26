@@ -9,7 +9,7 @@ using IS.Mvc.Models;
 
 namespace IS.Mvc.Controllers
 {
-    /// <summary>
+	/// <summary>
 	/// Контролер для работы с данными у человека.
 	/// </summary>
 	public class PersonController : Controller
@@ -17,9 +17,9 @@ namespace IS.Mvc.Controllers
 
 		private PersonService _personService;
 		
-       /// <summary>
-       /// Конструктор контроллера людей.
-       /// </summary>
+		/// <summary>
+		/// Конструктор контроллера людей.
+		/// </summary>
 		public PersonController()
 		{
 			_personService = new PersonService();
@@ -100,15 +100,15 @@ namespace IS.Mvc.Controllers
 			return View(_personService.GetById(id));
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Удаление человека.
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult Delete(int id)
-        {
-            Access.CheckAccess("Person.Deleter");
-            _personService.Delete(id);
-            return RedirectToAction("Index");
-        }
+		{
+			Access.CheckAccess("Person.Deleter");
+			_personService.Delete(id);
+			return RedirectToAction("Index");
+		}
     }
 }
