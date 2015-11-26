@@ -245,7 +245,8 @@
     <Content Include="Views\Discipline\List.cshtml" />
     <Content Include="Views\Discipline\Edit.cshtml" />
     <Content Include="Views\Discipline\New.cshtml" />
-    <Content Include="Views\Discipline\Index.cshtml" />    <Content Include="production.Web.config">
+    <Content Include="Views\Discipline\Index.cshtml" />
+    <Content Include="production.Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="production.Web.Debug.config">
