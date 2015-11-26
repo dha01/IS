@@ -60,7 +60,7 @@
             @if (Access.CheckRole("Person.Updater"))
                 {
                 <td>
-                    @Html.ActionLink("Удалить", "Delete", new { id = person.Id }, new { onclick = "return confirm('Удалить файл?')" })
+                    @Html.ActionLink("Удалить", "Delete", new { id = person.Id }, new { onclick = "return confirm('Удалить запись?')" })
                 </td>
                 }
         </tr>
