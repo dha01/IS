@@ -11,7 +11,7 @@ namespace IS.Model.Tests.Repository.Auditory
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
-    public class AuditoryRepositoryTests
+	public class AuditoryRepositoryTests
 	{
 		#region Fields
 
@@ -116,7 +116,20 @@ namespace IS.Model.Tests.Repository.Auditory
 
 		#region Delete
 
+		/// <summary>
+		/// Удаляет аудиторию.
+		/// </summary>
+		[Test]
+		public void Delete_Void_ReturnNull()
+		{
+			_auditory.Id = _auditoryRepository.Create(_auditory);
+			var result = _auditoryRepository.Get(_auditory.Id);
+			AreEqualAuditory(result, _auditory);
 
+			_auditoryRepository.Delete(_auditory.Id);
+			result = _auditoryRepository.Get(_auditory.Id);
+			Assert.IsNull(result);
+		}
 
 		#endregion
 

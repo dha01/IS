@@ -80,7 +80,12 @@ select scope_identity()", auditory);
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
+			using (SqlHelper sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+delete from Auditory.auditory
+where auditory = @id", new { id });
+			}
 		}
 
 		/// <summary>
