@@ -21,7 +21,7 @@ namespace IS.Model.Repository.Auditory
 		{
 			using (var sqlh = new SqlHelper())
 			{
-			return sqlh.ExecMapping<AuditoryItem>(@"
+				return sqlh.ExecMapping<AuditoryItem>(@"
 select
 	a.auditory Id,
 	a.number Number,
