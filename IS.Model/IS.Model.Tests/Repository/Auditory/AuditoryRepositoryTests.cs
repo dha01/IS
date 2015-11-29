@@ -1,4 +1,5 @@
-﻿using System.Transactions;
+﻿using System;
+using System.Transactions;
 using IS.Model.Item.Auditory;
 using IS.Model.Repository.Auditory;
 using NUnit.Framework;
@@ -42,19 +43,19 @@ namespace IS.Model.Tests.Repository.Auditory
 
 			_auditory = new AuditoryItem()
 			{
-				Number = 481,
-				FullName = "МН-481",
-				Memo = "Лекционная",
-				Level = 2,
-				Capacity = 60
+				Number = 1,
+				FullName = "Аудитория информатики",
+				Memo = "В аудитории присутствует 16 компьютеров, проектор, интерактивная доска",
+				Level = 3,
+				Capacity = 15
 			};
 			_auditoryNew = new AuditoryItem()
 			{
-				Number = 572,
-				FullName = "ИН-572",
-				Memo = "Римская",
-				Level = 1,
-				Capacity = 120
+				Number = 2,
+				FullName = "Аудитория экономики",
+				Memo = "В аудитории присутствует 5 компьютеров, проектор, интерактивная доска и много учебной литературы",
+				Level = 2,
+				Capacity = 20
 			};
 		}
 
@@ -82,6 +83,7 @@ namespace IS.Model.Tests.Repository.Auditory
 		/// <param name="second_auditory"></param>
 		private void AreEqualAuditory(AuditoryItem first_auditory, AuditoryItem second_auditory)
 		{
+			Assert.AreEqual(first_auditory.Id, second_auditory.Id);
 			Assert.AreEqual(first_auditory.Number, second_auditory.Number);
 			Assert.AreEqual(first_auditory.FullName, second_auditory.FullName);
 			Assert.AreEqual(first_auditory.Memo, second_auditory.Memo);
@@ -93,12 +95,22 @@ namespace IS.Model.Tests.Repository.Auditory
 
 		#region Create
 
+		/// <summary>
+		/// Создает аудиторию.
+		/// </summary>
+		[Test]
+		public void Create_Void_ReturnId()
+		{
+			_auditory.Id = _auditoryRepository.Create(_auditory);
+			var result = _auditoryRepository.Get(_auditory.Id);
+			AreEqualAuditory(result, _auditory);
+		}
 
 		#endregion
 
 		#region Update
 
-	
+
 
 		#endregion
 
@@ -123,7 +135,7 @@ namespace IS.Model.Tests.Repository.Auditory
 
 		#region GetList
 
-	
+
 
 		#endregion
 	}
