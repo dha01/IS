@@ -81,7 +81,7 @@ namespace IS.Model.Tests.Repository.Auditory
 		/// </summary>
 		/// <param name="first_auditory"></param>
 		/// <param name="second_auditory"></param>
-		private void AreEqualAuditories(AuditoryItem first_auditory, AuditoryItem second_auditory)
+		private void AreEqualAuditory(AuditoryItem first_auditory, AuditoryItem second_auditory)
 		{
 			Assert.AreEqual(first_auditory.Id, second_auditory.Id);
 			Assert.AreEqual(first_auditory.Number, second_auditory.Number);
@@ -103,7 +103,7 @@ namespace IS.Model.Tests.Repository.Auditory
 		{
 			_auditory.Id = _auditoryRepository.Create(_auditory);
 			var result = _auditoryRepository.Get(_auditory.Id);
-			AreEqualAuditories(result, _auditory);
+			AreEqualAuditory(result, _auditory);
 		}
 
 		#endregion
