@@ -168,7 +168,7 @@ namespace IS.Model.Tests.Repository.Access
 		{
 			UserItem user = new UserItem()
 			{
-				Id = 1,
+				Id = 2,
 				Login = "dha",
 				Password = "123"
 			};

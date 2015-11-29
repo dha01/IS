@@ -138,7 +138,7 @@ select
 	r.code Code,
 	r.mem Mem
 from Access.role r
-where r.code = @Code", code);
+where r.code = @Code", new { code });
 			}
 		}
 	}
