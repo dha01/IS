@@ -17,6 +17,11 @@ namespace IS.Model.Item.Specialty
         /// </summary>
         public DateTime ActualDate { get; set; }
 
+		/// <summary>
+		/// Идентификатор специальностей?.
+		/// </summary>
+		public int SpecId { get; set; }
+
         /// <summary>
         /// Количество семестров.
         /// </summary>
@@ -27,6 +32,16 @@ namespace IS.Model.Item.Specialty
         /// </summary>
         public int TrainingPeriod { get; set; }
 
+		/// <summary>
+		/// Идентификатор квалификации.
+		/// </summary>
+		public Qualification Qual { get; set; }
+
+		/// <summary>
+		/// Идентификатор формы обучения.
+		/// </summary>
+		public FormStudy FStudy { get; set; }
+
         /// <summary>
         /// Количество платных мест.
         /// </summary>
@@ -36,6 +51,7 @@ namespace IS.Model.Item.Specialty
         /// Количество бюджетных мест.
         /// </summary>
         public int LowcostSpace { get; set; }
+
     }
 
     /// <summary>
