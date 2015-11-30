@@ -78,6 +78,7 @@
     <Compile Include="Service\FacultyService.cs" />
     <Compile Include="Service\PersonService.cs" />
     <Compile Include="Service\DisciplineService.cs" />
+    <Compile Include="Service\RoleService.cs" />
     <Compile Include="Service\TaskService.cs" />
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
