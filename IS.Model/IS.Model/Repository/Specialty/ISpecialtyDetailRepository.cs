@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using IS.Model.Item.SpecialtyDetail;
+using IS.Model.Item.Specialty;
 
 namespace IS.Model.Repository.Specialty
 {
@@ -21,15 +21,15 @@ namespace IS.Model.Repository.Specialty
 		/// <summary>
 		/// Обновляет данные по учебному курсу.
 		/// </summary>
-		/// <param name="specialty_detail">Учебный курс.</param>
-		void Update(SpecialtyDetailItem specialty);
+		/// <param name="specialtydetail">Учебный курс.</param>
+		void Update(SpecialtyDetailItem specialtydetail);
 
 		/// <summary>
 		/// Создает новую учебный курс.
 		/// </summary>
-		/// <param name="specialty_detail">Учеьный курс.</param>
+		/// <param name="specialtydetail">Учеьный курс.</param>
 		/// <returns>Идентификатор созданного учебного курса.</returns>
-		int Create(SpecialtyDetailItem specialty);
+		int Create(SpecialtyDetailItem specialtydetail);
 
 		/// <summary>
 		/// Удаляет учебный курс.

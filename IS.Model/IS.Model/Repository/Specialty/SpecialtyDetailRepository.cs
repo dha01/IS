@@ -1,7 +1,11 @@
-﻿using IS.Model.Helper;
-using IS.Model.Item.SpecialtyDetail;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IS.Model.Helper;
+using IS.Model.Item.Specialty;
 
-namespace IS.Model.Repository.SpecialtyDetail
+namespace IS.Model.Repository.Specialty
 {
 	/// <summary>
 	/// Интерфейс репозитория для работы с учебными курсами.
@@ -21,15 +25,17 @@ namespace IS.Model.Repository.SpecialtyDetail
 select
 	sd.specialty_detail Id,
 	sd.actual_date ActualDate,
+	ss.specialty SpecId,
 	sd.semestr_count SemestrCount,
 	sd.training_period TrainingPeriod,
+	q.qualification Qual,
+	fs.form_study FormStud,
 	sd.pay_space PaySpace,
 	sd.lowcost_space LowcostSpace
-	q.qualification Qualification,
-	st.form_study FormStudy,
 from Specialty.specialty_detail sd
+	join Specialty.specialty ss on ss.specialty = sd.specialty
 	join Specialty.qualification q on q.qualification = sd.qualification
-	join Specialty.form_study st on st.form_study = sd.form_study
+	join Specialty.form_study fs on fs.form_study = sd.form_study
 where sd.specialty_detail = @id", new { id });
 			}
 		}
@@ -37,8 +43,8 @@ where sd.specialty_detail = @id", new { id });
 		/// <summary>
 		/// Обновляет данные по учебному курсу.
 		/// </summary>
-		/// <param name="specialty_detail">Учебный курс.</param>
-		public void Update(SpecialtyDetailItem specialty)
+		/// <param name="specialtydetail">Учебный курс.</param>
+		public void Update(SpecialtyDetailItem specialtydetail)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -47,22 +53,24 @@ update Specialty.specialty_detail
 set
 	specialty_detail = @Id,
 	actual_date = @ActualDate,
+	specialty = (select top 1 ss.specialty from Specialty.specialty ss where ss.specialty = @SpecId),
 	semestr_count = @SemestrCount,
 	training_period = @TrainingPeriod,
-	pay_space = @PaySpace,
 	lowcost_space = @LowcostSpace,
-	qualification = (select top 1 q.qualification from Specialty.qualification q where q.qualification = @Qualification),
-	form_study = (select top 1 st.form_study from Specialty.form_study st where st.form_study = @FormStudy),
-where specialty_detail = @Id", specialty_detail);
+	qualification = (select top 1 q.qualification from Specialty.qualification q where q.qualification = @Qual),
+	form_study = (select top 1 fs.form_study from Specialty.form_study fs where fs.form_study = @FStudy),
+	pay_space = @PaySpace,
+	lowcost_space = @LowcostSpace
+where specialty_detail = @Id", specialtydetail);
 			}
 		}
 
 		/// <summary>
 		/// Создает новую учебный курс.
 		/// </summary>
-		/// <param name="specialty_detail">Учеьный курс.</param>
+		/// <param name="specialtydetail">Учеьный курс.</param>
 		/// <returns>Идентификатор созданного учебного курса.</returns>
-		public int Create(SpecialtyDetailItem specialty)
+		public int Create(SpecialtyDetailItem specialtydetail)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -71,26 +79,28 @@ insert into Specialty.specialty_detail
 (
 	specialty_detail,
 	actual_date,
+	specialty,
 	semestr_count,
 	training_period,
-	pay_space,
-	lowcost_space,
 	qualification,
 	form_study,
+	pay_space,
+	lowcost_space
 )
 values
 (
 	@Id,
 	@ActualDate,
+	(select top 1 ss.specialty from Specialty.specialty ss where ss.specialty = @SpecId),
 	@SemestrCount,
 	@TrainingPeriod,
+	(select top 1 q.qualification from Specialty.qualification q where q.qualification = @Qual),
+	(select top 1 fs.form_study from Specialty.form_study fs where fs.form_study = @FStudy),
 	@PaySpace,
-	@LowcostSpace,
-	(select top 1 q.qualification from Specialty.qualification q where q.qualification = @Qualification),
-	(select top 1 st.form_study from Specialty.form_study st where st.form_study = @FormStudy),
+	@LowcostSpace
 )
 
-select scope_identity()", specialty_detail);
+select scope_identity()", specialtydetail);
 			}
 		}
 
@@ -120,15 +130,17 @@ where specialty_detail = @id", new { id });
 select
 	sd.specialty_detail Id,
 	sd.actual_date ActualDate,
+	s.specialty SpecId,
 	sd.semestr_count SemestrCount,
 	sd.training_period TrainingPeriod,
+	q.qualification Qual,
+	st.form_study FStudy,
 	sd.pay_space PaySpace,
 	sd.lowcost_space LowcostSpace
-	q.qualification Qualification,
-	st.form_study FormStudy,
 from Specialty.specialty_detail sd
+	join Specialty.specialty ss on ss.specialty = sd.specialty
 	join Specialty.qualification q on q.qualification = sd.qualification
-	join Specialty.form_study st on st.form_study = sd.form_study");
+	join Specialty.form_study fs on fs.form_study = sd.form_study");
 			}
 		}
 	} 

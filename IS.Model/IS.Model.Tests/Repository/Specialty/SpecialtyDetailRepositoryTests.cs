@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
-using IS.Model.Item.SpecialtyDetail;
-using IS.Model.Repository.SpecialtyDetail;
+using IS.Model.Item.Specialty;
+using IS.Model.Repository.Specialty;
 using NUnit.Framework;
 
-namespace IS.Model.Tests.Repository.SpecialtyDetail
+namespace IS.Model.Tests.Repository.Specialty
 {
 	/// <summary>
 	/// Тесты для репозитория учбных курсов.
@@ -27,10 +27,10 @@ namespace IS.Model.Tests.Repository.SpecialtyDetail
 		/// <summary>
 		/// Репозиторий курсов.
 		/// </summary>
-		private SpecialtyDetailRepository _specialty_detailRepository;
+		private SpecialtyDetailRepository _specialtydetailRepository;
 
-		private SpecialtyDetailItem _specialty_detail;
-		private SpecialtyDetailItem _specialty_detailNew;
+		private SpecialtyDetailItem _specialtydetail;
+		private SpecialtyDetailItem _specialtydetailNew;
 
 		#endregion
 
@@ -43,21 +43,27 @@ namespace IS.Model.Tests.Repository.SpecialtyDetail
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
-			_specialty_detailRepository = new SpecialtyDetailRepository();
+			_specialtydetailRepository = new SpecialtyDetailRepository();
 
-			_specialty_detail = new SpecialtyDetailItem()
+			_specialtydetail = new SpecialtyDetailItem()
 			{
 				ActualDate = DateTime.Now.Date,
+				SpecId = 120,
 				SemestrCount = 4,
 				TrainingPeriod = 1,
+				Qual = Qualification.Bachelor,
+				FStudy = FormStudy.Distance,
 				PaySpace = 128,
 				LowcostSpace = 45,
 			};
-			_specialty_detailNew = new SpecialtyDetailItem()
+			_specialtydetailNew = new SpecialtyDetailItem()
 			{
 				ActualDate = DateTime.Now.Date,
+				SpecId = 114,
 				SemestrCount = 3,
 				TrainingPeriod = 2,
+				Qual = Qualification.Master,
+				FStudy = FormStudy.FullTime,
 				PaySpace = 64,
 				LowcostSpace = 34,
 			};
@@ -83,16 +89,16 @@ namespace IS.Model.Tests.Repository.SpecialtyDetail
 		/// <summary>
 		/// Проверяет эквивалентны ли два курса.
 		/// </summary>
-		/// <param name="first_specialty_detail"></param>
-		/// <param name="second_specialty_detail"></param>
-		private void AreEqualSpecialtyDetails(SpecialtyDetailItem first_specialty_detail, SpecialtyDetailItem second_specialty_detail)
+		/// <param name="first_specialtydetail"></param>
+		/// <param name="second_specialtydetail"></param>
+		private void AreEqualSpecialtyDetails(SpecialtyDetailItem first_specialtydetail, SpecialtyDetailItem second_specialtydetail)
 		{
-			Assert.AreEqual(first_specialty_detail.Id, second_specialty_detail.Id);
-			Assert.AreEqual(first_specialty_detail.ActualDate, second_specialty_detail.ActualDate);
-			Assert.AreEqual(first_specialty_detail.SemestrCount, second_specialty_detail.SemestrCount);
-			Assert.AreEqual(first_specialty_detail.TrainingPeriod, second_specialty_detail.TrainingPeriod);
-			Assert.AreEqual(first_specialty_detail.PaySpace, second_specialty_detail.PaySpace);
-			Assert.AreEqual(first_specialty_detail.LowcostSpace, second_specialty_detail.LowcostSpace);
+			Assert.AreEqual(first_specialtydetail.Id, second_specialtydetail.Id);
+			Assert.AreEqual(first_specialtydetail.ActualDate, second_specialtydetail.ActualDate);
+			Assert.AreEqual(first_specialtydetail.SemestrCount, second_specialtydetail.SemestrCount);
+			Assert.AreEqual(first_specialtydetail.TrainingPeriod, second_specialtydetail.TrainingPeriod);
+			Assert.AreEqual(first_specialtydetail.PaySpace, second_specialtydetail.PaySpace);
+			Assert.AreEqual(first_specialtydetail.LowcostSpace, second_specialtydetail.LowcostSpace);
 		}
 
 		#endregion
@@ -105,9 +111,9 @@ namespace IS.Model.Tests.Repository.SpecialtyDetail
 		[Test]
 		public void Create_Void_ReturnId()
 		{
-			_specialty_detail.Id = _specialty_detailRepository.Create(_specialty_detail);
-			var result = _specialty_detailRepository.Get(_specialty_detail.Id);
-			AreEqualSpecialtyDetails(result, _specialty_detail);
+			_specialtydetail.Id = _specialtydetailRepository.Create(_specialtydetail);
+			var result = _specialtydetailRepository.Get(_specialtydetail.Id);
+			AreEqualSpecialtyDetails(result, _specialtydetail);
 		}
 
 		#endregion
@@ -120,14 +126,14 @@ namespace IS.Model.Tests.Repository.SpecialtyDetail
 		[Test]
 		public void Update_Void_ReturnChangedSpecialtyDetail()
 		{
-			_specialty_detail.Id = _specialty_detailRepository.Create(_specialty_detail);
-			var result = _specialty_detailRepository.Get(_specialty_detail.Id);
-			AreEqualSpecialtyDetails(result, _specialty_detail);
+			_specialtydetail.Id = _specialtydetailRepository.Create(_specialtydetail);
+			var result = _specialtydetailRepository.Get(_specialtydetail.Id);
+			AreEqualSpecialtyDetails(result, _specialtydetail);
 
-			_specialty_detailNew.Id = _specialty_detail.Id;
-			_specialty_detailRepository.Update(_specialty_detailNew);
-			result = _specialty_detailRepository.Get(_specialty_detail.Id);
-			AreEqualSpecialtyDetails(result, _specialty_detailNew);
+			_specialtydetailNew.Id = _specialtydetail.Id;
+			_specialtydetailRepository.Update(_specialtydetailNew);
+			result = _specialtydetailRepository.Get(_specialtydetail.Id);
+			AreEqualSpecialtyDetails(result, _specialtydetailNew);
 
 		}
 
@@ -141,12 +147,12 @@ namespace IS.Model.Tests.Repository.SpecialtyDetail
 		[Test]
 		public void Delete_Void_ReturnNull()
 		{
-			_specialty_detail.Id = _specialty_detailRepository.Create(_specialty_detail);
-			var result = _specialty_detailRepository.Get(_specialty_detail.Id);
-			AreEqualSpecialtyDetails(result, _specialty_detail);
+			_specialtydetail.Id = _specialtydetailRepository.Create(_specialtydetail);
+			var result = _specialtydetailRepository.Get(_specialtydetail.Id);
+			AreEqualSpecialtyDetails(result, _specialtydetail);
 
-			_specialty_detailRepository.Delete(_specialty_detail.Id);
-			result = _specialty_detailRepository.Get(_specialty_detail.Id);
+			_specialtydetailRepository.Delete(_specialtydetail.Id);
+			result = _specialtydetailRepository.Get(_specialtydetail.Id);
 			Assert.IsNull(result);
 		}
 
@@ -160,9 +166,9 @@ namespace IS.Model.Tests.Repository.SpecialtyDetail
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithSpecialtyDetails()
 		{
-			_specialty_detail.Id = _specialty_detailRepository.Create(_specialty_detail);
-			var result = _specialty_detailRepository.GetList().Find(x => x.Id == _specialty_detail.Id);
-			AreEqualSpecialtyDetails(result, _specialty_detail);
+			_specialtydetail.Id = _specialtydetailRepository.Create(_specialtydetail);
+			var result = _specialtydetailRepository.GetList().Find(x => x.Id == _specialtydetail.Id);
+			AreEqualSpecialtyDetails(result, _specialtydetail);
 		}
 
 		#endregion
