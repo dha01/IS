@@ -1,10 +1,10 @@
-insert into Access.role
+п»їinsert into Access.role
            (code
            ,mem)
      values
-           ('Discipline.Creator','Позволяет создать дисциплину'),
-		   ('Discipline.Deleter','Позволяет удалить дисциплину'),
-		   ('Discipline.Updater','Позволяет изменить дисциплину'),
-		   ('Discipline.Reader','Позволяет просмотреть дисциплину')
+           ('Discipline.Creator','РџРѕР·РІРѕР»СЏРµС‚ СЃРѕР·РґР°С‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ'),
+		   ('Discipline.Deleter','РџРѕР·РІРѕР»СЏРµС‚ СѓРґР°Р»РёС‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ'),
+		   ('Discipline.Updater','РџРѕР·РІРѕР»СЏРµС‚ РёР·РјРµРЅРёС‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ'),
+		   ('Discipline.Reader','РџРѕР·РІРѕР»СЏРµС‚ РїСЂРѕСЃРјРѕС‚СЂРµС‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ')
 
 

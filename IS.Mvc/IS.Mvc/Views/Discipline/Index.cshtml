@@ -30,13 +30,19 @@
 		width: 99%; /* Ширина поля в процентах */
 		height: 200px; /* Высота поля в пикселах */
 	}
+
+    .t_head {
+        background: #cccccc;
+        width: 100px;
+        font-weight: bolder;
+    }
 </style>
 
 <h2>Задача(@Html.ActionLink("К списку дисциплин", "List"))</h2>
 
 <table>
 	<tr>
-		<td>
+		<td class="t_head">
 			Короткое название
 		</td>
 		<td>
@@ -44,7 +50,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td class="t_head">
 			Полное название
 		</td>
 		<td>
@@ -52,7 +58,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td class="t_head">
 			Описание
 		</td>
 		<td>
