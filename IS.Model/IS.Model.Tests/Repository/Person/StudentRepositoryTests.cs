@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Person
 {
 	/// <summary>
-	/// Тесты для репозитория задач.
+	/// Тесты для репозитория студентов.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -87,23 +87,18 @@ namespace IS.Model.Tests.Repository.Person
 		#region Methods
 
 		/// <summary>
-		/// Проверяет еквивалентны ли две задачи.
+		/// Проверяет еквивалентны ли два студента.
 		/// </summary>
-		/// <param name="first_task"></param>
-		/// <param name="second_task"></param>
-		private void AreEqualStudents(StudentItem first_task, StudentItem second_task)
+		/// <param name="first_student"></param>
+		/// <param name="second_student"></param>
+		private void AreEqualStudents(StudentItem first_student, StudentItem second_student)
 		{
-			Assert.AreEqual(first_task.Id, second_task.Id);
-			Assert.AreEqual(first_task.Author, second_task.Author);
-			Assert.AreEqual(first_task.Deadline, second_task.Deadline);
-			Assert.AreEqual(first_task.Performer, second_task.Performer);
-			Assert.AreEqual(first_task.Header, second_task.Header);
-			Assert.AreEqual(first_task.IsOpen, second_task.IsOpen);
-			Assert.AreEqual(first_task.IsPerform, second_task.IsPerform);
-			Assert.AreEqual(first_task.Mem, second_task.Mem);
-			Assert.AreEqual(first_task.Number, second_task.Number);
-			Assert.AreEqual(first_task.Priority, second_task.Priority);
-			Assert.AreEqual(first_task.Prefix, second_task.Prefix);
+			Assert.AreEqual(first_student.Id, second_student.Id);
+			Assert.AreEqual(first_student.LastName, second_student.LastName);
+			Assert.AreEqual(first_student.FirstName, second_student.FirstName);
+			Assert.AreEqual(first_student.FatherName, second_student.FatherName);
+			Assert.AreEqual(first_student.Birthday, second_student.Birthday);
+			Assert.AreEqual(first_student.TeamId, second_student.TeamId);
 		}
 
 		#endregion
@@ -111,7 +106,7 @@ namespace IS.Model.Tests.Repository.Person
 		#region Create
 
 		/// <summary>
-		/// Создает задачу.
+		/// Зачисляет студента в группу.
 		/// </summary>
 		[Test]
 		public void Create_Void_ReturnId()
@@ -126,7 +121,7 @@ namespace IS.Model.Tests.Repository.Person
 		#region Update
 
 		/// <summary>
-		/// Изменяет параметры задачи.
+		/// Изменяет данные о студенте.
 		/// </summary>
 		[Test]
 		public void Update_Void_ReturnChangedStudent()
@@ -147,7 +142,7 @@ namespace IS.Model.Tests.Repository.Person
 		#region Delete
 
 		/// <summary>
-		/// Удаляет задачу.
+		/// Исключает студента.
 		/// </summary>
 		[Test]
 		public void Delete_Void_ReturnNull()
@@ -156,7 +151,7 @@ namespace IS.Model.Tests.Repository.Person
 			var result = _studentRepository.Get(_student.Id);
 			AreEqualStudents(result, _student);
 
-			_studentRepository.Delete(_student.Id);
+			_studentRepository.Delete(result);
 			result = _studentRepository.Get(_student.Id);
 			Assert.IsNull(result);
 		}
@@ -166,10 +161,10 @@ namespace IS.Model.Tests.Repository.Person
 		#region GetList
 
 		/// <summary>
-		/// Получает список всех задач.
+		/// Получает список студентов по индетификатору группы.
 		/// </summary>
 		[Test]
-		public void GetListByTeam_Void_ReturnNotEmptyListWithStudent(team_id)
+		public void GetListByTeam_Void_ReturnNotEmptyListWithStudent(int team_id)
 		{
 			_student.Id = _studentRepository.Create(_student);
 			var result = _studentRepository.GetListByTeam(team_id).Find(x => x.Id == _student.Id);

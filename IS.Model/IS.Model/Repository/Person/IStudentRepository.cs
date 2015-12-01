@@ -35,12 +35,6 @@ namespace IS.Model.Repository.Person
 		void Delete(StudentItem student);
 
 		/// <summary>
-		/// Получает список всех студентов.
-		/// </summary>
-		/// <returns>Список студентов.</returns>
-		List<StudentItem> GetList();
-
-		/// <summary>
 		/// Получает список студентов по индетификатору группы.
 		/// </summary>
 		/// <param name="team_id">Список студентов.</param>

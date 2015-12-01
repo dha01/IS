@@ -54,29 +54,22 @@ where student = @Id", student);
 				return sqlh.ExecScalar<int>(@"
 insert into Person.srudent
 (
-    event_date
-    person
-    team
+	event_date
+	person
+	team
 	act
 )
 values
 (
-    getdate()
-    @Id
-    @TeamId
+	getdate()
+	@Id
+	@TeamId
 	1,
 )
 
 select scope_identity()", student);
 			}
 		}
-
-		/// <summary>
-		/// Исключение студента из группы.
-		/// </summary>
-		/// <param name="id">Идентификатор.</param>
-		public void Delete(int id)
-		{ }
 
 		/// <summary>
 		/// Исключение студента из группы.
@@ -89,41 +82,20 @@ select scope_identity()", student);
 				sqlh.ExecScalar<int>(@"
 insert into Person.srudent
 (
-    event_date
-    person
-    team
+	event_date
+	person
+	team
 	act
 )
 values
 (
-    getdate()
-    @Id
-    @TeamId
+	getdate()
+	@Id
+	@TeamId
 	-1,
 )
 
 select scope_identity()", student);
-			}
-		}
-
-		/// <summary>
-		/// Получает список всех студентов.
-		/// </summary>
-		/// <returns>Список студентов.</returns>
-		public List<StudentItem> GetList()
-		{
-			using (var sqlh = new SqlHelper())
-			{
-				return sqlh.ExecMappingList<StudentItem>(@"
-select
-	st.student Id,
-	st.last_name string,
-	st.first_name string,
-	st.father_name string,
-	st.birthday datetime,
-	st.team_id Id,
-from Student.student st
-where st.team = @id", new { });
 			}
 		}
 
