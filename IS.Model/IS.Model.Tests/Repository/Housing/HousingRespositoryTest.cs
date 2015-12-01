@@ -82,6 +82,7 @@ namespace IS.Model.Tests.Repository.Housing
 		/// <summary>
 		/// Проверяет эквивалентны ли два корпуса.
 		/// </summary>
+		/// Описание входных параметров.
 		/// <param name="first_housing"></param>
 		/// <param name="second_housing"></param>
 		private void AreEqualHousing(HousingItem first_housing, HousingItem second_housing)
@@ -150,7 +151,7 @@ namespace IS.Model.Tests.Repository.Housing
 		#region GetList
 
 		/// <summary>
-		/// Получает список всех корпусов
+		/// Получает список всех корпусов.
 		/// </summary>
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithHousing()

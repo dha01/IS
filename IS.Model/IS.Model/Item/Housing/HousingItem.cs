@@ -13,12 +13,12 @@ namespace IS.Model.Item.Housing
 		public int Id { get; set; }
 
 		/// <summary>
-		/// Номер корпуса.
+		/// Корпус.
 		/// </summary>
 		public int Number { get; set; }
 
 		/// <summary>
-		/// Имя корпуса.
+		/// Название корпуса.
 		/// </summary>
 		public string Name { get; set; }
 
@@ -27,7 +27,7 @@ namespace IS.Model.Item.Housing
 		/// </summary>
 		public int Level { get; set; }
 		/// <summary>
-		/// Краткое описание
+		/// Краткое описание.
 		/// </summary>
 		public string Memo { get; set; }
 	}

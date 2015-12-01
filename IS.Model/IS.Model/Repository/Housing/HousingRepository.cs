@@ -93,7 +93,7 @@ where housing = @id", new { id });
 		}
 
 		/// <summary>
-		/// Получает список всех корпусов
+		/// Получает список всех корпусов.
 		/// </summary>
 		/// <returns>Список корпусов.</returns>
 		public List<HousingItem> GetList()
@@ -110,7 +110,5 @@ select
 from Auditory.housing d");
 			}
 		}
-
-		public object Housing { get; set; }
 	}
 }
