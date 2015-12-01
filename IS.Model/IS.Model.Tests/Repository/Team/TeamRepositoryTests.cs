@@ -21,7 +21,7 @@ namespace IS.Model.Tests.Repository.Team
 		private TransactionScope _transactionScope;
 
 		/// <summary>
-		/// Репозиторий задач.
+		/// Репозиторий групп.
 		/// </summary>
 		private TeamRepository _teamRepository;
 
@@ -73,8 +73,8 @@ namespace IS.Model.Tests.Repository.Team
 		/// <summary>
 		/// Проверяет эквивалентны ли две группы.
 		/// </summary>
-		/// <param name="first_team"></param>
-		/// <param name="second_team"></param>
+		/// <param name="first_team">Первая группа для сравнения.</param>
+		/// <param name="second_team">Вторая группа для сравнения.</param>
 		private void AreEqualTeams(TeamItem first_team, TeamItem second_team)
 		{
 			Assert.AreEqual(first_team.Id, second_team.Id);
@@ -122,13 +122,43 @@ namespace IS.Model.Tests.Repository.Team
 
 		#region Delete
 
+<<<<<<< HEAD
+		/// <summary>
+		/// Удаляет группу.
+		/// </summary>
+		[Test]
+		public void Delete_Void_ReturnNull()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _team);
 
+			_teamRepository.Delete(_team.Id);
+			result = _teamRepository.Get(_team.Id);
+			Assert.IsNull(result);
+		}
+=======
+
+>>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 
 		#endregion
 
 		#region GetList
 
+<<<<<<< HEAD
+		/// <summary>
+		/// Получает список всех групп.
+		/// </summary>
+		[Test]
+		public void GetList_Void_ReturnNotEmptyListWithTeam()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.GetList().Find(x => x.Id == _team.Id);
+			AreEqualTeams(result, _team);
+		}
+=======
 
+>>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 
 		#endregion
 	}

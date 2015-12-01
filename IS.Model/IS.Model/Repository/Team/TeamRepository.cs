@@ -23,8 +23,8 @@ select
 	t.team Id,
 	t.name Name,
 	t.create_date CreateDate
-from Team.Team t
-where t.Team = @id", new { id });
+from Team.team t
+where t.team = @id", new { id });
 
 			}
 		}
@@ -77,7 +77,16 @@ select scope_identity()", team);
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
+<<<<<<< HEAD
+			using (SqlHelper sqlh = new SqlHelper())
+			{
+				sqlh.ExecMapping<TeamItem>(@"
+delete from Team.team
+where team = @id", new { id });
+			}
+=======
             
+>>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 		}
 
 		/// <summary>
@@ -86,7 +95,16 @@ select scope_identity()", team);
 		/// <returns>Список группу.</returns>
 		public List<TeamItem> GetList()
 		{
-			return null;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<TeamItem>(@"
+select
+	t.team Id,
+	t.name Name,
+	t.create_date CreateDate
+from Team.team t
+");
+			}
 		}
 	}
 }
