@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Specialty
 {
 	/// <summary>
-	/// Тесты для репозитория сепциальностей
+	/// Тесты для репозитория сепциальностей.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -20,7 +20,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		private TransactionScope _transactionScope;
 
 		/// <summary>
-		/// Репозиторий групп.
+		/// Репозиторий специальностей.
 		/// </summary>
 		private SpecialtyRepository _specialtyRepository;
 
@@ -72,7 +72,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		#region Methods
 
 		/// <summary>
-		/// Проверяет эквивалентны ли две специальности
+		/// Проверяет эквивалентны ли две специальности.
 		/// </summary>
 		/// <param name="first_specialty">Первая специальность для сравнения.</param>
 		/// <param name="second_specialty">Вторая специальность для сравнения.</param>
