@@ -75,6 +75,7 @@
     <Compile Include="Repository\Team\ITeamRepository.cs" />
     <Compile Include="Repository\Team\TeamRepository.cs" />
     <Compile Include="Repository\Faculty\FacultyRepository.cs" />
+    <Compile Include="Service\ContactService.cs" />
     <Compile Include="Service\FacultyService.cs" />
     <Compile Include="Service\PersonService.cs" />
     <Compile Include="Service\DisciplineService.cs" />
