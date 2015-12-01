@@ -49,7 +49,7 @@ namespace IS.Model.Tests.Repository.Team
 			_teamNew = new TeamItem()
 			{
 				Name = "ПЕ-21б",
-				CreateDate = DateTime.Now.AddYears(-1)
+				CreateDate = DateTime.Now.AddYears(-1).Date
 			};
 		}
 
@@ -122,7 +122,6 @@ namespace IS.Model.Tests.Repository.Team
 
 		#region Delete
 
-<<<<<<< HEAD
 		/// <summary>
 		/// Удаляет группу.
 		/// </summary>
@@ -137,15 +136,12 @@ namespace IS.Model.Tests.Repository.Team
 			result = _teamRepository.Get(_team.Id);
 			Assert.IsNull(result);
 		}
-=======
 
->>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 
 		#endregion
 
 		#region GetList
 
-<<<<<<< HEAD
 		/// <summary>
 		/// Получает список всех групп.
 		/// </summary>
@@ -156,9 +152,6 @@ namespace IS.Model.Tests.Repository.Team
 			var result = _teamRepository.GetList().Find(x => x.Id == _team.Id);
 			AreEqualTeams(result, _team);
 		}
-=======
-
->>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 
 		#endregion
 	}
