@@ -38,7 +38,12 @@
         <td>Отчество</td>
         <td>@Model.FatherName</td>
     </tr>
+    <tr>
+        <td>День Рождения</td>
+        <td>@Model.Birthday</td>
+    </tr>
 </table>
+@Html.ActionLink("Просмотр списка людей", "List")<br/>
 @if (Access.CheckRole("Person.Updater"))
 {
     @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
