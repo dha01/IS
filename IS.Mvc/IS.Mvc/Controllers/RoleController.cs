@@ -71,12 +71,7 @@ namespace IS.Mvc.Controllers
 		public ActionResult New()
 		{
 			Access.CheckAccess("Role.Creator");
-			var default_item = new RoleItem
-			{
-				Code = "",
-				Mem = ""
-			};
-			return View(default_item);
+			return View();
 		}
 
 		/// <summary>
