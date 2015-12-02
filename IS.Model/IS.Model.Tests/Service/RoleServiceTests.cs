@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Service
 {
 	/// <summary>
-	/// Тесты для сервиса задач.
+	/// Тесты для сервиса ролей.
 	/// </summary>
 	[Category("Unit")]
 	[TestFixture]
