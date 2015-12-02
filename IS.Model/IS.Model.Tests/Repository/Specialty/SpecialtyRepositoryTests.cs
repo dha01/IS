@@ -117,7 +117,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		#region Delete
 
 		/// <summary>
-		/// Удаляет группу.
+		/// Удаляет специальность.
 		/// </summary>
 		[Test]
 		public void Delete_Void_ReturnNull()
