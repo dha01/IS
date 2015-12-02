@@ -82,10 +82,6 @@ namespace IS.Mvc.Controllers
 		{
 			Access.CheckAccess("Task.Updater");
 			_taskService.Update(task);
-			var _disciplineService = new DisciplineService();
-			var d = _disciplineService.GetList().First();
-			d.Mem = task.Mem;
-			_disciplineService.Update(d);
 			return RedirectToAction("Index", new { id = task.Id });
 		}
 

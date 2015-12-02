@@ -15,7 +15,9 @@ namespace IS.Mvc.Controllers
 	public class DisciplineController : Controller
 	{
 		private DisciplineService _disciplineService;
-
+    /// <summary>
+    /// Создание сервиса дисциплин.
+    /// </summary>
 		public DisciplineController()
 		{
 			_disciplineService = new DisciplineService();
