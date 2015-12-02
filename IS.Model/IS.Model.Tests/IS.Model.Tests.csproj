@@ -57,6 +57,7 @@
     <Compile Include="Repository\Access\RoleRepositoryTests.cs" />
     <Compile Include="Repository\Contact\ContactRepositoryTests.cs" />
     <Compile Include="Repository\Auditory\AuditoryRepositoryTests.cs" />
+    <Compile Include="Repository\Cathedra\CathedraRepositoryTests.cs" />
     <Compile Include="Repository\Discipline\DisciplineRepositoryTests.cs" />
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
