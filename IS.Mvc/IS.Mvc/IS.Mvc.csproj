@@ -134,6 +134,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\OnlineTextController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+	<Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
@@ -242,7 +243,7 @@
     <Content Include="Views\Task\Edit.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\Task\Statistic.cshtml" />
-<Content Include="production.Web.config">
+    <Content Include="production.Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="production.Web.Debug.config">
@@ -251,10 +252,15 @@
     <Content Include="production.Web.Release.config">
       <DependentUpon>production.Web.config</DependentUpon>
     </Content>
-<Content Include="Views\Person\List.cshtml" />
+    <Content Include="Views\Person\List.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Views\Person\New.cshtml" />
-    <Content Include="Views\Person\Edit.cshtml" />  </ItemGroup>
+    <Content Include="Views\Person\Edit.cshtml" />
+	<Content Include="Views\Role\List.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\New.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
