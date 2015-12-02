@@ -60,6 +60,7 @@
     <Compile Include="Repository\Discipline\DisciplineRepositoryTests.cs" />
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
+    <Compile Include="Repository\Specialty\SpecialtyRepositoryTests.cs" />
     <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
     <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
     <Compile Include="Repository\Access\UserRepositoryTests.cs" />
