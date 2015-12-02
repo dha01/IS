@@ -49,13 +49,15 @@ namespace IS.Model.Tests.Repository.Specialty
 			{
 				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
 				ShortName = "Ифн",
-				Code = "230105"
+				Code = "230105",
+				CathedraId = 29
 			};
 			_specialtyNew = new SpecialtyItem()
 			{
 				FullName = "Сисадмин",
 				ShortName = "Сис",
-				Code = "123456"
+				Code = "123456",
+				CathedraId = 30
 			};
 		}
 
