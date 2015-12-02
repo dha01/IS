@@ -60,6 +60,7 @@
     <Compile Include="Repository\Contact\ContactRepositoryTests.cs" />
     <Compile Include="Repository\Discipline\DisciplineRepositoryTests.cs" />
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
+    <Compile Include="Repository\Housing\HousingRespositoryTest.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
     <Compile Include="Repository\Specialty\SpecialtyRepositoryTests.cs" />
     <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
@@ -70,7 +71,8 @@
     <Compile Include="Service\TaskServiceTests.cs" />
     <Compile Include="Service\RoleServiceTests.cs" />
     <Compile Include="Service\FacultyServiceTest.cs" />
-    <Compile Include="Service\HousingServiceTests.cs" />    <Compile Include="Service\UserServiceTests.cs" />
+    <Compile Include="Service\HousingServiceTests.cs" />
+    <Compile Include="Service\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
