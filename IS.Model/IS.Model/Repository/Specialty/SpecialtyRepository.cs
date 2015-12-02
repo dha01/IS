@@ -81,7 +81,12 @@ select scope_identity()", specialty);
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecMapping<SpecialtyItem>(@"
+delete from Specialty.specialty 
+where specialty = @id", new { id });
+			}
 		}
 	}
 }

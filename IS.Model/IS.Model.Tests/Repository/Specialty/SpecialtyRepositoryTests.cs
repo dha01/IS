@@ -81,16 +81,16 @@ namespace IS.Model.Tests.Repository.Specialty
 		/// <summary>
 		/// Проверяет эквивалентны ли две специальности.
 		/// </summary>
-		/// <param name="first_specialty">Первая специальность.</param>
-		/// <param name="second_specialty">Вторая специальность.</param> 
-		private void AreEqualSpecialtys(SpecialtyItem first_specialty, SpecialtyItem second_specialty)
+		/// <param name="first_specialty">Первая специальность для сравнения.</param>
+		/// <param name="second_specialty">Вторая специальность для сравнения.</param>
+		private void AreEqualSpecialties(SpecialtyItem first_specialty, SpecialtyItem second_specialty)
 		{
 			Assert.AreEqual(first_specialty.Id, second_specialty.Id);
 			Assert.AreEqual(first_specialty.FullName, second_specialty.FullName);
 			Assert.AreEqual(first_specialty.ShortName, second_specialty.ShortName);
 			Assert.AreEqual(first_specialty.Code, second_specialty.Code);
 		}
-				
+
 		#endregion
 
 		#region Update
@@ -103,13 +103,32 @@ namespace IS.Model.Tests.Repository.Specialty
 		{
 			_specialty.Id = _specialtyRepository.Create(_specialty);
 			var result = _specialtyRepository.Get(_specialty.Id);
-			AreEqualSpecialtys(result, _specialty);
+			AreEqualSpecialties(result, _specialty);
 
 			_specialtyNew.Id = _specialty.Id;
 			_specialtyRepository.Update(_specialtyNew);
 			result = _specialtyRepository.Get(_specialty.Id);
-			AreEqualSpecialtys(result, _specialtyNew);
+			AreEqualSpecialties(result, _specialtyNew);
 
+		}
+
+		#endregion
+
+		#region Delete
+
+		/// <summary>
+		/// Удаляет специальность.
+		/// </summary>
+		[Test]
+		public void Delete_Void_ReturnNull()
+		{
+			_specialty.Id = _specialtyRepository.Create(_specialty);
+			var result = _specialtyRepository.Get(_specialty.Id);
+			AreEqualSpecialties(result, _specialty);
+
+			_specialtyRepository.Delete(_specialty.Id);
+			result = _specialtyRepository.Get(_specialty.Id);
+			Assert.IsNull(result);
 		}
 
 		#endregion
