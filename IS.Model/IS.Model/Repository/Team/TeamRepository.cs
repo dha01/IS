@@ -35,15 +35,6 @@ where t.team = @id", new { id });
 		/// <param name="team">Группу.</param>
 		public void Update(TeamItem team)
 		{
-            using (var sqlh = new SqlHelper())
-            {
-                sqlh.ExecNoQuery(@"
-update TeamItem.Team
-set
-	name = @Name
-    create_date = @CreateDate
-where Team = @Id", team);
-            }
 		}
 
 		/// <summary>
@@ -77,16 +68,12 @@ select scope_identity()", team);
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-<<<<<<< HEAD
 			using (SqlHelper sqlh = new SqlHelper())
 			{
 				sqlh.ExecMapping<TeamItem>(@"
 delete from Team.team
 where team = @id", new { id });
 			}
-=======
-            
->>>>>>> remotes/origin/feature/task_71_Fokeev_add_TeamRepository.Update
 		}
 
 		/// <summary>
