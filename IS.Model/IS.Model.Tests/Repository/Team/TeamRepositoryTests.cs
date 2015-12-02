@@ -115,7 +115,6 @@ namespace IS.Model.Tests.Repository.Team
 			_teamRepository.Update(_teamNew);
 			result = _teamRepository.Get(_team.Id);
 			AreEqualTeams(result, _teamNew);
-
 		}
 
 		#endregion
