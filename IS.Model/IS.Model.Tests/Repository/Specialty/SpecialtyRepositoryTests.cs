@@ -83,7 +83,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		/// </summary>
 		/// <param name="first_specialty">Первая специальность для сравнения.</param>
 		/// <param name="second_specialty">Вторая специальность для сравнения.</param>
-		private void AreEqualSpecialtys(SpecialtyItem first_specialty, SpecialtyItem second_specialty)
+		private void AreEqualSpecialties(SpecialtyItem first_specialty, SpecialtyItem second_specialty)
 		{
 			Assert.AreEqual(first_specialty.Id, second_specialty.Id);
 			Assert.AreEqual(first_specialty.FullName, second_specialty.FullName);
@@ -103,12 +103,12 @@ namespace IS.Model.Tests.Repository.Specialty
 		{
 			_specialty.Id = _specialtyRepository.Create(_specialty);
 			var result = _specialtyRepository.Get(_specialty.Id);
-			AreEqualSpecialtys(result, _specialty);
+			AreEqualSpecialties(result, _specialty);
 
 			_specialtyNew.Id = _specialty.Id;
 			_specialtyRepository.Update(_specialtyNew);
 			result = _specialtyRepository.Get(_specialty.Id);
-			AreEqualSpecialtys(result, _specialtyNew);
+			AreEqualSpecialties(result, _specialtyNew);
 
 		}
 

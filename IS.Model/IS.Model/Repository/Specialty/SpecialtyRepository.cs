@@ -85,7 +85,7 @@ select scope_identity()", specialty);
 			{
 				sqlh.ExecMapping<SpecialtyItem>(@"
 delete from Specialty.specialty 
-where id = @id", new { id });
+where specialty = @id", new { id });
 			}
 		}
 	}
