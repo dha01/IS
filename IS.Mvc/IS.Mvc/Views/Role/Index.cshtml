@@ -1,6 +1,6 @@
-﻿@using IS.Model.Item.Person;
+﻿@using IS.Model.Item.Access;
 @using IS.Mvc.Models
-@model PersonItem
+@model RoleItem
 
 @{
 	ViewBag.Title = "Index";
@@ -25,26 +25,18 @@
 	}
 </style>
 
-<table class="table person">
+<table class="table role">
 	<tr>
-		<td>Фамилия</td>
-		<td>@Model.LastName</td>
+		<td>Код</td>
+		<td>@Model.Code</td>
 	</tr>
 	<tr>
-		<td>Имя</td>
-		<td>@Model.FirstName</td>
-	</tr>
-	<tr>
-		<td>Отчество</td>
-		<td>@Model.FatherName</td>
-	</tr>
-	<tr>
-		<td>День Рождения</td>
-		<td>@Model.Birthday</td>
+		<td>Описание</td>
+		<td>@Model.Mem</td>
 	</tr>
 </table>
-@Html.ActionLink("Просмотр списка людей", "List")<br/>
-@if (Access.CheckRole("Person.Updater"))
+@Html.ActionLink("Просмотр списка ролей", "List")<br />
+@if (Access.CheckRole("Role.Updater"))
 {
 	@Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
 }

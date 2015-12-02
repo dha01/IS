@@ -1,8 +1,8 @@
-﻿@using IS.Model.Item.Person
-@model PersonItem
+﻿@using IS.Model.Item.Access;
+@model RoleItem
 
 @{
-	ViewBag.Title = "Create";
+	ViewBag.Title = "Edit";
 }
 
 <style>
@@ -24,24 +24,24 @@
 	}
 </style>
 
-<h2>Создание новой записи о человеке</h2>
+<h2>Редактироание данных роли</h2>
 
-@using (@Html.BeginForm("Create", "Person"))
+@using (@Html.BeginForm("Update", "Role"))
 {
-	<table class="table person">
+	@Html.HiddenFor(m => Model.Id)
+
+	<table class="table role">
 		<tr>
-			<td>Фамилия</td>
-			<td><input type="text" name="LastName" /></td>
+			<td>Код</td>
+			<td>@Html.EditorFor(m => Model.Code)</td>
 		</tr>
 		<tr>
-			<td>Имя</td>
-			<td><input type="text" name="FirstName" /></td>
-		</tr>
-		<tr>
-			<td>Отчество</td>
-			<td><input type="text" name="FatherName" /></td>
+			<td>Описание</td>
+			<td>@Html.EditorFor(m => Model.Mem)</td>
 		</tr>
 	</table>
-	<input type="submit" value="Создать"/>
+	<input type="submit" value="Сохранить" /><br />
+	@Html.ActionLink("Просмотр записи о роли", "Index", new { id = Model.Id })<br />
+	@Html.ActionLink("Отмена", "Index", new { id = Model.Id })
 }
-@Html.ActionLink("Просмотр списка людей", "List")
+@Html.ActionLink("Просмотр списка ролей", "List")

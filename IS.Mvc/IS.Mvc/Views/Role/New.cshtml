@@ -1,9 +1,5 @@
-﻿@using IS.Model.Item.Person;
-@using IS.Mvc.Models
-@model PersonItem
-
-@{
-	ViewBag.Title = "Index";
+﻿@{
+	ViewBag.Title = "Create";
 }
 
 <style>
@@ -25,26 +21,20 @@
 	}
 </style>
 
-<table class="table person">
-	<tr>
-		<td>Фамилия</td>
-		<td>@Model.LastName</td>
-	</tr>
-	<tr>
-		<td>Имя</td>
-		<td>@Model.FirstName</td>
-	</tr>
-	<tr>
-		<td>Отчество</td>
-		<td>@Model.FatherName</td>
-	</tr>
-	<tr>
-		<td>День Рождения</td>
-		<td>@Model.Birthday</td>
-	</tr>
-</table>
-@Html.ActionLink("Просмотр списка людей", "List")<br/>
-@if (Access.CheckRole("Person.Updater"))
+<h2>Создание новой роли</h2>
+
+@using (@Html.BeginForm("Create", "Role"))
 {
-	@Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
+	<table class="table role">
+		<tr>
+			<td>Код</td>
+			<td><input type="text" name="Code" /></td>
+		</tr>
+		<tr>
+			<td>Описание</td>
+			<td><input type="text" name="Mem" /></td>
+		</tr>
+	</table>
+	<input type="submit" value="Создать" />
 }
+@Html.ActionLink("Просмотр списка ролей", "List")
