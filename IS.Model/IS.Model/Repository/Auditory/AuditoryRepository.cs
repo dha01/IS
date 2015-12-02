@@ -50,7 +50,28 @@ where a.auditory = @id", new { id });
 		/// <returns>Идентификатор созданной аудитории.</returns>
 		public int Create(AuditoryItem auditory)
 		{
-			return 0;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecScalar<int>(@"
+insert into Auditory.auditory
+(
+	number,
+	full_name,
+	memo,
+	level,
+	capacity
+)
+values
+(
+	@Number,
+	@FullName,
+	@Memo,
+	@Level,
+	@Capacity
+)
+
+select scope_identity()", auditory);
+			}
 		}
 
 		/// <summary>
@@ -59,7 +80,12 @@ where a.auditory = @id", new { id });
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
+			using (SqlHelper sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+delete from Auditory.auditory
+where auditory = @id", new { id });
+			}
 		}
 
 		/// <summary>

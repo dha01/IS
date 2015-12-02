@@ -144,7 +144,7 @@ namespace IS.Model.Service
 		/// <returns></returns>
 		public Dictionary<string, int> Statistic()
 		{
-			var list = GetList().FindAll(x => x.Performer != null && x.IsOpen == false && x.Prefix == TaskPrefix.Task);
+			var list = GetList().FindAll(x => x.Performer != null && x.IsPerform && x.Prefix == TaskPrefix.Task);
 			var stat = new Dictionary<string, int>();
 
 			foreach (var group in list.GroupBy(x=>x.Performer).OrderBy(y => y.Key))
