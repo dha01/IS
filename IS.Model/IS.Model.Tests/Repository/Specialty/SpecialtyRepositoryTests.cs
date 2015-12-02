@@ -1,4 +1,9 @@
-﻿using System.Transactions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Transactions;
 using IS.Model.Item.Specialty;
 using IS.Model.Repository.Specialty;
 using NUnit.Framework;
@@ -6,7 +11,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Specialty
 {
 	/// <summary>
-	/// Тесты для репозитория сепциальностей.
+	/// Тесты для репозитория специальностей.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -42,15 +47,17 @@ namespace IS.Model.Tests.Repository.Specialty
 
 			_specialty = new SpecialtyItem()
 			{
-				FullName = "Название специальности",
-				ShortName = "Спецальность",
-				Code = "234"
+				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
+				ShortName = "Ифн",
+				Code = "230105",
+				CathedraId = 29
 			};
 			_specialtyNew = new SpecialtyItem()
 			{
-				FullName = "Название специальности1",
-				ShortName = "Спецальность1",
-				Code = "2341"
+				FullName = "Сисадмин",
+				ShortName = "Сис",
+				Code = "123456",
+				CathedraId = 30
 			};
 		}
 
@@ -76,11 +83,33 @@ namespace IS.Model.Tests.Repository.Specialty
 		/// </summary>
 		/// <param name="first_specialty">Первая специальность для сравнения.</param>
 		/// <param name="second_specialty">Вторая специальность для сравнения.</param>
-		private void AreEqualSpecialties(SpecialtyItem first_specialty, SpecialtyItem second_specialty)
+		private void AreEqualSpecialtys(SpecialtyItem first_specialty, SpecialtyItem second_specialty)
 		{
+			Assert.AreEqual(first_specialty.Id, second_specialty.Id);
 			Assert.AreEqual(first_specialty.FullName, second_specialty.FullName);
 			Assert.AreEqual(first_specialty.ShortName, second_specialty.ShortName);
 			Assert.AreEqual(first_specialty.Code, second_specialty.Code);
+		}
+
+		#endregion
+
+		#region Update
+
+		/// <summary>
+		/// Изменяет параметры специальности.
+		/// </summary>
+		[Test]
+		public void Update_Void_ReturnChangedSpecialty()
+		{
+			_specialty.Id = _specialtyRepository.Create(_specialty);
+			var result = _specialtyRepository.Get(_specialty.Id);
+			AreEqualSpecialtys(result, _specialty);
+
+			_specialtyNew.Id = _specialty.Id;
+			_specialtyRepository.Update(_specialtyNew);
+			result = _specialtyRepository.Get(_specialty.Id);
+			AreEqualSpecialtys(result, _specialtyNew);
+
 		}
 
 		#endregion
