@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using IS.Model.Item.Auditory;
 using IS.Model.Helper;
+using IS.Model.Item.Task;
 
 namespace IS.Model.Repository.Auditory
 {
@@ -94,7 +95,21 @@ where auditory = @id", new { id });
 		/// <returns>Список аудиторий.</returns>
 		public List<AuditoryItem> GetList()
 		{
-			return null;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<AuditoryItem>(@"
+select
+	a.auditory Id,
+	a.full_name FullName,
+	a.number Number,
+	a.memo Memo,
+	a.level Level,
+	a.capacity Capacity
+from Auditory.auditory a");
+			}
 		}
 	}
 }
+//	p.code Prefix,
+/*from Auditory.auditory a
+	join Auditory.auditory_Prefix p on p.auditory_Prefix = a.auditory_Prefix*/
