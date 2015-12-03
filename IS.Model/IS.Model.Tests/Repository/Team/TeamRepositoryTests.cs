@@ -135,11 +135,10 @@ namespace IS.Model.Tests.Repository.Team
 			result = _teamRepository.Get(_team.Id);
 			Assert.IsNull(result);
 		}
-
-
 		#endregion
 
 		#region GetList
+
 
 		/// <summary>
 		/// Получает список всех групп.
