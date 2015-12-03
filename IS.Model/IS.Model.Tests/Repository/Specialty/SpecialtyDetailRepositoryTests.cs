@@ -48,24 +48,24 @@ namespace IS.Model.Tests.Repository.Specialty
 			_specialtydetail = new SpecialtyDetailItem()
 			{
 				ActualDate = DateTime.Now.Date,
-				SpecId = 120,
+				SpecialtyId = 30,
 				SemestrCount = 4,
 				TrainingPeriod = 1,
-				Qual = Qualification.Bachelor,
-				FStudy = FormStudy.Distance,
+				Qualification = Qualification.Bachelor,
+				FormStudy = FormStudy.Distance,
 				PaySpace = 128,
-				LowcostSpace = 45,
+				LowcostSpace = 98,
 			};
 			_specialtydetailNew = new SpecialtyDetailItem()
 			{
 				ActualDate = DateTime.Now.Date,
-				SpecId = 114,
+				SpecialtyId = 32,
 				SemestrCount = 3,
 				TrainingPeriod = 2,
-				Qual = Qualification.Master,
-				FStudy = FormStudy.FullTime,
+				Qualification = Qualification.Master,
+				FormStudy = FormStudy.Fulltime,
 				PaySpace = 64,
-				LowcostSpace = 34,
+				LowcostSpace = 98,
 			};
 		}
 

@@ -4,7 +4,7 @@ create schema Specialty
 -- Создание таблицы "qualification"
 create table Specialty.qualification
 (
-	qualification int identity not null,
+	qualification int identity (1,1) not null,
 	code varchar(50) not null,
 	memo varchar(max) not null,
 	constraint PK__qualification primary key (qualification)

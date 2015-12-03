@@ -2,92 +2,92 @@
 
 namespace IS.Model.Item.Specialty
 {   
-    /// <summary>
-    /// Класс для хранения данных о сущности образовательной системы.
-    /// </summary>
-    public class SpecialtyDetailItem
-    {
-        /// <summary>
-        /// Идентификатор образовательной программы.
-        /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Текущая дата.
-        /// </summary>
-        public DateTime ActualDate { get; set; }
+	/// <summary>
+	/// Класс для хранения данных о сущности образовательной системы.
+	/// </summary>
+	public class SpecialtyDetailItem
+	{
+		/// <summary>
+		/// Идентификатор образовательной программы.
+		/// </summary>
+		public int Id { get; set; }
 
 		/// <summary>
-		/// Идентификатор специальностей?.
+		/// Текущая дата.
 		/// </summary>
-		public int SpecId { get; set; }
-
-        /// <summary>
-        /// Количество семестров.
-        /// </summary>
-        public int SemestrCount { get; set; }
-
-        /// <summary>
-        /// Период обучения.
-        /// </summary>
-        public int TrainingPeriod { get; set; }
+		public DateTime ActualDate { get; set; }
 
 		/// <summary>
-		/// Идентификатор квалификации.
+		/// Идентификатор специальности.
 		/// </summary>
-		public Qualification Qual { get; set; }
+		public int SpecialtyId { get; set; }
 
 		/// <summary>
-		/// Идентификатор формы обучения.
+		/// Количество семестров.
 		/// </summary>
-		public FormStudy FStudy { get; set; }
+		public int SemestrCount { get; set; }
 
-        /// <summary>
-        /// Количество платных мест.
-        /// </summary>
-        public int PaySpace { get; set; }
+		/// <summary>
+		/// Период обучения.
+		/// </summary>
+		public int TrainingPeriod { get; set; }
 
-        /// <summary>
-        /// Количество бюджетных мест.
-        /// </summary>
-        public int LowcostSpace { get; set; }
+		/// <summary>
+		/// Квалификация.
+		/// </summary>
+		public Qualification Qualification { get; set; }
 
-    }
+		/// <summary>
+		/// Форма обучения.
+		/// </summary>
+		public FormStudy FormStudy { get; set; }
 
-    /// <summary>
-    /// Квалификация.
-    /// </summary>
-    public enum Qualification
-    {
-        /// <summary>
-        /// Бакалавр.
-        /// </summary>
-        Bachelor,
+		/// <summary>
+		/// Количество платных мест.
+		/// </summary>
+		public int PaySpace { get; set; }
 
-        /// <summary>
-        /// Магистр.
-        /// </summary>
-        Master,
+		/// <summary>
+		/// Количество бюджетных мест.
+		/// </summary>
+		public int LowcostSpace { get; set; }
 
-        /// <summary>
-        /// Специалист.
-        /// </summary>
-        Expert
-    }
+	}
 
-    /// <summary>
-    /// Форма обучения.
-    /// </summary>
-    public enum FormStudy
-    {
-        /// <summary>
-        /// Очная.
-        /// </summary>
-        FullTime,
+	/// <summary>
+	/// Квалификация.
+	/// </summary>
+	public enum Qualification
+	{
+		/// <summary>
+		/// Бакалавр.
+		/// </summary>
+		Bachelor,
 
-        /// <summary>
-        /// Заочная.
-        /// </summary>
-        Distance
-    }
+		/// <summary>
+		/// Магистр.
+		/// </summary>
+		Master,
+
+		/// <summary>
+		/// Специалист.
+		/// </summary>
+		Expert
+	}
+
+	/// <summary>
+	/// Форма обучения.
+	/// </summary>
+	public enum FormStudy
+	{
+		/// <summary>
+		/// Очная.
+		/// </summary>
+		Fulltime,
+
+		/// <summary>
+		/// Заочная.
+		/// </summary>
+		Distance
+	}
 }

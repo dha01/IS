@@ -25,11 +25,11 @@ namespace IS.Model.Repository.Specialty
 select
 	sd.specialty_detail Id,
 	sd.actual_date ActualDate,
-	ss.specialty SpecId,
+	ss.specialty SpecialtyId,
 	sd.semestr_count SemestrCount,
 	sd.training_period TrainingPeriod,
-	q.qualification Qual,
-	fs.form_study FormStud,
+	q.code Qualification,
+	fs.code FormStudy,
 	sd.pay_space PaySpace,
 	sd.lowcost_space LowcostSpace
 from Specialty.specialty_detail sd
@@ -51,14 +51,12 @@ where sd.specialty_detail = @id", new { id });
 				sqlh.ExecNoQuery(@"
 update Specialty.specialty_detail
 set
-	specialty_detail = @Id,
 	actual_date = @ActualDate,
-	specialty = (select top 1 ss.specialty from Specialty.specialty ss where ss.specialty = @SpecId),
+	specialty = (select top 1 ss.specialty from Specialty.specialty ss where ss.specialty = @SpecialtyId),
 	semestr_count = @SemestrCount,
 	training_period = @TrainingPeriod,
-	lowcost_space = @LowcostSpace,
-	qualification = (select top 1 q.qualification from Specialty.qualification q where q.qualification = @Qual),
-	form_study = (select top 1 fs.form_study from Specialty.form_study fs where fs.form_study = @FStudy),
+	qualification = (select top 1 q.qualification from Specialty.qualification q where q.code = @Qualification),
+	form_study = (select top 1 fs.form_study from Specialty.form_study fs where fs.code = @FormStudy),
 	pay_space = @PaySpace,
 	lowcost_space = @LowcostSpace
 where specialty_detail = @Id", specialtydetail);
@@ -77,7 +75,6 @@ where specialty_detail = @Id", specialtydetail);
 				return sqlh.ExecScalar<int>(@"
 insert into Specialty.specialty_detail
 (
-	specialty_detail,
 	actual_date,
 	specialty,
 	semestr_count,
@@ -89,13 +86,12 @@ insert into Specialty.specialty_detail
 )
 values
 (
-	@Id,
 	@ActualDate,
-	(select top 1 ss.specialty from Specialty.specialty ss where ss.specialty = @SpecId),
+	(select top 1 ss.specialty from Specialty.specialty ss where ss.specialty = @SpecialtyId),
 	@SemestrCount,
 	@TrainingPeriod,
-	(select top 1 q.qualification from Specialty.qualification q where q.qualification = @Qual),
-	(select top 1 fs.form_study from Specialty.form_study fs where fs.form_study = @FStudy),
+	(select top 1 q.qualification from Specialty.qualification q where q.code = @Qualification),
+	(select top 1 fs.form_study from Specialty.form_study fs where fs.code = @FormStudy),
 	@PaySpace,
 	@LowcostSpace
 )
@@ -130,11 +126,11 @@ where specialty_detail = @id", new { id });
 select
 	sd.specialty_detail Id,
 	sd.actual_date ActualDate,
-	s.specialty SpecId,
+	ss.specialty SpecialtyId,
 	sd.semestr_count SemestrCount,
 	sd.training_period TrainingPeriod,
-	q.qualification Qual,
-	st.form_study FStudy,
+	q.code Qualification,
+	fs.code FormStudy,
 	sd.pay_space PaySpace,
 	sd.lowcost_space LowcostSpace
 from Specialty.specialty_detail sd

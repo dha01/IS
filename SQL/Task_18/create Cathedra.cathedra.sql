@@ -11,3 +11,8 @@ create table Cathedra.cathedra
 	constraint PK__cathedra primary key (cathedra),
 	constraint FK__cathedra__faculty foreign key (faculty) references Faculty.faculty
 )
+insert into Cathedra.cathedra(full_name,short_name,faculty)
+values
+		(
+			'Кафедра Физики','ФизТех',21
+		)
