@@ -15,9 +15,9 @@ namespace IS.Mvc.Controllers
 	public class DisciplineController : Controller
 	{
 		private DisciplineService _disciplineService;
-    /// <summary>
-    /// Создание сервиса дисциплин.
-    /// </summary>
+	/// <summary>
+	/// Создание сервиса дисциплин.
+	/// </summary>
 		public DisciplineController()
 		{
 			_disciplineService = new DisciplineService();
@@ -63,18 +63,14 @@ namespace IS.Mvc.Controllers
 		}
 
 		/// <summary>
-		/// Интерфейс для создания задачи.
+		/// Интерфейс для создания дисциплины.
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult New()
 		{
 			Access.CheckAccess("Discipline.Creator");
-			var defaultitem = new DisciplineItem()
-			{
-				ShortName = "Краткое ",
-				FullName = "Полное ",
-				Mem = "Описание"
-			};
+			var defaultitem = new DisciplineItem();
+			
 			return View(defaultitem);
 		}
 
@@ -104,7 +100,7 @@ namespace IS.Mvc.Controllers
 		}
 
 		/// <summary>
-		/// Интерфейс для редактирования задачи.
+		/// Интерфейс для редактирования дисциплины.
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult Delete(int id)

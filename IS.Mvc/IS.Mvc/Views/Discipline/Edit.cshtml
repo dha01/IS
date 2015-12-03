@@ -2,7 +2,7 @@
 @model DisciplineItem 
 
 @{
-    ViewBag.Title = "Edit";
+	ViewBag.Title = "Edit";
 }
 
 <style>
@@ -36,22 +36,22 @@
 {
 	@Html.HiddenFor(m => Model.Id)
 	<table>
-	    <tr>
-	        <th style="width: 100px">
-	            Краткое название
-	        </th>
-	        <td>
-	            <input type="text" name="ShortName" value="@Model.ShortName" style="width: 100%;">
-	        </td>
-	    </tr>
-        <tr>
-            <th style="width: 100px">
-                Полное название
-            </th>
-            <td>
-                <input type="text" name="FullName" value="@Model.FullName" style="width: 100%;">
-            </td>
-        </tr>
+		<tr>
+			<th style="width: 100px">
+				Краткое название
+			</th>
+			<td>
+				<input type="text" name="ShortName" value="@Model.ShortName" style="width: 100%;">
+			</td>
+		</tr>
+		<tr>
+			<th style="width: 100px">
+				Полное название
+			</th>
+			<td>
+				<input type="text" name="FullName" value="@Model.FullName" style="width: 100%;">
+			</td>
+		</tr>
 		<tr>
 			<th>
 				Описание
