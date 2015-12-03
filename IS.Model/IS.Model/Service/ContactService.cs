@@ -61,7 +61,7 @@ namespace IS.Model.Service
 		/// <returns>Идентификаторо созданного контакта.</returns>
 		public int Create(ContactItem contact)
 		{
-			if (string.IsNullOrEmpty(contact.Value))
+			if (string.IsNullOrWhiteSpace(contact.Value))
 			{
 				throw new Exception("Поле 'Value' не должно быть пустым.");
 			}
@@ -74,10 +74,16 @@ namespace IS.Model.Service
 		/// <param name="contact">Контакт.</param>
 		public void Update(ContactItem contact)
 		{
-			if (string.IsNullOrEmpty(contact.Value))
+			if (string.IsNullOrWhiteSpace(contact.Value))
 			{
 				throw new Exception("Поле 'Value' не должно быть пустым.");
 			}
+
+			if (GetById(contact.Id) == null)
+			{
+				throw new Exception("Контакт не найден.");
+			}
+
 			_contactRepository.Update(contact);
 		}
 
