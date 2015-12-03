@@ -118,12 +118,11 @@ namespace IS.Model.Tests.Repository.Auditory
 		{
 			_auditory.Id = _auditoryRepository.Create(_auditory);
 			var result = _auditoryRepository.Get(_auditory.Id);
-			AreEqualTasks(result, _auditory);
-
+			AreEqualAuditory(result, _auditory);
 			_auditoryNew.Id = _auditory.Id;
 			_auditoryRepository.Update(_auditoryNew);
 			result = _auditoryRepository.Get(_auditory.Id);
-			AreEqualTasks(result, _auditoryNew);
+			AreEqualAuditory(result, _auditoryNew);
 
 		}
 
