@@ -49,7 +49,7 @@ namespace IS.Model.Tests.Repository.Team
 			_teamNew = new TeamItem()
 			{
 				Name = "ПЕ-21б",
-				CreateDate = DateTime.Now.AddYears(-1)
+				CreateDate = DateTime.Now.AddYears(-1).Date
 			};
 		}
 
@@ -101,7 +101,21 @@ namespace IS.Model.Tests.Repository.Team
 
 		#region Update
 
-	
+		/// <summary>
+		/// Изменяет параметры группы.
+		/// </summary>
+		[Test]
+		public void Update_Void_ReturnChangedTeam()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			var result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _team);
+
+			_teamNew.Id = _team.Id;
+			_teamRepository.Update(_teamNew);
+			result = _teamRepository.Get(_team.Id);
+			AreEqualTeams(result, _teamNew);
+		}
 
 		#endregion
 
@@ -121,10 +135,10 @@ namespace IS.Model.Tests.Repository.Team
 			result = _teamRepository.Get(_team.Id);
 			Assert.IsNull(result);
 		}
-
 		#endregion
 
 		#region GetList
+
 
 		/// <summary>
 		/// Получает список всех групп.

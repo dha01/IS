@@ -25,7 +25,6 @@ select
 	t.create_date CreateDate
 from Team.team t
 where t.team = @id", new { id });
-
 			}
 		}
 
@@ -35,6 +34,15 @@ where t.team = @id", new { id });
 		/// <param name="team">Группу.</param>
 		public void Update(TeamItem team)
 		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+update Team.Team
+set
+	name = @Name,
+	create_date = @CreateDate
+where Team = @Id", team);
+			}
 		}
 
 		/// <summary>
