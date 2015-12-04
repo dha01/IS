@@ -38,7 +38,7 @@ namespace IS.Mvc.Models.Service
 		/// <returns>Идентификатор созданной группы.</returns>
 		public int Create(TeamItem team)
 		{
-			if (string.IsNullOrWhiteSpace(team.name))
+			if (string.IsNullOrWhiteSpace(team.Name))
 			{
 				throw new Exception("Поле 'Name' не должно быть пустым.");
 			}
@@ -66,7 +66,7 @@ namespace IS.Mvc.Models.Service
 			{
 				throw new Exception("Поле 'Name' не должно быть пустым.");
 			}
-			if (Get(team.Id) != null)
+			if (Get(team.Id) == null)
 			{
 				throw new Exception("Запись не найдена в базе.");
 			}

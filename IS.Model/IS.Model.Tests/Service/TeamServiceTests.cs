@@ -107,8 +107,8 @@ namespace IS.Model.Tests.Service
 		[Test]
 		public void Update_RecordExists_ReturnException()
 		{
-			Mock.Get(_teamRepository).Setup(x => x.Create(_team)).Returns(_team.Id);
-			_teamService.Get(_team.Id);
+            Mock.Get(_teamRepository).Setup(x => x.Get(_team.Id)).Returns((TeamItem)null);
+            _teamService.Update(_team);
 		}
 
 		#endregion
