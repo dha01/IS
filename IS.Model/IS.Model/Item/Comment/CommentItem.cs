@@ -28,7 +28,7 @@ namespace IS.Model.Item.Comment
 		/// <summary>
 		/// Текст комментария.
 		/// </summary>
-		public string TextComment { get; set; }
+		public string Text { get; set; }
 
 		/// <summary>
 		/// Задача.

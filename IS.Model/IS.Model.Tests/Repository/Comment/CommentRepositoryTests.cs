@@ -47,13 +47,17 @@ namespace IS.Model.Tests.Repository.Comment
 
 			_comment = new CommentItem()
 			{
-				AddDate = DateTime.Now.Date,
-				TextComment = "Задача номер 1"
+				AddDate = DateTime.Now.Date, 
+				Person = 2,
+				Text = "Задача номер 1",
+				Task = 1
 			};
 			_commentNew = new CommentItem()
 			{
 				AddDate = DateTime.Now.AddYears(-1).Date,
-				TextComment = "Задача номер 2"
+				Person = 1,
+				Text = "Задача номер 2",
+				Task = 2
 			};
 		}
 
@@ -83,7 +87,9 @@ namespace IS.Model.Tests.Repository.Comment
 		{
 			Assert.AreEqual(first_comment.Id, second_comment.Id);
 			Assert.AreEqual(first_comment.AddDate, second_comment.AddDate);
-			Assert.AreEqual(first_comment.TextComment, second_comment.TextComment);
+			Assert.AreEqual(first_comment.Person, second_comment.Person);
+			Assert.AreEqual(first_comment.Text, second_comment.Text);
+			Assert.AreEqual(first_comment.Task, second_comment.Task);
 		}
 
 		#endregion
@@ -119,7 +125,6 @@ namespace IS.Model.Tests.Repository.Comment
 			_commentRepository.Update(_commentNew);
 			result = _commentRepository.Get(_comment.Id);
 			AreEqualComments(result, _commentNew);
-
 		}
 
 		#endregion

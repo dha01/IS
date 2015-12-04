@@ -92,23 +92,6 @@
     <Compile Include="Service\TaskService.cs" />
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\IS.Model.csprojResolveAssemblyReference.cache" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\IS.Model.dll" />
-    <Content Include="bin\Debug\IS.Model.pdb" />
-    <Content Include="obj\Debug\IS.Model.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\IS.Model.dll" />
-    <Content Include="obj\Debug\IS.Model.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-    <Folder Include="obj\Debug\TempPE\" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

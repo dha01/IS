@@ -25,7 +25,9 @@ namespace IS.Model.Repository.Comment
 select
 	c.comment Id,
 	c.add_date AddDate,
-	c.text_comment TextComment,
+	c.person Person,
+	c.text Text,
+	c.task Task
 from Task.comment c
 where c.comment = @id", new { id });
 			}
@@ -43,7 +45,9 @@ where c.comment = @id", new { id });
 update Task.comment
 set
 	add_date = @AddDate,
-	text_comment = @TextComment,
+	person = @Person,
+	text = @Text,
+	task = @Task
 where comment = @Id", comment);
 			}
 		}
@@ -61,12 +65,16 @@ where comment = @Id", comment);
 insert into Task.comment
 (
 	add_date,
-	text_comment,
+	person,
+	text,
+	task
 )
 values
 (
 	@AddDate,
-	@TextComment,
+	@Person,
+	@Text,
+	@Task
 )
 
 select scope_identity()", comment);
@@ -99,7 +107,9 @@ where comment = @id", new { id });
 select
 	c.comment Id,
 	c.add_date AddDate,
-	c.text_comment TextComment,
+	c.person Person,
+	c.text Text,
+	c.task Task
 from Task.comment c");
 			}
 		}

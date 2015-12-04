@@ -5,9 +5,9 @@ create schema Task
 create table Task.comment
 (
 	comment int identity,
-	add_date date,
+	add_date datetime,
 	person int,
-	text_comment nvarchar(max) not null,
+	text nvarchar(max) not null,
 	task int,
 	constraint PK__comment primary key (comment),
 	constraint FK__comment__person foreign key (person) references Person.person,
