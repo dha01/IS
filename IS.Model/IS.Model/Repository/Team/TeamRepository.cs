@@ -42,7 +42,7 @@ update Team.Team
 set
 	name = @Name,
 	create_date = @CreateDate,
-	specialty_detail @SpecialtyDetailId
+	specialty_detail = @SpecialtyDetailId
 where Team = @Id", team);
 			}
 		}
