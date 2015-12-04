@@ -68,7 +68,7 @@ namespace IS.Mvc.Models.Service
 			}
 			if (Get(team.Id) == null)
 			{
-				throw new Exception("Запись не найдена в базе.");
+				throw new Exception("Группа не найдена.");
 			}
 			_teamRepository.Update(team);
 		}

@@ -85,30 +85,51 @@ namespace IS.Model.Tests.Service
 			Assert.AreEqual(result, _team.Id);
 		}
 
+		/// <summary>
+		/// Создает группу с пустым названием.
+		/// </summary>
+		[ExpectedException(ExpectedMessage = "Поле 'Name' не должно быть пустым.")]
+		[Test]
+		public void Create_EmptyCode_ReturnException()
+		{
+			_team.Name = null;
+			_teamService.Create(_team);
+		}
+
 		#endregion
 
 		#region Update
-		
+
 		/// <summary>
-		/// Проверка на пустое название группы.
+		/// Изменяет данные о группе.
 		/// </summary>
-		[ExpectedException(ExpectedMessage = "Поле Name не должно быть пустым.")]
 		[Test]
-		public void Update_EmptyName_ReturnException()
+		public void Update_Void_Success()
 		{
 			Mock.Get(_teamRepository).Setup(x => x.Get(_team.Id)).Returns(_team);
 			_teamService.Update(_team);
 		}
 
 		/// <summary>
-		/// Проверка есть ли запись в базе.
+		/// Изменяет название на пустое.
 		/// </summary>
-		[ExpectedException(ExpectedMessage = "Запись не найдена в базе.")]
+		[ExpectedException(ExpectedMessage = "Поле Name не должно быть пустым.")]
 		[Test]
-		public void Update_RecordExists_ReturnException()
+		public void Update_EmptyName_ReturnException()
 		{
-            Mock.Get(_teamRepository).Setup(x => x.Get(_team.Id)).Returns((TeamItem)null);
-            _teamService.Update(_team);
+			_team.Name = null;
+			_teamService.Update(_team);
+		}
+
+		/// <summary>
+		/// Изменяет не существующую группу.
+		/// </summary>
+		[ExpectedException(ExpectedMessage = "Группа не найдена.")]
+		[Test]
+		public void Update_RecordNotExists_ReturnException()
+		{
+			Mock.Get(_teamRepository).Setup(x => x.Get(_team.Id)).Returns((TeamItem)null);
+			_teamService.Update(_team);
 		}
 
 		#endregion
