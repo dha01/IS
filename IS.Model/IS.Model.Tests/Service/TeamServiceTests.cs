@@ -113,7 +113,7 @@ namespace IS.Model.Tests.Service
 		/// <summary>
 		/// Изменяет название на пустое.
 		/// </summary>
-        [ExpectedException(ExpectedMessage = "Поле 'Name' не должно быть пустым.")]
+		[ExpectedException(ExpectedMessage = "Поле 'Name' не должно быть пустым.")]
 		[Test]
 		public void Update_EmptyName_ReturnException()
 		{
