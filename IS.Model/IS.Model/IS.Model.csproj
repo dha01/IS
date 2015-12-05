@@ -66,6 +66,8 @@
     <Compile Include="Item\Housing\HousingItem.cs" />
     <Compile Include="Repository\Housing\HousingRepository.cs" />
     <Compile Include="Repository\Housing\IHousingRepository.cs" />
+    <Compile Include="Repository\Specialty\ISpecialtyDetailRepository.cs" />
+    <Compile Include="Repository\Specialty\SpecialtyDetailRepository.cs" />
     <Compile Include="Repository\Task\ITaskRepository.cs" />
     <Compile Include="Repository\Access\IUserRepository.cs" />
     <Compile Include="Repository\Access\RoleRepository.cs" />
