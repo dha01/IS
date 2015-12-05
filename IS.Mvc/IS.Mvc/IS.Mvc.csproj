@@ -138,6 +138,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -290,6 +291,10 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\New.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Team\List.cshtml" />
+    <Content Include="Views\Team\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
