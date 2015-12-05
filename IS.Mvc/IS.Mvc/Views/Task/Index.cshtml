@@ -32,7 +32,7 @@
 	} 
 </style>
 
-<h2>Задача(@Html.ActionLink("К списку задач", "List"))</h2>
+<h2>@Html.Raw(string.Format("{0}_{1} {2}", Model.Prefix, Model.Number, Model.Header)) (@Html.ActionLink("К списку задач", "List"))</h2>
 
 <table>
 	<tr>
@@ -133,9 +133,17 @@
 			@Html.DisplayTextFor(m => Model.Performer)
 		</td>
 	</tr>
+	<tr>
+		<td>
+			Pull request
+		</td>
+		<td>
+			<a href="@Model.PullRequestUrl">@Model.PullRequestUrl</a>
+		</td>
+	</tr>
 </table>
 
-@if (Access.CheckRole("Task.Updater"))
+@if (Access.CheckRole())
 {
 	@Html.ActionLink("Редактировать", "Edit", new {id = Model.Id})
 }
