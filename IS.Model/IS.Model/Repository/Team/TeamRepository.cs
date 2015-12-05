@@ -14,7 +14,7 @@ namespace IS.Model.Repository.Team
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		/// <returns>Группу.</returns>
-		public TeamItem Get(int id)
+		public TeamItem GetById(int id)
 		{
 			using (var sqlh = new SqlHelper())
 			{

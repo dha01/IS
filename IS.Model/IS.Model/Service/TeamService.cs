@@ -51,7 +51,7 @@ namespace IS.Mvc.Models.Service
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		/// <returns>Группа.</returns>
-		public TeamItem Get(int Id)
+		public TeamItem GetById(int Id)
 		{
 			return _teamRepository.Get(Id);
 		}

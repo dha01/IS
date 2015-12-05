@@ -93,7 +93,7 @@ namespace IS.Model.Tests.Repository.Team
 		public void Create_Void_ReturnId()
 		{
 			_team.Id = _teamRepository.Create(_team);
-			var result = _teamRepository.Get(_team.Id);
+			var result = _teamRepository.GetById(_team.Id);
 			AreEqualTeams(result, _team);
 		}
 
@@ -108,12 +108,12 @@ namespace IS.Model.Tests.Repository.Team
 		public void Update_Void_ReturnChangedTeam()
 		{
 			_team.Id = _teamRepository.Create(_team);
-			var result = _teamRepository.Get(_team.Id);
+			var result = _teamRepository.GetById(_team.Id);
 			AreEqualTeams(result, _team);
 
 			_teamNew.Id = _team.Id;
 			_teamRepository.Update(_teamNew);
-			result = _teamRepository.Get(_team.Id);
+			result = _teamRepository.GetById(_team.Id);
 			AreEqualTeams(result, _teamNew);
 		}
 
@@ -128,11 +128,11 @@ namespace IS.Model.Tests.Repository.Team
 		public void Delete_Void_ReturnNull()
 		{
 			_team.Id = _teamRepository.Create(_team);
-			var result = _teamRepository.Get(_team.Id);
+			var result = _teamRepository.GetById(_team.Id);
 			AreEqualTeams(result, _team);
 
 			_teamRepository.Delete(_team.Id);
-			result = _teamRepository.Get(_team.Id);
+			result = _teamRepository.GetById(_team.Id);
 			Assert.IsNull(result);
 		}
 		#endregion

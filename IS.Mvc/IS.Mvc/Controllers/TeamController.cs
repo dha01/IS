@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using IS.Model.Item.Access;
 using IS.Model.Service;
 using IS.Mvc.Models;
+using IS.Model.Item.Team;
+using IS.Model.Repository.Team;
 
 namespace IS.Mvc.Controllers
 {
@@ -32,7 +34,7 @@ namespace IS.Mvc.Controllers
 		public ActionResult List()
 		{
 			Access.CheckAccess("Team.Reader");
-			return View("List", _teamService.GetList().OrderBy(x => x.Code).ToList());
+			return View("List", _teamService.GetList().OrderBy(x => x.Name).ToList());
 		}
 
 		/// <summary>
