@@ -146,6 +146,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\DataTable\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTable\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTable\dataTables.foundation.css" />
+    <Content Include="Content\DataTable\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTable\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTable\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTable\jquery.dataTables.css" />
+    <Content Include="Content\DataTable\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTable\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\sort_asc.png" />
+    <Content Include="Content\Images\sort_asc_disabled.png" />
+    <Content Include="Content\Images\sort_both.png" />
+    <Content Include="Content\Images\sort_desc.png" />
+    <Content Include="Content\Images\sort_desc_disabled.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -202,6 +217,15 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTable\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTable\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTable\jquery.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -211,6 +235,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Content\Images\Sorting icons.psd" />
     <None Include="Properties\PublishProfiles\server.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -292,7 +317,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7843</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

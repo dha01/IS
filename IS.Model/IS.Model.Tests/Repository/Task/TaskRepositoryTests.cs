@@ -53,7 +53,8 @@ namespace IS.Model.Tests.Repository.Task
 				Mem = "Описание",
 				Number = 1,
 				Priority = 0,
-				Prefix = TaskPrefix.Refactoring
+				Prefix = TaskPrefix.Refactoring,
+				PullRequestUrl = "https://github.com/dha01/IS/pull/1"
 			}; 
 			_taskNew = new TaskItem()
 			{
@@ -67,7 +68,8 @@ namespace IS.Model.Tests.Repository.Task
 				Mem = "Описание2",
 				Number = 2,
 				Priority = 5,
-				Prefix = TaskPrefix.Demo
+				Prefix = TaskPrefix.Demo,
+				PullRequestUrl = "https://github.com/dha01/IS/pull/2"
 			};
 		}
 
@@ -106,6 +108,7 @@ namespace IS.Model.Tests.Repository.Task
 			Assert.AreEqual(first_task.Number, second_task.Number);
 			Assert.AreEqual(first_task.Priority, second_task.Priority);
 			Assert.AreEqual(first_task.Prefix, second_task.Prefix);
+			Assert.AreEqual(first_task.PullRequestUrl, second_task.PullRequestUrl);
 		}
 
 		#endregion
