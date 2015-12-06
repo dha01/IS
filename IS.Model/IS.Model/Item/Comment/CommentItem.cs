@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using IS.Model.Item.Person;
 
 namespace IS.Model.Item.Comment
 {
@@ -10,6 +11,8 @@ namespace IS.Model.Item.Comment
 	/// </summary>
 	public class CommentItem
 	{
+		public PersonItem person;
+
 		/// <summary>
 		/// Идентификатор.
 		/// </summary>
@@ -23,7 +26,7 @@ namespace IS.Model.Item.Comment
 		/// <summary>
 		/// Автор.
 		/// </summary>
-		public int Person { get; set; }
+		public int PersonId { get; set; }
 
 		/// <summary>
 		/// Текст комментария.
@@ -33,6 +36,6 @@ namespace IS.Model.Item.Comment
 		/// <summary>
 		/// Задача.
 		/// </summary>
-		public int Task { get; set; }
+		public int TaskId { get; set; }
 	}
 }

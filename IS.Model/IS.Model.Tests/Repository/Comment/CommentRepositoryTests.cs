@@ -7,6 +7,10 @@ using System.Transactions;
 using IS.Model.Item.Comment;
 using IS.Model.Repository.Comment;
 using NUnit.Framework;
+using IS.Model.Repository.Person;
+using IS.Model.Repository.Task;
+using IS.Model.Item.Person;
+using IS.Model.Item.Task;
 
 namespace IS.Model.Tests.Repository.Comment
 {
@@ -32,6 +36,22 @@ namespace IS.Model.Tests.Repository.Comment
 		private CommentItem _comment;
 		private CommentItem _commentNew;
 
+		/// <summary>
+		/// Репозиторий людей.
+		/// </summary>
+		private PersonRepository _personRepository;
+
+		public PersonItem first_person;
+		public PersonItem second_person;
+
+		/// <summary>
+		/// Репозиторий задач.
+		/// </summary>
+		private TaskRepository _taskRepository;
+
+		public TaskItem first_task;
+		public TaskItem second_task;
+
 		#endregion
 
 		#region SetUp
@@ -44,20 +64,68 @@ namespace IS.Model.Tests.Repository.Comment
 		{
 			_transactionScope = new TransactionScope();
 			_commentRepository = new CommentRepository();
+			_personRepository = new PersonRepository();
+			_taskRepository = new TaskRepository();
+
+			first_person = new PersonItem()
+			{
+				LastName = "Никонов",
+				FirstName = "Денис",
+				Birthday = DateTime.Now.Date,
+				FatherName = "Олегович"
+			};
+
+			second_person = new PersonItem()
+			{
+				LastName = "Кажин",
+				FirstName = "Филипп",
+				Birthday = DateTime.Now.AddMonths(-3).Date,
+				FatherName = "Александрович"
+			};
+
+			first_task = new TaskItem()
+			{
+				Author = "1",
+				Deadline = DateTime.Now.AddDays(7).Date,
+				Created = DateTime.Now.Date,
+				Performer = "1",
+				Header = "Тестирование демонстрационной задачи",
+				IsOpen = true,
+				IsPerform = false,
+				Mem = "Описание",
+				Number = 1,
+				Priority = 0,
+				Prefix = TaskPrefix.Refactoring
+			};
+
+			second_task = new TaskItem()
+			{
+				Author = "2",
+				Deadline = DateTime.Now.AddDays(8).Date,
+				Created = DateTime.Now.Date,
+				Performer = "2",
+				Header = "Тестирование демонстрационной задачи 2",
+				IsOpen = false,
+				IsPerform = true,
+				Mem = "Описание2",
+				Number = 2,
+				Priority = 5,
+				Prefix = TaskPrefix.Demo
+			};
 
 			_comment = new CommentItem()
 			{
 				AddDate = DateTime.Now.Date, 
-				Person = 2,
+				PersonId = _personRepository.Create(first_person),
 				Text = "Задача номер 1",
-				Task = 1
+				TaskId = _taskRepository.Create(first_task)
 			};
 			_commentNew = new CommentItem()
 			{
 				AddDate = DateTime.Now.AddYears(-1).Date,
-				Person = 1,
+				PersonId = _personRepository.Create(second_person),
 				Text = "Задача номер 2",
-				Task = 2
+				TaskId = _taskRepository.Create(second_task)
 			};
 		}
 
@@ -81,15 +149,16 @@ namespace IS.Model.Tests.Repository.Comment
 		/// <summary>
 		/// Проверяет еквивалентны ли два комментария.
 		/// </summary>
-		/// <param name="first_comment"></param>
-		/// <param name="second_comment"></param>
+		/// Описание входных параметров.
+		/// <param name="first_comment">Первый комментарий для сравнения.</param>
+		/// <param name="second_comment">Второй комментарий для сравнения.</param>
 		private void AreEqualComments(CommentItem first_comment, CommentItem second_comment)
 		{
 			Assert.AreEqual(first_comment.Id, second_comment.Id);
 			Assert.AreEqual(first_comment.AddDate, second_comment.AddDate);
-			Assert.AreEqual(first_comment.Person, second_comment.Person);
+			Assert.AreEqual(first_comment.PersonId, second_comment.PersonId);
 			Assert.AreEqual(first_comment.Text, second_comment.Text);
-			Assert.AreEqual(first_comment.Task, second_comment.Task);
+			Assert.AreEqual(first_comment.TaskId, second_comment.TaskId);
 		}
 
 		#endregion
