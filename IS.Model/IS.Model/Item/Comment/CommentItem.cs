@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using IS.Model.Item.Person;
 
 namespace IS.Model.Item.Comment
 {
@@ -11,8 +10,6 @@ namespace IS.Model.Item.Comment
 	/// </summary>
 	public class CommentItem
 	{
-		public PersonItem person;
-
 		/// <summary>
 		/// Идентификатор.
 		/// </summary>
