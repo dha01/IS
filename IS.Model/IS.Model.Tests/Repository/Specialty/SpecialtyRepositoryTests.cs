@@ -36,9 +36,9 @@ namespace IS.Model.Tests.Repository.Specialty
 
 		private SpecialtyItem _specialty;
 		private SpecialtyItem _specialtyNew;
-		private CathedraItem _cathedraID;
-		private CathedraItem _cathedraIDNew;
-		private FacultyItem _facultyID;
+		private CathedraItem _cathedra;
+		private CathedraItem _cathedraNew;
+		private FacultyItem _faculty;
 
 		private FacultyRepository _facultyIdRepository;
 
@@ -57,24 +57,24 @@ namespace IS.Model.Tests.Repository.Specialty
 			_specialtyRepository = new SpecialtyRepository();
 			_facultyIdRepository = new FacultyRepository();
 
-			_facultyID = new FacultyItem()
+			_faculty = new FacultyItem()
 			{
 				FullName = "Информационный",
 				ShortName = "И",
 			};
 
-			_cathedraID = new CathedraItem()
+			_cathedra = new CathedraItem()
 			{
 				FullName = "Информациионных систем и технологий",
 				ShortName = "ИСиТ",
-				FacultyId = _facultyIdRepository.Create(_facultyID)
+				FacultyId = _facultyIdRepository.Create(_faculty)
 			};
 
-			_cathedraIDNew = new CathedraItem()
+			_cathedraNew = new CathedraItem()
 			{
 				FullName = "Экономика и организация производлства",
 				ShortName = "ЭиОП",
-				FacultyId = _facultyIdRepository.Create(_facultyID)
+				FacultyId = _facultyIdRepository.Create(_faculty)
 			};
 
 			_specialty = new SpecialtyItem()
@@ -82,14 +82,14 @@ namespace IS.Model.Tests.Repository.Specialty
 				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
 				ShortName = "Ифн",
 				Code = "230105",
-				CathedraId = _cathedraRepository.Create(_cathedraID)
+				CathedraId = _cathedraRepository.Create(_cathedra)
 			};
 			_specialtyNew = new SpecialtyItem()
 			{
 				FullName = "Сисадмин",
 				ShortName = "Сис",
 				Code = "123456",
-				CathedraId = _cathedraRepository.Create(_cathedraIDNew)
+				CathedraId = _cathedraRepository.Create(_cathedraNew)
 			};
 		}
 
