@@ -7,7 +7,7 @@ create table TrainingPlan.lesson(
 	discipline int not null,
 	lesson_type int not null,
 	work_day int not null,
-	start_time time not null,
+	from_time time not null,
 	trim_time time not null,
 	constraint PK__lesson primary key (lesson),
 	constraint FK__lesson__discipline foreign key (discipline) references Discipline.discipline,
