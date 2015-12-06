@@ -40,8 +40,8 @@ namespace IS.Model.Tests.Repository.Specialty
 		private SpecialtyItem _specialtyNew;
 		private SpecialtyDetailItem _specialtyDetail;
 		private SpecialtyDetailItem _specialtyDetailNew;
-		private CathedraItem _cathedraId;
-		private FacultyItem _facultyID;
+		private CathedraItem _cathedra;
+		private FacultyItem _faculty;
 
 		#endregion
 
@@ -59,17 +59,17 @@ namespace IS.Model.Tests.Repository.Specialty
 			_cathedraRepository = new CathedraRepository();
 			_facultyRepository = new FacultyRepository();
 
-			_facultyID = new FacultyItem()
+			_faculty = new FacultyItem()
 			{
 				FullName = "Информационный",
 				ShortName = "И",
 			};
 
-			_cathedraId = new CathedraItem()
+			_cathedra = new CathedraItem()
 			{
 				FullName = "Информациионных систем и технологий",
 				ShortName = "ИСиТ",
-				FacultyId = _facultyRepository.Create(_facultyID)
+				FacultyId = _facultyRepository.Create(_faculty)
 			};
 
 			_specialty = new SpecialtyItem()
@@ -77,7 +77,7 @@ namespace IS.Model.Tests.Repository.Specialty
 				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
 				ShortName = "Ифн",
 				Code = "230105",
-				CathedraId = _cathedraRepository.Create(_cathedraId)
+				CathedraId = _cathedraRepository.Create(_cathedra)
 			};
 
 			_specialtyNew = new SpecialtyItem()
@@ -85,7 +85,7 @@ namespace IS.Model.Tests.Repository.Specialty
 				FullName = "Экономика и технология производства",
 				ShortName = "ЭТП",
 				Code = "230221",
-				CathedraId = _cathedraRepository.Create(_cathedraId)
+				CathedraId = _cathedraRepository.Create(_cathedra)
 			};
 
 			_specialtyDetail = new SpecialtyDetailItem()
@@ -130,10 +130,10 @@ namespace IS.Model.Tests.Repository.Specialty
 		#region Methods
 
 		/// <summary>
-		/// Проверяет эквивалентны ли два курса.
+		/// Проверяет эквивалентны ли два учебных курса.
 		/// </summary>
-		/// <param name="first_specialty_detail"></param>
-		/// <param name="second_specialty_detail"></param>
+		/// <param name="first_specialty_detail">Первый учебный курс</param>
+		/// <param name="second_specialty_detail">Второй учебный курс</param>
 		private void AreEqualSpecialtyDetails(SpecialtyDetailItem first_specialty_detail, SpecialtyDetailItem second_specialty_detail)
 		{
 			Assert.AreEqual(first_specialty_detail.Id, second_specialty_detail.Id);
@@ -204,7 +204,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		#region GetList
 
 		/// <summary>
-		/// Получает список всех контактов.
+		/// Получает список всех учебных курсов.
 		/// </summary>
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithSpecialtyDetails()

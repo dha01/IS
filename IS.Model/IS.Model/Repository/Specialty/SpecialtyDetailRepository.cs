@@ -64,9 +64,9 @@ where specialty_detail = @Id", specialty_detail);
 		}
 
 		/// <summary>
-		/// Создает новую учебный курс.
+		/// Создает новый учебный курс.
 		/// </summary>
-		/// <param name="specialty_detail">Учеьный курс.</param>
+		/// <param name="specialty_detail">Учебный курс.</param>
 		/// <returns>Идентификатор созданного учебного курса.</returns>
 		public int Create(SpecialtyDetailItem specialty_detail)
 		{
