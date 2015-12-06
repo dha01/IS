@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using IS.Model.Item.Cathedra;
+using IS.Model.Item.Faculty;
 using IS.Model.Item.Specialty;
 using IS.Model.Repository.Specialty;
 using IS.Model.Repository.Cathedra;
+using IS.Model.Repository.Faculty;
 using NUnit.Framework;
 
 namespace IS.Model.Tests.Repository.Specialty
@@ -31,11 +34,14 @@ namespace IS.Model.Tests.Repository.Specialty
 		private SpecialtyDetailRepository _specialtyDetailRepository;
 		private SpecialtyRepository _specialtyRepository;
 		private CathedraRepository _cathedraRepository;
+		private FacultyRepository _facultyRepository;
 
 		private SpecialtyItem _specialty;
 		private SpecialtyItem _specialtyNew;
 		private SpecialtyDetailItem _specialtyDetail;
 		private SpecialtyDetailItem _specialtyDetailNew;
+		private CathedraItem _cathedraId;
+		private FacultyItem _facultyID;
 
 		#endregion
 
@@ -51,13 +57,27 @@ namespace IS.Model.Tests.Repository.Specialty
 			_specialtyRepository = new SpecialtyRepository();
 			_specialtyDetailRepository = new SpecialtyDetailRepository();
 			_cathedraRepository = new CathedraRepository();
+			_facultyRepository = new FacultyRepository();
+
+			_facultyID = new FacultyItem()
+			{
+				FullName = "Информационный",
+				ShortName = "И",
+			};
+
+			_cathedraId = new CathedraItem()
+			{
+				FullName = "Информациионных систем и технологий",
+				ShortName = "ИСиТ",
+				FacultyId = _facultyRepository.Create(_facultyID)
+			};
 
 			_specialty = new SpecialtyItem()
 			{
 				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
 				ShortName = "Ифн",
 				Code = "230105",
-				CathedraId = _cathedraRepository.GetList().First().Id
+				CathedraId = _cathedraRepository.Create(_cathedraId)
 			};
 
 			_specialtyNew = new SpecialtyItem()
@@ -65,7 +85,7 @@ namespace IS.Model.Tests.Repository.Specialty
 				FullName = "Экономика и технология производства",
 				ShortName = "ЭТП",
 				Code = "230221",
-				CathedraId = _cathedraRepository.GetList().Last().Id
+				CathedraId = _cathedraRepository.Create(_cathedraId)
 			};
 
 			_specialtyDetail = new SpecialtyDetailItem()

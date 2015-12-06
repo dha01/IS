@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using IS.Model.Item.Specialty;
 using IS.Model.Item.Cathedra;
+using IS.Model.Item.Faculty;
 using IS.Model.Repository.Cathedra;
 using IS.Model.Repository.Specialty;
 using IS.Model.Repository.Faculty;
@@ -37,6 +38,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		private SpecialtyItem _specialtyNew;
 		private CathedraItem _cathedraID;
 		private CathedraItem _cathedraIDNew;
+		private FacultyItem _facultyID;
 
 		private FacultyRepository _facultyIdRepository;
 
@@ -55,18 +57,24 @@ namespace IS.Model.Tests.Repository.Specialty
 			_specialtyRepository = new SpecialtyRepository();
 			_facultyIdRepository = new FacultyRepository();
 
+			_facultyID = new FacultyItem()
+			{
+				FullName = "Информационный",
+				ShortName = "И",
+			};
+
 			_cathedraID = new CathedraItem()
 			{
 				FullName = "Информациионных систем и технологий",
 				ShortName = "ИСиТ",
-				FacultyId = _facultyIdRepository.GetList().First().Id
+				FacultyId = _facultyIdRepository.Create(_facultyID)
 			};
 
 			_cathedraIDNew = new CathedraItem()
 			{
 				FullName = "Экономика и организация производлства",
 				ShortName = "ЭиОП",
-				FacultyId = _facultyIdRepository.GetList().Last().Id
+				FacultyId = _facultyIdRepository.Create(_facultyID)
 			};
 
 			_specialty = new SpecialtyItem()
