@@ -47,11 +47,11 @@ where cathedra = @Id", cathedra);
 			}
 		}
 
-		/// <summary>
-		/// Создает новую кафедру.
-		/// </summary>
-		/// <param name="cathedra">Кафедра.</param>
-		/// <returns>Идентификатор созданной кафедры.</returns>
+		//<summary>
+		//Создает новую кафедру.
+		//</summary>
+		//<param name="cathedra">Кафедра.</param>
+		//<returns>Идентификатор созданной кафедры.</returns>
 		public int Create(CathedraItem cathedra)
 		{
 			using (var sqlh = new SqlHelper())

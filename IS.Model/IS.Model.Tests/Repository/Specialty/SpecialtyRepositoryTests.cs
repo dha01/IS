@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using IS.Model.Item.Specialty;
+using IS.Model.Repository.Cathedra;
 using IS.Model.Repository.Specialty;
 using NUnit.Framework;
 
@@ -28,6 +29,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		/// Репозиторий специальностей.
 		/// </summary>
 		private SpecialtyRepository _specialtyRepository;
+		private CathedraRepository _cathedraRepository;
 
 		private SpecialtyItem _specialty;
 		private SpecialtyItem _specialtyNew;
@@ -43,6 +45,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
+			_cathedraRepository = new CathedraRepository();
 			_specialtyRepository = new SpecialtyRepository();
 
 			_specialty = new SpecialtyItem()
@@ -50,14 +53,14 @@ namespace IS.Model.Tests.Repository.Specialty
 				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
 				ShortName = "Ифн",
 				Code = "230105",
-				CathedraId = 29
+				CathedraId = _cathedraRepository.GetList().First().Id
 			};
 			_specialtyNew = new SpecialtyItem()
 			{
 				FullName = "Сисадмин",
 				ShortName = "Сис",
 				Code = "123456",
-				CathedraId = 30
+				CathedraId = _cathedraRepository.GetList().Last().Id
 			};
 		}
 

@@ -28,6 +28,7 @@ namespace IS.Model.Tests.Repository.Specialty
 		/// Репозиторий курсов.
 		/// </summary>
 		private SpecialtyDetailRepository _specialtydetailRepository;
+		private SpecialtyRepository _specialtyRepository;
 
 		private SpecialtyDetailItem _specialtydetail;
 		private SpecialtyDetailItem _specialtydetailNew;
@@ -43,12 +44,13 @@ namespace IS.Model.Tests.Repository.Specialty
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
+			_specialtyRepository = new SpecialtyRepository();
 			_specialtydetailRepository = new SpecialtyDetailRepository();
 
 			_specialtydetail = new SpecialtyDetailItem()
 			{
-				ActualDate = DateTime.Parse("2015-01-02"),
-				SpecialtyId = 1,
+				ActualDate = DateTime.Parse("2015-01-01"),
+				SpecialtyId = _specialtyRepository.GetList().First().Id,
 				SemestrCount = 1,
 				TrainingPeriod = 1,
 				Qualification = Qualification.Bachelor,
@@ -59,7 +61,7 @@ namespace IS.Model.Tests.Repository.Specialty
 			_specialtydetailNew = new SpecialtyDetailItem()
 			{
 				ActualDate = DateTime.Parse("2015-01-02"),
-				SpecialtyId = 2,
+				SpecialtyId = _specialtyRepository.GetList().Last().Id,
 				SemestrCount = 2,
 				TrainingPeriod = 2,
 				Qualification = Qualification.Master,
