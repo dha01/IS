@@ -43,8 +43,8 @@ where sd.specialty_detail = @id", new { id });
 		/// <summary>
 		/// Обновляет данные по учебному курсу.
 		/// </summary>
-		/// <param name="specialtydetail">Учебный курс.</param>
-		public void Update(SpecialtyDetailItem specialtydetail)
+		/// <param name="specialty_detail">Учебный курс.</param>
+		public void Update(SpecialtyDetailItem specialty_detail)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -59,16 +59,16 @@ set
 	form_study = (select top 1 fs.form_study from Specialty.form_study fs where fs.code = @FormStudy),
 	pay_space = @PaySpace,
 	lowcost_space = @LowcostSpace
-where specialty_detail = @Id", specialtydetail);
+where specialty_detail = @Id", specialty_detail);
 			}
 		}
 
 		/// <summary>
 		/// Создает новую учебный курс.
 		/// </summary>
-		/// <param name="specialtydetail">Учеьный курс.</param>
+		/// <param name="specialty_detail">Учеьный курс.</param>
 		/// <returns>Идентификатор созданного учебного курса.</returns>
-		public int Create(SpecialtyDetailItem specialtydetail)
+		public int Create(SpecialtyDetailItem specialty_detail)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -96,7 +96,7 @@ values
 	@LowcostSpace
 )
 
-select scope_identity()", specialtydetail);
+select scope_identity()", specialty_detail);
 			}
 		}
 

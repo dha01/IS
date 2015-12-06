@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using IS.Model.Item.Specialty;
+using IS.Model.Item.Cathedra;
 using IS.Model.Repository.Cathedra;
 using IS.Model.Repository.Specialty;
+using IS.Model.Repository.Faculty;
 using NUnit.Framework;
 
 namespace IS.Model.Tests.Repository.Specialty
@@ -33,6 +35,10 @@ namespace IS.Model.Tests.Repository.Specialty
 
 		private SpecialtyItem _specialty;
 		private SpecialtyItem _specialtyNew;
+		private CathedraItem _cathedraID;
+		private CathedraItem _cathedraIDNew;
+
+		private FacultyRepository _facultyIdRepository;
 
 		#endregion
 
@@ -47,20 +53,35 @@ namespace IS.Model.Tests.Repository.Specialty
 			_transactionScope = new TransactionScope();
 			_cathedraRepository = new CathedraRepository();
 			_specialtyRepository = new SpecialtyRepository();
+			_facultyIdRepository = new FacultyRepository();
+
+			_cathedraID = new CathedraItem()
+			{
+				FullName = "Информациионных систем и технологий",
+				ShortName = "ИСиТ",
+				FacultyId = _facultyIdRepository.GetList().First().Id
+			};
+
+			_cathedraIDNew = new CathedraItem()
+			{
+				FullName = "Экономика и организация производлства",
+				ShortName = "ЭиОП",
+				FacultyId = _facultyIdRepository.GetList().Last().Id
+			};
 
 			_specialty = new SpecialtyItem()
 			{
 				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
 				ShortName = "Ифн",
 				Code = "230105",
-				CathedraId = _cathedraRepository.GetList().First().Id
+				CathedraId = _cathedraRepository.Create(_cathedraID)
 			};
 			_specialtyNew = new SpecialtyItem()
 			{
 				FullName = "Сисадмин",
 				ShortName = "Сис",
 				Code = "123456",
-				CathedraId = _cathedraRepository.GetList().Last().Id
+				CathedraId = _cathedraRepository.Create(_cathedraIDNew)
 			};
 		}
 

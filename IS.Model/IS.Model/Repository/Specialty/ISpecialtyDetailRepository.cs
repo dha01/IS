@@ -21,15 +21,15 @@ namespace IS.Model.Repository.Specialty
 		/// <summary>
 		/// Обновляет данные по учебному курсу.
 		/// </summary>
-		/// <param name="specialtydetail">Учебный курс.</param>
-		void Update(SpecialtyDetailItem specialtydetail);
+		/// <param name="specialty_detail">Учебный курс.</param>
+		void Update(SpecialtyDetailItem specialty_detail);
 
 		/// <summary>
 		/// Создает новую учебный курс.
 		/// </summary>
-		/// <param name="specialtydetail">Учеьный курс.</param>
+		/// <param name="specialty_detail">Учеьный курс.</param>
 		/// <returns>Идентификатор созданного учебного курса.</returns>
-		int Create(SpecialtyDetailItem specialtydetail);
+		int Create(SpecialtyDetailItem specialty_detail);
 
 		/// <summary>
 		/// Удаляет учебный курс.

@@ -5,6 +5,7 @@ using IS.Model.Repository.Cathedra;
 using NUnit.Framework;
 using IS.Model.Repository.Faculty;
 using System.Linq;
+using IS.Model.Item.Faculty;
 
 namespace IS.Model.Tests.Repository.Cathedra
 {
@@ -31,6 +32,9 @@ namespace IS.Model.Tests.Repository.Cathedra
 		private CathedraItem _cathedra;
 		private CathedraItem _cathedraNew;
 
+		private FacultyItem _facultyID;
+		private FacultyItem _facultyIDNew;
+
 		#endregion
 
 		#region SetUp
@@ -44,19 +48,31 @@ namespace IS.Model.Tests.Repository.Cathedra
 			_transactionScope = new TransactionScope();
 			_facultyRepository = new FacultyRepository();
 			_cathedraRepository = new CathedraRepository();
+
+			_facultyID = new FacultyItem()
+			{
+				FullName = "Информационный",
+				ShortName = "И",
+			};
+
+			_facultyIDNew = new FacultyItem()
+			{
+				FullName = "Экономический",
+				ShortName = "Э",
+			};
+
 			_cathedra = new CathedraItem()
-		
-		
 			{
 				FullName = "Информациионных систем и технологий",
 				ShortName = "ИСиТ",
-				FacultyId = _facultyRepository.GetList().First().Id
+				FacultyId = _facultyRepository.Create(_facultyID)
 			};
+
 			_cathedraNew = new CathedraItem()
 			{
 				FullName = "Экономики и управления",
 				ShortName = "ЭиЭ",
-				FacultyId = _facultyRepository.GetList().Last().Id
+				FacultyId = _facultyRepository.Create(_facultyIDNew)
 			};
 		}
 
