@@ -1,4 +1,5 @@
-﻿using IS.Model.Helper;
+﻿using System.Collections.Generic;
+using IS.Model.Helper;
 using IS.Model.Item.Specialty;
 
 namespace IS.Model.Repository.Specialty
@@ -86,6 +87,23 @@ select scope_identity()", specialty);
 				sqlh.ExecMapping<SpecialtyItem>(@"
 delete from Specialty.specialty 
 where specialty = @id", new { id });
+			}
+		}
+		/// <summary>
+		/// Получает список всех специальностей.
+		/// </summary>
+		/// <returns>Список специальностей.</returns>
+		public List<SpecialtyItem> GetList()
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<SpecialtyItem>(@"
+select
+	s.specialty Id,
+	s.full_name FullName,
+	s.short_name ShortName,
+	s.code Code
+from Specialty.specialty s");
 			}
 		}
 	}
