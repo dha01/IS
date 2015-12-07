@@ -75,6 +75,7 @@
     <Compile Include="Service\RoleServiceTests.cs" />
     <Compile Include="Service\FacultyServiceTest.cs" />
     <Compile Include="Service\HousingServiceTests.cs" />
+    <Compile Include="Service\TeamServiceTests.cs" />
     <Compile Include="Service\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

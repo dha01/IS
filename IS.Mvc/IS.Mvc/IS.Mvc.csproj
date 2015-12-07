@@ -138,6 +138,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,6 +227,7 @@
     <Content Include="Scripts\DataTable\jquery.dataTables.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTable\jquery.js" />
+    <Content Include="Content\Images\Sorting icons.psd" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -235,7 +237,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Images\Sorting icons.psd" />
     <None Include="Properties\PublishProfiles\server.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -290,6 +291,10 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\New.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Team\List.cshtml" />
+    <Content Include="Views\Team\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
