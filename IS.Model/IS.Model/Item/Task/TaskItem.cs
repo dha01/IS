@@ -71,6 +71,11 @@ namespace IS.Model.Item.Task
 		/// Сложность задачи.
 		/// </summary>
 		public int Difficult { get; set; }
+
+		/// <summary>
+		/// URL указывающий на пул реквест.
+		/// </summary>
+		public string PullRequestUrl { get; set; }
 	}
 
 	/// <summary>

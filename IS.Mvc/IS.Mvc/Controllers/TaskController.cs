@@ -44,7 +44,7 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult List()
 		{
-			return View("List", _taskService.GetList().OrderBy(x => !x.IsPerform).ThenBy(x => x.Performer).ToList());
+			return View("List", _taskService.GetList());
 		}
 
 		/// <summary>
@@ -80,7 +80,36 @@ namespace IS.Mvc.Controllers
 		[ValidateInput(false)]
 		public ActionResult Update(TaskItem task)
 		{
-			Access.CheckAccess("Task.Updater");
+			var origin_task = _taskService.GetById(task.Id);
+			if (!Access.CheckRole("Task.Updater.Header"))
+			{
+				task.Header = origin_task.Header;
+			}
+			if (!Access.CheckRole("Task.Updater.Priority"))
+			{
+				task.Priority = origin_task.Priority;
+			}
+			if (!Access.CheckRole("Task.Updater.Difficult"))
+			{
+				task.Difficult = origin_task.Difficult;
+			}
+			if (!Access.CheckRole("Task.Updater.Deadline"))
+			{
+				task.Deadline = origin_task.Deadline;
+			}
+			if (!Access.CheckRole("Task.Updater.Mem"))
+			{
+				task.Mem = origin_task.Mem;
+			}
+			if (!Access.CheckRole("Task.Updater.Performer"))
+			{
+				task.Performer = origin_task.Performer;
+			}
+			if (!Access.CheckRole())
+			{
+				task.PullRequestUrl = origin_task.PullRequestUrl;
+			}
+
 			_taskService.Update(task);
 			return RedirectToAction("Index", new { id = task.Id });
 		}
@@ -91,7 +120,6 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult Edit(int id)
 		{
-			Access.CheckAccess("Task.Updater");
 			return View(_taskService.GetById(id));
 		}
 
