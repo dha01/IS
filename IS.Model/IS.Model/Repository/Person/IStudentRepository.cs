@@ -16,12 +16,6 @@ namespace IS.Model.Repository.Person
 		StudentItem Get(int id);
 
 		/// <summary>
-		/// Обновляет данные о студентах.
-		/// </summary>
-		/// <param name="student">Список студентов.</param>
-		void Update(StudentItem student);
-
-		/// <summary>
 		/// Зачисление студента в группу.
 		/// </summary>
 		/// <param name="student">Список студентов.</param>

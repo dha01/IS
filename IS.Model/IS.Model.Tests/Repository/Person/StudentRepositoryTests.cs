@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using System.Transactions;
+using IS.Model.Helper;
 using IS.Model.Item.Person;
 using IS.Model.Item.Team;
 using IS.Model.Repository.Person;
@@ -27,9 +29,12 @@ namespace IS.Model.Tests.Repository.Person
 		/// </summary>
 		private StudentRepository _studentRepository;
 		private TeamRepository _teamRepository;
+		private PersonRepository _personRepository;
 
 		private StudentItem _student;
 		private StudentItem _studentNew;
+		private PersonItem _person;
+		private PersonItem _personNew;
 		private TeamItem _team;
 		private TeamItem _teamNew;
 
@@ -45,28 +50,30 @@ namespace IS.Model.Tests.Repository.Person
 		{
 			_transactionScope = new TransactionScope();
 			_studentRepository = new StudentRepository();
+			_personRepository = new PersonRepository();
 			_teamRepository = new TeamRepository();
 			_team = new TeamItem(){CreateDate = DateTime.Now, Name = "ПЕ-22б"};
 			_team.Id = _teamRepository.Create(_team);
 			_student = new StudentItem()
 			{
-				LastName = "",
-				FirstName = "",
-				FatherName = "",
+				LastName = "Егоров",
+				FirstName = "Виталий",
+				FatherName = "Игоревич",
 				Birthday = DateTime.Now,
 				TeamId = _team.Id
-			}; 
-
+			};
+			_student.Id = _personRepository.Create(_student);
 			_teamNew = new TeamItem(){CreateDate = DateTime.Now, Name = "ПЕ-21б"};
 			_teamNew.Id = _teamRepository.Create(_teamNew);
 			_studentNew = new StudentItem()
 			{
-				LastName = "",
-				FirstName = "",
-				FatherName = "",
+				LastName = "Журавлев",
+				FirstName = "Данил",
+				FatherName = "Александрович",
 				Birthday = DateTime.Now,
 				TeamId = _teamNew.Id
 			};
+			_studentNew.Id = _personRepository.Create(_student);
 		}
 
 		#endregion
@@ -87,17 +94,16 @@ namespace IS.Model.Tests.Repository.Person
 		#region Methods
 
 		/// <summary>
-		/// Проверяет еквивалентны ли два студента.
+		/// Проверяет эквивалентны ли два студента.
 		/// </summary>
-		/// <param name="first_student"></param>
-		/// <param name="second_student"></param>
+		/// <param name="first_student">Первый студент для сравнения</param>
+		/// <param name="second_student">Второй студент для сравнения</param>
 		private void AreEqualStudents(StudentItem first_student, StudentItem second_student)
 		{
 			Assert.AreEqual(first_student.Id, second_student.Id);
 			Assert.AreEqual(first_student.LastName, second_student.LastName);
 			Assert.AreEqual(first_student.FirstName, second_student.FirstName);
 			Assert.AreEqual(first_student.FatherName, second_student.FatherName);
-			Assert.AreEqual(first_student.Birthday, second_student.Birthday);
 			Assert.AreEqual(first_student.TeamId, second_student.TeamId);
 		}
 
@@ -114,27 +120,6 @@ namespace IS.Model.Tests.Repository.Person
 			_student.Id = _studentRepository.Create(_student);
 			var result = _studentRepository.Get(_student.Id);
 			AreEqualStudents(result, _student);
-		}
-
-		#endregion
-
-		#region Update
-
-		/// <summary>
-		/// Изменяет данные о студенте.
-		/// </summary>
-		[Test]
-		public void Update_Void_ReturnChangedStudent()
-		{
-			_student.Id = _studentRepository.Create(_student);
-			var result = _studentRepository.Get(_student.Id);
-			AreEqualStudents(result, _student);
-
-			_studentNew.Id = _student.Id;
-			_studentRepository.Update(_studentNew);
-			result = _studentRepository.Get(_student.Id);
-			AreEqualStudents(result, _studentNew);
-
 		}
 
 		#endregion
@@ -164,10 +149,10 @@ namespace IS.Model.Tests.Repository.Person
 		/// Получает список студентов по индетификатору группы.
 		/// </summary>
 		[Test]
-		public void GetListByTeam_Void_ReturnNotEmptyListWithStudent(int team_id)
+		public void GetListByTeam_Void_ReturnNotEmptyListWithStudent()
 		{
 			_student.Id = _studentRepository.Create(_student);
-			var result = _studentRepository.GetListByTeam(team_id).Find(x => x.Id == _student.Id);
+			var result = _studentRepository.GetListByTeam(_student.TeamId).Find(x => x.Id == _student.Id);
 			AreEqualStudents(result, _student);
 		}
 

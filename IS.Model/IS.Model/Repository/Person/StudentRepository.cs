@@ -19,26 +19,16 @@ namespace IS.Model.Repository.Person
 			using (var sqlh = new SqlHelper())
 			{
 				return sqlh.ExecMapping<StudentItem>(@"
-	select* from Person.GetStudentByDate (getdate())");
-			}
-		}
-
-		/// <summary>
-		/// Обновляет данные по задаче.
-		/// </summary>
-		/// <param name="student">Задача.</param>
-		public void Update(StudentItem student)
-		{
-			using (var sqlh = new SqlHelper())
-			{
-				sqlh.ExecNoQuery(@"
-update Person.student
-set
-	last_name = @LastName,
-	first_name = @FirstName,
-	father_name = @Father Name,
-	birthday = @Birthday,
-where student = @Id", student);
+select
+	st.person Id,
+	st.team TeamId,
+	p.last_name LastName,
+	p.first_name FirstName,
+	p.father_name FatherName,
+	p.birthday Birthday
+from Person.GetStudentByDate (getdate()) st
+	join person.person p on p.person = st.person
+where st.person = @id", new { id });
 			}
 		}
 
@@ -52,22 +42,22 @@ where student = @Id", student);
 			using (var sqlh = new SqlHelper())
 			{
 				return sqlh.ExecScalar<int>(@"
-insert into Person.srudent
+insert into Person.student
 (
-	event_date
-	person
-	team
+	event_date,
+	person,
+	team,
 	act
 )
 values
 (
-	getdate()
-	@Id
-	@TeamId
-	1,
+	getdate(),
+	@Id,
+	@TeamId,
+	1
 )
 
-select scope_identity()", student);
+select @Id", student);
 			}
 		}
 
@@ -80,22 +70,22 @@ select scope_identity()", student);
 			using (var sqlh = new SqlHelper())
 			{
 				sqlh.ExecScalar<int>(@"
-insert into Person.srudent
+insert into Person.student
 (
-	event_date
-	person
-	team
+	event_date,
+	person,
+	team,
 	act
 )
 values
 (
-	getdate()
-	@Id
-	@TeamId
-	-1,
+	getdate(),
+	@Id,
+	@TeamId,
+	-1
 )
 
-select scope_identity()", student);
+select @Id", student);
 			}
 		}
 
@@ -109,14 +99,15 @@ select scope_identity()", student);
 			{
 				return sqlh.ExecMappingList<StudentItem>(@"
 select
-	st.student Id,
-	st.last_name string,
-	st.first_name string,
-	st.father_name string,
-	st.birthday datetime,
-	st.team_id Id,
-from Student.student st
-where st.team = @TeamId", new { team_id });
+	st.person Id,
+	st.team TeamId,
+	p.last_name LastName,
+	p.first_name FirstName,
+	p.father_name FatherName,
+	p.birthday Birthday
+from Person.GetStudentByDate (getdate()) st
+	join person.person p on p.person = st.person
+where st.team = @team_id", new { team_id });
 			}
 		}
 	}
