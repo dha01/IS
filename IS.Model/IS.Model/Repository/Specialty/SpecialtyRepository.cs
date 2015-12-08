@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using IS.Model.Helper;
 using IS.Model.Item.Specialty;
-using System.Collections.Generic;
 
 namespace IS.Model.Repository.Specialty
 {
@@ -20,7 +19,7 @@ namespace IS.Model.Repository.Specialty
 			using (var sqlh = new SqlHelper())
 			{
 				return sqlh.ExecMapping<SpecialtyItem>(@"
-    select
+select
 	s.specialty Id,
 	s.full_name FullName,
 	s.short_name ShortName,
