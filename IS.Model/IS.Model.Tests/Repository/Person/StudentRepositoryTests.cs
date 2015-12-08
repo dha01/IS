@@ -2,9 +2,15 @@
 using System.Threading;
 using System.Transactions;
 using IS.Model.Helper;
+using IS.Model.Item.Cathedra;
+using IS.Model.Item.Faculty;
 using IS.Model.Item.Person;
+using IS.Model.Item.Specialty;
 using IS.Model.Item.Team;
+using IS.Model.Repository.Cathedra;
+using IS.Model.Repository.Faculty;
 using IS.Model.Repository.Person;
+using IS.Model.Repository.Specialty;
 using IS.Model.Repository.Team;
 using NUnit.Framework;
 
@@ -31,6 +37,11 @@ namespace IS.Model.Tests.Repository.Person
 		private TeamRepository _teamRepository;
 		private PersonRepository _personRepository;
 
+		private SpecialtyDetailRepository _specialtyDetailRepository;
+		private SpecialtyRepository _specialtyRepository;
+		private CathedraRepository _cathedraRepository;
+		private FacultyRepository _facultyRepository;
+
 		private StudentItem _student;
 		private StudentItem _studentNew;
 		private PersonItem _person;
@@ -52,26 +63,50 @@ namespace IS.Model.Tests.Repository.Person
 			_studentRepository = new StudentRepository();
 			_personRepository = new PersonRepository();
 			_teamRepository = new TeamRepository();
-			_team = new TeamItem(){CreateDate = DateTime.Now, Name = "ПЕ-22б"};
-			_team.Id = _teamRepository.Create(_team);
+			_specialtyDetailRepository = new SpecialtyDetailRepository();
+			_specialtyRepository = new SpecialtyRepository();
+			_cathedraRepository = new CathedraRepository();
+			_facultyRepository = new FacultyRepository();
+
+			_team = new TeamItem()
+			{
+				CreateDate = DateTime.Now,
+				Name = "ПЕ-22б",
+				SpecialtyDetailId = _specialtyDetailRepository.Create(new SpecialtyDetailItem()
+				{
+					SpecialtyId = _specialtyRepository.Create(new SpecialtyItem()
+					{
+						CathedraId = _cathedraRepository.Create(new CathedraItem()
+						{
+							FacultyId = _facultyRepository.Create(new FacultyItem()),
+							FullName = "Кафедра",
+							ShortName = "K"
+						}),
+						FullName = "Специальность",
+						ShortName = "С",
+						Code = "1"
+					}),
+					ActualDate = DateTime.Now
+				})
+			};
+
 			_student = new StudentItem()
 			{
 				LastName = "Егоров",
 				FirstName = "Виталий",
 				FatherName = "Игоревич",
 				Birthday = DateTime.Now,
-				TeamId = _team.Id
+				TeamId = _teamRepository.Create(_team)
 			};
 			_student.Id = _personRepository.Create(_student);
-			_teamNew = new TeamItem(){CreateDate = DateTime.Now, Name = "ПЕ-21б"};
-			_teamNew.Id = _teamRepository.Create(_teamNew);
+
 			_studentNew = new StudentItem()
 			{
 				LastName = "Журавлев",
 				FirstName = "Данил",
 				FatherName = "Александрович",
 				Birthday = DateTime.Now,
-				TeamId = _teamNew.Id
+				TeamId = _teamRepository.Create(_team)
 			};
 			_studentNew.Id = _personRepository.Create(_student);
 		}
