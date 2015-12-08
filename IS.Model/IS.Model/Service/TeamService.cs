@@ -1,11 +1,11 @@
 ﻿using System;
 using IS.Model.Item.Team;
-using IS.Model.Repository.Team;
 using System.Collections.Generic;
 using IS.Model.Helper;
 using IS.Model.Item.Team;
+using IS.Model.Repository.Team;
 
-namespace IS.Mvc.Models.Service
+namespace IS.Model.Service
 {
 	/// <summary>
 	/// Сервис для групп.
@@ -51,7 +51,7 @@ namespace IS.Mvc.Models.Service
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		/// <returns>Группа.</returns>
-		public TeamItem Get(int Id)
+		public TeamItem GetById(int Id)
 		{
 			return _teamRepository.Get(Id);
 		}
@@ -66,7 +66,7 @@ namespace IS.Mvc.Models.Service
 			{
 				throw new Exception("Поле 'Name' не должно быть пустым.");
 			}
-			if (Get(team.Id) == null)
+			if (GetById(team.Id) == null)
 			{
 				throw new Exception("Группа не найдена.");
 			}
