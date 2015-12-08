@@ -51,6 +51,7 @@
     <Compile Include="Item\Role.cs" />
     <Compile Include="Item\Specialty\SpecialtyDetailItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyItem.cs" />
+    <Compile Include="Item\Person\StudentItem.cs" />
     <Compile Include="Item\Task\TaskItem.cs" />
     <Compile Include="Item\Faculty\FacultyItem.cs" />
     <Compile Include="Item\Team\TeamItem.cs" />
@@ -69,6 +70,8 @@
     <Compile Include="Item\Housing\HousingItem.cs" />
     <Compile Include="Repository\Housing\HousingRepository.cs" />
     <Compile Include="Repository\Housing\IHousingRepository.cs" />
+    <Compile Include="Repository\Person\IStudentRepository.cs" />
+    <Compile Include="Repository\Person\StudentRepository.cs" />
     <Compile Include="Repository\Specialty\ISpecialtyDetailRepository.cs" />
     <Compile Include="Repository\Specialty\SpecialtyDetailRepository.cs" />
     <Compile Include="Repository\Task\ITaskRepository.cs" />

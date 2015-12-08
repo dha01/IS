@@ -89,6 +89,7 @@ delete from Specialty.specialty
 where specialty = @id", new { id });
 			}
 		}
+
 		/// <summary>
 		/// Получает список всех специальностей.
 		/// </summary>

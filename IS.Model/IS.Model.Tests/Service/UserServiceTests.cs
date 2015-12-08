@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IS.Model.Item.Access;
+﻿using IS.Model.Item.Access;
 using IS.Model.Repository.Access;
 using IS.Mvc.Models.Service;
 using Moq;
 using NUnit.Framework;
 
-namespace IS.Mvc.Models.Service.Tests
+namespace IS.Model.Tests.Service
 {
 	/// <summary>
 	/// Тесты класса UserService

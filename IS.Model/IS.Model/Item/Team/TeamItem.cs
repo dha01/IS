@@ -23,7 +23,7 @@ namespace IS.Model.Item.Team
 		public DateTime? CreateDate { get; set; }
 
 		/// <summary>
-		/// Идентификатор специальности.
+		/// Специальность группы.
 		/// </summary>
 		public int SpecialtyDetailId { get; set; }
 	}
