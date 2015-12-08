@@ -71,6 +71,11 @@ namespace IS.Model.Item.Task
 		/// Сложность задачи.
 		/// </summary>
 		public int Difficult { get; set; }
+
+		/// <summary>
+		/// URL указывающий на пул реквест.
+		/// </summary>
+		public string PullRequestUrl { get; set; }
 	}
 
 	/// <summary>
@@ -78,11 +83,39 @@ namespace IS.Model.Item.Task
 	/// </summary>
 	public enum TaskPrefix
 	{
+		/// <summary>
+		/// Задача.
+		/// </summary>
 		Task,
+
+		/// <summary>
+		/// Демонстрационная.
+		/// </summary>
 		Demo,
+
+		/// <summary>
+		/// Исправление ошибок.
+		/// </summary>
 		BugFix,
+
+		/// <summary>
+		/// Рефакторинг.
+		/// </summary>
 		Refactoring,
+
+		/// <summary>
+		/// Документация.
+		/// </summary>
 		Doc,
-		CourseWork
+
+		/// <summary>
+		/// Курсовая работа.
+		/// </summary>
+		CourseWork,
+
+		/// <summary>
+		/// Техническое решение.
+		/// </summary>
+		TechnicalSolution
 	}
 }

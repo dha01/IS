@@ -54,21 +54,34 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
+    <Compile Include="Repository\Access\RoleRepositoryTests.cs" />
+    <Compile Include="Repository\Auditory\AuditoryRepositoryTests.cs" />
+    <Compile Include="Repository\Cathedra\CathedraRepositoryTests.cs" />
+    <Compile Include="Repository\Comment\CommentRepositoryTests.cs" />
+    <Compile Include="Repository\Contact\ContactRepositoryTests.cs" />
     <Compile Include="Repository\Discipline\DisciplineRepositoryTests.cs" />
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
+    <Compile Include="Repository\Housing\HousingRespositoryTest.cs" />
+    <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
     <Compile Include="Repository\Person\StudentRepositoryTests.cs" />
+    <Compile Include="Repository\Specialty\SpecialtyDetailRepositoryTests.cs" />
+    <Compile Include="Repository\Specialty\SpecialtyRepositoryTests.cs" />
     <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
     <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
     <Compile Include="Repository\Access\UserRepositoryTests.cs" />
-    <Compile Include="Service\FacultyServiceTest.cs" />
+    <Compile Include="Service\ContactServiceTests.cs" />
     <Compile Include="Service\PersonServiceTests.cs" />
     <Compile Include="Service\DisciplineServiceTests.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
+    <Compile Include="Service\RoleServiceTests.cs" />
+    <Compile Include="Service\FacultyServiceTest.cs" />
+    <Compile Include="Service\HousingServiceTests.cs" />
+    <Compile Include="Service\TeamServiceTests.cs" />
     <Compile Include="Service\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="production.App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
