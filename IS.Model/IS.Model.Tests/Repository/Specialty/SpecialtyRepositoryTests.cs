@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using IS.Model.Item.Specialty;
+using IS.Model.Item.Cathedra;
+using IS.Model.Item.Faculty;
+using IS.Model.Repository.Cathedra;
 using IS.Model.Repository.Specialty;
+using IS.Model.Repository.Faculty;
 using NUnit.Framework;
 
 namespace IS.Model.Tests.Repository.Specialty
@@ -28,9 +32,15 @@ namespace IS.Model.Tests.Repository.Specialty
 		/// Репозиторий специальностей.
 		/// </summary>
 		private SpecialtyRepository _specialtyRepository;
+		private CathedraRepository _cathedraRepository;
 
 		private SpecialtyItem _specialty;
 		private SpecialtyItem _specialtyNew;
+		private CathedraItem _cathedra;
+		private CathedraItem _cathedraNew;
+		private FacultyItem _faculty;
+
+		private FacultyRepository _facultyIdRepository;
 
 		#endregion
 
@@ -43,21 +53,43 @@ namespace IS.Model.Tests.Repository.Specialty
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
+			_cathedraRepository = new CathedraRepository();
 			_specialtyRepository = new SpecialtyRepository();
+			_facultyIdRepository = new FacultyRepository();
+
+			_faculty = new FacultyItem()
+			{
+				FullName = "Информационный",
+				ShortName = "И",
+			};
+
+			_cathedra = new CathedraItem()
+			{
+				FullName = "Информациионных систем и технологий",
+				ShortName = "ИСиТ",
+				FacultyId = _facultyIdRepository.Create(_faculty)
+			};
+
+			_cathedraNew = new CathedraItem()
+			{
+				FullName = "Экономика и организация производлства",
+				ShortName = "ЭиОП",
+				FacultyId = _facultyIdRepository.Create(_faculty)
+			};
 
 			_specialty = new SpecialtyItem()
 			{
 				FullName = "Программное обеспечение вычислительной техники и автоматизированных систем",
 				ShortName = "Ифн",
 				Code = "230105",
-				CathedraId = 29
+				CathedraId = _cathedraRepository.Create(_cathedra)
 			};
 			_specialtyNew = new SpecialtyItem()
 			{
 				FullName = "Сисадмин",
 				ShortName = "Сис",
 				Code = "123456",
-				CathedraId = 30
+				CathedraId = _cathedraRepository.Create(_cathedraNew)
 			};
 		}
 
