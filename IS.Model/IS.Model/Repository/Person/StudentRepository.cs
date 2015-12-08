@@ -69,7 +69,7 @@ select @Id", student);
 		{
 			using (var sqlh = new SqlHelper())
 			{
-				sqlh.ExecScalar<int>(@"
+				sqlh.ExecNoQuery(@"
 insert into Person.student
 (
 	event_date,
@@ -83,9 +83,7 @@ values
 	@Id,
 	@TeamId,
 	-1
-)
-
-select @Id", student);
+)", student);
 			}
 		}
 
