@@ -45,6 +45,7 @@
     <Compile Include="Item\Access\UserItem.cs" />
     <Compile Include="Item\Auditory\AuditoryItem.cs" />
     <Compile Include="Item\Comment\CommentItem.cs" />
+    <Compile Include="Item\Calendar\SemesterItem.cs" />
     <Compile Include="Item\Contact\ContactItem.cs" />
     <Compile Include="Item\Discipline\DisciplineItem.cs" />
     <Compile Include="Item\Person\PersonItem.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="Repository\Access\IRoleRepository.cs" />
     <Compile Include="Repository\Comment\CommentRepository.cs" />
     <Compile Include="Repository\Comment\ICommentRepository.cs" />
+    <Compile Include="Repository\Calendar\ISemesterRepository.cs" />
+    <Compile Include="Repository\Calendar\SemesterRepository.cs" />
     <Compile Include="Repository\Contact\ContactRepository.cs" />
     <Compile Include="Repository\Contact\IContactRepository.cs" />
     <Compile Include="Item\Cathedra\CathedraItem.cs" />
