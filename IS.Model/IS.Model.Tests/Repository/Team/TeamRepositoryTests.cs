@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Transactions;
+using IS.Model.Item.Cathedra;
+using IS.Model.Item.Faculty;
+using IS.Model.Item.Specialty;
 using IS.Model.Item.Team;
+using IS.Model.Repository.Cathedra;
+using IS.Model.Repository.Faculty;
+using IS.Model.Repository.Specialty;
 using IS.Model.Repository.Team;
 using NUnit.Framework;
 
@@ -25,6 +31,11 @@ namespace IS.Model.Tests.Repository.Team
 		/// </summary>
 		private TeamRepository _teamRepository;
 
+		private SpecialtyDetailRepository _specialtyDetailRepository;
+		private SpecialtyRepository _specialtyRepository;
+		private CathedraRepository _cathedraRepository;
+		private FacultyRepository _facultyRepository;
+
 		private TeamItem _team;
 		private TeamItem _teamNew;
 
@@ -40,16 +51,38 @@ namespace IS.Model.Tests.Repository.Team
 		{
 			_transactionScope = new TransactionScope();
 			_teamRepository = new TeamRepository();
+			_specialtyDetailRepository = new SpecialtyDetailRepository();
+			_specialtyRepository = new SpecialtyRepository();
+			_cathedraRepository = new CathedraRepository();
+			_facultyRepository = new FacultyRepository();
 
+			var specialty_detail = new SpecialtyDetailItem()
+				{
+					SpecialtyId =_specialtyRepository.Create(new SpecialtyItem()
+					{
+						CathedraId = _cathedraRepository.Create(new CathedraItem()
+						{
+							FacultyId = _facultyRepository.Create(new FacultyItem()),
+							FullName = "Кафедра",
+							ShortName = "K"
+						}),
+						FullName = "Специальность",
+						ShortName = "С",
+						Code = "1"
+					}),
+					ActualDate = DateTime.Now
+				};
 			_team = new TeamItem()
 			{
 				Name = "ПЕ-22б",
-				CreateDate = DateTime.Now.Date
+				CreateDate = DateTime.Now.Date,
+				SpecialtyDetailId = _specialtyDetailRepository.Create(specialty_detail)
 			}; 
 			_teamNew = new TeamItem()
 			{
 				Name = "ПЕ-21б",
-				CreateDate = DateTime.Now.AddYears(-1).Date
+				CreateDate = DateTime.Now.AddYears(-1).Date,
+				SpecialtyDetailId = _specialtyDetailRepository.Create(specialty_detail)
 			};
 		}
 
@@ -115,7 +148,6 @@ namespace IS.Model.Tests.Repository.Team
 			_teamRepository.Update(_teamNew);
 			result = _teamRepository.Get(_team.Id);
 			AreEqualTeams(result, _teamNew);
-
 		}
 
 		#endregion
@@ -136,11 +168,10 @@ namespace IS.Model.Tests.Repository.Team
 			result = _teamRepository.Get(_team.Id);
 			Assert.IsNull(result);
 		}
-
-
 		#endregion
 
 		#region GetList
+
 
 		/// <summary>
 		/// Получает список всех групп.
