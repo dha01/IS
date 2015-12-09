@@ -124,7 +124,7 @@ where u.[user] = @Id", user);
 		}
 
 		/// <summary>
-		/// Получает список ролей по коду.
+		/// Получает роль по коду.
 		/// </summary>
 		/// <param name="code">Код.</param>
 		/// <returns>Список ролей.</returns>
