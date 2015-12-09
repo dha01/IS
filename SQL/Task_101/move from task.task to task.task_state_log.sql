@@ -1,4 +1,4 @@
--- Пернос статусов задач из Task.task в Task.task_state_log
+п»ї-- РџРµСЂРЅРѕСЃ СЃС‚Р°С‚СѓСЃРѕРІ Р·Р°РґР°С‡ РёР· Task.task РІ Task.task_state_log
 insert into Task.task_state_log 
 (
 	Task.task,
@@ -28,7 +28,7 @@ select
 	end	
 from Task.task t
 
--- Удалние колонок is_perform и is_open из таблицы Task.task
+-- РЈРґР°Р»РЅРёРµ РєРѕР»РѕРЅРѕРє is_perform Рё is_open РёР· С‚Р°Р±Р»РёС†С‹ Task.task
 
 alter table Task.task drop DF__task__is_open
 alter table Task.task drop DF__task__is_perform
