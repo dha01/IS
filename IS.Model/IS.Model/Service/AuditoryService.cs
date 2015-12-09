@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using IS.Model.Item.Auditory;
 using IS.Model.Repository.Auditory;
@@ -57,14 +58,18 @@ namespace IS.Model.Service
 		/// Создает аудиторию.
 		/// </summary>
 		/// <param name="auditory">Аудитория.</param>
-		/// <returns>Идентификаторо созданной задачи.</returns>
+		/// <returns>Идентификаторо созданной аудитории.</returns>
 		public int Create(AuditoryItem auditory)
-		{/*a.auditory Id,
-	a.number Number,
-	a.full_name FullName,
-	a.memo Memo,
-	a.level Level,
-	a.capacity Capacity*/
+		{
+			if(string.IsNullOrEmpty(auditory.FullName))
+			{
+				throw new Exception("Поле 'FullName' не должно быть пустым.");
+			}
+			if (string.IsNullOrEmpty(auditory.Memo))
+			{
+				throw new Exception("Поле 'Memo' не должно быть пустым.");
+			}
+			return _auditoryRepository.Create(auditory);
 		}
 
 		/// <summary>
@@ -73,7 +78,19 @@ namespace IS.Model.Service
 		/// <param name="auditory">Аудитория.</param>
 		public void Update(AuditoryItem auditory)
 		{
-
+			if (string.IsNullOrEmpty(auditory.FullName))
+			{
+				throw new Exception("Поле 'FullName' не должно быть пустым.");
+			}
+			if (string.IsNullOrEmpty(auditory.Memo))
+			{
+				throw new Exception("Поле 'Memo' не должно быть пустым.");
+			}
+			if (GetById(auditory.Id) == null)
+			{
+				throw new Exception("Аудитория не найдена.");
+			}
+			_auditoryRepository.Update(auditory);
 		}
 
 		/// <summary>

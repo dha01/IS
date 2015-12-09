@@ -46,19 +46,18 @@ namespace IS.Model.Tests.Service
 			_auditoryService = new AuditoryService(_auditoryRepository);
 
 			_auditory = new AuditoryItem()
-			{
-				/*Id = 1,
-				Author = "",
-				Deadline = DateTime.Now.AddDays(7).Date,
-				Created = DateTime.Now.Date,
-				Performer = "",
-				Header = "Тестирование демонстрационной аудиторийи",
-				IsOpen = true,
-				IsPerform = false,
-				Mem = "Описание",
+			{/*a.auditory Id,
+	a.number Number,
+	a.full_name FullName,
+	a.memo Memo,
+	a.level Level,
+	a.capacity Capacity*/
+				Id = 1,
 				Number = 1,
-				Priority = 0,
-				Prefix = AuditoryPrefix.Refactoring*/
+				FullName = "Auditory 1",
+				Memo = "New auditory 1",
+				Level = 1,
+				Capacity = 1
 			}; 
 		}
 
@@ -94,28 +93,28 @@ namespace IS.Model.Tests.Service
 			Assert.AreEqual(result, _auditory.Id);
 		}
 
-/*		/// <summary>
-		/// Создает аудиторию с пустым заголовком.
+		/// <summary>
+		/// Создает аудиторию с пустым именем.
 		/// </summary>
-		[ExpectedException(ExpectedMessage = "Поле 'Header' не должно быть пустым.")]
+		[ExpectedException(ExpectedMessage = "Поле 'FullName' не должно быть пустым.")]
 		[Test]
-		public void Create_EmptyHeader_ReturnException()
+		public void Create_EmptyFullName_ReturnException()
 		{
-			_auditory.Header = null;
+			_auditory.FullName = null;
 			_auditoryService.Create(_auditory);
 		}
 
 		/// <summary>
-		/// Создает аудиторийу с пустым описанием.
+		/// Создает аудиторию с пустым описанием.
 		/// </summary>
-		[ExpectedException(ExpectedMessage = "Поле 'Mem' не должно быть пустым.")]
+		[ExpectedException(ExpectedMessage = "Поле 'Memo' не должно быть пустым.")]
 		[Test]
-		public void Create_EmptyMem_ReturnException()
+		public void Create_EmptyMemo_ReturnException()
 		{
-			_auditory.Mem = null;
+			_auditory.Memo = null;
 			_auditoryService.Create(_auditory);
 		}
-*/
+
 		#endregion
 
 		#region Update
@@ -130,39 +129,39 @@ namespace IS.Model.Tests.Service
 			_auditoryService.Update(_auditory);
 		}
 
-/*		/// <summary>
+		/// <summary>
 		/// Изменяет заголовок на пустой.
 		/// </summary>
-		[ExpectedException(ExpectedMessage = "Поле 'Header' не должно быть пустым.")]
+		[ExpectedException(ExpectedMessage = "Поле 'FullName' не должно быть пустым.")]
 		[Test]
-		public void Update_EmptyHeader_ReturnException()
+		public void Update_EmptyFullName_ReturnException()
 		{
-			_auditory.Header = null;
+			_auditory.FullName = null;
 			_auditoryService.Update(_auditory);
 		}
 
 		/// <summary>
 		/// Изменяет описание на пустое.
 		/// </summary>
-		[ExpectedException(ExpectedMessage = "Поле 'Mem' не должно быть пустым.")]
+		[ExpectedException(ExpectedMessage = "Поле 'Memo' не должно быть пустым.")]
 		[Test]
-		public void Update_EmptyMem_ReturnException()
+		public void Update_EmptyMemo_ReturnException()
 		{
-			_auditory.Mem = null;
+			_auditory.Memo = null;
 			_auditoryService.Update(_auditory);
 		}
 
 		/// <summary>
 		/// Изменяет описание на пустое.
 		/// </summary>
-		[ExpectedException(ExpectedMessage = "аудиторийа не найдена.")]
+		[ExpectedException(ExpectedMessage = "Аудитория не найдена.")]
 		[Test]
 		public void Update_AuditoryNotExists_ReturnException()
 		{
 			Mock.Get(_auditoryRepository).Setup(x => x.Get(_auditory.Id)).Returns((AuditoryItem)null);
 			_auditoryService.Update(_auditory);
 		}
-*/
+
 		#endregion
 
 		#region Delete
