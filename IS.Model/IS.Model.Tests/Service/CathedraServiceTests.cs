@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Service
 {
 	/// <summary>
-	/// Тесты для сервиса дисциплин.
+	/// Тесты для сервиса кафедр.
 	/// </summary>
 	[Category("Unit")]
 	[TestFixture]
@@ -23,7 +23,7 @@ namespace IS.Model.Tests.Service
 		private CathedraService _cathedraService;
 
 		/// <summary>
-		/// Репозиторий дисциплин.
+		/// Репозиторий кафедр.
 		/// </summary>
 		private ICathedraRepository _cathedraRepository;
 
@@ -99,7 +99,7 @@ namespace IS.Model.Tests.Service
 		}
 
 		/// <summary>
-		/// Создает дисциплину с пустым полем "ShortName".
+		/// Создает кафедру с пустым полем "ShortName".
 		/// </summary>
 		[ExpectedException(ExpectedMessage = "Поле 'ShortName' не должно быть пустым.")]
 		[Test]
