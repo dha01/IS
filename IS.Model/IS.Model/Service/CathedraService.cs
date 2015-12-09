@@ -8,7 +8,7 @@ using IS.Model.Repository.Cathedra;
 namespace IS.Model.Service
 {
 	/// <summary>
-	/// Сервис для работы с кафедраи.
+	/// Сервис для работы с кафедры.
 	/// </summary>
 	public class CathedraService
 	{
@@ -34,7 +34,7 @@ namespace IS.Model.Service
 		/// <summary>
 		/// Конструктор класс.
 		/// </summary>
-		/// <param name="cathedra_repository">Интерфейс репозитория дисциплин.</param>
+		/// <param name="cathedra_repository">Интерфейс репозитория кафедр.</param>
 		public CathedraService(ICathedraRepository cathedra_repository)
 		{
 			_cathedraRepository = cathedra_repository;
