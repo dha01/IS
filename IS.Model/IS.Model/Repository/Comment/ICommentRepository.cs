@@ -39,9 +39,10 @@ namespace IS.Model.Repository.Comment
 		void Delete(int id);
 
 		/// <summary>
-		/// Получает список всех комментариев.
+		/// Получает список всех комментариев по идентификатору задачи.
 		/// </summary>
+		/// <param name="task_id">Идентификатор задачи.</param>
 		/// <returns>Список комментариев.</returns>
-		List<CommentItem> GetList();
+		List<CommentItem> GetListByTaskId(int task_id);
 	}
 }

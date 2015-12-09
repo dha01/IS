@@ -98,8 +98,9 @@ where comment = @id", new { id });
 		/// <summary>
 		/// Получает список всех комментариев.
 		/// </summary>
+		/// <param name="task_id">Идентификатор задачи.</param>
 		/// <returns>Список комментариев.</returns>
-		public List<CommentItem> GetList()
+		public List<CommentItem> GetListByTaskId(int task_id)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -110,8 +111,9 @@ select
 	c.person PersonId,
 	c.text Text,
 	c.task TaskId
-from Task.comment c");
-			}
+from Task.comment c
+where c.TaskId = @task_id", new { task_id });
+            }
 		}
 	}
 }
