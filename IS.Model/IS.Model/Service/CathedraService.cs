@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using IS.Model.Item.Cathedra;
-using IS.Model.Item.Discipline;
 using IS.Model.Repository.Cathedra;
 
 namespace IS.Model.Service
