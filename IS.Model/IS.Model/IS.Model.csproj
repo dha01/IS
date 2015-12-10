@@ -92,11 +92,8 @@
     <Compile Include="Repository\Faculty\FacultyRepository.cs" />
     <Compile Include="Repository\Team\ITeamRepository.cs" />
     <Compile Include="Repository\Team\TeamRepository.cs" />
-<<<<<<< HEAD
     <Compile Include="Service\CommentService.cs" />
-=======
     <Compile Include="Service\CathedraService.cs" />
->>>>>>> master
     <Compile Include="Service\ContactService.cs" />
     <Compile Include="Service\FacultyService.cs" />
     <Compile Include="Service\HousingService.cs" />
