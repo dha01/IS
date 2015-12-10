@@ -96,7 +96,7 @@ where comment = @id", new { id });
 		}
 
 		/// <summary>
-		/// Получает список всех комментариев.
+		/// Получает список комментариев по идентификатору задачи.
 		/// </summary>
 		/// <param name="task_id">Идентификатор задачи.</param>
 		/// <returns>Список комментариев.</returns>
@@ -113,7 +113,7 @@ select
 	c.task TaskId
 from Task.comment c
 where c.TaskId = @task_id", new { task_id });
-            }
+			}
 		}
 	}
 }

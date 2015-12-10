@@ -223,7 +223,7 @@ namespace IS.Model.Tests.Repository.Comment
 		/// Получает список комментариев по идентификатору задачи.
 		/// </summary>
 		[Test]
-		public void GetList_Void_ReturnNotEmptyListWithComment()
+		public void GetListByTaskId_Void_ReturnNotEmptyListWithComment()
 		{
 			_comment.Id = _commentRepository.Create(_comment);
 			var result = _commentRepository.GetListByTaskId(_comment.TaskId).Find(x => x.Id == _comment.Id);
