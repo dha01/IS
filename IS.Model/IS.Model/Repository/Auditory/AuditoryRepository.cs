@@ -41,7 +41,18 @@ where a.auditory = @id", new { id });
 		/// <param name="auditory">Аудитория.</param>
 		public void Update(AuditoryItem auditory)
 		{
-
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+update Auditory.auditory
+set
+	number = @Number,
+	full_name = @FullName,
+	memo = @Memo,
+	level = @Level,
+	capacity = @Capacity
+where auditory = @Id", auditory);
+			}
 		}
 
 		/// <summary>

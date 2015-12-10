@@ -22,10 +22,10 @@ namespace IS.Model.Repository.Team
 select
 	t.team Id,
 	t.name Name,
-	t.create_date CreateDate
+	t.create_date CreateDate,
+	t.specialty_detail SpecialtyDetailId
 from Team.team t
 where t.team = @id", new { id });
-
 			}
 		}
 
@@ -35,15 +35,16 @@ where t.team = @id", new { id });
 		/// <param name="team">Группу.</param>
 		public void Update(TeamItem team)
 		{
-            using (var sqlh = new SqlHelper())
-            {
-                sqlh.ExecNoQuery(@"
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
 update Team.Team
 set
 	name = @Name,
-    create_date = @CreateDate
+	create_date = @CreateDate,
+	specialty_detail = @SpecialtyDetailId
 where Team = @Id", team);
-            }
+			}
 		}
 
 		/// <summary>
@@ -59,12 +60,14 @@ where Team = @Id", team);
 insert into Team.Team
 (
 	name,
-	create_date
+	create_date,
+	specialty_detail
 )
 values
 (
 	@Name,
-	@CreateDate
+	@CreateDate,
+	@SpecialtyDetailId
 )
 
 select scope_identity()", team);
@@ -77,15 +80,12 @@ select scope_identity()", team);
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
 			using (SqlHelper sqlh = new SqlHelper())
 			{
 				sqlh.ExecMapping<TeamItem>(@"
 delete from Team.team
 where team = @id", new { id });
 			}
-
-            
 		}
 
 		/// <summary>
@@ -100,7 +100,8 @@ where team = @id", new { id });
 select
 	t.team Id,
 	t.name Name,
-	t.create_date CreateDate
+	t.create_date CreateDate,
+	t.specialty_detail SpecialtyDetailId
 from Team.team t
 ");
 			}

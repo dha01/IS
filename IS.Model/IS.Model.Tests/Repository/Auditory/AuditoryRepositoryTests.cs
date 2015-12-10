@@ -110,7 +110,21 @@ namespace IS.Model.Tests.Repository.Auditory
 
 		#region Update
 
+		/// <summary>
+		/// Изменяет параметры аудитории.
+		/// </summary>
+		[Test]
+		public void Update_Void_ReturnChangedAuditory()
+		{
+			_auditory.Id = _auditoryRepository.Create(_auditory);
+			var result = _auditoryRepository.Get(_auditory.Id);
+			AreEqualAuditory(result, _auditory);
+			_auditoryNew.Id = _auditory.Id;
+			_auditoryRepository.Update(_auditoryNew);
+			result = _auditoryRepository.Get(_auditory.Id);
+			AreEqualAuditory(result, _auditoryNew);
 
+		}
 
 		#endregion
 
