@@ -53,7 +53,6 @@
     <Compile Include="Item\Specialty\SpecialtyDetailItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyItem.cs" />
     <Compile Include="Item\Person\StudentItem.cs" />
-    <Compile Include="Item\Task\TaskInfoItem.cs" />
     <Compile Include="Item\Task\TaskItem.cs" />
     <Compile Include="Item\Faculty\FacultyItem.cs" />
     <Compile Include="Item\Team\TeamItem.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="Repository\Faculty\FacultyRepository.cs" />
     <Compile Include="Repository\Team\ITeamRepository.cs" />
     <Compile Include="Repository\Team\TeamRepository.cs" />
+    <Compile Include="Service\CathedraService.cs" />
     <Compile Include="Service\CommentService.cs" />
     <Compile Include="Service\ContactService.cs" />
     <Compile Include="Service\FacultyService.cs" />
@@ -104,7 +104,9 @@
     <Compile Include="Service\TeamService.cs" />
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\IS.Model.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
