@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using IS.Model.Helper;
@@ -103,6 +104,49 @@ select
 	c.value Value
 from Contact.contact c
 	join Contact.contact_type t on t.contact_type = c.contact_type");
+			}
+		}
+
+		/// <summary>
+		/// Получает список всех контактов человека по его идентификатору.
+		/// </summary>
+		/// <returns>Список контактов.</returns>
+		public List<ContactItem> GetContactsListByPersonId(int id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<ContactItem>(@"
+select
+	c2p.person Id,
+	t.code Type,
+	c.value Value
+from Contact.contact c
+	join Contact.contact_type t on t.contact_type = c.contact_type
+	join Contact.contact2person c2p on c2p.contact = c.contact
+where c2p.person = @Id", new { id });
+			}
+		}
+		
+		/// <summary>
+		/// Прикрепляет контакт к человеку.
+		/// </summary>
+		/// <param name="contact_id">Идентификатор контакта.</param>
+		/// <param name="person_id">Идентификатор человека.</param>
+		public void AttachContactToPerson(int contact_id, int person_id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+insert into Contact.contact2person
+(
+	contact,
+	person
+)
+values
+(
+	@contact_id,
+	@person_id
+)", new {contact_id, person_id});
 			}
 		}
 	}

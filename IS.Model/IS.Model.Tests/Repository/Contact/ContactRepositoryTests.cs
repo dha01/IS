@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using IS.Model.Item.Contact;
+using IS.Model.Item.Person;
 using IS.Model.Repository.Contact;
+using IS.Model.Repository.Person;
 using NUnit.Framework;
 
 namespace IS.Model.Tests.Repository.Contact
@@ -32,6 +34,9 @@ namespace IS.Model.Tests.Repository.Contact
 		private ContactItem _contact;
 		private ContactItem _contactNew;
 
+		private PersonRepository _personRepository;
+		private PersonItem _person;
+
 		#endregion
 
 		#region SetUp
@@ -45,6 +50,7 @@ namespace IS.Model.Tests.Repository.Contact
 			_transactionScope = new TransactionScope();
 			_contactRepository = new ContactRepository();
 
+
 			_contact = new ContactItem()
 			{
 				Type = ContactType.MobilePhone,
@@ -54,6 +60,15 @@ namespace IS.Model.Tests.Repository.Contact
 			{
 				Type = ContactType.CityPhone,
 				Value = "000-00-00"
+			};
+			_person = new PersonItem()
+			{
+				Id = 1,
+				LastName = "Иванов",
+				FirstName = "Василий",
+				Birthday = DateTime.Now.Date,
+				FatherName = "Иванович"
+
 			};
 		}
 
@@ -77,8 +92,8 @@ namespace IS.Model.Tests.Repository.Contact
 		/// <summary>
 		/// Проверяет эквивалентны ли два контакта.
 		/// </summary>
-		/// <param name="first_contact"></param>
-		/// <param name="second_contact"></param>
+		/// <param name="first_contact">Первый контакт для сравнения.</param>
+		/// <param name="second_contact">Второй контакт для сравнения.</param>
 		private void AreEqualContacts(ContactItem first_contact, ContactItem second_contact)
 		{
 			Assert.AreEqual(first_contact.Id, second_contact.Id);
@@ -153,6 +168,23 @@ namespace IS.Model.Tests.Repository.Contact
 		{
 			_contact.Id = _contactRepository.Create(_contact);
 			var result = _contactRepository.GetList().Find(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
+
+		#endregion
+
+		#region GetPersonListById
+
+		/// <summary>
+		/// Получает список всех контактов человека по его идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByPersonId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_person.Id = _personRepository.Create(_person);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToPerson(_contact.Id, _person.Id);
+			var result = _contactRepository.GetContactsListByPersonId(_person.Id).Find(x => x.Id == _contact.Id);
 			AreEqualContacts(result, _contact);
 		}
 
