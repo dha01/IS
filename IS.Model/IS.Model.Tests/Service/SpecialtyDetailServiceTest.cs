@@ -16,7 +16,7 @@ namespace IS.Model.Tests.Service
 	/// </summary>
 	class SpecialtyDetailServiceTest
 	{
-				#region Fields
+		#region Fields
 
 		/// <summary>
 		/// Сервис учебных курсов.
