@@ -138,6 +138,7 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
+    <Compile Include="Controllers\SpecialtyDetailController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
@@ -300,6 +301,10 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\List.cshtml" />
     <Content Include="Views\Contact\New.cshtml" />
+    <Content Include="Views\SpecialtyDetail\Edit.cshtml" />
+    <Content Include="Views\SpecialtyDetail\Index.cshtml" />
+    <Content Include="Views\SpecialtyDetail\List.cshtml" />
+    <Content Include="Views\SpecialtyDetail\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

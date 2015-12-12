@@ -1,0 +1,77 @@
+﻿@using IS.Model.Item.Specialty;
+@model SpecialtyDetailItem
+
+@{
+	ViewBag.Title = "Create";
+}
+
+<style>
+	table {
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	td:first-child {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+</style>
+
+<h2>Создание новой записи об учебном курсе</h2>
+
+@using (@Html.BeginForm("Create", "SpecialtyDetail"))
+{
+	<table class="table specialty_detail">
+		<tr>
+			<td>Идентификатор специальности</td>
+			<td><input type="text" name="SpecialtyId" /></td>
+		</tr>
+		<tr>
+			<td>Количество семестров</td>
+			<td><input type="text" name="SemestrCount" /></td>
+		</tr>
+		<tr>
+			<td>Период обучения</td>
+			<td><input type="text" name="TrainingPeriod" /></td>
+		</tr>
+		<tr>
+			<td>Квалификация</td>
+			<td>
+				<select name="Qualification">
+					@foreach (string name in Enum.GetNames(typeof (Qualification)))
+					{
+						<option value="@name">@name</option>
+					}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Форма обучения</td>
+			<td>
+				<select name="FormStudy">
+					@foreach (string name in Enum.GetNames(typeof (FormStudy)))
+					{
+						<option value="@name">@name</option>
+					}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Количество платных мест</td>
+			<td><input type="text" name="PaySpace"/></td>
+		</tr>
+		<tr>
+			<td>Количество бюджетных мест</td>
+			<td><input type="text" name="LowcostSpace"/></td>
+		</tr>
+	</table>
+	<input type="submit" value="Создать" />
+}
+@Html.ActionLink("Просмотр списка учебных курсов", "List")

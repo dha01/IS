@@ -1,0 +1,71 @@
+﻿@using IS.Model.Item.Specialty;
+@model SpecialtyDetailItem
+
+@{
+	ViewBag.Title = "Edit";
+}
+
+<style>
+	table {
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	td:first-child {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+</style>
+
+<h2>Редактироание учебных курсов</h2>
+
+@using (@Html.BeginForm("Update", "SpecialtyDetail"))
+{
+	@Html.HiddenFor(m => Model.Id)
+
+	<table class="table contact">
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.ActualDate)</td>
+		</tr>
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.SpecialtyId)</td>
+		</tr>
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.SemestrCount)</td>
+		</tr>
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.TrainingPeriod)</td>
+		</tr>
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.Qualification)</td>
+		</tr>
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.FormStudy)</td>
+		</tr>
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.PaySpace)</td>
+		</tr>
+		<tr>
+			<td>Значение</td>
+			<td>@Html.EditorFor(m => Model.LowcostSpace)</td>
+		</tr>
+	</table>
+	<input type="submit" value="Сохранить" /><br />
+	@Html.ActionLink("Просмотр записи об учебных курсах", "Index", new { id = Model.Id })<br />
+	@Html.ActionLink("Отмена", "Index", new { id = Model.Id })
+}
+@Html.ActionLink("Просмотр списка учебных курсов", "List")
