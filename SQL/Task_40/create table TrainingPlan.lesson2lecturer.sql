@@ -9,5 +9,5 @@ create table TrainingPlan.lesson2lecturer(
 	person int not null,
 	constraint PK__lesson2lecturer primary key (lesson2lecturer),
 	constraint FK__lesson2lecturer__person foreign key (person) references Person.person,
-	constraint FK__lesson2lecturer__person foreign key (lesson) references TraningPlan.lesson
+	constraint FK__lesson2lecturer__lesson foreign key (lesson) references TraningPlan.lesson
 )
