@@ -217,16 +217,16 @@ namespace IS.Model.Tests.Repository.Comment
 
 		#endregion
 
-		#region GetList
+		#region GetListByTaskId
 
 		/// <summary>
-		/// Получает список всех комментариев.
+		/// Получает список комментариев по идентификатору задачи.
 		/// </summary>
 		[Test]
-		public void GetList_Void_ReturnNotEmptyListWithComment()
+		public void GetListByTaskId_Void_ReturnNotEmptyListWithComment()
 		{
 			_comment.Id = _commentRepository.Create(_comment);
-			var result = _commentRepository.GetList().Find(x => x.Id == _comment.Id);
+			var result = _commentRepository.GetListByTaskId(_comment.TaskId).Find(x => x.Id == _comment.Id);
 			AreEqualComments(result, _comment);
 		}
 
