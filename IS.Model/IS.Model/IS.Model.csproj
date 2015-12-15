@@ -75,7 +75,7 @@
     <Compile Include="Item\Housing\HousingItem.cs" />
     <Compile Include="Repository\Housing\HousingRepository.cs" />
     <Compile Include="Repository\Housing\IHousingRepository.cs" />
-    <Compile Include="Repository\Person\ILecturerRepository.cs />
+    <Compile Include="Repository\Person\ILecturerRepository.cs" />
     <Compile Include="Repository\Person\IStudentRepository.cs" />
     <Compile Include="Repository\Person\LecturerRepository.cs" />
     <Compile Include="Repository\Person\StudentRepository.cs" />

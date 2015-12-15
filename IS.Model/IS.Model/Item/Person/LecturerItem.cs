@@ -3,12 +3,12 @@
 namespace IS.Model.Item.Person
 {
 	/// <summary>
-	/// Класс для хранения данных людей.
+	/// Класс для хранения данных преподавателей.
 	/// </summary>
 	public class LecturerItem : PersonItem
 	{
 		/// <summary>
-		/// Кафедра.
+		/// Идентификатор кафедры.
 		/// </summary>
 		public int CathedraId { get; set; }
 	}
