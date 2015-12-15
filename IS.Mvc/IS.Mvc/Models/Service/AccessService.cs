@@ -114,7 +114,7 @@ namespace IS.Mvc.Models.Service
 		public bool UserInRole(UserItem user, RoleItem role)
 		{
 			var list = _roleRepository.GetListByUser(user);
-			return list.Exists(x => x.Code == "Admin" || x.Id == role.Id);
+			return list.Exists(x => x.Code == "Admin" || role.Code.StartsWith(x.Code));
 		}
 
 		public bool CheckRole(string role)

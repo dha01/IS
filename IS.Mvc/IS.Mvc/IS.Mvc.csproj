@@ -131,12 +131,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HousingController.cs" />
     <Compile Include="Controllers\OnlineTextController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +149,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\DataTable\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTable\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTable\dataTables.foundation.css" />
+    <Content Include="Content\DataTable\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTable\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTable\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTable\jquery.dataTables.css" />
+    <Content Include="Content\DataTable\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTable\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\sort_asc.png" />
+    <Content Include="Content\Images\sort_asc_disabled.png" />
+    <Content Include="Content\Images\sort_both.png" />
+    <Content Include="Content\Images\sort_desc.png" />
+    <Content Include="Content\Images\sort_desc_disabled.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -201,7 +220,17 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="production.Web - Copy.config">
+    <Content Include="Scripts\DataTable\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTable\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTable\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTable\jquery.js" />
+    <Content Include="Content\Images\Sorting icons.psd" />
+    <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="production.Web - Copy.Debug.config">
@@ -243,7 +272,11 @@
     <Content Include="Views\Task\Edit.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\Task\Statistic.cshtml" />
-    <Content Include="Web.config">
+    <Content Include="Views\Discipline\List.cshtml" />
+    <Content Include="Views\Discipline\Edit.cshtml" />
+    <Content Include="Views\Discipline\New.cshtml" />
+    <Content Include="Views\Discipline\Index.cshtml" />
+    <Content Include="production.Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Debug.config">
@@ -255,6 +288,19 @@
     <Content Include="Views\Person\List.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Views\Person\New.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Role\List.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\New.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Team\List.cshtml" />
+    <Content Include="Views\Team\New.cshtml" />
+    <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\List.cshtml" />
+    <Content Include="Views\Contact\New.cshtml" />
     <Content Include="Views\Person\Edit.cshtml" />
     <Content Include="Views\Housing\Edit.cshtml" />
     <Content Include="Views\Housing\Index.cshtml" />
@@ -287,7 +333,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7843</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

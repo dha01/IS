@@ -32,7 +32,8 @@ select
 	t.author Author,
 	t.is_perform IsPerform,
 	t.is_open IsOpen,
-	t.difficult Difficult
+	t.difficult Difficult,
+	t.pull_request_url PullRequestUrl
 from Task.task t
 	join Task.task_prefix p on p.task_prefix = t.task_prefix
 where t.task = @id", new { id });
@@ -60,7 +61,8 @@ set
 	author = @Author,
 	is_perform = @IsPerform,
 	is_open = @IsOpen,
-	difficult = @Difficult
+	difficult = @Difficult,
+	pull_request_url = @PullRequestUrl
 where task = @Id", task);
 			}
 		}
@@ -85,7 +87,8 @@ insert into Task.task
 	priority,
 	performer,
 	author,
-	difficult
+	difficult,
+	pull_request_url
 )
 values
 (
@@ -97,7 +100,8 @@ values
 	@Priority,
 	@Performer,
 	@Author,
-	@Difficult
+	@Difficult,
+	@PullRequestUrl
 )
 
 select scope_identity()", task);
@@ -140,7 +144,8 @@ select
 	t.author Author,
 	t.is_perform IsPerform,
 	t.is_open IsOpen,
-	t.difficult Difficult
+	t.difficult Difficult,
+	t.pull_request_url PullRequestUrl
 from Task.task t
 	join Task.task_prefix p on p.task_prefix = t.task_prefix");
 			}

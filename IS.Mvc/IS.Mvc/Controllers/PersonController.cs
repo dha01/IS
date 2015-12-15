@@ -98,7 +98,7 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult Edit(int id)
 		{
-			Access.CheckAccess("Perosn.Updater");
+			Access.CheckAccess("Person.Updater");
 			return View(_personService.GetById(id));
 		}
 
