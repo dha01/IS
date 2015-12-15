@@ -44,6 +44,7 @@
     <Compile Include="Item\Access\RoleItem.cs" />
     <Compile Include="Item\Access\UserItem.cs" />
     <Compile Include="Item\Auditory\AuditoryItem.cs" />
+    <Compile Include="Item\Calendar\WorkWeekItem.cs" />
     <Compile Include="Item\Discipline\DisciplineItem.cs" />
     <Compile Include="Item\Person\PersonItem.cs" />
     <Compile Include="Item\Role.cs" />
@@ -72,8 +73,11 @@
     <Compile Include="Repository\Team\ITeamRepository.cs" />
     <Compile Include="Repository\Team\TeamRepository.cs" />
     <Compile Include="Repository\Faculty\FacultyRepository.cs" />
+    <Compile Include="Repository\Calendar\IWorkWeekRepository.cs" />
+    <Compile Include="Repository\Calendar\WorkWeekRepository.cs" />
     <Compile Include="Service\PersonService.cs" />
-    <Compile Include="Service\DisciplineService.cs" />    <Compile Include="Service\TaskService.cs" />
+    <Compile Include="Service\DisciplineService.cs" />
+    <Compile Include="Service\TaskService.cs" />
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup />
