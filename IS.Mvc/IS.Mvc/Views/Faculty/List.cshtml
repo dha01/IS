@@ -2,44 +2,44 @@
 @using IS.Mvc.Models
 @model List<FacultyItem>
 
-@{
-	ViewBag.Title = "Faculty List";
-	Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<style>
-	table {
-		width: 100%; /* Ширина таблицы */
-		border: 4px double black; /* Рамка вокруг таблицы */
-		border-collapse: collapse; /* Отображать только одинарные линии */
+	@{
+		ViewBag.Title = "Faculty List";
+		Layout = "~/Views/Shared/_Layout.cshtml";
 	}
 
-	th {
-		text-align: left; /* Выравнивание по левому краю */
-		background: #ccc; /* Цвет фона ячеек */
-		padding: 5px; /* Поля вокруг содержимого ячеек */
-		border: 1px solid black; /* Граница вокруг ячеек */
-	}
+	<style>
+		table {
+			width: 100%; /* Ширина таблицы */
+			border: 4px double black; /* Рамка вокруг таблицы */
+			border-collapse: collapse; /* Отображать только одинарные линии */
+		}
 
-	td {
-		padding: 5px; /* Поля вокруг содержимого ячеек */
-		border: 1px solid black; /* Граница вокруг ячеек */
-	}
-</style>
+		th {
+			text-align: left; /* Выравнивание по левому краю */
+			background: #ccc; /* Цвет фона ячеек */
+			padding: 5px; /* Поля вокруг содержимого ячеек */
+			border: 1px solid black; /* Граница вокруг ячеек */
+		}
 
-<h2>Список факультетов</h2>
+		td {
+			padding: 5px; /* Поля вокруг содержимого ячеек */
+			border: 1px solid black; /* Граница вокруг ячеек */
+		}
+	</style>
+
+	<h2>Список факультетов</h2>
 
 <table id="faculty">
 	<thead>
-		<tr>
-			<th>Сокрашенное название</th>
-			<th>Полное название</th>
-			@if (Access.CheckRole("Faculty.Updater"))
-			{
-				<th></th>
-				<th></th>
-			}
-		</tr>
+	<tr>
+		<th>Сокрашенное название</th>
+		<th>Полное название</th>
+		@if (Access.CheckRole("Faculty.Updater"))
+		{
+			<th></th>
+			<th></th>
+		}
+	</tr>
 	</thead>
 	<tbody>
 	@foreach (var faculty in Model)
@@ -47,24 +47,25 @@
 		<tr>
 			<td>@faculty.ShortName</td>
 			<td>@faculty.FullName</td>
-			<td>@Html.ActionLink("Просмотр", "Index", new { id = faculty.Id });</td>
+			<td>@Html.ActionLink("Просмотр", "Index", new {id = faculty.Id});</td>
 			@if (Access.CheckRole("Faculty.Updater"))
 			{
 				<td>
-					@Html.ActionLink("Редактировать", "Edit", new { id = faculty.Id })
+					@Html.ActionLink("Редактировать", "Edit", new {id = faculty.Id})
 				</td>
 			}
 			@if (Access.CheckRole("Faculty.Updater"))
 			{
 				<td>
-					@Html.ActionLink("Удалить", "Delete", new { id = faculty.Id }, new { onclick = "return confirm('Удалить запись?')" })
+					@Html.ActionLink("Удалить", "Delete", new {id = faculty.Id}, new {onclick = "return confirm('Удалить запись?')"})
 				</td>
 			}
 		</tr>
 	}
 	</tbody>
 </table>
-@if (Access.CheckRole("Faculty.Updater"))
-{
-	@Html.ActionLink("Создать запись о факультете", "New");
-} 
+
+	@if (Access.CheckRole("Faculty.Updater"))
+	{
+		@Html.ActionLink("Создать запись о факультете", "New");
+	}

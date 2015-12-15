@@ -31,12 +31,21 @@
 		<td>@Model.ShortName</td>
 	</tr>
 	<tr>
-		<td  class="t_head">Полное название</td>
+		<td class="t_head">Полное название</td>
 		<td>@Model.FullName</td>
 	</tr>
 </table>
-@Html.ActionLink("Просмотр списка факультетов", "List")<br/>
-@if (Access.CheckRole("Faculty.Updater"))
-{
-	@Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
-}
+<div align="left" style="float: left">
+	
+	@if (Access.CheckRole("Faculty.Editor"))
+	{
+		@Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
+	}
+</div>
+<div align="right">
+	
+	@if (Access.CheckRole("Faculty.Deleter"))
+	{
+		@Html.ActionLink("Удалить", "Delete", new { id = Model.Id })
+	}
+</div>

@@ -39,8 +39,7 @@
 			<td>@Html.EditorFor(m => Model.FullName)</td>
 		</tr>
 	</table>
-	<input type="submit" value="Сохранить" /><br/>
-	@Html.ActionLink("Просмотр записи о факультете", "Index", new { id = Model.Id })<br />
-    @Html.ActionLink("Отмена", "Index", new { id = Model.Id })
+	<input type="submit" value="Сохранить" />
+	@Html.ActionLink("Отмена", "Index", new { id = Model.Id })
 }
 @Html.ActionLink("Просмотр списка факультетов", "List")

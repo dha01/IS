@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using IS.Model.Item.Faculty;
 using IS.Model.Service;
 using IS.Mvc.Models;
@@ -15,6 +16,7 @@ namespace IS.Mvc.Controllers
 	public class FacultyController : Controller
 	{
 		private FacultyService _facultyService;
+
 		/// <summary>
 		/// Конструктор контроллера факультетов.
 		/// </summary>
@@ -50,7 +52,7 @@ namespace IS.Mvc.Controllers
 				return RedirectToAction("List");
 			}
 		}
-		
+
 		/// <summary>
 		/// Создает новую запись о факультете.
 		/// </summary>
@@ -59,7 +61,7 @@ namespace IS.Mvc.Controllers
 		public ActionResult Create(FacultyItem faculty)
 		{
 			Access.CheckAccess("Faculty.Creator");
-			return RedirectToAction("Index", new { id = _facultyService.Create(faculty) });
+			return RedirectToAction("Index", new {id = _facultyService.Create(faculty)});
 		}
 
 		/// <summary>
@@ -86,7 +88,7 @@ namespace IS.Mvc.Controllers
 		{
 			Access.CheckAccess("Faculty.Updater");
 			_facultyService.Update(faculty);
-			return RedirectToAction("Index", new { id = faculty.Id });
+			return RedirectToAction("Index", new {id = faculty.Id});
 		}
 
 		/// <summary>
