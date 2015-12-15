@@ -44,6 +44,7 @@
     <Compile Include="Item\Access\RoleItem.cs" />
     <Compile Include="Item\Access\UserItem.cs" />
     <Compile Include="Item\Auditory\AuditoryItem.cs" />
+    <Compile Include="Item\Calendar\WorkDayItem.cs" />
     <Compile Include="Item\Comment\CommentItem.cs" />
     <Compile Include="Item\Calendar\SemesterItem.cs" />
     <Compile Include="Item\Contact\ContactItem.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="Item\Team\TeamItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Access\IRoleRepository.cs" />
+    <Compile Include="Repository\Calendar\IWorkDayRepository.cs" />
+    <Compile Include="Repository\Calendar\WorkDayRepository.cs" />
     <Compile Include="Repository\Comment\CommentRepository.cs" />
     <Compile Include="Repository\Comment\ICommentRepository.cs" />
     <Compile Include="Repository\Calendar\ISemesterRepository.cs" />
