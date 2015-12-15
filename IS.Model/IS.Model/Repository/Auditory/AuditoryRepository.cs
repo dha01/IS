@@ -121,6 +121,3 @@ from Auditory.auditory a");
 		}
 	}
 }
-//	p.code Prefix,
-/*from Auditory.auditory a
-	join Auditory.auditory_Prefix p on p.auditory_Prefix = a.auditory_Prefix*/
