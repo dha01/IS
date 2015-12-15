@@ -102,7 +102,6 @@ namespace IS.Model.Service
 			_auditoryRepository.Delete(id);
 		}
 
-
 		/// <summary>
 		/// Получает список аудиторий.
 		/// </summary>
@@ -110,7 +109,6 @@ namespace IS.Model.Service
 		{
 			return _auditoryRepository.GetList();
 		}
-
 
 		#endregion
 	}
