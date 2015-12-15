@@ -50,6 +50,7 @@
     <Compile Include="Item\Discipline\DisciplineItem.cs" />
     <Compile Include="Item\Person\PersonItem.cs" />
     <Compile Include="Item\Role.cs" />
+    <Compile Include="Item\Specialty\PlanItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyDetailItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyItem.cs" />
     <Compile Include="Item\Person\StudentItem.cs" />
@@ -75,7 +76,9 @@
     <Compile Include="Repository\Housing\IHousingRepository.cs" />
     <Compile Include="Repository\Person\IStudentRepository.cs" />
     <Compile Include="Repository\Person\StudentRepository.cs" />
+    <Compile Include="Repository\Specialty\IPlanRepository.cs" />
     <Compile Include="Repository\Specialty\ISpecialtyDetailRepository.cs" />
+    <Compile Include="Repository\Specialty\PlanRepository.cs" />
     <Compile Include="Repository\Specialty\SpecialtyDetailRepository.cs" />
     <Compile Include="Repository\Task\ITaskRepository.cs" />
     <Compile Include="Repository\Access\IUserRepository.cs" />
@@ -92,6 +95,8 @@
     <Compile Include="Repository\Faculty\FacultyRepository.cs" />
     <Compile Include="Repository\Team\ITeamRepository.cs" />
     <Compile Include="Repository\Team\TeamRepository.cs" />
+    <Compile Include="Service\CathedraService.cs" />
+    <Compile Include="Service\CommentService.cs" />
     <Compile Include="Service\ContactService.cs" />
     <Compile Include="Service\FacultyService.cs" />
     <Compile Include="Service\HousingService.cs" />
@@ -99,6 +104,7 @@
     <Compile Include="Service\DisciplineService.cs" />
     <Compile Include="Service\AuditoryService.cs" />
     <Compile Include="Service\RoleService.cs" />
+    <Compile Include="Service\SpecialtyDetailService.cs" />
     <Compile Include="Service\TaskService.cs" />
     <Compile Include="Service\TeamService.cs" />
     <Compile Include="Service\UserService.cs" />

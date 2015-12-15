@@ -83,7 +83,7 @@ namespace IS.Model.Tests.Service
 			Mock.Get(_housingRepository).Setup(x => x.Create(_housing)).Returns(_housing.Id);
 			Mock.Get(_housingRepository).Setup(x => x.GetList()).Returns(list);
 
-			var result = _housingRepository.Create(_housing);
+			var result = _housingService.Create(_housing);
 			Assert.AreEqual(result, _housing.Id);
 		}
 
