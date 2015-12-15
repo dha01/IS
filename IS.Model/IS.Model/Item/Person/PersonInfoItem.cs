@@ -11,7 +11,7 @@ namespace IS.Model.Item.Person
     /// </summary>
     public class PersonInfoItem : PersonItem
     {
-       /// <summary>
+        /// <summary>
 		/// Список контактов.
 		/// </summary>
 		public List<ContactItem> ContactsList { get; set; }
