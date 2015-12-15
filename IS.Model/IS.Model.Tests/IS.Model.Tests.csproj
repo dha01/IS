@@ -64,6 +64,7 @@
     <Compile Include="Repository\Discipline\DisciplineRepositoryTests.cs" />
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
     <Compile Include="Repository\Housing\HousingRespositoryTest.cs" />
+    <Compile Include="Repository\Person\LecturerRepositoryTest.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
     <Compile Include="Repository\Person\StudentRepositoryTests.cs" />
     <Compile Include="Repository\Specialty\SpecialtyDetailRepositoryTests.cs" />
