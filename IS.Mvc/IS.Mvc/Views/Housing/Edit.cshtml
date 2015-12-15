@@ -1,0 +1,55 @@
+﻿@using IS.Model.Item.Housing;
+@model HousingItem
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    table {
+        border: 4px double black; /* Рамка вокруг таблицы */
+        border-collapse: collapse; /* Отображать только одинарные линии */
+    }
+
+    td:first-child {
+        text-align: left; /* Выравнивание по левому краю */
+        background: #ccc; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+
+    td {
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+</style>
+
+<h2>Редактироание персональных данных корпуса</h2>
+
+@using (@Html.BeginForm("Update", "Housing"))
+{
+    @Html.HiddenFor(m => Model.Id)
+
+    <table class="table housing">
+        <tr>
+            <td>Номер</td>
+            <td>@Html.EditorFor(m => Model.Number)</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>@Html.EditorFor(m => Model.Name)</td>
+        </tr>
+        <tr>
+            <td>Этаж</td>
+            <td>@Html.EditorFor(m => Model.Level)</td>
+        </tr>
+        <tr>
+            <td>Описание</td>
+            <td>@Html.EditorFor(m => Model.Memo)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Сохранить" /><br />
+    @Html.ActionLink("Просмотр записи о корпусе", "Index", new { id = Model.Id })<br />
+    @Html.ActionLink("Отмена", "Index", new { id = Model.Id })
+}
+@Html.ActionLink("Просмотр списка корпусов", "List")
