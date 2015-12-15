@@ -1,0 +1,52 @@
+﻿@using IS.Model.Item.Cathedra;
+@using IS.Model.Service
+@using IS.Mvc.Models
+@model CathedraItem
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    table {
+        border: 4px double black; /* Рамка вокруг таблицы */
+        border-collapse: collapse; /* Отображать только одинарные линии */
+    }
+
+    td:first-child {
+        text-align: left; /* Выравнивание по левому краю */
+        background: #ccc; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+
+    td {
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+</style>
+
+<table class="table cathedra">
+    <tr>
+        <td>Названиие</td>
+        <td>@Model.FullName</td>
+    </tr>
+    <tr>
+        <td>Сокращенное название</td>
+        <td>@Model.ShortName</td>
+    </tr>
+    <tr>
+        <td>Факультет</td>
+        <td>
+            @foreach (var faculty in new FacultyService().GetList())
+            {
+				@faculty.ShortName
+            }
+        </td>
+    </tr>
+</table>
+@Html.ActionLink("Просмотр списка кафедр", "List")<br />
+@if (Access.CheckRole("Cathedra.Updater"))
+{
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
+}

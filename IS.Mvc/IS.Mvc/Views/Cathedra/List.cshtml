@@ -1,0 +1,80 @@
+﻿@using IS.Model.Item.Cathedra;
+@using IS.Model.Service
+@using IS.Mvc.Models
+@model List<CathedraItem>
+
+@{
+    ViewBag.Title = "Cathedra List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        width: 100%; /* Ширина таблицы */
+        border: 4px double black; /* Рамка вокруг таблицы */
+        border-collapse: collapse; /* Отображать только одинарные линии */
+    }
+
+    th {
+        text-align: left; /* Выравнивание по левому краю */
+        background: #ccc; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+
+    td {
+        padding: 5px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Граница вокруг ячеек */
+    }
+</style>
+
+<h2>Список людей</h2>
+
+<table id="cathedra">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Сокращенное название</th>
+            <th>Факультет</th>
+            @if (Access.CheckRole("Cathedra.Updater"))
+            {
+                <th></th>
+                <th></th>
+                <th></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cathedra in Model) 
+          
+            {
+            <tr>
+                <td>@cathedra.FullName</td>
+                <td>@cathedra.ShortName</td>
+                <td>
+                    @foreach (var faculty in new FacultyService().GetList())
+                    {
+                        @faculty.ShortName
+                    }
+                </td>
+                <td>@Html.ActionLink("Просмотр", "Index", new { id = cathedra.Id })</td>
+                @if (Access.CheckRole("Cathedra.Updater"))
+                {
+                    <td>
+                        @Html.ActionLink("Редактировать", "Edit", new { id = cathedra.Id })
+                    </td>
+                }
+                @if (Access.CheckRole("Cathedra.Deleter"))
+                {
+                    <td>
+                        @Html.ActionLink("Удалить", "Delete", new { id = cathedra.Id }, new { onclick = "return confirm('Удалить запись?')" })
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Access.CheckRole("Cathedra.Creator"))
+{
+    @Html.ActionLink("Создать запись о кафедре", "New")
+}
