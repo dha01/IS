@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using IS.Model.Item.Access;
 using IS.Model.Repository.Access;
+using IS.Model.Service;
+using IS.Model.Item.Person;
 
 namespace IS.Mvc.Models.Service
 {
@@ -62,6 +64,21 @@ namespace IS.Mvc.Models.Service
 				throw new Exception("Поле 'login' не должно быть пустым.");
 			}
 			return _userRepository.GetUserByLogin(login);
+		}
+
+		/// <summary>
+		/// Получение учетной записи пользователя (UserItem) по идентификатору персональных данных(PersonItem).
+		/// </summary>
+		/// <param name="Id">Идентификатор.</param>
+		/// <returns>Учатная запись пользователя.</returns>
+		public UserItem GetUserByPersonId(int Id)
+		{
+
+			PersonService personService = new PersonService();
+			PersonItem personItem = personService.GetById(Id);
+			UserItem userItem = _userRepository.Get(personItem.Id);
+
+			return userItem;
 		}
 	}
 }
