@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using IS.Mvc.Models;
 
 namespace Sis.Mvc.Controllers
 {
-    public class FileController : Controller
-    {
+	public class FileController : Controller
+	{
 		[AllowAnonymous]
 		public ActionResult Index()
 		{
@@ -28,6 +29,10 @@ namespace Sis.Mvc.Controllers
 		[AllowAnonymous]
 		public FileResult Download(string FileName)
 		{
+			if (FileName.StartsWith("CourseWork") && !Access.CheckRole("Admin"))
+			{
+				throw new Exception("Низя!");
+			}
 			return File("C://Files//" + FileName, System.Net.Mime.MediaTypeNames.Application.Octet, FileName);
 		}
 
@@ -57,5 +62,5 @@ namespace Sis.Mvc.Controllers
 			System.IO.File.Delete("C://Files//" + FileName);
 			return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
 		}
-    }
+	}
 }
