@@ -60,41 +60,16 @@ namespace IS.Model.Service
         /// <returns>Идентификатор созданного семестра.</returns>
         public int Create(SemesterItem semester)
         {
-            if (DateTime (semester.FromDate))
-            {
-                throw new Exception("Поле 'FromDate' не должно быть пустым.");
-            }
-
-            if (DateTime (semester.TrimDate))
-            {
-                throw new Exception("Поле 'TrimDate' не должно быть пустым.");
-            }
-
             return _semesterRepository.Create(semester);
         }
 
         /// <summary>
-        /// Измененяет данные о кафедре.
+        /// Измененяет данные о семестре.
         /// </summary>
-        /// <param name="cathedra">Кафедра.</param>
-        public void Update(SemesterItem cathedra)
+        /// <param name="semester">Семестр.</param>
+        public void Update(SemesterItem semester)
         {
-            if (string.IsNullOrEmpty(semester.FromDate))
-            {
-                throw new Exception("Поле 'FullName' не должно быть пустым.");
-            }
-
-            if (string.IsNullOrEmpty(semester.TrimDate))
-            {
-                throw new Exception("Поле 'ShortName' не должно быть пустым.");
-            }
-
-            if (GetById(semester.Id) == null)
-            {
-                throw new Exception("Кафедра не найдена.");
-            }
-
-            _semesterRepository.Update(cathedra);
+            _semesterRepository.Update(semester);
         }
 
         /// <summary>
