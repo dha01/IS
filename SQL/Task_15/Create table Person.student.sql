@@ -8,7 +8,7 @@ create table Person.student
 	event_date datetime not null,
 	person int not null,
 	team int not null,
-	act tinyint,
+	act int,
 	constraint PK__student primary key (student),
 	constraint FK__student__team foreign key (team) references Team.team,
 	constraint FK__student__person foreign key (person) references Person.person

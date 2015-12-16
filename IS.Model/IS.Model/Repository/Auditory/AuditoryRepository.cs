@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using IS.Model.Item.Auditory;
 using IS.Model.Helper;
+using IS.Model.Item.Task;
 
 namespace IS.Model.Repository.Auditory
 {
@@ -40,7 +41,18 @@ where a.auditory = @id", new { id });
 		/// <param name="auditory">Аудитория.</param>
 		public void Update(AuditoryItem auditory)
 		{
-
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+update Auditory.auditory
+set
+	number = @Number,
+	full_name = @FullName,
+	memo = @Memo,
+	level = @Level,
+	capacity = @Capacity
+where auditory = @Id", auditory);
+			}
 		}
 
 		/// <summary>
@@ -50,7 +62,28 @@ where a.auditory = @id", new { id });
 		/// <returns>Идентификатор созданной аудитории.</returns>
 		public int Create(AuditoryItem auditory)
 		{
-			return 0;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecScalar<int>(@"
+insert into Auditory.auditory
+(
+	number,
+	full_name,
+	memo,
+	level,
+	capacity
+)
+values
+(
+	@Number,
+	@FullName,
+	@Memo,
+	@Level,
+	@Capacity
+)
+
+select scope_identity()", auditory);
+			}
 		}
 
 		/// <summary>
@@ -59,7 +92,12 @@ where a.auditory = @id", new { id });
 		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-
+			using (SqlHelper sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+delete from Auditory.auditory
+where auditory = @id", new { id });
+			}
 		}
 
 		/// <summary>
@@ -68,7 +106,18 @@ where a.auditory = @id", new { id });
 		/// <returns>Список аудиторий.</returns>
 		public List<AuditoryItem> GetList()
 		{
-			return null;
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<AuditoryItem>(@"
+select
+	a.auditory Id,
+	a.full_name FullName,
+	a.number Number,
+	a.memo Memo,
+	a.level Level,
+	a.capacity Capacity
+from Auditory.auditory a");
+			}
 		}
 	}
 }

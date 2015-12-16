@@ -25,14 +25,39 @@
 		padding: 5px; /* Поля вокруг содержимого ячеек */
 		border: 1px solid black; /* Граница вокруг ячеек */
 	}
+
+	table.dataTable.display tbody tr.deadline.odd,
+	table.dataTable.display tbody tr.deadline.even {
+		background-color: #ffa500;
+	}
+
+	table.dataTable.display tbody tr.double_deadline.odd,
+	table.dataTable.display tbody tr.double_deadline.even {
+		background-color: #fa8072;
+	}
 </style>
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/DataTable/jquery.dataTables.css")">
+<script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/DataTable/jquery.dataTables.min.js")"></script>
+<script>
+	$(function() {
+		$("#tasks").dataTable({
+			"lengthMenu": [[50, 100, -1], [50, 100, "All"]]
+		});
+		$("#example").dataTable({
+			"lengthMenu": [[50, 100, -1], [50, 100, "All"]]
+		});
+	})
+</script>
+
 <br/>
 
 @Html.ActionLink("Загрузка файлов", "Index", "File")
 
 <h2>Список задач</h2>
 
-@Html.ActionLink("Перейти к лиичному прогрессу", "Progress", "Task", null, new { style = "font-size: 20pt" })
+@Html.ActionLink("Перейти к личному прогрессу", "Progress", "Task", null, new { style = "font-size: 20pt" })
 
 @if (Access.CheckRole())
 {
@@ -56,7 +81,7 @@
 	<span id="value">25</span>%
 </progress>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
 <script type="text/javascript">
 //<![CDATA[
 	var remain_bv = @sec;
@@ -95,11 +120,11 @@
 	//]]>
 </script>
 
-<table>
+<table id="tasks" class="display cell-border compact hover order-column row-border">
 	<thead>
 		<tr>
 			<th>Заголовок</th>
-			<th>Приоритет</th>
+			<th>Pull Request</th>
 			<th>Дата создания</th>
 			<th>Срок</th>
 			<th>Срок в днях</th>
@@ -110,23 +135,31 @@
 	<tbody>
 		@foreach (var task in Model)
 		{
-			string row_color = "#ffffff";
+			string row_class = "";
 			if (!task.IsPerform && task.Deadline < DateTime.Now)
 			{
 				if (task.Deadline < DateTime.Now.AddDays(-7))
 				{
-					row_color = "#fa8072";
+					row_class = "double_deadline";
 				}
 				else
 				{
-					row_color = "#ffa500";
+					row_class = "deadline";
 				}
 			}
 
-
-			<tr style="background-color: @row_color">
+			<tr class="@row_class">
 				<td>@Html.ActionLink(string.Format("{0}_{1} {2}", task.Prefix, task.Number, task.Header), "Index", new { id = task.Id })</td>
-				<td>@Html.DisplayTextFor(m => task.Priority)</td>
+				<td>
+					@if (!string.IsNullOrEmpty(task.PullRequestUrl) && task.PullRequestUrl.Contains("//github.com"))
+					{
+						<a href="@task.PullRequestUrl">@task.PullRequestUrl.Split('/').Last()</a>
+					}
+					else
+					{
+						<a href="@task.PullRequestUrl">@task.PullRequestUrl</a>
+					}
+				</td>
 				<td>@Html.DisplayTextFor(m => task.Created)</td>
 				<td>@Html.DisplayTextFor(m => task.Deadline)</td>
 				<td>

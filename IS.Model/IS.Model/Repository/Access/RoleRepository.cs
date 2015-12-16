@@ -5,103 +5,113 @@ using IS.Model.Item.Access;
 
 namespace IS.Model.Repository.Access
 {
+	/// <summary>
+	/// Класс репозитория ролей.
+	/// </summary>
 	public class RoleRepository : IRoleRepository
 	{
+		/// <summary>
+		/// Получает роль по идентификатору.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		/// <returns>Роль.</returns>
 		public RoleItem Get(int id)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMapping<RoleItem>(@"
 select
 	r.role Id,
 	r.code Code,
 	r.mem Mem
 from Access.role r
-where r.role = @Id"))
-			{
-				sqlh.AddWithValue("@Id", id);
-				var dt = sqlh.ExecTable();
-				if (dt.Rows.Count == 0)
-				{
-					return null;
-				}
-				return new RoleItem()
-				{
-					Id = (int)dt.Rows[0]["Id"],
-					Code = (string)dt.Rows[0]["Code"],
-					Mem = (string)dt.Rows[0]["Mem"]
-				};
+where r.role = @Id", new { id });
 			}
 		}
 
+		/// <summary>
+		/// Обновляет данные по роли.
+		/// </summary>
+		/// <param name="role">Роль.</param>
 		public void Update(RoleItem role)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
 update Access.role
 set
 	code = @Code,
 	mem = @Mem
-where role = @Id"))
-			{
-				sqlh.AddWithValue("@Id", role.Id);
-				sqlh.AddWithValue("@Code", role.Code);
-				sqlh.AddWithValue("@Mem", role.Mem);
-				sqlh.ExecNoQuery();
+where role = @Id", role);
 			}
 		}
 
+		/// <summary>
+		/// Создает новую роль.
+		/// </summary>
+		/// <param name="role">Роль.</param>
+		/// <returns>Идентификатор созданной роли.</returns>
 		public int Create(RoleItem role)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
-insert into Access.role(code, mem)
-values (@Code, @Mem)
-
-select SCOPE_IDENTITY()
-"))
+			using (var sqlh = new SqlHelper())
 			{
-				sqlh.AddWithValue("@Code", role.Code);
-				sqlh.AddWithValue("@Mem", role.Mem);
-				return (int)sqlh.ExecScalar();
+				return sqlh.ExecScalar<int>(@"
+insert into Access.role
+(
+	code,
+	mem
+)
+values
+(
+	@Code,
+	@Mem
+)
+
+select scope_identity()", role);
 			}
 		}
 
+		/// <summary>
+		/// Удаляет роль.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
 		public void Delete(int id)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
-delete from Access.role
-where role = @Id"))
+			using (SqlHelper sqlh = new SqlHelper())
 			{
-				sqlh.ExecNoQuery();
+				sqlh.ExecNoQuery(@"
+delete from Access.role
+where role = @Id", new { id });
 			}
 		}
 
+		/// <summary>
+		/// Получает список всех ролей.
+		/// </summary>
+		/// <returns>Список ролей.</returns>
 		public List<RoleItem> GetList()
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<RoleItem>(@"
 select
 	r.role Id,
 	r.code Code,
 	r.mem Mem
-from Access.role r"))
-			{
-				var dt = sqlh.ExecTable();
-				
-				var list = new List<RoleItem>();
-
-				foreach (DataRow row in dt.Rows)
-				{
-					list.Add(new RoleItem()
-					{
-						Id = (int)row["Id"],
-						Code = (string)row["Code"],
-						Mem = (string)row["Mem"]
-					});
-				}
-				return list;
+from Access.role r");
 			}
 		}
 
+		/// <summary>
+		/// Получает список ролей по пользователю.
+		/// </summary>
+		/// <param name="user">Пользователь.</param>
+		/// <returns>Список ролей.</returns>
 		public List<RoleItem> GetListByUser(UserItem user)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<RoleItem>(@"
 select
 	r.role Id,
 	r.code Code,
@@ -109,48 +119,26 @@ select
 from Access.[user] u
 	join Access.user2role u2r on u2r.[user] = u.[user]
 	join Access.role r on r.role = u2r.role
-where u.[user] = @Id"))
-			{
-				sqlh.AddWithValue("Id", user.Id);
-				var dt = sqlh.ExecTable();
-
-				var list = new List<RoleItem>();
-
-				foreach (DataRow row in dt.Rows)
-				{
-					list.Add(new RoleItem()
-					{
-						Id = (int)row["Id"],
-						Code = (string)row["Code"],
-						Mem = (string)row["Mem"]
-					});
-				}
-				return list;
+where u.[user] = @Id", user);
 			}
 		}
 
+		/// <summary>
+		/// Получает роль по коду.
+		/// </summary>
+		/// <param name="code">Код.</param>
+		/// <returns>Список ролей.</returns>
 		public RoleItem GetByCode(string code)
 		{
-			using (SqlHelper sqlh = new SqlHelper(@"
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMapping<RoleItem>(@"
 select
 	r.role Id,
 	r.code Code,
 	r.mem Mem
 from Access.role r
-where r.code = @Code"))
-			{
-				sqlh.AddWithValue("@Code", code);
-				var dt = sqlh.ExecTable();
-				if (dt.Rows.Count == 0)
-				{
-					return null;
-				}
-				return new RoleItem()
-				{
-					Id = (int)dt.Rows[0]["Id"],
-					Code = (string)dt.Rows[0]["Code"],
-					Mem = (string)dt.Rows[0]["Mem"]
-				};
+where r.code = @Code", new { code });
 			}
 		}
 	}
