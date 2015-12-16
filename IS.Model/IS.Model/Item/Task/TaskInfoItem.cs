@@ -1,12 +1,17 @@
-﻿using System;
+﻿using IS.Model.Item.Task;
+using IS.Model.Item.Comment;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace IS.Model.Item.Task
+namespace IS.Model.Item.TaskInfo
 {
-	class TaskInfoItem : TaskItem
+	/// <summary>
+	/// Класс для хранения списка комментариев по задаче.
+	/// </summary>
+	public class TaskInfoItem : TaskItem
 	{
-		//список комментариев
+		/// <summary>
+		/// Список комментариев.
+		/// </summary>
+		public List<CommentItem> CommentList { get; set; }
 	}
 }
