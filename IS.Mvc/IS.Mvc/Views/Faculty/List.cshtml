@@ -47,7 +47,7 @@
 		<tr>
 			<td>@faculty.ShortName</td>
 			<td>@faculty.FullName</td>
-			<td>@Html.ActionLink("Просмотр", "Index", new {id = faculty.Id});</td>
+			<td>@Html.ActionLink("Просмотр", "Index", new {id = faculty.Id})</td>
 			@if (Access.CheckRole("Faculty.Updater"))
 			{
 				<td>
