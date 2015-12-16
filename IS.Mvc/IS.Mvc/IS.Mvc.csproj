@@ -131,10 +131,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\CathedraController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\HousingController.cs" />
     <Compile Include="Controllers\OnlineTextController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -303,6 +305,14 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\List.cshtml" />
     <Content Include="Views\Contact\New.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Housing\Edit.cshtml" />
+    <Content Include="Views\Housing\Index.cshtml" />
+    <Content Include="Views\Housing\List.cshtml" />
+    <Content Include="Views\Housing\New.cshtml" />    <Content Include="Views\Cathedra\Edit.cshtml" />
+    <Content Include="Views\Cathedra\Index.cshtml" />
+    <Content Include="Views\Cathedra\List.cshtml" />
+    <Content Include="Views\Cathedra\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

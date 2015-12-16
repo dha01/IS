@@ -152,7 +152,7 @@ namespace IS.Model.Tests.Service
 		#region GetListByTaskId
 
 		/// <summary>
-		/// Получает список задач по идентификатору задачи.
+		/// Получает список комментариев по идентификатору задачи.
 		/// </summary>
 		[Test]
 		public void GetListByTaskId_Void_ReturnCommentList()
