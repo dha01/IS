@@ -227,6 +227,7 @@
     <Content Include="Scripts\DataTable\dataTables.jqueryui.js" />
     <Content Include="Scripts\DataTable\dataTables.jqueryui.min.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\Task\Comment.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTable\jquery.js" />

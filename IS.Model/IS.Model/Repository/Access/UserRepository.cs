@@ -17,7 +17,7 @@ select
 	u.login Login,
 	u.password Password
 from Access.[user] u
-	join Person.person p on p.person = u.person
+	left join Person.person p on p.person = u.person
 where u.[user] = @id", new { id });
 			}
 		}
@@ -69,7 +69,7 @@ select
 	u.password Password,
 	u.person PersonId
 from Access.[user] u
-	join Person.person p on p.person = u.person
+	left join Person.person p on p.person = u.person
 where u.login = @login", new{ login });
 			}
 		}

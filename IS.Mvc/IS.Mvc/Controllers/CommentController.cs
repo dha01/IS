@@ -26,10 +26,21 @@ namespace IS.Mvc.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[ValidateInput(false)]
-		public int SendMessage(CommentItem comment)
+		public JsonResult SendMessage(CommentItem comment)
 		{
-			 _commentService.Create(comment);
-			return 0;
+			 var id = _commentService.Create(comment);
+			 return Json(new { success = true, id, is_deleter = Access.CheckRole("Comment.Deleter") }, JsonRequestBehavior.AllowGet);
+		}
+
+		/// <summary>
+		/// Удаляет комментарий.
+		/// </summary>
+		/// <returns></returns>
+		[ValidateInput(false)]
+		public JsonResult Delete(int comment_id)
+		{
+			_commentService.Delete(comment_id);
+			return Json(new { success = true}, JsonRequestBehavior.AllowGet);
 		}
 	}
 }
