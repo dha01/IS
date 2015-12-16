@@ -53,7 +53,7 @@
     <Compile Include="Item\Specialty\SpecialtyDetailItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyItem.cs" />
     <Compile Include="Item\Person\StudentItem.cs" />
-    <Compile Include="Item\Task\TaskInfoItem.cs" />
+    <Compile Include="Item\TaskInfo\TaskInfoItem.cs" />
     <Compile Include="Item\Task\TaskItem.cs" />
     <Compile Include="Item\Faculty\FacultyItem.cs" />
     <Compile Include="Item\Team\TeamItem.cs" />

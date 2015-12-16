@@ -26,9 +26,11 @@ select
 	c.comment Id,
 	c.add_date AddDate,
 	c.person PersonId,
+	p.last_name + ' ' + p.first_name + ' ' + p.father_name PersonName,
 	c.text Text,
 	c.task TaskId
 from Task.comment c
+	join Person.person p on p.person = c.person
 where c.comment = @id", new { id });
 			}
 		}
@@ -109,10 +111,12 @@ select
 	c.comment Id,
 	c.add_date AddDate,
 	c.person PersonId,
+	p.last_name + ' ' + p.first_name + ' ' + p.father_name PersonName,
 	c.text Text,
 	c.task TaskId
 from Task.comment c
-where c.TaskId = @task_id", new { task_id });
+	join Person.person p on p.person = c.person
+where c.task = @task_id", new { task_id });
             }
 		}
 	}

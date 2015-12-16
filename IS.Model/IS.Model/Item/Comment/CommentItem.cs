@@ -26,6 +26,11 @@ namespace IS.Model.Item.Comment
 		public int PersonId { get; set; }
 
 		/// <summary>
+		/// Имя автора комментария.
+		/// </summary>
+		public string PersonName { get; set; }
+
+		/// <summary>
 		/// Текст комментария.
 		/// </summary>
 		public string Text { get; set; }
