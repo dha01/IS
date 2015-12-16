@@ -191,7 +191,8 @@ namespace IS.Model.Service
 				Priority = task.Priority,
 				Prefix = task.Prefix,
 				PullRequestUrl = task.PullRequestUrl,
-				CommentList = _commentRepository.GetListByTaskId(task_id)
+				CommentList = _commentRepository.GetListByTaskId(task_id),
+				Difficult = task.Difficult
 			};
 
 			return info;
