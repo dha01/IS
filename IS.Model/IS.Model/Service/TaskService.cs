@@ -5,7 +5,7 @@ using IS.Model.Item.Task;
 using IS.Model.Repository.Task;
 using IS.Model.Service;
 using IS.Model.Repository.Comment;
-using IS.Model.Item.TaskInfo;
+using IS.Model.Item.Task;
 
 namespace IS.Model.Service
 {

@@ -2,7 +2,7 @@
 using IS.Model.Item.Comment;
 using System.Collections.Generic;
 
-namespace IS.Model.Item.TaskInfo
+namespace IS.Model.Item.Task
 {
 	/// <summary>
 	/// Класс для хранения списка комментариев по задаче.
