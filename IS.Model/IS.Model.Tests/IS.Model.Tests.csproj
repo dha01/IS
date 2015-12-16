@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+
     <Reference Include="Moq">
       <HintPath>..\..\..\External\Moq.4.0.10827\NET40\Moq.dll</HintPath>
     </Reference>
@@ -63,6 +64,7 @@
     <Compile Include="Repository\Discipline\DisciplineRepositoryTests.cs" />
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
     <Compile Include="Repository\Housing\HousingRespositoryTest.cs" />
+    <Compile Include="Repository\Person\LecturerRepositoryTest.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
     <Compile Include="Repository\Person\StudentRepositoryTests.cs" />
     <Compile Include="Repository\Specialty\SpecialtyDetailRepositoryTests.cs" />
@@ -70,10 +72,13 @@
     <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
     <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
     <Compile Include="Repository\Access\UserRepositoryTests.cs" />
+    <Compile Include="Service\CommentServiceTests.cs" />
     <Compile Include="Service\ContactServiceTests.cs" />
     <Compile Include="Service\PersonServiceTests.cs" />
     <Compile Include="Service\DisciplineServiceTests.cs" />
+    <Compile Include="Service\AuditoryServiceTests.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
+    <Compile Include="Service\CathedraServiceTests.cs" />
     <Compile Include="Service\RoleServiceTests.cs" />
     <Compile Include="Service\FacultyServiceTest.cs" />
     <Compile Include="Service\HousingServiceTests.cs" />

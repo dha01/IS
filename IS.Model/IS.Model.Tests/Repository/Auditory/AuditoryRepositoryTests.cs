@@ -149,7 +149,16 @@ namespace IS.Model.Tests.Repository.Auditory
 
 		#region GetList
 
-
+		/// <summary>
+		/// Получает список всех аудиторий.
+		/// </summary>
+		[Test]
+		public void GetList_Void_ReturnNotEmptyListWithTask()
+		{
+			_auditory.Id = _auditoryRepository.Create(_auditory);
+			var result = _auditoryRepository.GetList().Find(x => x.Id == _auditory.Id);
+			AreEqualAuditory(result, _auditory);
+		}
 
 		#endregion
 	}
