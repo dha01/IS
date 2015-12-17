@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using IS.Model.Item.Task;
 using IS.Model.Repository.Task;
+using IS.Model.Repository.Comment;
 using IS.Model.Service;
 using Moq;
 using NUnit.Framework;
@@ -28,6 +29,11 @@ namespace IS.Model.Tests.Service
 		private ITaskRepository _taskRepository;
 
 		/// <summary>
+		/// Репозиторий комментариев.
+		/// </summary>
+		private ICommentRepository _commentRepository;
+
+		/// <summary>
 		/// Тестовая задача.
 		/// </summary>
 		private TaskItem _task;
@@ -43,7 +49,7 @@ namespace IS.Model.Tests.Service
 		public void SetUp()
 		{
 			_taskRepository = Mock.Of<ITaskRepository>();
-			_taskService = new TaskService(_taskRepository);
+			_taskService = new TaskService(_taskRepository, _commentRepository);
 
 			_task = new TaskItem()
 			{

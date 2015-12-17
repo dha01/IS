@@ -13,9 +13,11 @@ namespace IS.Model.Repository.Access
 				return sqlh.ExecMapping<UserItem>(@"
 select
 	u.[user] Id,
+	p.last_name + ' ' + p.first_name + ' ' + p.father_name Name,
 	u.login Login,
 	u.password Password
 from Access.[user] u
+	left join Person.person p on p.person = u.person
 where u.[user] = @id", new { id });
 			}
 		}
@@ -62,9 +64,12 @@ where [user] = @Id");
 				return sqlh.ExecMapping<UserItem>(@"
 select
 	u.[user] Id,
+	p.last_name + ' ' + p.first_name + ' ' + p.father_name Name,
 	u.login Login,
-	u.password Password
+	u.password Password,
+	u.person PersonId
 from Access.[user] u
+	left join Person.person p on p.person = u.person
 where u.login = @login", new{ login });
 			}
 		}
@@ -79,6 +84,25 @@ select
 	u.login Login,
 	u.password Password
 from Access.[user] u");
+			}
+		}
+
+		/// <summary>
+		/// Получение учетной записи пользователя (UserItem) по идентификатору персональных данных(PersonItem).
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		/// <returns>Учетная запись пользователя.</returns>
+		public UserItem GetByPersonId(int id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMapping<UserItem>(@"
+select
+	u.[user] Id,
+	u.login Login,
+	u.password Password
+from Access.[user] u
+where u.[person] = @id", new { id });
 			}
 		}
 	}

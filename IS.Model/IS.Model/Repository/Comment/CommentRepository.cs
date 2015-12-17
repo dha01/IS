@@ -26,9 +26,11 @@ select
 	c.comment Id,
 	c.add_date AddDate,
 	c.person PersonId,
+	p.last_name + ' ' + p.first_name + ' ' + p.father_name PersonName,
 	c.text Text,
 	c.task TaskId
 from Task.comment c
+	join Person.person p on p.person = c.person
 where c.comment = @id", new { id });
 			}
 		}
@@ -96,10 +98,11 @@ where comment = @id", new { id });
 		}
 
 		/// <summary>
-		/// Получает список всех комментариев.
+		/// Получает список комментариев по идентификатору задачи.
 		/// </summary>
+		/// <param name="task_id">Идентификатор задачи.</param>
 		/// <returns>Список комментариев.</returns>
-		public List<CommentItem> GetList()
+		public List<CommentItem> GetListByTaskId(int task_id)
 		{
 			using (var sqlh = new SqlHelper())
 			{
@@ -108,9 +111,12 @@ select
 	c.comment Id,
 	c.add_date AddDate,
 	c.person PersonId,
+	p.last_name + ' ' + p.first_name + ' ' + p.father_name PersonName,
 	c.text Text,
 	c.task TaskId
-from Task.comment c");
+from Task.comment c
+	join Person.person p on p.person = c.person
+where c.task = @task_id", new { task_id });
 			}
 		}
 	}
