@@ -35,6 +35,10 @@
 		<td>Дата создания</td>
 		<td>@Model.CreateDate</td>
 	</tr>
+	<tr>
+		<td>Учебный курс</td>
+		<td>@Model.SpecialtyDetailId</td>
+	</tr>
 </table>
 @Html.ActionLink("Просмотр списка групп", "List")<br />
 @if (Access.CheckRole("Team.Updater"))
