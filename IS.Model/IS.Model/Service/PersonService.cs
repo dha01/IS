@@ -17,6 +17,8 @@ namespace IS.Model.Service
 		/// Репозиторий людей.
 		/// </summary>
 		private IPersonRepository _personRepository;
+		private IStudentRepository _studentRepository;
+		private ILecturerRepository _lecturetRepository;
 
 		#endregion
 
@@ -28,6 +30,8 @@ namespace IS.Model.Service
 		public PersonService()
 		{
 			_personRepository = new PersonRepository();
+			_studentRepository = new StudentRepository();
+			_lecturetRepository = new LecturerRepository();
 		}
 
 		/// <summary>
@@ -51,6 +55,29 @@ namespace IS.Model.Service
 		public PersonItem GetById(int id)
 		{
 			return _personRepository.Get(id);
+		}
+
+		/// <summary>
+		/// Получает подробнукю информацию человека по идентификатору.
+		/// </summary>
+		/// <param name="id">Идентификатор.</param>
+		/// <returns>Человек.</returns>
+		public PersonInfoItem GetPersonInfoById(int id)
+		{
+			string position;
+			var infoItem = _personRepository.Get(id);
+			var team = _studentRepository.Get(id);
+			var lecture = _lecturetRepository.Get(id);
+			PersonInfoItem personInfo = new PersonInfoItem()
+			{
+				Id = infoItem.Id,
+				FirstName = infoItem.FirstName,
+				LastName = infoItem.LastName,
+				Birthday = infoItem.Birthday,
+				TeamId = team.TeamId,
+				CathedraId=lecture.CathedraId
+			};
+			return personInfo;
 		}
 
 		/// <summary>
