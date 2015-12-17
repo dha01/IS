@@ -193,5 +193,24 @@ namespace IS.Model.Tests.Repository.Access
 		}
 
 		#endregion
+
+		#region GetListByOwnerRole
+
+		/// <summary>
+		/// Получает список подролей.
+		/// </summary>
+		[Test]
+		public void GetListByOwnerRole_Void_ReturnNotEmptyListWithRoles()
+		{
+			_role.Id = _roleRepository.Create(_role);
+			_roleNew.Id = _roleRepository.Create(_roleNew);
+
+			_roleRepository.CreateMemberRole(_role.Id, _roleNew.Id);
+
+			var result = _roleRepository.GetListByOwnerRole(_role);
+			AreEqualRoles(result.First(x => x.Id == _roleNew.Id), _roleNew);
+		}
+
+		#endregion
 	}
 }

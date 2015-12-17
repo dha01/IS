@@ -172,5 +172,28 @@ from Access.role r
 where m.role_owner = @Id", role);
 			}
 		}
+
+		/// <summary>
+		/// Добавляет подроль.
+		/// </summary>
+		/// <param name="owner_id">Идентификатор роли.</param>
+		/// <param name="offer_id">Идентификатор подроли.</param>
+		public void CreateMemberRole(int owner_id, int offer_id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+insert into Access.role_member
+(
+	role_owner,
+	role_offer
+)
+values
+(
+	@owner_id,
+	@offer_id
+)", new {owner_id, offer_id});
+			}
+		}
 	}
 }
