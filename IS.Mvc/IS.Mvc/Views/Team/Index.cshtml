@@ -1,5 +1,5 @@
 ﻿@using IS.Model.Item.Access;
-@using IS.Mvc.Models
+@using IS.Mvc.Models;
 @using IS.Model.Item.Team;
 @model TeamItem
 
@@ -34,6 +34,10 @@
 	<tr>
 		<td>Дата создания</td>
 		<td>@Model.CreateDate</td>
+	</tr>
+	<tr>
+		<td>Учебный курс</td>
+		<td>@Model.SpecialtyDetailId</td>
 	</tr>
 </table>
 @Html.ActionLink("Просмотр списка групп", "List")<br />
