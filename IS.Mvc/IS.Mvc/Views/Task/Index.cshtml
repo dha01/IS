@@ -180,7 +180,7 @@
 	<div class="existingComments">
 		<input type="hidden" class="input_comment_id" value="@item.Id"/>
 		<p>Автор: <strong>@item.PersonName</strong></p>
-		<p>@item.Text</p>
+		<p>@Html.Raw(item.Text.Replace("\n", "</br>"))</p>
 		<p>Добавлен: <strong>@item.AddDate</strong>
 		</p>
 		@if (Access.CheckRole("Comment.Deleter"))
