@@ -109,7 +109,6 @@ from Access.role r");
 		/// <returns>Список ролей.</returns>
 		public List<RoleItem> GetListByUser(UserItem user)
 		{
-			List<RoleItem> userRole = new List<RoleItem>();
 			List<RoleItem> listRole = new List<RoleItem>();
 			
 			using (var sqlh = new SqlHelper())
@@ -130,7 +129,7 @@ where u.[user] = @Id", user);
 				listRole.AddRange(GetListByOwnerRole(role));
 			});
 
-            return listRole;
+			return listRole;
 		}
 
 		/// <summary>
