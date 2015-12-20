@@ -28,50 +28,54 @@
 
 @using (@Html.BeginForm("Create", "SpecialtyDetail"))
 {
-	<table class="table specialty_detail">
-		<tr>
-			<td>Идентификатор специальности</td>
-			<td><input type="text" name="SpecialtyId" /></td>
-		</tr>
-		<tr>
-			<td>Количество семестров</td>
-			<td><input type="text" name="SemestrCount" /></td>
-		</tr>
-		<tr>
-			<td>Период обучения</td>
-			<td><input type="text" name="TrainingPeriod" /></td>
-		</tr>
-		<tr>
-			<td>Квалификация</td>
-			<td>
-				<select name="Qualification">
-					@foreach (string name in Enum.GetNames(typeof (Qualification)))
-					{
-						<option value="@name">@name</option>
-					}
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>Форма обучения</td>
-			<td>
-				<select name="FormStudy">
-					@foreach (string name in Enum.GetNames(typeof (FormStudy)))
-					{
-						<option value="@name">@name</option>
-					}
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>Количество платных мест</td>
-			<td><input type="text" name="PaySpace"/></td>
-		</tr>
-		<tr>
-			<td>Количество бюджетных мест</td>
-			<td><input type="text" name="LowcostSpace"/></td>
-		</tr>
-	</table>
+    <table class="table specialty_detail">
+        <tr>
+            <td>Текущее время</td>
+            <td><input type="date" name="ActualDate" /></td>
+        </tr>
+        <tr>
+            <td>Идентификатор специальности</td>
+            <td><input type="text" name="SpecialtyId"/></td>
+        </tr>
+        <tr>
+            <td>Количество семестров</td>
+            <td><input type="text" name="SemestrCount"/></td>
+        </tr>
+        <tr>
+            <td>Период обучения</td>
+            <td><input type="text" name="TrainingPeriod"/></td>
+        </tr>
+        <tr>
+            <td>Квалификация</td>
+            <td>
+                <select name="Qualification">
+                    @foreach (string name in Enum.GetNames(typeof (Qualification)))
+                    {
+                        <option value="@name">@name</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Форма обучения</td>
+            <td>
+                <select name="FormStudy">
+                    @foreach (string name in Enum.GetNames(typeof (FormStudy)))
+                    {
+                        <option value="@name">@name</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Количество платных мест</td>
+            <td><input type="text" name="PaySpace"/></td>
+        </tr>
+        <tr>
+            <td>Количество бюджетных мест</td>
+            <td><input type="text" name="LowcostSpace"/></td>
+        </tr>
+    </table>
 	<input type="submit" value="Создать" />
 }
 @Html.ActionLink("Просмотр списка учебных курсов", "List")
