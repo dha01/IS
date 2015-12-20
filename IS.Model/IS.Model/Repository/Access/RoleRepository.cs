@@ -127,11 +127,10 @@ where u.[user] = @Id", user);
 
 			listRole.ForEach(delegate(RoleItem role)
 			{
-				userRole.AddRange(GetListByOwnerRole(role));
+				listRole.AddRange(GetListByOwnerRole(role));
 			});
-			userRole.AddRange(listRole);
 
-			return userRole;
+            return listRole;
 		}
 
 		/// <summary>

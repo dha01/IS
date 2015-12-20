@@ -202,13 +202,29 @@ namespace IS.Model.Tests.Repository.Access
 		[Test]
 		public void GetListByOwnerRole_Void_ReturnNotEmptyListWithRoles()
 		{
-			_role.Id = _roleRepository.Create(_role);
-			_roleNew.Id = _roleRepository.Create(_roleNew);
+			RoleItem roleOne = new RoleItem()
+			{
+				Code = "Test1",
+				Mem = "Test1"
+			};
+			RoleItem roleTwo = new RoleItem()
+			{
+				Code = "Test2",
+				Mem = "Test3"
+			};
 
-			_roleRepository.CreateMemberRole(_role.Id, _roleNew.Id);
+			_role.Id = _roleRepository.Create(_role);
+			roleOne.Id = _roleRepository.Create(roleOne);
+			roleTwo.Id = _roleRepository.Create(roleTwo);
+
+			_roleRepository.CreateMemberRole(_role.Id, roleOne.Id);
+			_roleRepository.CreateMemberRole(_role.Id, roleTwo.Id);
 
 			var result = _roleRepository.GetListByOwnerRole(_role);
-			AreEqualRoles(result.First(x => x.Id == _roleNew.Id), _roleNew);
+
+			AreEqualRoles(result.First(x => x.Id == roleTwo.Id), roleTwo);
+			AreEqualRoles(result.First(x => x.Id == roleOne.Id), roleOne);
+			AreEqualRoles(result.First(x => x.Id == _role.Id), _role);
 		}
 
 		#endregion
