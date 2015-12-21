@@ -101,6 +101,27 @@ namespace IS.Model.Tests.Service
             _semesterService.Update(_semester);
         }
 
+        /// <summary>
+        /// Изменяет поле "FromDate" на пустое.
+        /// </summary>
+        [ExpectedException(ExpectedMessage = "Поле 'FromDate' не должно быть пустым.")]
+        [Test]
+        public void Update_EmptyFullName_ReturnException()
+        {
+            _semester.FromDate = new DateTime(0000,0,0);
+            _semesterService.Update(_semester);
+        }
+
+        /// <summary>
+        /// Изменяет поле "TrimDate" на пустое.
+        /// </summary>
+        [ExpectedException(ExpectedMessage = "Поле 'TrimDate' не должно быть пустым.")]
+        [Test]
+        public void Update_EmptyShortName_ReturnException()
+        {
+            _semester.TrimDate = new DateTime(0000, 0, 0);
+            _semesterService.Update(_semester);
+        }
         
         /// <summary>
         /// Изменяет описание на пустое.
