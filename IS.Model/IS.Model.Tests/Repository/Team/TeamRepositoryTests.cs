@@ -184,6 +184,53 @@ namespace IS.Model.Tests.Repository.Team
 			AreEqualTeams(result, _team);
 		}
 
+        #endregion
+
+        #region GetListBySpecialtyDetailId
+
+        /// <summary>
+        /// Получение списка групп по идентификатору учебного курса (specialty_detail).
+        /// </summary>
+        [Test]
+        public void GetListBySpecialtyDetailId_Void_ReturnNotEmptyListWithTeam()
+        {
+            _team.Id = _teamRepository.Create(_team);
+            var result = _teamRepository.GetListBySpecialtyDetailId(_team.SpecialtyDetailId).Find(x => x.Id == _team.Id);
+            AreEqualTeams(result, _team);
+        }
+
 		#endregion
+
+        #region GetListByCathedraId
+
+        /// <summary>
+        /// Получение списка групп по идентификатору кафедры (Cathedra).
+        /// </summary>
+        [Test]
+        public void GetListByCathedraId_Void_ReturnNotEmptyListWithTeam()
+        {
+            _team.Id = _teamRepository.Create(_team);
+            
+            var result = _teamRepository.GetListByCathedraId(_specialtyRepository.Get(_specialtyDetailRepository.Get(_team.SpecialtyDetailId).SpecialtyId).CathedraId).Find(x => x.Id == _team.Id);
+            AreEqualTeams(result, _team);
+        }
+
+        #endregion
+
+        #region GetListBySpecialtyId
+
+        /// <summary>
+        /// Получение списка групп по идентификатору специальности (specialty).
+        /// </summary>
+        [Test]
+        public void GetListBySpecialtyId_Void_ReturnNotEmptyListWithTeam()
+        {
+            _team.Id = _teamRepository.Create(_team);
+
+            var result = _teamRepository.GetListBySpecialtyId(_specialtyDetailRepository.Get(_team.SpecialtyDetailId).SpecialtyId).Find(x => x.Id == _team.Id);
+            AreEqualTeams(result, _team);
+        }
+
+        #endregion
 	}
 }
