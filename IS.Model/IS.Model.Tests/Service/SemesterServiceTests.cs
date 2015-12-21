@@ -124,7 +124,7 @@ namespace IS.Model.Tests.Service
         }
         
         /// <summary>
-        /// Изменяет описание на пустое.
+        /// Изменяет дату на не существующую.
         /// </summary>
         [ExpectedException(ExpectedMessage = "Семестр не найден.")]
         [Test]
