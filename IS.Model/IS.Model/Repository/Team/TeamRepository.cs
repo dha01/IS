@@ -108,7 +108,7 @@ from Team.team t
 		}
 
 		/// <summary>
-        /// Получение списка групп по идентификатору специальности (specialty).
+		/// Получение списка групп по идентификатору специальности (specialty).
 		/// </summary>
 		/// <param name="Id">Идентификатор.</param>
 		/// <returns>Список групп.</returns>
@@ -123,35 +123,35 @@ select
 	t.create_date CreateDate,
 	t.specialty_detail SpecialtyDetailId
 from Team.team t
-    join Specialty.specialty_detail s on s.specialty_detail = t.specialty_detail
+	join Specialty.specialty_detail s on s.specialty_detail = t.specialty_detail
 where s.specialty = @Id", new { Id });
 			}
 		}
 
 		/// <summary>
-        /// Получение списка групп по идентификатору кафедры (Cathedra).
+		/// Получение списка групп по идентификатору кафедры (Cathedra).
 		/// </summary>
 		/// <param name="Id">Идентификатор.</param>
 		/// <returns>Список групп.</returns>
 		public List<TeamItem> GetListByCathedraId(int Id)
 		{
 			using (var sqlh = new SqlHelper())
-            {
-                return sqlh.ExecMappingList<TeamItem>(@"
+			{
+				return sqlh.ExecMappingList<TeamItem>(@"
 select
 	t.team Id,
 	t.name Name,
 	t.create_date CreateDate,
 	t.specialty_detail SpecialtyDetailId
 from Team.team t
-    join Specialty.specialty_detail s on s.specialty_detail = t.specialty_detail
-    join Specialty.specialty ss on ss.specialty = s.specialty
+	join Specialty.specialty_detail s on s.specialty_detail = t.specialty_detail
+	join Specialty.specialty ss on ss.specialty = s.specialty
 where ss.cathedra = @Id", new { Id });
-            }
+			}
 		}
 
 		/// <summary>
-        /// Получение списка групп по идентификатору учебного курса (specialty_detail).
+		/// Получение списка групп по идентификатору учебного курса (specialty_detail).
 		/// </summary>
 		/// <param name="Id">Идентификатор.</param>
 		/// <returns>Список групп.</returns>
