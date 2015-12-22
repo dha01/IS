@@ -1,0 +1,43 @@
+﻿@using IS.Model.Item.Calendar;
+@using IS.Model.Service
+@using IS.Mvc.Models
+@model SemesterItem
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<style>
+	table {
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	td:first-child {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+</style>
+
+<table class="table semester">
+	<tr>
+		<td>Дата начала семестра</td>
+		<td>@Model.FromDate</td>
+	</tr>
+	<tr>
+		<td>Дата конца семестра</td>
+		<td>@Model.TrimDate</td>
+	</tr>
+</table>
+@Html.ActionLink("Просмотр списка семестров", "List")<br />
+@if (Access.CheckRole("Semester.Updater"))
+{
+	@Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
+}
