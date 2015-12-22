@@ -107,16 +107,16 @@ from Contact.contact c
 			}
 		}
 
-        /// <summary>
-        /// Прикрепляет контакт к человеку.
-        /// </summary>
-        /// <param name="contact_id">Идентификатор контакта.</param>
-        /// <param name="person_id">Идентификатор человека.</param>
-        public void AttachContactToPerson(int contact_id, int person_id)
-        {
-            using (var sqlh = new SqlHelper())
-            {
-                sqlh.ExecNoQuery(@"
+		/// <summary>
+		/// Прикрепляет контакт к человеку.
+		/// </summary>
+		/// <param name="contact_id">Идентификатор контакта.</param>
+		/// <param name="person_id">Идентификатор человека.</param>
+		public void AttachContactToPerson(int contact_id, int person_id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
 insert into Contact.contact2person
 (
 	contact,
@@ -127,10 +127,10 @@ values
 	@contact_id,
 	@person_id
 )", new { contact_id, person_id });
-            }
-        }
-        
-        /// <summary>
+			}
+		}
+		
+		/// <summary>
 		/// Получает список всех контактов человека по его идентификатору.
 		/// </summary>
 		/// <returns>Список контактов.</returns>
@@ -150,16 +150,16 @@ where c2p.person = @Id", new { id });
 			}
 		}
 
-        /// <summary>
-        /// Прикрепляет контакт к кафедре.
-        /// </summary>
-        /// <param name="contact_id">Идентификатор контакта.</param>
-        /// <param name="cathedra_id">Идентификатор кафедры.</param>
-        public void AttachContactToCathedra(int contact_id, int cathedra_id)
-        {
-            using (var sqlh = new SqlHelper())
-            {
-                sqlh.ExecNoQuery(@"
+		/// <summary>
+		/// Прикрепляет контакт к кафедре.
+		/// </summary>
+		/// <param name="contact_id">Идентификатор контакта.</param>
+		/// <param name="cathedra_id">Идентификатор кафедры.</param>
+		public void AttachContactToCathedra(int contact_id, int cathedra_id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
 insert into Contact.contact2cathedra
 (
 	contact,
@@ -170,18 +170,18 @@ values
 	@contact_id,
 	@cathedra_id
 )", new { contact_id, cathedra_id });
-            }
-        }
+			}
+		}
 
-        /// <summary>
-        /// Получает список всех контактов кафедры по ее идентификатору.
-        /// </summary>
-        /// <returns>Список контактов.</returns>
-        public List<ContactItem> GetContactsListByCathedraId(int id)
-        {
-            using (var sqlh = new SqlHelper())
-            {
-                return sqlh.ExecMappingList<ContactItem>(@"
+		/// <summary>
+		/// Получает список всех контактов кафедры по ее идентификатору.
+		/// </summary>
+		/// <returns>Список контактов.</returns>
+		public List<ContactItem> GetContactsListByCathedraId(int id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<ContactItem>(@"
 select
 	c.contact Id,
 	t.code Type,
@@ -190,19 +190,19 @@ from Contact.contact c
 	join Contact.contact_type t on t.contact_type = c.contact_type
 	join Contact.contact2cathedra c2c on c2c.contact = c.contact
 where c2c.cathedra = @Id", new { id });
-            }
-        }
+			}
+		}
 
-        /// <summary>
-        /// Прикрепляет контакт к факультету.
-        /// </summary>
-        /// <param name="contact_id">Идентификатор контакта.</param>
-        /// <param name="faculty_id">Идентификатор факультета.</param>
-        public void AttachContactToFaculty(int contact_id, int faculty_id)
-        {
-            using (var sqlh = new SqlHelper())
-            {
-                sqlh.ExecNoQuery(@"
+		/// <summary>
+		/// Прикрепляет контакт к факультету.
+		/// </summary>
+		/// <param name="contact_id">Идентификатор контакта.</param>
+		/// <param name="faculty_id">Идентификатор факультета.</param>
+		public void AttachContactToFaculty(int contact_id, int faculty_id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
 insert into Contact.contact2faculty
 (
 	contact,
@@ -213,18 +213,18 @@ values
 	@contact_id,
 	@faculty_id
 )", new { contact_id, faculty_id });
-            }
-        }
+			}
+		}
 
-        /// <summary>
-        /// Получает список всех контактов факультета по его идентификатору.
-        /// </summary>
-        /// <returns>Список контактов.</returns>
-        public List<ContactItem> GetContactsListByFacultyId(int id)
-        {
-            using (var sqlh = new SqlHelper())
-            {
-                return sqlh.ExecMappingList<ContactItem>(@"
+		/// <summary>
+		/// Получает список всех контактов факультета по его идентификатору.
+		/// </summary>
+		/// <returns>Список контактов.</returns>
+		public List<ContactItem> GetContactsListByFacultyId(int id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<ContactItem>(@"
 select
 	c.contact Id,
 	t.code Type,
@@ -233,19 +233,19 @@ from Contact.contact c
 	join Contact.contact_type t on t.contact_type = c.contact_type
 	join Contact.contact2faculty c2f on c2f.contact = c.contact
 where c2f.faculty = @Id", new { id });
-            }
-        }
+			}
+		}
 
-        /// <summary>
-        /// Прикрепляет контакт к группе.
-        /// </summary>
-        /// <param name="contact_id">Идентификатор контакта.</param>
-        /// <param name="team_id">Идентификатор группы.</param>
-        public void AttachContactToTeam(int contact_id, int team_id)
-        {
-            using (var sqlh = new SqlHelper())
-            {
-                sqlh.ExecNoQuery(@"
+		/// <summary>
+		/// Прикрепляет контакт к группе.
+		/// </summary>
+		/// <param name="contact_id">Идентификатор контакта.</param>
+		/// <param name="team_id">Идентификатор группы.</param>
+		public void AttachContactToTeam(int contact_id, int team_id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
 insert into Contact.contact2team
 (
 	contact,
@@ -256,18 +256,18 @@ values
 	@contact_id,
 	@team_id
 )", new { contact_id, team_id });
-            }
-        }
+			}
+		}
 
-        /// <summary>
-        /// Получает список всех контактов группы по ее идентификатору.
-        /// </summary>
-        /// <returns>Список контактов.</returns>
-        public List<ContactItem> GetContactsListByTeamId(int id)
-        {
-            using (var sqlh = new SqlHelper())
-            {
-                return sqlh.ExecMappingList<ContactItem>(@"
+		/// <summary>
+		/// Получает список всех контактов группы по ее идентификатору.
+		/// </summary>
+		/// <returns>Список контактов.</returns>
+		public List<ContactItem> GetContactsListByTeamId(int id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<ContactItem>(@"
 select
 	c.contact Id,
 	t.code Type,
@@ -276,7 +276,7 @@ from Contact.contact c
 	join Contact.contact_type t on t.contact_type = c.contact_type
 	join Contact.contact2team c2t on c2t.contact = c.contact
 where c2t.team = @Id", new { id });
-            }
-        }
+			}
+		}
 	}
 }

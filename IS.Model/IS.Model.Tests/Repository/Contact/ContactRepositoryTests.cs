@@ -45,16 +45,16 @@ namespace IS.Model.Tests.Repository.Contact
 		private PersonRepository _personRepository;
 		private PersonItem _person;
 
-        private CathedraRepository _cathedraRepository;
-        private CathedraItem _cathedra;
+		private CathedraRepository _cathedraRepository;
+		private CathedraItem _cathedra;
 
-        private FacultyRepository _facultyRepository;
-        private FacultyItem _faculty;
+		private FacultyRepository _facultyRepository;
+		private FacultyItem _faculty;
 
-        private TeamRepository _teamRepository;
-        private SpecialtyDetailRepository _specialtyDetailRepository;
-        private SpecialtyRepository _specialtyRepository;
-        private TeamItem _team;
+		private TeamRepository _teamRepository;
+		private SpecialtyDetailRepository _specialtyDetailRepository;
+		private SpecialtyRepository _specialtyRepository;
+		private TeamItem _team;
 
 		#endregion
 
@@ -68,35 +68,35 @@ namespace IS.Model.Tests.Repository.Contact
 		{
 			_transactionScope = new TransactionScope();
 			_contactRepository = new ContactRepository();
-            _personRepository = new PersonRepository();
+			_personRepository = new PersonRepository();
 
-            _cathedraRepository = new CathedraRepository();
-            _facultyRepository = new FacultyRepository();
+			_cathedraRepository = new CathedraRepository();
+			_facultyRepository = new FacultyRepository();
 
-            _teamRepository = new TeamRepository();
-            _specialtyDetailRepository = new SpecialtyDetailRepository();
-            _specialtyRepository = new SpecialtyRepository();
+			_teamRepository = new TeamRepository();
+			_specialtyDetailRepository = new SpecialtyDetailRepository();
+			_specialtyRepository = new SpecialtyRepository();
 
-            var specialty_detail = new SpecialtyDetailItem()
-            {
-                SpecialtyId = _specialtyRepository.Create(new SpecialtyItem()
-                {
-                    CathedraId = _cathedraRepository.Create(new CathedraItem()
-                    {
-                        FacultyId = _facultyRepository.Create(new FacultyItem()
-                        {
-                            FullName = "Кафедра",
-                            ShortName = "K" 
-                        }),
-                        FullName = "Кафедра",
-                        ShortName = "K"
-                    }),
-                    FullName = "Специальность",
-                    ShortName = "С",
-                    Code = "1"
-                }),
-                ActualDate = DateTime.Now
-            };
+			var specialty_detail = new SpecialtyDetailItem()
+			{
+				SpecialtyId = _specialtyRepository.Create(new SpecialtyItem()
+				{
+					CathedraId = _cathedraRepository.Create(new CathedraItem()
+					{
+						FacultyId = _facultyRepository.Create(new FacultyItem()
+						{
+							FullName = "Кафедра",
+							ShortName = "K" 
+						}),
+						FullName = "Кафедра",
+						ShortName = "K"
+					}),
+					FullName = "Специальность",
+					ShortName = "С",
+					Code = "1"
+				}),
+				ActualDate = DateTime.Now
+			};
 
 			_contact = new ContactItem()
 			{
@@ -117,23 +117,23 @@ namespace IS.Model.Tests.Repository.Contact
 				FatherName = "Иванович"
 
 			};
-            _faculty = new FacultyItem()
-            {
-                FullName = "Экономический",
-                ShortName = "Э",
-            };
-            _cathedra = new CathedraItem()
-            {
-                FullName = "Информациионных систем и технологий",
-                ShortName = "ИСиТ",
-                FacultyId = _facultyRepository.Create(_faculty)
-            };
-            _team = new TeamItem()
-            {
-                Name = "ПЕ-22б",
-                CreateDate = DateTime.Now.Date,
-                SpecialtyDetailId = _specialtyDetailRepository.Create(specialty_detail)
-            }; 
+			_faculty = new FacultyItem()
+			{
+				FullName = "Экономический",
+				ShortName = "Э",
+			};
+			_cathedra = new CathedraItem()
+			{
+				FullName = "Информациионных систем и технологий",
+				ShortName = "ИСиТ",
+				FacultyId = _facultyRepository.Create(_faculty)
+			};
+			_team = new TeamItem()
+			{
+				Name = "ПЕ-22б",
+				CreateDate = DateTime.Now.Date,
+				SpecialtyDetailId = _specialtyDetailRepository.Create(specialty_detail)
+			}; 
 		}
 
 		#endregion
@@ -254,55 +254,55 @@ namespace IS.Model.Tests.Repository.Contact
 
 		#endregion
 
-        #region GetCathedraListById
+		#region GetCathedraListById
 
-        /// <summary>
-        /// Получает список всех контактов кафедры по его идентификатору.
-        /// </summary>
-        [Test]
-        public void GetContactsListByCathedraId_Void_ReturnNotEmptyListWithContacts()
-        {
-            _cathedra.Id = _cathedraRepository.Create(_cathedra);
-            _contact.Id = _contactRepository.Create(_contact);
-            _contactRepository.AttachContactToCathedra(_contact.Id, _cathedra.Id);
-            var result = _contactRepository.GetContactsListByCathedraId(_cathedra.Id).First(x => x.Id == _contact.Id);
-            AreEqualContacts(result, _contact);
-        }
+		/// <summary>
+		/// Получает список всех контактов кафедры по его идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByCathedraId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_cathedra.Id = _cathedraRepository.Create(_cathedra);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToCathedra(_contact.Id, _cathedra.Id);
+			var result = _contactRepository.GetContactsListByCathedraId(_cathedra.Id).First(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
 
-        #endregion
+		#endregion
 
-        #region GetFacultyListById
+		#region GetFacultyListById
 
-        /// <summary>
-        /// Получает список всех контактов факультета по его идентификатору.
-        /// </summary>
-        [Test]
-        public void GetContactsListByFacultyId_Void_ReturnNotEmptyListWithContacts()
-        {
-            _faculty.Id = _facultyRepository.Create(_faculty);
-            _contact.Id = _contactRepository.Create(_contact);
-            _contactRepository.AttachContactToFaculty(_contact.Id, _faculty.Id);
-            var result = _contactRepository.GetContactsListByFacultyId(_faculty.Id).First(x => x.Id == _contact.Id);
-            AreEqualContacts(result, _contact);
-        }
+		/// <summary>
+		/// Получает список всех контактов факультета по его идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByFacultyId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_faculty.Id = _facultyRepository.Create(_faculty);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToFaculty(_contact.Id, _faculty.Id);
+			var result = _contactRepository.GetContactsListByFacultyId(_faculty.Id).First(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
 
-        #endregion
+		#endregion
 
-        #region GetTeamListById
+		#region GetTeamListById
 
-        /// <summary>
-        /// Получает список всех контактов группы по ее идентификатору.
-        /// </summary>
-        [Test]
-        public void GetContactsListByTeamId_Void_ReturnNotEmptyListWithContacts()
-        {
-            _team.Id = _teamRepository.Create(_team);
-            _contact.Id = _contactRepository.Create(_contact);
-            _contactRepository.AttachContactToTeam(_contact.Id, _team.Id);
-            var result = _contactRepository.GetContactsListByTeamId(_team.Id).First(x => x.Id == _contact.Id);
-            AreEqualContacts(result, _contact);
-        }
+		/// <summary>
+		/// Получает список всех контактов группы по ее идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByTeamId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToTeam(_contact.Id, _team.Id);
+			var result = _contactRepository.GetContactsListByTeamId(_team.Id).First(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
 
-        #endregion   
+		#endregion   
 	}
 }

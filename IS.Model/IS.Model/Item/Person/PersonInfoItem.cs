@@ -6,14 +6,14 @@ using IS.Model.Item.Contact;
  
 namespace IS.Model.Item.Person
 {
-    /// <summary>
-    /// Расширенный класс для хранения контактов людей.
-    /// </summary>
-    public class PersonInfoItem : PersonItem
-    {
-        /// <summary>
+	/// <summary>
+	/// Расширенный класс для хранения контактов людей.
+	/// </summary>
+	public class PersonInfoItem : PersonItem
+	{
+		/// <summary>
 		/// Список контактов.
 		/// </summary>
 		public List<ContactItem> ContactsList { get; set; }
-    }
+	}
 }
