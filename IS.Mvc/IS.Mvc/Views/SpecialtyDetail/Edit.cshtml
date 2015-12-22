@@ -1,9 +1,13 @@
-﻿@using IS.Model.Item.Specialty;
+﻿@using System.Activities.Expressions
+@using IS.Model.Item.Specialty;
 @using IS.Model.Service
 @model SpecialtyDetailItem
 
 @{
 	ViewBag.Title = "Edit";
+}
+@{
+    new SpecialtyDetailService();
 }
 
 <style>
@@ -40,10 +44,10 @@
 		    <td>Индитификатор специальности</td>
 		    <td>
 		        <select>
-		            @foreach (var item in SpecialtyDetailService.GetList())
+		            @foreach (var item in new SpecialtyDetailService().GetList())
 		            {
 		                <option>
-		                    item.SpecialtyId
+		                    @item.SpecialtyId
 		                </option>
 		            }
 		        </select>
