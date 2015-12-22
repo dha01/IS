@@ -56,7 +56,7 @@ namespace IS.Model.Service
         /// <summary>
         /// Создает семестр.
         /// </summary>
-        /// <param name="semester">Семестр.</param>
+        /// <param name="semester">Семестр</param>
         /// <returns>Идентификатор созданного семестра.</returns>
         public int Create(SemesterItem semester)
         {
