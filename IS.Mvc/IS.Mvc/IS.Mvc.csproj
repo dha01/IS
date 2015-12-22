@@ -131,9 +131,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\CathedraController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DisciplineController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\HousingController.cs" />
     <Compile Include="Controllers\OnlineTextController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -226,10 +230,14 @@
     <Content Include="Scripts\DataTable\dataTables.foundation.min.js" />
     <Content Include="Scripts\DataTable\dataTables.jqueryui.js" />
     <Content Include="Scripts\DataTable\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\Task\Comment.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTable\jquery.js" />
     <Content Include="Content\Images\Sorting icons.psd" />
+    <Content Include="Views\Access\Index.cshtml" />
+    <Content Include="Views\Access\Login.cshtml" />
+    <Content Include="Views\Access\Registr.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -260,9 +268,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Access\Index.cshtml" />
-    <Content Include="Views\Access\Registr.cshtml" />
-    <Content Include="Views\Access\Login.cshtml" />
     <Content Include="Views\OnlineText\Index.cshtml" />
     <Content Include="Views\SimpleTask\Index.cshtml" />
     <Content Include="Views\SimpleTask\Rules.cshtml" />
@@ -272,10 +277,6 @@
     <Content Include="Views\Task\Edit.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\Task\Statistic.cshtml" />
-    <Content Include="Views\Discipline\List.cshtml" />
-    <Content Include="Views\Discipline\Edit.cshtml" />
-    <Content Include="Views\Discipline\New.cshtml" />
-    <Content Include="Views\Discipline\Index.cshtml" />
     <Content Include="production.Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -305,6 +306,23 @@
     <Content Include="Views\SpecialtyDetail\Index.cshtml" />
     <Content Include="Views\SpecialtyDetail\List.cshtml" />
     <Content Include="Views\SpecialtyDetail\New.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Housing\Edit.cshtml" />
+    <Content Include="Views\Housing\Index.cshtml" />
+    <Content Include="Views\Housing\List.cshtml" />
+    <Content Include="Views\Housing\New.cshtml" />
+    <Content Include="Views\Cathedra\Edit.cshtml" />
+    <Content Include="Views\Cathedra\Index.cshtml" />
+    <Content Include="Views\Cathedra\List.cshtml" />
+    <Content Include="Views\Cathedra\New.cshtml" />
+    <Content Include="Views\Discipline\Edit.cshtml" />
+    <Content Include="Views\Discipline\Index.cshtml" />
+    <Content Include="Views\Discipline\List.cshtml" />
+    <Content Include="Views\Discipline\New.cshtml" />
+    <Content Include="Views\Faculty\Edit.cshtml" />
+    <Content Include="Views\Faculty\Index.cshtml" />
+    <Content Include="Views\Faculty\List.cshtml" />
+    <Content Include="Views\Faculty\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

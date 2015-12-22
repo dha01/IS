@@ -193,5 +193,40 @@ namespace IS.Model.Tests.Repository.Access
 		}
 
 		#endregion
+
+		#region GetListByOwnerRole
+
+		/// <summary>
+		/// Получает список подролей.
+		/// </summary>
+		[Test]
+		public void GetListByOwnerRole_Void_ReturnNotEmptyListWithRoles()
+		{
+			RoleItem roleOne = new RoleItem()
+			{
+				Code = "Test1",
+				Mem = "Test1"
+			};
+			RoleItem roleTwo = new RoleItem()
+			{
+				Code = "Test2",
+				Mem = "Test3"
+			};
+
+			_role.Id = _roleRepository.Create(_role);
+			roleOne.Id = _roleRepository.Create(roleOne);
+			roleTwo.Id = _roleRepository.Create(roleTwo);
+
+			_roleRepository.CreateMemberRole(_role.Id, roleOne.Id);
+			_roleRepository.CreateMemberRole(_role.Id, roleTwo.Id);
+
+			var result = _roleRepository.GetListByOwnerRole(_role);
+
+			AreEqualRoles(result.First(x => x.Id == roleTwo.Id), roleTwo);
+			AreEqualRoles(result.First(x => x.Id == roleOne.Id), roleOne);
+			AreEqualRoles(result.First(x => x.Id == _role.Id), _role);
+		}
+
+		#endregion
 	}
 }

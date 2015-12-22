@@ -1,6 +1,8 @@
 ﻿@using IS.Model.Item.Task;
+@using IS.Model.Item.Comment;
 @using IS.Mvc.Models
-@model TaskItem 
+@using IS.Mvc.Models.Service
+@model TaskInfoItem
 
 @{
 	ViewBag.Title = "Index";
@@ -30,7 +32,25 @@
 		width: 99%; /* Ширина поля в процентах */
 		height: 200px; /* Высота поля в пикселах */
 	} 
-</style>
+
+		.existingComments {
+			border: 2px solid lightgrey; /* Рамка вокруг комментария */
+			width: 90%; /* Ширина блока комментария */
+			margin: 20px auto; /* Отступы от границ комментария снаружи */
+			padding: 0px 20px; /* Отступы от текста комментария внутри */
+		}
+	</style>
+<script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/Task/Comment.js")"></script>
+
+	<script>
+		$(function () {
+			$('#write').click(function() {
+				$('#addComment').css('display', 'block');
+				$('#write').hide();
+			});
+		})
+	</script>
 
 <h2>@Html.Raw(string.Format("{0}_{1} {2}", Model.Prefix, Model.Number, Model.Header)) (@Html.ActionLink("К списку задач", "List"))</h2>
 
@@ -153,3 +173,51 @@
 	<div align="right">@Html.ActionLink("Удалить", "Delete", new {id = Model.Id})</div>
 }
 
+<br>
+
+@foreach (var item in Model.CommentList)
+{
+	<div class="existingComments">
+		<input type="hidden" class="input_comment_id" value="@item.Id"/>
+		<p>Автор: <strong>@item.PersonName</strong></p>
+		<p>@Html.Raw(item.Text.Replace("\n", "</br>"))</p>
+		<p>Добавлен: <strong>@item.AddDate</strong>
+		</p>
+		@if (Access.CheckRole("Comment.Deleter"))
+		{
+			<button class="btm_delete">Удалить</button>
+		}
+	</div>
+}
+
+@{
+	if (Access.CurrentUser != null)
+	{
+		var user = new UserService().GetUserByLogin(Access.CurrentUser.Login);
+
+		if (Access.CheckRole() && user.PersonId != null)
+		{
+			<div id="commentBlock">
+
+			</div>
+
+			<center>
+				<div>
+					<button id="write">Написать комментарий</button>
+				</div>
+				<div id="addComment" style="width: 70%; display: none;">
+					<form>
+
+						<input type="hidden" value="@user.PersonId" id="author">
+						<input type="hidden" value="@user.Name" id="name">
+						<input type="hidden" value="@Model.Id" id="task">
+						<textarea id="message" cols=100 rows=10></textarea><br>
+						<input name="button" type="submit" value="Отправить" id="send"> <span id="resp"></span>
+
+					</form>
+				</div>
+			</center>
+
+		}
+	}
+}

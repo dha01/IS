@@ -1,4 +1,6 @@
-﻿@{
+﻿@using IS.Model.Repository.Specialty;
+@using IS.Model.Item.Specialty;
+@{
 	ViewBag.Title = "Create";
 }
 
@@ -32,7 +34,18 @@
 		</tr>
 		<tr>
 			<td>Дата создания</td>
-			<td><input type="text" name="CreateDate" /></td>
+			<td><input type="text" name="CreateDate"/></td>
+		</tr>
+		<tr>
+			<td>Учебный курс</td>
+			<td>
+				<select name="SpecialtyDetailId">
+					@foreach (SpecialtyDetailItem specialityDetail in new SpecialtyDetailRepository().GetList())
+					{
+						<option value="@specialityDetail.Id">@specialityDetail.Id</option>
+					}
+				</select>
+			</td>
 		</tr>
 	</table>
 	<input type="submit" value="Создать" />

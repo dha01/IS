@@ -7,6 +7,8 @@ using System.Transactions;
 using IS.Model.Item.Access;
 using IS.Model.Repository.Access;
 using NUnit.Framework;
+using IS.Model.Repository.Person;
+using IS.Model.Item.Person;
 
 namespace IS.Model.Tests.Repository.Access
 {
@@ -90,6 +92,24 @@ namespace IS.Model.Tests.Repository.Access
 		{
 			var result = _userRepository.GetList();
 			Assert.IsNotEmpty(result);
+		}
+
+		#endregion
+
+		#region GetByPersonId
+
+		/// <summary>
+		/// Получает учетную запись по идентификатору персональных данных.
+		/// </summary>
+		[Test]
+		public void GetByPersonId_Void_ReturnNotEmpty()
+		{
+			var person = new PersonItem()
+			{
+				Id = 1,
+			};
+			var result = _userRepository.GetByPersonId(person.Id);
+			Assert.IsNull(result);
 		}
 
 		#endregion

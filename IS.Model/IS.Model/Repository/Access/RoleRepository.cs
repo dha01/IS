@@ -109,9 +109,11 @@ from Access.role r");
 		/// <returns>Список ролей.</returns>
 		public List<RoleItem> GetListByUser(UserItem user)
 		{
+			List<RoleItem> listRole = new List<RoleItem>();
+			
 			using (var sqlh = new SqlHelper())
 			{
-				return sqlh.ExecMappingList<RoleItem>(@"
+				listRole = sqlh.ExecMappingList<RoleItem>(@"
 select
 	r.role Id,
 	r.code Code,
@@ -121,6 +123,13 @@ from Access.[user] u
 	join Access.role r on r.role = u2r.role
 where u.[user] = @Id", user);
 			}
+
+			listRole.ForEach(delegate(RoleItem role)
+			{
+				listRole.AddRange(GetListByOwnerRole(role));
+			});
+
+			return listRole;
 		}
 
 		/// <summary>
@@ -139,6 +148,49 @@ select
 	r.mem Mem
 from Access.role r
 where r.code = @Code", new { code });
+			}
+		}
+
+		/// <summary>
+		/// Получает список подролей по роли.
+		/// </summary>
+		/// <param name="role">Роль.</param>
+		/// <returns>Список ролей.</returns>
+		public List<RoleItem> GetListByOwnerRole(RoleItem role)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<RoleItem>(@"
+select
+	r.role Id,
+	r.code Code,
+	r.mem Mem
+from Access.role r
+	join Access.role_member m on m.role_offer = r.role
+where m.role_owner = @Id", role);
+			}
+		}
+
+		/// <summary>
+		/// Добавляет подроль.
+		/// </summary>
+		/// <param name="owner_id">Идентификатор роли.</param>
+		/// <param name="offer_id">Идентификатор подроли.</param>
+		public void CreateMemberRole(int owner_id, int offer_id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				sqlh.ExecNoQuery(@"
+insert into Access.role_member
+(
+	role_owner,
+	role_offer
+)
+values
+(
+	@owner_id,
+	@offer_id
+)", new {owner_id, offer_id});
 			}
 		}
 	}

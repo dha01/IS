@@ -30,7 +30,7 @@ namespace IS.Mvc.Controllers
 		{
 			if (id.HasValue)
 			{
-				return View("Index", _taskService.GetById(id.Value));
+				return View("Index", _taskService.GetTaskInfoById(id.Value));
 			}
 			else
 			{
