@@ -1,0 +1,83 @@
+﻿@using IS.Model.Item.Specialty;
+@using IS.Mvc.Models
+@model List<SpecialtyDetailItem>
+
+@{
+	ViewBag.Title = "List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+	table {
+		width: 100%; /* Ширина таблицы */
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	th {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+</style>
+
+<h2>Список учебных курсов</h2>
+
+<table id="specialty_detail">
+	<thead>
+		<tr>
+			<th>Текущая дата</th>
+			<th>Идентификатор специальности</th>
+			<th>Количество семестров</th>
+			<th>Период обучения</th>
+			<th>Квалификация</th>
+			<th>Форма обучения</th>
+			<th>Количество платных мест</th>
+			<th>Количество бюджетных мест</th>
+			@if (Access.CheckRole("SpecialtyDetail.Updater"))
+			{
+				<th></th>
+			    <th></th>
+                <th></th>
+            }
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var specialty_detail in Model)
+		{
+			<tr>
+				<td>@specialty_detail.ActualDate</td>
+				<td>@specialty_detail.SpecialtyId</td>
+				<td>@specialty_detail.SemestrCount</td>
+				<td>@specialty_detail.TrainingPeriod</td>
+				<td>@specialty_detail.Qualification</td>
+				<td>@specialty_detail.FormStudy</td>
+				<td>@specialty_detail.PaySpace</td>
+				<td>@specialty_detail.LowcostSpace</td>
+				<td>@Html.ActionLink("Просмотр", "Index", new { id = specialty_detail.Id });</td>
+				@if (Access.CheckRole("SpecialtyDetail.Updater"))
+				{
+					<td>
+						@Html.ActionLink("Редактировать", "Edit", new { id = specialty_detail.Id })
+					</td>
+				}
+				@if (Access.CheckRole("SpecialtyDetail.Deleter"))
+				{
+					<td>
+						@Html.ActionLink("Удалить", "Delete", new { id = specialty_detail.Id }, new { onclick = "return confirm('Удалить запись?')" })
+					</td>
+				}
+			</tr>
+		}
+	</tbody>
+</table>
+@if (Access.CheckRole("SpecialtyDetail.Creator"))
+{
+	@Html.ActionLink("Создать запись о контакте", "New");
+}
