@@ -20,12 +20,6 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>12.0</OldToolsVersion>
-    <UpgradeBackupLocation />
-    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -237,6 +231,9 @@
     <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTable\jquery.js" />
     <Content Include="Content\Images\Sorting icons.psd" />
+    <Content Include="Views\Access\Index.cshtml" />
+    <Content Include="Views\Access\Login.cshtml" />
+    <Content Include="Views\Access\Registr.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -267,9 +264,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Access\Index.cshtml" />
-    <Content Include="Views\Access\Registr.cshtml" />
-    <Content Include="Views\Access\Login.cshtml" />
     <Content Include="Views\OnlineText\Index.cshtml" />
     <Content Include="Views\SimpleTask\Index.cshtml" />
     <Content Include="Views\SimpleTask\Rules.cshtml" />
