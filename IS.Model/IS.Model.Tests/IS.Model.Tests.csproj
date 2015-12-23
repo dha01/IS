@@ -75,6 +75,7 @@
     <Compile Include="Service\ContactServiceTests.cs" />
     <Compile Include="Service\PersonServiceTests.cs" />
     <Compile Include="Service\DisciplineServiceTests.cs" />
+    <Compile Include="Service\AuditoryServiceTests.cs" />
     <Compile Include="Service\SemesterServiceTests.cs" />
     <Compile Include="Service\SpecialtyDetailServiceTest.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="Service\HousingServiceTests.cs" />
     <Compile Include="Service\TeamServiceTests.cs" />
     <Compile Include="Service\UserServiceTests.cs" />
-    <Compile Include="Service\AuditoryServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
