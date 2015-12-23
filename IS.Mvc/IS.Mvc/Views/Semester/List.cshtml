@@ -1,0 +1,73 @@
+﻿@using IS.Model.Item.Calendar;
+@using IS.Model.Service
+@using IS.Mvc.Models
+@model List<SemesterItem>
+
+@{
+    ViewBag.Title = "Semester List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+	table {
+		width: 100%; /* Ширина таблицы */
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	th {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+</style>
+
+<h2>Список семестров</h2>
+
+<table id="semester">
+	<thead>
+		<tr>
+			<th>Дата начала семестра</th>
+			<th>Дата конца семестра</th>
+			@if (Access.CheckRole("Semester.Updater"))
+			{
+				<th></th>
+				<th></th>
+				<th></th>
+			}
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var semester in Model) 
+
+			{
+			<tr>
+				<td>@semester.FromDate</td>
+				<td>@semester.TrimDate</td>
+				<td>@Html.ActionLink("Просмотр", "Index", new { id = semester.Id })</td>
+				@if (Access.CheckRole("Semester.Updater"))
+				{
+					<td>
+						@Html.ActionLink("Редактировать", "Edit", new { id = semester.Id })
+					</td>
+				}
+				@if (Access.CheckRole("Semester.Deleter"))
+				{
+					<td>
+						@Html.ActionLink("Удалить", "Delete", new { id = semester.Id }, new { onclick = "return confirm('Удалить запись?')" })
+					</td>
+				}
+			</tr>
+		}
+	</tbody>
+</table>
+@if (Access.CheckRole("Semester.Creator"))
+{
+	@Html.ActionLink("Создать запись о семестре", "New")
+}
