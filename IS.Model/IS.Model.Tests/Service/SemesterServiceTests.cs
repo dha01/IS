@@ -101,6 +101,17 @@ namespace IS.Model.Tests.Service
 			_semesterService.Update(_semester);
 		}
 
+		/// <summary>
+		/// Изменяет не существующий семестр.
+		/// </summary>
+		[ExpectedException(ExpectedMessage = "Семестр не найден.")]
+		[Test]
+		public void Update_SemesterNotExists_ReturnException()
+		{
+			Mock.Get(_semesterRepository).Setup(x => x.Get(_semester.Id)).Returns((SemesterItem)null);
+			_semesterService.Update(_semester);
+		}
+
 		#endregion
 
 		#region Delete

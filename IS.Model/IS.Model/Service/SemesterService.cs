@@ -69,6 +69,11 @@ namespace IS.Model.Service
 		/// <param name="semester">Семестр.</param>
 		public void Update(SemesterItem semester)
 		{
+			if (GetById(semester.Id) == null)
+			{
+				throw new Exception("Семестр не найден.");
+			}
+
 			_semesterRepository.Update(semester);
 		}
 
