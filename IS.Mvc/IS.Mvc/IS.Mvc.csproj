@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\CathedraController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -311,7 +312,6 @@
     <Content Include="Views\Housing\Index.cshtml" />
     <Content Include="Views\Housing\List.cshtml" />
     <Content Include="Views\Housing\New.cshtml" />
-    <Content Include="Views\Cathedra\Edit.cshtml" />
     <Content Include="Views\Cathedra\Index.cshtml" />
     <Content Include="Views\Cathedra\List.cshtml" />
     <Content Include="Views\Cathedra\New.cshtml" />
@@ -323,6 +323,10 @@
     <Content Include="Views\Faculty\Index.cshtml" />
     <Content Include="Views\Faculty\List.cshtml" />
     <Content Include="Views\Faculty\New.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\List.cshtml" />
+    <Content Include="Views\Student\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
