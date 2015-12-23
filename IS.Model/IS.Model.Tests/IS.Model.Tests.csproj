@@ -65,6 +65,7 @@
     <Compile Include="Repository\Discipline\DisciplineRepositoryTests.cs" />
     <Compile Include="Repository\Faculty\FacultyRepositoryTests.cs" />
     <Compile Include="Repository\Housing\HousingRespositoryTest.cs" />
+    <Compile Include="Repository\Lesson\LessonRepositoryTest.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
     <Compile Include="Repository\Person\StudentRepositoryTests.cs" />
     <Compile Include="Repository\Specialty\SpecialtyDetailRepositoryTests.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="Repository\Task\TaskRepositoryTests.cs" />
     <Compile Include="Repository\Access\UserRepositoryTests.cs" />
     <Compile Include="Service\ContactServiceTests.cs" />
+    <Compile Include="Service\lessonService.cs" />
+    <Compile Include="Service\LessonServiceTests.cs" />
     <Compile Include="Service\PersonServiceTests.cs" />
     <Compile Include="Service\DisciplineServiceTests.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
