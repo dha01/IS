@@ -16,11 +16,11 @@ namespace IS.Model.Repository.Person
         /// <returns>Человек.</returns>
         PersonItem Get(int id);
 
-        /// <summary>
-        /// Обновляет данные у человека.
-        /// </summary>
-        /// <param name="person">Человек.</param>
-        void Update(PersonItem person);
+		/// <summary>
+		/// Обновляет данные у человека.
+		/// </summary>
+		/// <param name="person">Человек.</param>
+		void Update(PersonItem person);
 
         /// <summary>
         /// Создает нового человека.

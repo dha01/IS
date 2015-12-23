@@ -10,6 +10,6 @@ namespace IS.Model.Item.Person
 		/// <summary>
 		/// Идентификатор кафедры.
 		/// </summary>
-		public int CathedraId { get; set; }
+		public int? CathedraId { get; set; }
 	}
 }
