@@ -36,7 +36,7 @@ namespace IS.Model.Service
 		/// Конструктор класс.
 		/// </summary>
 		/// <param name="cathedra_repository">Интерфейс репозитория кафедр.</param>
-        public StudentService(IStudentRepository student_repository)
+		public StudentService(IStudentRepository student_repository)
 		{
 			_studentRepository = student_repository;
 		}
@@ -50,7 +50,7 @@ namespace IS.Model.Service
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
 		/// <returns>Задача.</returns>
-        public StudentItem GetById(int id)
+		public StudentItem GetById(int id)
 		{
 			return _studentRepository.Get(id);
 		}
@@ -60,7 +60,7 @@ namespace IS.Model.Service
 		/// </summary>
 		/// <param name="cathedra">Студенты.</param>
 		/// <returns>Идентификатор созданной задачи.</returns>
-        public int Create(StudentItem student)
+		public int Create(StudentItem student)
 		{
 			return _studentRepository.Create(student);
 		}
@@ -69,7 +69,7 @@ namespace IS.Model.Service
 		/// Удаляет кафедру.
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
-        public void Delete(StudentItem student)
+		public void Delete(StudentItem student)
 		{
 			_studentRepository.Delete(student);
 		}
@@ -77,7 +77,7 @@ namespace IS.Model.Service
 		/// <summary>
 		/// Получает список студентов по индетификатору группы.
 		/// </summary>
-        public List<StudentItem> GetListByTeam(int team_id)
+		public List<StudentItem> GetListByTeam(int team_id)
 		{
 			return _studentRepository.GetListByTeam(team_id);
 		}

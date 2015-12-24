@@ -47,11 +47,11 @@ namespace IS.Model.Tests.Service
 
 			_student = new StudentItem()
 			{
-                LastName = "Егоров",
-                FirstName = "Виталий",
-                FatherName = "Игоревич",
-                Birthday = DateTime.Now,
-                TeamId = 1
+				LastName = "Егоров",
+				FirstName = "Виталий",
+				FatherName = "Игоревич",
+				Birthday = DateTime.Now,
+				TeamId = 1
 			};
 		}
 
@@ -73,7 +73,7 @@ namespace IS.Model.Tests.Service
 		#region Create
 
 		/// <summary>
-        /// Зачисление студента в группу.
+		/// Зачисление студента в группу.
 		/// </summary>
 		[Test]
 		public void Create_Void_ReturnId()
@@ -109,23 +109,23 @@ namespace IS.Model.Tests.Service
 			_studentService.Create(_student);
 		}
 
-        /// <summary>
-        /// Создает студента с пустым полем "FatherName".
-        /// </summary>
-        [ExpectedException(ExpectedMessage = "Поле 'FatherName' не должно быть пустым.")]
-        [Test]
-        public void Create_EmptyShortName_ReturnException()
-        {
-            _student.FatherName = null;
-            _studentService.Create(_student);
-        }
+		/// <summary>
+		/// Создает студента с пустым полем "FatherName".
+		/// </summary>
+		[ExpectedException(ExpectedMessage = "Поле 'FatherName' не должно быть пустым.")]
+		[Test]
+		public void Create_EmptyShortName_ReturnException()
+		{
+			_student.FatherName = null;
+			_studentService.Create(_student);
+		}
 
 		#endregion
 
 		#region Delete
 
 		/// <summary>
-        /// Исключение студента из группы.
+		/// Исключение студента из группы.
 		/// </summary>
 		[Test]
 		public void Delete_Void_Success()
@@ -145,8 +145,8 @@ namespace IS.Model.Tests.Service
 		{
 			var list = new List<StudentItem> { _student };
 
-            Mock.Get(_studentRepository).Setup(x => x.GetListByTeam(_student.TeamId)).Returns(list);
-            var result = _studentService.GetListByTeam(_student.TeamId);
+			Mock.Get(_studentRepository).Setup(x => x.GetListByTeam(_student.TeamId)).Returns(list);
+			var result = _studentService.GetListByTeam(_student.TeamId);
 
 			Assert.AreEqual(result.Count, list.Count);
 		}

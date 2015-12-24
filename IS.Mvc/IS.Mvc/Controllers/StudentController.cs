@@ -20,9 +20,9 @@ namespace IS.Mvc.Controllers
 		/// <summary>
 		/// Конструктор контроллера студентов.
 		/// </summary>
-        public StudentController()
+		public StudentController()
 		{
-            _studentService = new StudentService();
+			_studentService = new StudentService();
 		}
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult List(int team_id)
 		{
-            Access.CheckAccess("Student.Reader");
+			Access.CheckAccess("Student.Reader");
 			return View("List", _studentService.GetListByTeam(team_id));
 		}
 
@@ -42,7 +42,7 @@ namespace IS.Mvc.Controllers
 		/// <returns></returns>
 		public ActionResult Index(int? id)
 		{
-            Access.CheckAccess("Student.Reader");
+			Access.CheckAccess("Student.Reader");
 			if (id.HasValue)
 			{
 				return View("Index", _studentService.GetById(id.Value));
@@ -54,27 +54,27 @@ namespace IS.Mvc.Controllers
 		}
 
 		/// <summary>
-        /// Зачисление студента в группу.
+		/// Зачисление студента в группу.
 		/// </summary>
 		/// <returns></returns>
 		[ValidateInput(false)]
-        public ActionResult Create(StudentItem student)
+		public ActionResult Create(StudentItem student)
 		{
-            Access.CheckAccess("Student.Creator");
+			Access.CheckAccess("Student.Creator");
 			return RedirectToAction("Index", new { id = _studentService.Create(student) });
 		}
 
 		/// <summary>
-        /// Интерфейс для зачисления студента в группу.
+		/// Интерфейс для зачисления студента в группу.
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult New()
 		{
-            Access.CheckAccess("Student.Creator");
-            var default_item = new StudentItem
+			Access.CheckAccess("Student.Creator");
+			var default_item = new StudentItem
 			{
-                LastName = "",
-                FirstName = "",
+				LastName = "",
+				FirstName = "",
 				FatherName = ""
 			};
 			return View(default_item);
@@ -91,12 +91,12 @@ namespace IS.Mvc.Controllers
 		}
 
 		/// <summary>
-        /// Исключение студента из группы.
+		/// Исключение студента из группы.
 		/// </summary>
 		/// <returns></returns>
-        public ActionResult Delete(StudentItem student)
+		public ActionResult Delete(StudentItem student)
 		{
-            Access.CheckAccess("Student.Deleter");
+			Access.CheckAccess("Student.Deleter");
 			_studentService.Delete(student);
 			return RedirectToAction("Index");
 		}

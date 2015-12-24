@@ -36,13 +36,15 @@
 			<th>Фамилия</th>
 			<th>Имя</th>
 			<th>Отчество</th>
-            <th>Индетификатор группы</th>
+			<th>День Рождения</th>
+			<th>Индетификатор группы</th>
 			@if (Access.CheckRole("Student.Updater"))
 			{
 				<th></th>
 				<th></th>
 				<th></th>
-                <th></th>
+				<th></th>
+				<th></th>
 			}
 		</tr>
 	</thead>
@@ -53,7 +55,8 @@
 			<tr>
 				<td>@student.LastName</td>
 				<td>@student.FirstName</td>
-                <td>@student.FatherName</td>
+				<td>@student.FatherName</td>
+				<td>@student.Birthday</td>
 				<td>
 					@foreach (var team in new TeamService().GetList())
 					{

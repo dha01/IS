@@ -131,7 +131,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\CathedraController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -145,6 +144,7 @@
     <Compile Include="Controllers\SemesterController.cs" />
     <Compile Include="Controllers\SimpleTaskController.cs" />
     <Compile Include="Controllers\SpecialtyDetailController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
@@ -328,7 +328,12 @@
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Student\New.cshtml" />
     <Content Include="Views\Cathedra\Edit.cshtml" />
-  </ItemGroup>  <ItemGroup>
+    <Content Include="Views\Semester\Edit.cshtml" />
+    <Content Include="Views\Semester\Index.cshtml" />
+    <Content Include="Views\Semester\List.cshtml" />
+    <Content Include="Views\Semester\New.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
