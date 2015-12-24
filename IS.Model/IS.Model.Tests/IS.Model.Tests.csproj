@@ -77,6 +77,7 @@
     <Compile Include="Service\PersonServiceTests.cs" />
     <Compile Include="Service\DisciplineServiceTests.cs" />
     <Compile Include="Service\AuditoryServiceTests.cs" />
+    <Compile Include="Service\RamServiceTests.cs" />
     <Compile Include="Service\TaskServiceTests.cs" />
     <Compile Include="Service\CathedraServiceTests.cs" />
     <Compile Include="Service\RoleServiceTests.cs" />

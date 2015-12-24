@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace IS.Model.Tests.Repository.Ram
 {
 	/// <summary>
-	/// Тесты для репозитория учбных курсов.
+	/// Тесты для репозитория оперативной памяти.
 	/// </summary>
 	[Category("Integration")]
 	[TestFixture]
@@ -25,7 +25,7 @@ namespace IS.Model.Tests.Repository.Ram
 		private TransactionScope _transactionScope;
 
 		/// <summary>
-		/// Репозиторий курсов.
+		/// Репозиторий оперативной памяти.
 		/// </summary>
         private RamRepository _ramRepository;
 
@@ -85,10 +85,10 @@ namespace IS.Model.Tests.Repository.Ram
 		#region Methods
 
 		/// <summary>
-		/// Проверяет эквивалентны ли два учебных курса.
+		/// Проверяет эквивалентны ли две единицы оперативной памяти.
 		/// </summary>
-		/// <param name="first_ram">Первый учебный курс</param>
-		/// <param name="second_ram">Второй учебный курс</param>
+		/// <param name="first_ram">Первая единица оперативной памяти</param>
+        /// <param name="second_ram">Вторая единица оперативной памяти</param>
 		private void AreEqualRam(RamItem first_ram, RamItem second_ram)
 		{
 			Assert.AreEqual(first_ram.Id, second_ram.Id);
@@ -104,7 +104,7 @@ namespace IS.Model.Tests.Repository.Ram
 		#region Create
 
 		/// <summary>
-		/// Создает учебный курс.
+		/// Создает оперативную память.
 		/// </summary>
 		[Test]
 		public void Create_Void_ReturnId()
@@ -119,7 +119,7 @@ namespace IS.Model.Tests.Repository.Ram
 		#region Update
 
 		/// <summary>
-		/// Изменяет параметры учебного курса.
+		/// Изменяет параметры оперативной памяти.
 		/// </summary>
 		[Test]
 		public void Update_Void_ReturnChangedRam()
@@ -140,7 +140,7 @@ namespace IS.Model.Tests.Repository.Ram
 		#region Delete
 
 		/// <summary>
-		/// Удаляет курс.
+		/// Удаляет единицу оперативной памяти.
 		/// </summary>
 		[Test]
 		public void Delete_Void_ReturnNull()
@@ -159,7 +159,7 @@ namespace IS.Model.Tests.Repository.Ram
 		#region GetList
 
 		/// <summary>
-		/// Получает список всех учебных курсов.
+		/// Получает список всех единиц оперативной памяти.
 		/// </summary>
 		[Test]
 		public void GetList_Void_ReturnNotEmptyListWithRam()
