@@ -32,4 +32,51 @@ namespace IS.Model.Item.Specialty
 		/// </summary>
 		public int CathedraId { get; set; }
 	}
+
+    /// <summary>
+    /// Квалификация.
+    /// </summary>
+    public enum Type
+    {
+        /// <summary>
+        /// Бакалавр.
+        /// </summary>
+        DIMM,
+
+        /// <summary>
+        /// Магистр.
+        /// </summary>
+        DDR,
+
+        /// <summary>
+        /// Специалист.
+        /// </summary>
+        DDR2,
+
+        /// <summary>
+        /// Специалист.
+        /// </summary>
+        DDR3
+    }
+
+    /// <summary>
+    /// Квалификация.
+    /// </summary>
+    public enum Manufacturer
+    {
+        /// <summary>
+        /// Бакалавр.
+        /// </summary>
+        Kingston,
+
+        /// <summary>
+        /// Магистр.
+        /// </summary>
+        Corsair,
+
+        /// <summary>
+        /// Специалист.
+        /// </summary>
+        Kingmax
+    }
 }

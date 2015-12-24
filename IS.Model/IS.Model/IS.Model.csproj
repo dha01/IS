@@ -50,6 +50,7 @@
     <Compile Include="Item\Discipline\DisciplineItem.cs" />
     <Compile Include="Item\Person\LecturerItem.cs" />
     <Compile Include="Item\Person\PersonItem.cs" />
+    <Compile Include="Item\Ram\RamItem.cs" />
     <Compile Include="Item\Role.cs" />
     <Compile Include="Item\Specialty\PlanItem.cs" />
     <Compile Include="Item\Specialty\SpecialtyDetailItem.cs" />
@@ -80,6 +81,8 @@
     <Compile Include="Repository\Person\IStudentRepository.cs" />
     <Compile Include="Repository\Person\LecturerRepository.cs" />
     <Compile Include="Repository\Person\StudentRepository.cs" />
+    <Compile Include="Repository\Ram\IRamRepository.cs" />
+    <Compile Include="Repository\Ram\RamRepository.cs" />
     <Compile Include="Repository\Specialty\IPlanRepository.cs" />
     <Compile Include="Repository\Specialty\ISpecialtyDetailRepository.cs" />
     <Compile Include="Repository\Specialty\PlanRepository.cs" />

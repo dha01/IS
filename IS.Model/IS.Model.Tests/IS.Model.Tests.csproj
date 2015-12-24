@@ -35,7 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-
     <Reference Include="Moq">
       <HintPath>..\..\..\External\Moq.4.0.10827\NET40\Moq.dll</HintPath>
     </Reference>
@@ -67,6 +66,7 @@
     <Compile Include="Repository\Person\LecturerRepositoryTest.cs" />
     <Compile Include="Repository\Person\PersonRepositoryTest.cs" />
     <Compile Include="Repository\Person\StudentRepositoryTests.cs" />
+    <Compile Include="Repository\Ram\RamRepositoryTests.cs" />
     <Compile Include="Repository\Specialty\SpecialtyDetailRepositoryTests.cs" />
     <Compile Include="Repository\Specialty\SpecialtyRepositoryTests.cs" />
     <Compile Include="Repository\Team\TeamRepositoryTests.cs" />
