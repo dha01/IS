@@ -91,7 +91,7 @@ where team = @id", new { id });
 		/// <summary>
 		/// Получает список всех группу.
 		/// </summary>
-		/// <returns>Список группу.</returns>
+		/// <returns>Список групп.</returns>
 		public List<TeamItem> GetList()
 		{
 			using (var sqlh = new SqlHelper())
@@ -104,6 +104,69 @@ select
 	t.specialty_detail SpecialtyDetailId
 from Team.team t
 ");
+			}
+		}
+
+		/// <summary>
+		/// Получение списка групп по идентификатору специальности (specialty).
+		/// </summary>
+		/// <param name="Id">Идентификатор.</param>
+		/// <returns>Список групп.</returns>
+		public List<TeamItem> GetListBySpecialtyId(int Id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<TeamItem>(@"
+select
+	t.team Id,
+	t.name Name,
+	t.create_date CreateDate,
+	t.specialty_detail SpecialtyDetailId
+from Team.team t
+	join Specialty.specialty_detail s on s.specialty_detail = t.specialty_detail
+where s.specialty = @Id", new { Id });
+			}
+		}
+
+		/// <summary>
+		/// Получение списка групп по идентификатору кафедры (Cathedra).
+		/// </summary>
+		/// <param name="Id">Идентификатор.</param>
+		/// <returns>Список групп.</returns>
+		public List<TeamItem> GetListByCathedraId(int Id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<TeamItem>(@"
+select
+	t.team Id,
+	t.name Name,
+	t.create_date CreateDate,
+	t.specialty_detail SpecialtyDetailId
+from Team.team t
+	join Specialty.specialty_detail s on s.specialty_detail = t.specialty_detail
+	join Specialty.specialty ss on ss.specialty = s.specialty
+where ss.cathedra = @Id", new { Id });
+			}
+		}
+
+		/// <summary>
+		/// Получение списка групп по идентификатору учебного курса (specialty_detail).
+		/// </summary>
+		/// <param name="Id">Идентификатор.</param>
+		/// <returns>Список групп.</returns>
+		public List<TeamItem> GetListBySpecialtyDetailId(int Id)
+		{
+			using (var sqlh = new SqlHelper())
+			{
+				return sqlh.ExecMappingList<TeamItem>(@"
+select
+	t.team Id,
+	t.name Name,
+	t.create_date CreateDate,
+	t.specialty_detail SpecialtyDetailId
+from Team.team t
+where Team.specialty_detail = @Id", new { Id });
 			}
 		}
 	}
