@@ -110,6 +110,9 @@
     <Compile Include="Service\RoleService.cs" />
     <Compile Include="Service\SemesterService.cs" />
     <Compile Include="Service\SpecialtyDetailService.cs" />
+    <Compile Include="Service\StudentService.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\TaskService.cs" />
     <Compile Include="Service\TeamService.cs" />
     <Compile Include="Service\UserService.cs" />

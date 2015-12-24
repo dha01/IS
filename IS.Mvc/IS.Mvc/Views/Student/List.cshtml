@@ -1,0 +1,79 @@
+﻿@using IS.Model.Item.Person;
+@using IS.Model.Service
+@using IS.Mvc.Models
+@model List<StudentItem>
+
+@{
+	ViewBag.Title = "Student List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+	table {
+		width: 100%; /* Ширина таблицы */
+		border: 4px double black; /* Рамка вокруг таблицы */
+		border-collapse: collapse; /* Отображать только одинарные линии */
+	}
+
+	th {
+		text-align: left; /* Выравнивание по левому краю */
+		background: #ccc; /* Цвет фона ячеек */
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+
+	td {
+		padding: 5px; /* Поля вокруг содержимого ячеек */
+		border: 1px solid black; /* Граница вокруг ячеек */
+	}
+</style>
+
+<h2>Список студентов</h2>
+
+<table id="student">
+	<thead>
+		<tr>
+			<th>Фамилия</th>
+			<th>Имя</th>
+			<th>Отчество</th>
+			<th>День Рождения</th>
+			<th>Индетификатор группы</th>
+			@if (Access.CheckRole("Student.Updater"))
+			{
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			}
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var student in Model) 
+
+			{
+			<tr>
+				<td>@student.LastName</td>
+				<td>@student.FirstName</td>
+				<td>@student.FatherName</td>
+				<td>@student.Birthday</td>
+				<td>
+					@foreach (var team in new TeamService().GetList())
+					{
+						@team.Name
+					}
+				</td>
+				@if (Access.CheckRole("Student.Deleter"))
+				{
+					<td>
+						@Html.ActionLink("Удалить", "Delete", new { id = student.Id }, new { onclick = "return confirm('Удалить запись?')" })
+					</td>
+				}
+			</tr>
+		}
+	</tbody>
+</table>
+@if (Access.CheckRole("Student.Creator"))
+{
+	@Html.ActionLink("Зачисление студента в группу", "New")
+}
