@@ -1,6 +1,6 @@
-﻿-- Создание схемы "Calendar"
+﻿--- Создание схемы "Calendar"
 create schema Calendar
--- Создание таблицы "Calendar.work_day"
+--- Создание таблицы "Calendar.work_day"
 create table Calendar.work_day
 (
 	work_date int identity not null,
