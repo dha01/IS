@@ -9,10 +9,3 @@ create table Ram.ram_type
 	memo varchar(max) not null,
 	constraint PK__ram_type primary key (ram_type)
 )
-
-insert into Ram.ram_type(code,memo)
-	values
-			('Dimm', 'Модель DIMM'),
-			('Ddr', 'Модель DDR'),
-			('Ddr2', 'Модель DDR2'),
-			('Ddr3', 'Модель DDR3')

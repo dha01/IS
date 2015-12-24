@@ -97,7 +97,7 @@ namespace IS.Model.Tests.Repository.Specialty
 				Qualification = Qualification.Bachelor,
 				FormStudy = FormStudy.Distance,
 				PaySpace = 15,
-				LowcostSpace = 4,
+				LowcostSpace = 4
 			};
 			_specialtyDetailNew = new SpecialtyDetailItem()
 			{
@@ -108,7 +108,7 @@ namespace IS.Model.Tests.Repository.Specialty
 				Qualification = Qualification.Master,
 				FormStudy = FormStudy.Fulltime,
 				PaySpace = 30,
-				LowcostSpace = 6,
+				LowcostSpace = 6
 			};
 		}
 

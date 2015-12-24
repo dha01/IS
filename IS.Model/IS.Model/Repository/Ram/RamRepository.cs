@@ -25,12 +25,12 @@ namespace IS.Model.Repository.Ram
 select
 	rr.id Id,
 	rr.name Name,
-	rt.ram_type RamType,
-	rm.manufacturer Manufacturer,
+	rt.code RamType,
+	rm.code Manufacturer,
 	rr.capacity Capacity,
 	rr.voltage Voltage,
 	rr.frequency Frequency,
-	rr.throughput Throughput,
+	rr.throughput Throughput
 from Ram.ram rr
 	join Ram.ram_type rt on rt.ram_type = rr.ram_type
 	join Ram.manufacturer rm on rm.manufacturer = rr.manufacturer
@@ -50,12 +50,12 @@ where rr.id = @id", new { id });
 update Ram.ram
 set
 	name = @Name,
-	ram_type = (select top 1 rt.ram_type from Ram.ram_type rt where rt.ram_type = @RamType),
-	manufacturer = (select top 1 rm.manufacturer from Ram.manufacturer rm where rm.manufacturer = @Manufacturer),
+	ram_type = (select top 1 rt.ram_type from Ram.ram_type rt where rt.code = @RamType),
+	manufacturer = (select top 1 rm.manufacturer from Ram.manufacturer rm where rm.code = @Manufacturer),
 	capacity = @Capacity,
 	voltage = @Voltage,
 	frequency = @Frequency,
-	throughput = @Throughput,
+	throughput = @Throughput
 where id = @Id", ram);
 			}
 		}
@@ -83,8 +83,8 @@ insert into Ram.ram
 values
 (
 	@Name,
-	(select top 1 rt.ram_type from Ram.ram_type rt where rt.ram_type = @RamType),
-	(select top 1 rm.manufacturer from Ram.manufacturer rm where rm.manufacturer = @Manufacturer),
+	(select top 1 rt.ram_type from Ram.ram_type rt where rt.code = @RamType),
+	(select top 1 rm.manufacturer from Ram.manufacturer rm where rm.code = @Manufacturer),
 	@Capacity,
 	@Voltage,
 	@Frequency,
@@ -121,12 +121,12 @@ where id = @id", new { id });
 select
 	rr.id Id,
 	rr.name Name,
-	rt.ram_type RamType,
-	rm.manufacturer Manufacturer,
+	rt.code RamType,
+	rm.code Manufacturer,
 	rr.capacity Capacity,
 	rr.voltage Voltage,
 	rr.frequency Frequency,
-	rr.throughput Throughput,
+	rr.throughput Throughput
 from Ram.ram rr
 	join Ram.ram_type rt on rt.ram_type = rr.ram_type
 	join Ram.manufacturer rm on rm.manufacturer = rr.manufacturer");

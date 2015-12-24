@@ -9,9 +9,3 @@ create table Ram.manufacturer
 	memo varchar(max) not null,
 	constraint PK__manufacturer primary key (manufacturer)
 )
-
-insert into Ram.manufacturer(code,memo)
-	values
-			('Kingston', 'Kingston'),
-			('Corsair', 'Corsair'),
-			('Kingmax', 'Kingmax')
