@@ -15,7 +15,7 @@ namespace IS.Model.Repository.Ram
 		/// Получает оперативную память по идентификатору.
 		/// </summary>
 		/// <param name="id">Идентификатор.</param>
-        /// <returns>Оперативная память.</returns>
+		/// <returns>Оперативная память.</returns>
 		RamItem Get(int id);
 
 		/// <summary>
@@ -27,7 +27,7 @@ namespace IS.Model.Repository.Ram
 		/// <summary>
 		/// Создает новую оперативную память.
 		/// </summary>
-        /// <param name="ram">Оперативная память.</param>
+		/// <param name="ram">Оперативная память.</param>
 		/// <returns>Идентификатор созданной оперативной памяти.</returns>
 		int Create(RamItem ram);
 

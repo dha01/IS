@@ -43,17 +43,17 @@ namespace IS.Model.Tests.Service
 		public void SetUp()
 		{
 			_ramRepository = Mock.Of<IRamRepository>();
-            _ramService = new RamService(_ramRepository);
+			_ramService = new RamService(_ramRepository);
 
 			_ram = new RamItem()
 			{
-                Name = "First",
-                RamType = RamType.Dimm,
-                Manufacturer = Manufacturer.Corsair,
-                Capacity = 1,
-                Voltage = 1,
-                Frequency = 1,
-                Throughput = 1
+				Name = "First",
+				RamType = RamType.Dimm,
+				Manufacturer = Manufacturer.Corsair,
+				Capacity = 1,
+				Voltage = 1,
+				Frequency = 1,
+				Throughput = 1
 			}; 
 		}
 
@@ -81,8 +81,8 @@ namespace IS.Model.Tests.Service
 		public void Create_Void_ReturnId()
 		{
 			var list = new List<RamItem>(){ _ram };
-            Mock.Get(_ramRepository).Setup(x => x.Create(_ram)).Returns(_ram.Id);
-            Mock.Get(_ramRepository).Setup(x => x.GetList()).Returns(list);
+			Mock.Get(_ramRepository).Setup(x => x.Create(_ram)).Returns(_ram.Id);
+			Mock.Get(_ramRepository).Setup(x => x.GetList()).Returns(list);
 			var result = _ramService.Create(_ram);
 			Assert.AreEqual(result, _ram.Id);
 		}

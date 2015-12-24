@@ -27,10 +27,10 @@ namespace IS.Model.Tests.Repository.Ram
 		/// <summary>
 		/// Репозиторий оперативной памяти.
 		/// </summary>
-        private RamRepository _ramRepository;
+		private RamRepository _ramRepository;
 
-        private RamItem _ram;
-        private RamItem _ramNew;
+		private RamItem _ram;
+		private RamItem _ramNew;
 
 		#endregion
 
@@ -43,7 +43,7 @@ namespace IS.Model.Tests.Repository.Ram
 		public void SetUp()
 		{
 			_transactionScope = new TransactionScope();
-            _ramRepository = new RamRepository();
+			_ramRepository = new RamRepository();
 
 			_ram = new RamItem()
 			{
@@ -57,13 +57,13 @@ namespace IS.Model.Tests.Repository.Ram
 			};
 			_ramNew = new RamItem()
 			{
-                Name = "Second",
-                RamType = RamType.Ddr,
-                Manufacturer = Manufacturer.Kingmax,
-                Capacity = 2,
-                Voltage = 2,
-                Frequency = 2,
-                Throughput = 2
+				Name = "Second",
+				RamType = RamType.Ddr,
+				Manufacturer = Manufacturer.Kingmax,
+				Capacity = 2,
+				Voltage = 2,
+				Frequency = 2,
+				Throughput = 2
 			};
 		}
 
@@ -88,15 +88,15 @@ namespace IS.Model.Tests.Repository.Ram
 		/// Проверяет эквивалентны ли две единицы оперативной памяти.
 		/// </summary>
 		/// <param name="first_ram">Первая единица оперативной памяти</param>
-        /// <param name="second_ram">Вторая единица оперативной памяти</param>
+		/// <param name="second_ram">Вторая единица оперативной памяти</param>
 		private void AreEqualRam(RamItem first_ram, RamItem second_ram)
 		{
 			Assert.AreEqual(first_ram.Id, second_ram.Id);
-            Assert.AreEqual(first_ram.Name, second_ram.Name);
-            Assert.AreEqual(first_ram.Capacity, second_ram.Capacity);
-            Assert.AreEqual(first_ram.Voltage, second_ram.Voltage);
-            Assert.AreEqual(first_ram.Frequency, second_ram.Frequency);
-            Assert.AreEqual(first_ram.Throughput, second_ram.Throughput);
+			Assert.AreEqual(first_ram.Name, second_ram.Name);
+			Assert.AreEqual(first_ram.Capacity, second_ram.Capacity);
+			Assert.AreEqual(first_ram.Voltage, second_ram.Voltage);
+			Assert.AreEqual(first_ram.Frequency, second_ram.Frequency);
+			Assert.AreEqual(first_ram.Throughput, second_ram.Throughput);
 		}
 
 		#endregion

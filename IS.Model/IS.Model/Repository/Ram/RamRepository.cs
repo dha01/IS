@@ -23,7 +23,7 @@ namespace IS.Model.Repository.Ram
 			{
 				return sqlh.ExecMapping<RamItem>(@"
 select
-	rr.id Id,
+	rr.ram Id,
 	rr.name Name,
 	rt.code RamType,
 	rm.code Manufacturer,
@@ -34,7 +34,7 @@ select
 from Ram.ram rr
 	join Ram.ram_type rt on rt.ram_type = rr.ram_type
 	join Ram.manufacturer rm on rm.manufacturer = rr.manufacturer
-where rr.id = @id", new { id });
+where rr.ram = @id", new { id });
 			}
 		}
 
@@ -56,7 +56,7 @@ set
 	voltage = @Voltage,
 	frequency = @Frequency,
 	throughput = @Throughput
-where id = @Id", ram);
+where ram = @Id", ram);
 			}
 		}
 
@@ -105,7 +105,7 @@ select scope_identity()", ram);
 			{
 				sqlh.ExecNoQuery(@"
 delete from Ram.ram
-where id = @id", new { id });
+where ram = @id", new { id });
 			}
 		}
 
@@ -119,7 +119,7 @@ where id = @id", new { id });
 			{
 				return sqlh.ExecMappingList<RamItem>(@"
 select
-	rr.id Id,
+	rr.ram Id,
 	rr.name Name,
 	rt.code RamType,
 	rm.code Manufacturer,

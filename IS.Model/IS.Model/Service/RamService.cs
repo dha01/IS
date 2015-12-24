@@ -23,7 +23,7 @@ namespace IS.Model.Service
 
 		#region Constructors
 
-        /// <summary>
+		/// <summary>
 		/// Конструктор без параметров.
 		/// </summary>
 		public RamService()
@@ -34,10 +34,10 @@ namespace IS.Model.Service
 		/// <summary>
 		/// Конструктор без параметров.
 		/// </summary>
-        public RamService(IRamRepository ram_repository)
+		public RamService(IRamRepository ram_repository)
 		{
 			//_ramRepository = new RamRepository();
-            _ramRepository = ram_repository;
+			_ramRepository = ram_repository;
 		}
 
 		#endregion
