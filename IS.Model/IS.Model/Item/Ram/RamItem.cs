@@ -56,22 +56,22 @@ namespace IS.Model.Item.Ram
 		/// <summary>
 		/// Модель DIMM.
 		/// </summary>
-		Dimm,
+		DIMM,
 
 		/// <summary>
 		/// Модель DDR.
 		/// </summary>
-		Ddr,
+		DDR,
 
 		/// <summary>
 		/// Модель DDR2.
 		/// </summary>
-		Ddr2,
+		DDR2,
 
 		/// <summary>
 		/// Модель DDR3.
 		/// </summary>
-		Ddr3
+		DDR3
 	}
 
 	/// <summary>

@@ -48,7 +48,7 @@ namespace IS.Model.Tests.Repository.Ram
 			_ram = new RamItem()
 			{
 				Name = "First",
-				RamType = RamType.Dimm,
+				RamType = RamType.DIMM,
 				Manufacturer = Manufacturer.Corsair,
 				Capacity = 1,
 				Voltage = 1,
@@ -58,7 +58,7 @@ namespace IS.Model.Tests.Repository.Ram
 			_ramNew = new RamItem()
 			{
 				Name = "Second",
-				RamType = RamType.Ddr,
+				RamType = RamType.DDR,
 				Manufacturer = Manufacturer.Kingmax,
 				Capacity = 2,
 				Voltage = 2,
