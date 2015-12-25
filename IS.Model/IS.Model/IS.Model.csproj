@@ -44,11 +44,14 @@
     <Compile Include="Item\Access\RoleItem.cs" />
     <Compile Include="Item\Access\UserItem.cs" />
     <Compile Include="Item\Auditory\AuditoryItem.cs" />
+    <Compile Include="Item\Cathedra\CathedraInfoItem.cs" />
     <Compile Include="Item\Comment\CommentItem.cs" />
     <Compile Include="Item\Calendar\SemesterItem.cs" />
     <Compile Include="Item\Contact\ContactItem.cs" />
     <Compile Include="Item\Discipline\DisciplineItem.cs" />
     <Compile Include="Item\Person\LecturerItem.cs" />
+    <Compile Include="Item\Faculty\FacultyInfoItem.cs" />
+    <Compile Include="Item\Person\PersonInfoItem.cs" />
     <Compile Include="Item\Person\PersonItem.cs" />
     <Compile Include="Item\Role.cs" />
     <Compile Include="Item\Specialty\PlanItem.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="Item\Task\TaskInfoItem.cs" />
     <Compile Include="Item\Task\TaskItem.cs" />
     <Compile Include="Item\Faculty\FacultyItem.cs" />
+    <Compile Include="Item\Team\TeamInfoItem.cs" />
     <Compile Include="Item\Team\TeamItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Access\IRoleRepository.cs" />

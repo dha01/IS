@@ -5,7 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using IS.Model.Item.Contact;
+using IS.Model.Item.Person;
+using IS.Model.Item.Cathedra;
+using IS.Model.Item.Faculty;
+using IS.Model.Item.Specialty;
+using IS.Model.Item.Team;
 using IS.Model.Repository.Contact;
+using IS.Model.Repository.Person;
+using IS.Model.Repository.Cathedra;
+using IS.Model.Repository.Faculty;
+using IS.Model.Repository.Specialty;
+using IS.Model.Repository.Team;
 using NUnit.Framework;
 
 namespace IS.Model.Tests.Repository.Contact
@@ -32,6 +42,20 @@ namespace IS.Model.Tests.Repository.Contact
 		private ContactItem _contact;
 		private ContactItem _contactNew;
 
+		private PersonRepository _personRepository;
+		private PersonItem _person;
+
+		private CathedraRepository _cathedraRepository;
+		private CathedraItem _cathedra;
+
+		private FacultyRepository _facultyRepository;
+		private FacultyItem _faculty;
+
+		private TeamRepository _teamRepository;
+		private SpecialtyDetailRepository _specialtyDetailRepository;
+		private SpecialtyRepository _specialtyRepository;
+		private TeamItem _team;
+
 		#endregion
 
 		#region SetUp
@@ -44,6 +68,35 @@ namespace IS.Model.Tests.Repository.Contact
 		{
 			_transactionScope = new TransactionScope();
 			_contactRepository = new ContactRepository();
+			_personRepository = new PersonRepository();
+
+			_cathedraRepository = new CathedraRepository();
+			_facultyRepository = new FacultyRepository();
+
+			_teamRepository = new TeamRepository();
+			_specialtyDetailRepository = new SpecialtyDetailRepository();
+			_specialtyRepository = new SpecialtyRepository();
+
+			var specialty_detail = new SpecialtyDetailItem()
+			{
+				SpecialtyId = _specialtyRepository.Create(new SpecialtyItem()
+				{
+					CathedraId = _cathedraRepository.Create(new CathedraItem()
+					{
+						FacultyId = _facultyRepository.Create(new FacultyItem()
+						{
+							FullName = "Кафедра",
+							ShortName = "K" 
+						}),
+						FullName = "Кафедра",
+						ShortName = "K"
+					}),
+					FullName = "Специальность",
+					ShortName = "С",
+					Code = "1"
+				}),
+				ActualDate = DateTime.Now
+			};
 
 			_contact = new ContactItem()
 			{
@@ -55,6 +108,32 @@ namespace IS.Model.Tests.Repository.Contact
 				Type = ContactType.CityPhone,
 				Value = "000-00-00"
 			};
+			_person = new PersonItem()
+			{
+				Id = 1,
+				LastName = "Иванов",
+				FirstName = "Василий",
+				Birthday = DateTime.Now.Date,
+				FatherName = "Иванович"
+
+			};
+			_faculty = new FacultyItem()
+			{
+				FullName = "Экономический",
+				ShortName = "Э",
+			};
+			_cathedra = new CathedraItem()
+			{
+				FullName = "Информациионных систем и технологий",
+				ShortName = "ИСиТ",
+				FacultyId = _facultyRepository.Create(_faculty)
+			};
+			_team = new TeamItem()
+			{
+				Name = "ПЕ-22б",
+				CreateDate = DateTime.Now.Date,
+				SpecialtyDetailId = _specialtyDetailRepository.Create(specialty_detail)
+			}; 
 		}
 
 		#endregion
@@ -77,8 +156,8 @@ namespace IS.Model.Tests.Repository.Contact
 		/// <summary>
 		/// Проверяет эквивалентны ли два контакта.
 		/// </summary>
-		/// <param name="first_contact"></param>
-		/// <param name="second_contact"></param>
+		/// <param name="first_contact">Первый контакт для сравнения.</param>
+		/// <param name="second_contact">Второй контакт для сравнения.</param>
 		private void AreEqualContacts(ContactItem first_contact, ContactItem second_contact)
 		{
 			Assert.AreEqual(first_contact.Id, second_contact.Id);
@@ -157,5 +236,73 @@ namespace IS.Model.Tests.Repository.Contact
 		}
 
 		#endregion
+
+		#region GetPersonListById
+
+		/// <summary>
+		/// Получает список всех контактов человека по его идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByPersonId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_person.Id = _personRepository.Create(_person);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToPerson(_contact.Id, _person.Id);
+			var result = _contactRepository.GetContactsListByPersonId(_person.Id).First(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
+
+		#endregion
+
+		#region GetCathedraListById
+
+		/// <summary>
+		/// Получает список всех контактов кафедры по его идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByCathedraId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_cathedra.Id = _cathedraRepository.Create(_cathedra);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToCathedra(_contact.Id, _cathedra.Id);
+			var result = _contactRepository.GetContactsListByCathedraId(_cathedra.Id).First(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
+
+		#endregion
+
+		#region GetFacultyListById
+
+		/// <summary>
+		/// Получает список всех контактов факультета по его идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByFacultyId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_faculty.Id = _facultyRepository.Create(_faculty);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToFaculty(_contact.Id, _faculty.Id);
+			var result = _contactRepository.GetContactsListByFacultyId(_faculty.Id).First(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
+
+		#endregion
+
+		#region GetTeamListById
+
+		/// <summary>
+		/// Получает список всех контактов группы по ее идентификатору.
+		/// </summary>
+		[Test]
+		public void GetContactsListByTeamId_Void_ReturnNotEmptyListWithContacts()
+		{
+			_team.Id = _teamRepository.Create(_team);
+			_contact.Id = _contactRepository.Create(_contact);
+			_contactRepository.AttachContactToTeam(_contact.Id, _team.Id);
+			var result = _contactRepository.GetContactsListByTeamId(_team.Id).First(x => x.Id == _contact.Id);
+			AreEqualContacts(result, _contact);
+		}
+
+		#endregion   
 	}
 }
