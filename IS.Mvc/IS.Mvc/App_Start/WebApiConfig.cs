@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Http;
 
 namespace IS
-{
+{/*
 	public static class WebApiConfig
 	{
 		public static void Register(HttpConfiguration config)
@@ -15,5 +15,5 @@ namespace IS
 				defaults: new { id = RouteParameter.Optional }
 			);
 		}
-	}
+	}*/
 }
